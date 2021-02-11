@@ -4,11 +4,10 @@ import 'package:sil_feed/features/document_viewer/pages/document_grid.dart';
 import 'package:sil_feed/features/image_viewer/image_grid.dart';
 import 'package:sil_feed/features/video_player/video_player.dart';
 import 'package:sil_feed/shared/utils/colors.dart';
-import 'package:sil_feed/shared/utils/sizing.dart';
 import 'package:sil_feed/shared/utils/text_themes.dart';
 import 'package:sil_feed/shared/utils/utils.dart';
+import 'package:sil_themes/spaces.dart';
 
-// ignore_for_file: todo
 class FeedItemBody extends StatelessWidget {
   const FeedItemBody(
       {Key key,
@@ -25,10 +24,6 @@ class FeedItemBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    /// TODO(abiud): process the images, docs and videos here.
-    ///
-    /// - this should be moved to a shared location like utils
-
     // extract images
     final List<dynamic> images =
         FeedUtils.processFeedMedia(links: links, mediaType: MediaType.pngImage);
@@ -41,55 +36,64 @@ class FeedItemBody extends StatelessWidget {
     final List<dynamic> videos = FeedUtils.processFeedMedia(
         links: links, mediaType: MediaType.youtubeVideo);
 
+    final int remainingImageLength = images.length - 1;
+
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
-        smallVerticalSizedBox,
+        verySmallVerticalSizedBox,
 
-        // the text
+        // the body text of the feed
         Padding(
           padding: EdgeInsets.symmetric(horizontal: 15),
           child: Text(
             text ?? '',
-            style: TextThemes.normalSize15Text(Colors.black),
+            style: TextThemes.normalSize14Text(Colors.black87),
           ),
         ),
 
         smallVerticalSizedBox,
 
+        // feed item videos are displayed here
         if (videos.isNotEmpty)
-          Container(height: 200, child: VideoPlayer(videos: videos)),
+          Padding(
+            padding: const EdgeInsets.only(top: 5),
+            child: Container(height: 200, child: VideoPlayer(videos: videos)),
+          ),
 
         // checks that there are actually images
         if (images.isNotEmpty)
           Stack(
             children: <Widget>[
+              // use the first image as a cover
               Image.network(images?.first['url']),
-              Positioned(
-                bottom: 0,
-                right: 0,
-                child: GestureDetector(
-                  onTap: () {
-                    Navigator.of(context)
-                        .push(MaterialPageRoute<FeedItemImageGrid>(
-                      builder: (_) =>
-                          FeedItemImageGrid(images: images, flavour: flavour),
-                    ));
-                  },
-                  child: Container(
-                    padding: EdgeInsets.all(10),
-                    margin: EdgeInsets.all(8),
-                    decoration: BoxDecoration(
-                        color: Colors.black.withOpacity(0.5),
-                        borderRadius: BorderRadius.circular(5)),
-                    child: Text(
-                      // TODO(abiud): check for when the image is only one
-                      '+ ${images.length - 1} more photos',
-                      style: TextThemes.boldSize14Text(Colors.white),
+
+              // an indicator to show the number of images remaining in the gallery
+              if (remainingImageLength != 0 && remainingImageLength > 1)
+                Positioned(
+                  bottom: 0,
+                  right: 0,
+                  child: GestureDetector(
+                    onTap: () {
+                      Navigator.of(context)
+                          .push(MaterialPageRoute<FeedItemImageGrid>(
+                        builder: (_) =>
+                            FeedItemImageGrid(images: images, flavour: flavour),
+                      ));
+                    },
+                    child: Container(
+                      padding: EdgeInsets.all(10),
+                      margin: EdgeInsets.all(8),
+                      decoration: BoxDecoration(
+                          color: Colors.black.withOpacity(0.5),
+                          borderRadius: BorderRadius.circular(5)),
+                      child: Text(
+                        '+ $remainingImageLength more photos',
+                        style: TextThemes.boldSize14Text(Colors.white),
+                      ),
                     ),
                   ),
-                ),
-              )
+                )
             ],
           ),
 
@@ -139,10 +143,8 @@ class FeedItemBody extends StatelessWidget {
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: <Widget>[
-                                Text(
-                                  'Documents',
-                                  style: TextThemes.boldSize15Text(),
-                                ),
+                                Text('Documents',
+                                    style: TextThemes.boldSize15Text()),
                                 verySmallVerticalSizedBox,
                                 Text(
                                   // TODO(abiud): check for less that one document

@@ -14,4 +14,4 @@ SILFeedTests:
     - flutter analyze
     - flutter test --coverage test
     - genhtml -q -o coverage coverage/lcov.info
-    - python3 check_coverage.py 71.70
+    - python3 check_coverage.py

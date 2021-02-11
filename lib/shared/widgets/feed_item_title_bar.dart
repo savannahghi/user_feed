@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:sil_feed/shared/utils/colors.dart';
-import 'package:sil_feed/shared/utils/sizing.dart';
 import 'package:sil_feed/shared/utils/text_themes.dart';
 import 'package:sil_feed/shared/utils/utils.dart';
+import 'package:sil_themes/spaces.dart';
 
 /// the top bar of the feed item
 ///
@@ -36,11 +35,11 @@ class FeedItemTitleBar extends StatelessWidget {
       children: <Widget>[
         // icon or avatar
         Container(
-          height: 55,
-          width: 55,
+          height: 60,
+          width: 60,
           decoration: BoxDecoration(
               color: Colors.white,
-              border: Border.all(color: Colors.grey, width: 1),
+              border: Border.all(color: Colors.black87, width: 1),
               gradient: getFeedGlobalActionGradient(context),
               shape: BoxShape.circle,
               image: DecorationImage(
@@ -54,31 +53,31 @@ class FeedItemTitleBar extends StatelessWidget {
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
+                  // the author
                   Text(author,
-                      style: TextThemes.veryBoldSize17Text(textLightBlack)),
+                      style: TextThemes.boldSize16Text(Colors.black87)),
                   extremelySmallVerticalSizedBox,
+
+                  // the tagline
                   Container(
                     constraints: BoxConstraints(maxWidth: 180),
                     child: Text(
                       tagline,
-                      style: TextThemes.normalSize14Text(Colors.black),
+                      style: TextThemes.normalSize14Text(Colors.black54),
                       overflow: TextOverflow.ellipsis,
                     ),
                   ),
                   extremelySmallVerticalSizedBox,
 
                   // a formatted human readable timestamp
-                  Text(timestamp ?? '20 hrs ago',
+                  Text(timestamp ?? 'Just now',
                       style: TextThemes.normalSize12Text(
-                          Colors.black.withOpacity(0.8)))
+                          Colors.black.withOpacity(0.4)))
                 ],
               )
             ],
           ),
         ),
-
-        // ignore: todo
-        // TODO(abiud): add labels here
       ],
     );
   }

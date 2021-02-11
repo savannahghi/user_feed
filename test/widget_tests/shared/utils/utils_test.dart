@@ -5,8 +5,8 @@ import 'package:sil_feed/shared/utils/utils.dart';
 void main() {
   group('FeedUtils', () {
     testWidgets('should show a snackbar', (WidgetTester tester) async {
-      List<int> ints = <int>[];
-      Function addOne = () => ints.add(1);
+      List<int> integers = <int>[];
+      Function addOne = () => integers.add(1);
       const String snackbarText = 'Test coverage achieved';
       await tester.pumpWidget(MaterialApp(
         home: Scaffold(
@@ -23,7 +23,7 @@ void main() {
                 },
               ),
             );
-        }),
+          }),
         ),
       ));
 
@@ -39,8 +39,8 @@ void main() {
       await tester.tap(find.byType(SnackBarAction));
       await tester.pumpAndSettle();
 
-      expect(ints.isEmpty, false);
-      expect(ints.first, 1);
+      expect(integers.isEmpty, false);
+      expect(integers.first, 1);
     });
   });
 }

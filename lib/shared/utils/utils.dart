@@ -2,11 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:sil_feed/shared/widgets/constants.dart';
 import 'package:sil_feed/shared/widgets/nudge_carousel.dart';
-import 'package:sil_feed/shared/widgets/routes.dart';
 import 'package:sil_feed/sil_feed.dart';
-
-// ignore: prefer_generic_function_type_aliases
-typedef void DebugPrintFunc(dynamic msg);
 
 class FeedUtils {
   static String titleCase(String sentence) {
@@ -59,7 +55,7 @@ class FeedUtils {
     /// parse the string first before processing
     final DateTime parsedDate = DateTime.parse(date);
 
-    /// convert this date to a localformat i.e change the timezone
+    /// convert this date to a local format i.e change the timezone
     /// to the one in the device
     DateTime localDateTime = parsedDate.toLocal();
 
@@ -99,18 +95,19 @@ class FeedUtils {
     return DateFormat('MMMd, yyyy').format(parsedDate);
   }
 
-  static void checkOnallowAnonymousBeforeCall(
+  /// checks whether an anonymous user is allowed to perform an action when they are anonymous
+  static void checkOnAllowAnonymousBeforeCall(
       {@required Function allowFunc,
       @required bool isAnonymous,
       @required bool allowAnonymous,
       @required Function isAnonymousFunc}) {
-    // check whether the user is anonymous and this action can be triggered by an anonymous user
+    // check whether the user is anonymous and that this action can be triggered by an anonymous user
     if (isAnonymous && allowAnonymous) {
       allowFunc();
       return;
     }
 
-    // check whether the user is anonymous and this action can not be triggered by an anonymous user
+    // check whether the user is anonymous and this action cannot be triggered by an anonymous user
     if (isAnonymous && !allowAnonymous) {
       /// called when action can not be done by an anonymous user
       isAnonymousFunc();
@@ -122,7 +119,7 @@ class FeedUtils {
     return;
   }
 
-  /// looks through the list of allowed actions [allConsumerActions and AllProACtions]
+  /// looks through the list of allowed actions [allConsumerActions and AllProActions]
   /// and executes the respective function
   static void callFeedAction(
       {@required String fullActionName,
@@ -136,7 +133,7 @@ class FeedUtils {
             .findAncestorWidgetOfExactType<NudgeCarousel>()
             ?.nudgeCarouselCallbacks;
 
-    if (flavour == consumerString) {
+    if (flavour == consumerFlavor) {
       // loop through the consumer actions and call their functions
       allConsumerActions.map(
         (String consumerAction) {
@@ -249,22 +246,6 @@ class FeedUtils {
       default:
         return null;
     }
-  }
-
-  static String loadActionRoute(String text) {
-    if (text.contains('Medicine')) {
-      return Routes.buyMedicine;
-    }
-    if (text.contains('Insurance')) {
-      return Routes.buyCoverPage;
-    }
-    if (text.contains('Doctor')) {
-      return Routes.seeDoctor;
-    }
-    if (text.contains('Test')) {
-      return Routes.getTested;
-    }
-    return Routes.coachPage;
   }
 }
 
