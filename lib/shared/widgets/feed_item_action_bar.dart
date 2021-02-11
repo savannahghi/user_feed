@@ -1,12 +1,12 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:sil_feed/shared/typedefs/feed_typedefs.dart';
-import 'package:sil_feed/shared/utils/sizing.dart';
+import 'package:sil_feed/shared/type_defs/feed_type_defs.dart';
 import 'package:sil_feed/shared/utils/text_themes.dart';
 import 'package:sil_feed/shared/utils/utils.dart';
 import 'package:sil_feed/shared/widgets/constants.dart';
 import 'package:sil_feed/shared/widgets/feed_action_buttons.dart';
+import 'package:sil_themes/spaces.dart';
 
 class FeedItemActionBar extends StatelessWidget {
   FeedItemActionBar({
@@ -16,14 +16,37 @@ class FeedItemActionBar extends StatelessWidget {
     @required this.resolveFunction,
     @required this.pinFunction,
     @required this.hideFunction,
-  });
+    @required this.isAnonymous,
+    @required this.isAnonymousFunc,
+  }) : assert(() {
+          if (isAnonymous != null) {
+            if (isAnonymous && isAnonymousFunc == null) {
+              throw Exception(
+                  'when `isAnonymous` is true, `isAnonymousFunc` should not be null');
+            }
+          }
+          return true;
+        }());
 
   final List<dynamic> actions;
   final String feedItemID;
   final String flavour;
+
+  // a callback to resolve an item
   final feedItemActionTypeDef resolveFunction;
+
+  // a callback to pin an item
   final feedItemActionTypeDef pinFunction;
+
+  // a callback to hide an item
   final feedItemActionTypeDef hideFunction;
+
+  /// [isAnonymous] indicated whether the logged in user is iAnonymous
+  final bool isAnonymous;
+
+  /// [isAnonymousFunc] function that will be called if the current logged in user is anonymous
+  /// It is not required since it's only valid for `consumer app` only
+  final Function isAnonymousFunc;
 
   @override
   Widget build(BuildContext context) {
@@ -35,22 +58,30 @@ class FeedItemActionBar extends StatelessWidget {
           ...actions.map((dynamic action) {
             final String actionName = action['name'];
             final String actionNameWithoutUnderscores =
-                FeedUtils.removeUnderscores(actionName);
+                FeedUtils.removeUnderscores(actionName).split('Item')?.first;
+
+            /// whether an anonymous user is allowed to perform this action
+            final bool allowAnonymous = action['allowAnonymous'];
 
             return FeedNoBorderButton(
               onPressed: () {
-                // ignore: todo
-                // TODO(abiud): check for anonymous here
-                switch (actionName) {
-                  case kResolveItem:
-                    resolveFunction(flavour: flavour, itemID: feedItemID);
-                    break;
-                  case kPinItem:
-                    pinFunction(flavour: flavour, itemID: feedItemID);
-                    break;
-                  case kHideItem:
-                    hideFunction(flavour: flavour, itemID: feedItemID);
-                }
+                FeedUtils.checkOnAllowAnonymousBeforeCall(
+                  allowFunc: () {
+                    switch (actionName) {
+                      case kResolveItem:
+                        resolveFunction(flavour: flavour, itemID: feedItemID);
+                        break;
+                      case kPinItem:
+                        pinFunction(flavour: flavour, itemID: feedItemID);
+                        break;
+                      case kHideItem:
+                        hideFunction(flavour: flavour, itemID: feedItemID);
+                    }
+                  },
+                  isAnonymous: isAnonymous,
+                  allowAnonymous: allowAnonymous,
+                  isAnonymousFunc: this.isAnonymousFunc,
+                );
               },
               text: '',
               customChild: Center(
@@ -70,10 +101,6 @@ class FeedItemActionBar extends StatelessWidget {
                   ],
                 ),
               ),
-              // ignore: todo
-              // TODO(abiud): pass this from the parent component
-              // isAnonymous: false,
-              // flavour: flavour,
             );
           }),
         ],

@@ -17,9 +17,7 @@ class FeedImageViewer extends StatelessWidget {
         padding: EdgeInsets.symmetric(horizontal: 10.0, vertical: 20.0),
         child: Center(
           child: PhotoView(
-            imageProvider: NetworkImage(
-              imageUrl ?? fallbackUrl,
-            ),
+            imageProvider: NetworkImage(imageUrl ?? fallbackUrl),
             backgroundDecoration: BoxDecoration(color: Colors.white),
             enableRotation: false,
             initialScale: PhotoViewComputedScale.contained,

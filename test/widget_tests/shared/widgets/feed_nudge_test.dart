@@ -33,7 +33,7 @@ void main() {
       await provideMockedNetworkImages(() async {
         expect(
             () => FeedNudge(
-                  flavor: consumerString,
+                  flavor: consumerFlavor,
                   isAnonymous: true,
                   nudge: mockFeednudges[0],
                   isAnonymousFunc: null,

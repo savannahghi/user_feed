@@ -7,8 +7,8 @@ import sys
 from bs4 import BeautifulSoup
 
 
-def checkCoverage(threshold):
-    THRESHOLD = threshold
+def checkCoverage():
+    THRESHOLD = 70.7
     current_dir = os.getcwd()
     coverage_file_path = os.path.join(current_dir, "coverage/index.html")
     cov = None
@@ -42,5 +42,5 @@ def checkCoverage(threshold):
 
 
 if __name__ == "__main__":
-    checkCoverage(float(sys.argv[1]))
+    checkCoverage()
 

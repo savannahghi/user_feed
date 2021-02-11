@@ -31,7 +31,7 @@ void main() {
         await tester.pumpWidget(MaterialApp(
           home: Scaffold(
             body: FeedGlobalActionBar(
-              flavour: consumerString,
+              flavour: consumerFlavor,
               globalActions: globalActions,
               isAnonymous: null,
             ),
@@ -47,13 +47,14 @@ void main() {
     testWidgets('should show assertion error', (WidgetTester tester) async {
       expect(
           () => FeedGlobalActionBar(
-                flavour: consumerString,
+                flavour: consumerFlavor,
                 globalActions: globalActions,
                 isAnonymous: true,
                 isAnonymousFunc: null,
               ),
           throwsException);
     });
+
     testWidgets('should be tapped', (WidgetTester tester) async {
       await tester.pumpWidget(MaterialApp(
         home: Scaffold(
@@ -68,33 +69,6 @@ void main() {
 
       Finder actionText = await find.byKey(Key('1ns2oCuWbdA67Qv94XNRM3IXejh'));
       await tester.tap(actionText);
-
-      await tester.pumpAndSettle();
-      expect(find.byType(SnackBar), findsOneWidget);
-    });
-
-    testWidgets('should be tapped with debug function',
-        (WidgetTester tester) async {
-      bool y = false;
-
-      await tester.pumpWidget(MaterialApp(
-        home: Scaffold(
-          body: FeedGlobalActionBar(
-            flavour: professionalString,
-            globalActions: globalActions,
-            isAnonymous: false,
-            isAnonymousFunc: null,
-            debugFunc: (_) {
-              y = true;
-            },
-          ),
-        ),
-      ));
-
-      Finder actionText = await find.byKey(Key('1ns2oCuWbdA67Qv94XNRM3IXejh'));
-      await tester.tap(actionText);
-
-      expect(y, true);
 
       await tester.pumpAndSettle();
       expect(find.byType(SnackBar), findsOneWidget);
