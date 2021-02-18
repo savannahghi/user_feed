@@ -1,20 +1,19 @@
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:intl/intl.dart';
 
 import 'package:rxdart/rxdart.dart';
-
-import 'package:sil_feed/shared/typedefs/feed_typedefs.dart';
+import 'package:sil_feed/shared/type_defs/feed_type_defs.dart';
 import 'package:sil_feed/shared/widgets/feed_item_action_bar.dart';
+
 import 'package:sil_feed/shared/widgets/feed_item_body.dart';
 import 'package:sil_feed/shared/widgets/feed_item_title_bar.dart';
 import 'package:sil_feed/sil_feed.dart';
 import 'package:sil_feed/shared/utils/colors.dart';
-import 'package:sil_feed/shared/utils/sizing.dart';
 import 'package:sil_feed/shared/utils/text_themes.dart';
 import 'package:sil_feed/shared/utils/utils.dart';
+import 'package:sil_themes/spaces.dart';
 
 import 'feed_item_comment_card.dart';
 
@@ -34,27 +33,35 @@ class FeedItemComponent extends StatelessWidget {
   final String postedByName;
   final BehaviorSubject<bool> tetherThreads =
       BehaviorSubject<bool>.seeded(true);
-  FeedItemComponent(
-      {@required this.tetherThread,
-      @required this.feedItem,
-      @required this.flavour,
-      this.currentSignedInUser,
-      this.isAnonymousFunc,
-      @required this.hideFunction,
-      @required this.pinFunction,
-      @required this.resolveFunction,
-      @required this.postedByUID,
-      @required this.postedByName,
-      this.userReply});
+  FeedItemComponent({
+    @required this.tetherThread,
+    @required this.feedItem,
+    @required this.flavour,
+    this.currentSignedInUser,
+    @required this.isAnonymousFunc,
+    @required this.hideFunction,
+    @required this.pinFunction,
+    @required this.resolveFunction,
+    @required this.postedByUID,
+    @required this.postedByName,
+    @required this.isAnonymous,
+    this.userReply,
+  });
 
+  // a callback to resolve an item
   final feedItemActionTypeDef resolveFunction;
+
+  // a callback to pin an item
   final feedItemActionTypeDef pinFunction;
+
+  // a callback to hide an item
   final feedItemActionTypeDef hideFunction;
+
+  /// [isAnonymous] indicated whether the logged in user is iAnonymous
+  final bool isAnonymous;
 
   @override
   Widget build(BuildContext context) {
-    /// extract the necessary variables here
-    ///
     TextEditingController commentTextController = TextEditingController();
 
     /// for the [FeedItemTitleBar]
@@ -82,18 +89,24 @@ class FeedItemComponent extends StatelessWidget {
     final String postMessageTimeStamp =
         DateTime.now().toUtc().toIso8601String();
 
-    // this is the view all comments state manager
-
     return Container(
       margin: EdgeInsets.symmetric(vertical: 5),
       decoration: BoxDecoration(
         color: Colors.white,
+        borderRadius: BorderRadius.all(Radius.circular(8)),
+        boxShadow: <BoxShadow>[
+          BoxShadow(
+            color: Colors.grey.withOpacity(0.5),
+            offset: Offset(0.0, 1.0), //(x,y)
+            blurRadius: 2.0,
+          ),
+        ],
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
           smallVerticalSizedBox,
-          // the feed title bar of the feed item
+          // the title bar of the feed item
           Padding(
             padding: EdgeInsets.symmetric(horizontal: 15, vertical: 10),
             child: FeedItemTitleBar(
@@ -118,8 +131,10 @@ class FeedItemComponent extends StatelessWidget {
               resolveFunction: resolveFunction,
               pinFunction: pinFunction,
               hideFunction: hideFunction,
+              isAnonymous: isAnonymous,
+              isAnonymousFunc: isAnonymousFunc,
             ),
-            Divider(thickness: 0.5, height: 15, color: primaryColor),
+            Divider(thickness: 0.5, height: 10, color: primaryColor),
           ],
 
           if (conversations.isNotEmpty)
@@ -196,14 +211,16 @@ class FeedItemComponent extends StatelessWidget {
                 ),
               ),
             ),
+
           if (conversations.isNotEmpty)
             Padding(
               padding: const EdgeInsets.only(left: 15.0),
               child: Row(
+                mainAxisAlignment: MainAxisAlignment.start,
                 children: <Widget>[
                   Text(
                     'Comments',
-                    style: TextThemes.veryBoldSize16Text(Colors.black87),
+                    style: TextThemes.boldSize16Text(Colors.black87),
                   )
                 ],
               ),
@@ -216,50 +233,50 @@ class FeedItemComponent extends StatelessWidget {
               child: Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 15),
                 child: ListView.builder(
-                    shrinkWrap: true,
-                    physics: NeverScrollableScrollPhysics(),
-                    itemCount: conversations.length,
-                    itemBuilder: (BuildContext context, int index) {
-                      final String senderName =
-                          conversations[index]['postedByName'];
-                      final String threadBody = conversations[index]['text'];
-                      final String replyTo = conversations[index]['replyTo'];
-                      final String threadTimeStamp = DateFormat('MMM dd, yyyy')
-                          .format(DateTime.parse(conversations[index]
-                                  ['timestamp'] ??
-                              '2021-02-09T11:31:39Z'));
-                      return Column(
-                        children: <Widget>[
-                          if (replyTo.isEmpty)
-                            FeedItemCommentCard(
-                              senderName: senderName,
-                              threadBody: threadBody,
-                              timeStamp: threadTimeStamp,
-                            ),
-                          if (replyTo.isEmpty && conversations.isNotEmpty)
-                            Padding(
-                              padding: const EdgeInsets.only(top: 10.0),
-                              child: Row(
-                                children: <Widget>[
-                                  Text(
-                                    'Replies . ',
-                                    style: TextThemes.boldSize13Text(
-                                        Colors.black87),
-                                  ),
-                                  Text(
-                                    '${conversations.length - 1} replies',
-                                    style: TextThemes.normalSize12Text(
-                                        Colors.black54),
-                                  ),
-                                ],
+                  shrinkWrap: true,
+                  physics: NeverScrollableScrollPhysics(),
+                  itemCount: conversations.length,
+                  itemBuilder: (BuildContext context, int index) {
+                    final String senderName =
+                        conversations[index]['postedByName'];
+                    final String threadBody = conversations[index]['text'];
+                    final String replyTo = conversations[index]['replyTo'];
+                    final String threadTimeStamp = DateFormat('MMM dd, yyyy')
+                        .format(DateTime.parse(conversations[index]
+                                ['timestamp'] ??
+                            '2021-02-09T11:31:39Z'));
+                    return Column(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: <Widget>[
+                        if (replyTo.isEmpty)
+                          FeedItemCommentCard(
+                            senderName: senderName,
+                            threadBody: threadBody,
+                            timeStamp: threadTimeStamp,
+                          ),
+                        verySmallVerticalSizedBox,
+                        if (replyTo.isEmpty && conversations.isNotEmpty)
+                          Row(
+                            children: <Widget>[
+                              Text(
+                                'Replies . ',
+                                style:
+                                    TextThemes.boldSize13Text(Colors.black87),
                               ),
-                            )
-                        ],
-                      );
-                    }),
+                              Text(
+                                '${conversations.length - 1} replies',
+                                style:
+                                    TextThemes.normalSize12Text(Colors.black54),
+                              ),
+                            ],
+                          )
+                      ],
+                    );
+                  },
+                ),
               ),
             ),
-          verySmallVerticalSizedBox,
+
           // feed comments
           // replies from other users on this specific feed item
           if (conversations.isNotEmpty)
@@ -267,7 +284,7 @@ class FeedItemComponent extends StatelessWidget {
                 stream: tetherThreads.stream,
                 builder:
                     (BuildContext context, AsyncSnapshot<dynamic> snapShot) {
-                  // this.manager.intial();
+                  // this.manager.initial();
                   if (snapShot.data == null) {
                     return CircularProgressIndicator();
                   }
@@ -278,12 +295,12 @@ class FeedItemComponent extends StatelessWidget {
                       width: double.infinity,
                       child: Padding(
                         padding: const EdgeInsets.only(
-                            right: 15, bottom: 15, left: 30),
+                            right: 15, bottom: 10, left: 30),
                         child: ListView.builder(
                             shrinkWrap: true,
                             physics: NeverScrollableScrollPhysics(),
                             itemCount: (data == true)
-                                ? coversationsLengthBuilder(
+                                ? conversationsLengthBuilder(
                                     conversations.length)
                                 : conversations.length,
                             itemBuilder: (BuildContext context, int index) {
@@ -389,12 +406,12 @@ class FeedItemComponent extends StatelessWidget {
   }
 }
 
-int coversationsLengthBuilder(int coversations) {
-  int coversationsLength;
-  if (coversations <= 1) {
-    return coversationsLength = 1;
-  } else if (coversations >= 2) {
-    return coversationsLength = 2;
+int conversationsLengthBuilder(int conversations) {
+  int conversationsLength;
+  if (conversations <= 1) {
+    return conversationsLength = 1;
+  } else if (conversations >= 2) {
+    return conversationsLength = 2;
   }
-  return coversationsLength;
+  return conversationsLength;
 }

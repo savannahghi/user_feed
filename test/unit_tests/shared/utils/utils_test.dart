@@ -100,7 +100,7 @@ void main() {
       bool isAnonymous = true;
       bool allowAnonymous = true;
 
-      FeedUtils.checkOnallowAnonymousBeforeCall(
+      FeedUtils.checkOnAllowAnonymousBeforeCall(
           allowFunc: updateIntsAnonymously,
           isAnonymous: isAnonymous,
           allowAnonymous: allowAnonymous,
@@ -112,7 +112,7 @@ void main() {
       /// cleanup the list before performing the next test
       ints.clear();
       allowAnonymous = false;
-      FeedUtils.checkOnallowAnonymousBeforeCall(
+      FeedUtils.checkOnAllowAnonymousBeforeCall(
           allowFunc: updateIntsAnonymously,
           isAnonymous: isAnonymous,
           allowAnonymous: allowAnonymous,
@@ -122,7 +122,7 @@ void main() {
 
       ints.clear();
       isAnonymous = false;
-      FeedUtils.checkOnallowAnonymousBeforeCall(
+      FeedUtils.checkOnAllowAnonymousBeforeCall(
           allowFunc: updateIntsAnonymously,
           isAnonymous: isAnonymous,
           allowAnonymous: allowAnonymous,

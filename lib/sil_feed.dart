@@ -1,18 +1,19 @@
 library sil_feed;
 
 import 'package:flutter/material.dart';
+
 import 'package:flutter_svg/svg.dart';
-import 'package:sil_feed/shared/typedefs/feed_typedefs.dart';
+
+import 'package:sil_feed/shared/type_defs/feed_type_defs.dart';
 import 'package:sil_feed/shared/utils/colors.dart';
-import 'package:sil_feed/shared/utils/sizing.dart';
 import 'package:sil_feed/shared/utils/strings.dart';
 import 'package:sil_feed/shared/utils/text_themes.dart';
-import 'package:sil_feed/shared/utils/utils.dart';
 import 'package:sil_feed/shared/utils/widget_keys.dart';
 import 'package:sil_feed/shared/widgets/constants.dart';
 import 'package:sil_feed/shared/widgets/feed_global_action_bar.dart';
 import 'package:sil_feed/shared/widgets/feed_item_wrapper.dart';
 import 'package:sil_feed/shared/widgets/nudge_carousel.dart';
+import 'package:sil_themes/spaces.dart';
 
 class FeedComponent extends StatelessWidget {
   /// the feed
@@ -28,10 +29,6 @@ class FeedComponent extends StatelessWidget {
   /// [isAnonymousFunc] function that will be called if the current logged in user is anonymous
   /// It is not required since it's only valid for `consumer app` only
   final Function isAnonymousFunc;
-
-  /// [debugFunc] function called to print logs when debugging. You should pass
-  /// SILLogger.debug here
-  final DebugPrintFunc debugFunc;
 
   final String postedByUID;
   final String postedByName;
@@ -66,8 +63,7 @@ class FeedComponent extends StatelessWidget {
     this.replyToFeedItemFunction,
 
     // TODO(abiud): add the others ie pin and hide
-    this.isAnonymousFunc,
-    this.debugFunc,
+    @required this.isAnonymousFunc,
     @required this.feedContentCallbacks,
   })  : assert(feedContentCallbacks != null, 'Feed callbacks can\'t be null'),
         assert(resolveFunction != null,
@@ -79,7 +75,8 @@ class FeedComponent extends StatelessWidget {
         super(key: key);
   @override
   Widget build(BuildContext context) {
-    final Map<String, dynamic> feed = (userFeed['data']['getFeed'] as Map<String, dynamic>)
+    final Map<String, dynamic> feed =
+        (userFeed['data']['getFeed'] as Map<String, dynamic>)
             .cast<String, dynamic>();
 
     // check if the user is anonymous
@@ -98,11 +95,6 @@ class FeedComponent extends StatelessWidget {
     // feed items
     final List<dynamic> feedItems = feed['items'] as List<dynamic>;
 
-    if (this.debugFunc != null) {
-      this.debugFunc(isAnonymous);
-      // this.debugFunc(feedActions);
-    }
-
     return ListView(
       shrinkWrap: true,
       key: feedComponentKey,
@@ -117,12 +109,11 @@ class FeedComponent extends StatelessWidget {
             mainAxisSize: MainAxisSize.min,
             children: <Widget>[
               /// feed global actions bar
-              if (flavour == consumerString)
+              if (flavour == consumerFlavor)
                 FeedGlobalActionBar(
                   globalActions: otherActions,
                   flavour: flavour,
                   isAnonymousFunc: this.isAnonymousFunc,
-                  debugFunc: this.debugFunc,
                   isAnonymous: isAnonymous,
                 ),
 
@@ -132,7 +123,7 @@ class FeedComponent extends StatelessWidget {
               /// than the ones displayed in the screen
               ///
               /// todo(future) - hide this if there are no items in the screen
-              if (flavour == consumerString)
+              if (flavour == consumerFlavor)
                 Container(
                   padding: EdgeInsets.only(right: 10),
                   child: Row(
@@ -207,6 +198,8 @@ class FeedComponent extends StatelessWidget {
                 resolveFunction: resolveFunction,
                 pinFunction: pinFunction,
                 hideFunction: hideFunction,
+                isAnonymous: isAnonymous,
+                isAnonymousFunc: isAnonymousFunc,
               )
             ],
           ),
