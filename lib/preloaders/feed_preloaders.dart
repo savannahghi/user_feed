@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+
 import 'package:shimmer/shimmer.dart';
+
 import 'package:sil_feed/shared/utils/colors.dart';
+import 'package:sil_feed/widgets/responsive_widget.dart';
 import 'package:sil_themes/spaces.dart';
 
 class FeedLoadingShimmer extends StatelessWidget {
@@ -10,6 +13,11 @@ class FeedLoadingShimmer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    double pagePadding = 20;
+    if (ResponsiveWidget.isSmallScreen(context)) {
+      pagePadding = 16;
+    }
+
     return Shimmer.fromColors(
       baseColor: shimmerBaseColor,
       highlightColor: shimmerHighlightColor,
@@ -17,27 +25,23 @@ class FeedLoadingShimmer extends StatelessWidget {
         children: <Widget>[
           // global actions
           if (flavor != 'PRO') ...<Widget>[
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 20),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: <Widget>[
-                  GlobalActionItemShimmer(),
-                  GlobalActionItemShimmer(),
-                  GlobalActionItemShimmer(),
-                ],
-              ),
+            GlobalActionItemShimmerRow(
+              horizontalPadding: pagePadding,
             ),
           ],
 
           mediumVerticalSizedBox,
           // nudges
-          NudgeShimmer(),
+          NudgeShimmer(
+            padding: pagePadding,
+          ),
 
           mediumVerticalSizedBox,
 
           // feed items
-          FeedItemShimmer(),
+          FeedItemShimmer(
+            horizontalPadding: pagePadding,
+          ),
           mediumVerticalSizedBox,
         ],
       ),
@@ -45,8 +49,51 @@ class FeedLoadingShimmer extends StatelessWidget {
   }
 }
 
+class GlobalActionItemShimmerRow extends StatelessWidget {
+  final double horizontalPadding;
+
+  const GlobalActionItemShimmerRow({@required this.horizontalPadding});
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: EdgeInsets.symmetric(horizontal: horizontalPadding),
+      child: getGlobalActionItemShimmer(context),
+    );
+  }
+
+  Widget getGlobalActionItemShimmer(BuildContext context) {
+    double width = MediaQuery.of(context).size.width;
+    double circleWidth = (width / 3) * 0.8;
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: <Widget>[
+        GlobalActionItemShimmer(
+          width: circleWidth,
+          height: circleWidth,
+        ),
+        GlobalActionItemShimmer(
+          width: circleWidth,
+          height: circleWidth,
+        ),
+        GlobalActionItemShimmer(
+          width: circleWidth,
+          height: circleWidth,
+        ),
+      ],
+    );
+  }
+}
+
 class GlobalActionItemShimmer extends StatelessWidget {
-  const GlobalActionItemShimmer({Key key}) : super(key: key);
+  final double width;
+  final double height;
+
+  const GlobalActionItemShimmer({
+    Key key,
+    @required this.width,
+    @required this.height,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -56,8 +103,8 @@ class GlobalActionItemShimmer extends StatelessWidget {
       child: Column(
         children: <Widget>[
           Container(
-            height: 100,
-            width: 100,
+            height: width,
+            width: height,
             decoration:
                 BoxDecoration(shape: BoxShape.circle, color: primaryColor),
           ),
@@ -77,13 +124,17 @@ class GlobalActionItemShimmer extends StatelessWidget {
 }
 
 class NudgeShimmer extends StatelessWidget {
+  final double padding;
+
+  const NudgeShimmer({@required this.padding});
+
   @override
   Widget build(BuildContext context) {
     return Shimmer.fromColors(
       baseColor: shimmerBaseColor,
       highlightColor: shimmerHighlightColor,
       child: Padding(
-        padding: const EdgeInsets.all(20.0),
+        padding: EdgeInsets.all(padding),
         child: Column(
           children: <Widget>[
             Container(
@@ -100,13 +151,18 @@ class NudgeShimmer extends StatelessWidget {
 }
 
 class FeedItemShimmer extends StatelessWidget {
+  final double horizontalPadding;
+
+  const FeedItemShimmer({Key key, @required this.horizontalPadding})
+      : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return Shimmer.fromColors(
       baseColor: shimmerBaseColor,
       highlightColor: shimmerHighlightColor,
       child: Padding(
-        padding: EdgeInsets.symmetric(horizontal: 20),
+        padding: EdgeInsets.symmetric(horizontal: horizontalPadding),
         child: Container(
           height: 300,
           width: double.infinity,
