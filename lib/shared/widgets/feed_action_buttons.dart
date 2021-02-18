@@ -194,12 +194,14 @@ class FeedActionButton extends StatelessWidget {
     final String actionNameWithUnderscore = action['name'];
     final String actionName = FeedUtils.removeUnderscores(action['name']);
     final String actionType = action['actionType'];
+
+    /// whether an anonymous user is allowed to perform this action
     final bool allowAnonymous = action['allowAnonymous'] as bool;
 
     if (actionType == ActionType.primary.name) {
       return FeedPrimaryButton(
         onPressed: () {
-          FeedUtils.checkOnallowAnonymousBeforeCall(
+          FeedUtils.checkOnAllowAnonymousBeforeCall(
               allowFunc: () {
                 if (customFunction != null) {
                   /// call any custom functions if available

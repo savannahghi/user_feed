@@ -19,6 +19,8 @@ void main() {
         resolveFunction: genericFunc(),
         pinFunction: genericFunc(),
         flavour: 'CONSUMER',
+        isAnonymous: false,
+        isAnonymousFunc: () {},
       )));
       final Finder feedItemBarButton = find.byType(FeedNoBorderButton);
       expect(feedItemBarButton, findsNWidgets(3));

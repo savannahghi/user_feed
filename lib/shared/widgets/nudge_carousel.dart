@@ -57,14 +57,20 @@ class _NudgeCarouselState extends State<NudgeCarousel> {
 
   @override
   Widget build(BuildContext context) {
+    /// if this carousel is being called independently
+    final bool singleUnroll = widget.single == true && widget.unroll == true;
+
+    /// this nudge carousel that this feed is being rendered alongside the feed
     final bool isConsumerOrSmallScreen =
-        widget.isSmallScreen == true || widget.flavour == consumerString;
+        widget.isSmallScreen == true || widget.flavour == consumerFlavor;
+
+    // TODO(abiud): anticipate empty nudges. this might involve a zero state
+    // if (widget.nudges.isEmpty) return Container();
+
     return Container(
       width: double.infinity,
       child: Column(
-        children: (widget.single == true && widget.unroll == true)
-
-            /// this carousel is being called independently
+        children: singleUnroll
             ? widget.nudges
                 .map((dynamic nudge) => FeedNudge(
                       nudge: nudge,
@@ -74,7 +80,6 @@ class _NudgeCarouselState extends State<NudgeCarousel> {
                     ))
                 .toList()
             : <Widget>[
-                /// this nudge carousel that this feed is being rendered alongside the feed
                 isConsumerOrSmallScreen
                     ? CarouselSlider(
                         items: widget.nudges
@@ -108,16 +113,17 @@ class _NudgeCarouselState extends State<NudgeCarousel> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: widget.nudges.map(
                       (dynamic nudge) {
-                        int index = widget.nudges.indexOf(nudge);
+                        // the index of the nudge that is currently in view
+                        int activeNudgeIndex = widget.nudges?.indexOf(nudge);
                         return Container(
-                          key: Key(index.toString()),
+                          key: Key(activeNudgeIndex.toString()),
                           width: 8.0,
                           height: 8.0,
                           margin: EdgeInsets.symmetric(
                               vertical: 10.0, horizontal: 2.0),
                           decoration: BoxDecoration(
                             shape: BoxShape.circle,
-                            color: currentIndex == index
+                            color: currentIndex == activeNudgeIndex
                                 ? Theme.of(context).accentColor
                                 : Colors.grey.withOpacity(0.5),
                           ),

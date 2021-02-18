@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:sil_feed/shared/widgets/constants.dart';
 import 'package:pdf_flutter/pdf_flutter.dart';
-import 'package:sil_feed/shared/widgets/sil_small_appbar.dart'; 
+import 'package:sil_feed/shared/widgets/sil_small_appbar.dart';
 
 class FeedDocumentViewer extends StatelessWidget {
   final String documentURL;
@@ -13,16 +13,14 @@ class FeedDocumentViewer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: SILSmallAppBar(title: documentTitle), 
+      appBar: SILSmallAppBar(title: documentTitle),
       body: Container(
         color: Colors.white,
         child: PDF.network(
           documentURL ?? fallbackPdfUrl,
           height: MediaQuery.of(context).size.height,
           width: MediaQuery.of(context).size.width,
-          placeHolder: Center(
-            child: CircularProgressIndicator(strokeWidth: 2),
-          ),
+          placeHolder: Center(child: CircularProgressIndicator(strokeWidth: 2)),
         ),
       ),
     );

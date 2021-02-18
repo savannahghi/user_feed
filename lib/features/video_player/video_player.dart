@@ -1,8 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:sil_feed/shared/utils/sizing.dart';
 import 'package:sil_feed/shared/utils/utils.dart';
 import 'package:sil_feed/shared/widgets/constants.dart';
+import 'package:sil_themes/spaces.dart';
+import 'package:visibility_detector/visibility_detector.dart';
 
 import 'package:youtube_player_flutter/youtube_player_flutter.dart';
 
@@ -19,14 +20,12 @@ class VideoPlayer extends StatefulWidget {
 }
 
 class _VideoPlayerState extends State<VideoPlayer> {
-  YoutubePlayerController _controller;
-  TextEditingController _idController;
-  TextEditingController _seekToController;
+  YoutubePlayerController _videoController;
 
   bool _muted = false;
   bool _isPlayerReady = false;
 
-  List<String> _ids = <String>[];
+  List<String> _videoIds = <String>[];
 
   void getVideoID() {
     List<String> videoIds = <String>[];
@@ -34,7 +33,7 @@ class _VideoPlayerState extends State<VideoPlayer> {
         .map((dynamic video) =>
             videoIds.add(YoutubePlayer.convertUrlToId(video['url'])))
         .toList();
-    _ids = videoIds;
+    _videoIds = videoIds;
 
     // check for nulls
   }
@@ -43,8 +42,8 @@ class _VideoPlayerState extends State<VideoPlayer> {
   void initState() {
     super.initState();
     getVideoID();
-    _controller = YoutubePlayerController(
-      initialVideoId: _ids?.first ?? 'gcv2Z2AdpjM',
+    _videoController = YoutubePlayerController(
+      initialVideoId: _videoIds?.first ?? 'gcv2Z2AdpjM',
       flags: YoutubePlayerFlags(
         mute: false,
         autoPlay: false,
@@ -54,15 +53,12 @@ class _VideoPlayerState extends State<VideoPlayer> {
         forceHD: false,
         enableCaption: true,
       ),
-    )..addListener(listener);
-    _idController = TextEditingController();
-    _seekToController = TextEditingController();
-    // _videoMetaData = const YoutubeMetaData();
-    // _playerState = PlayerState.unknown;
+    );
+    _videoController.addListener(listener);
   }
 
   void listener() {
-    if (_isPlayerReady && mounted && !_controller.value.isFullScreen) {
+    if (_isPlayerReady && mounted && !_videoController.value.isFullScreen) {
       setState(() {});
     }
   }
@@ -70,15 +66,13 @@ class _VideoPlayerState extends State<VideoPlayer> {
   @override
   void deactivate() {
     // Pauses video while navigating to next page.
-    _controller.pause();
+    _videoController.pause();
     super.deactivate();
   }
 
   @override
   void dispose() {
-    _controller.dispose();
-    _idController.dispose();
-    _seekToController.dispose();
+    _videoController.dispose();
     super.dispose();
   }
 
@@ -86,40 +80,54 @@ class _VideoPlayerState extends State<VideoPlayer> {
   Widget build(BuildContext context) {
     return widget.videos.isEmpty
         ? Container()
-        : YoutubePlayerBuilder(
-            player: YoutubePlayer(
-              controller: _controller,
-              showVideoProgressIndicator: true,
-              progressIndicatorColor: Colors.blueAccent,
-              topActions: <Widget>[
-                smallHorizontalSizedBox,
-                Expanded(
-                  child: Text(
-                    _controller.metadata.title,
-                    style: const TextStyle(
-                      color: Colors.white,
-                      fontSize: 18.0,
+        : VisibilityDetector(
+            onVisibilityChanged: (VisibilityInfo info) {
+              /// only pause the video when the widget's visibility is hidden
+              ///
+              /// this can happen when the user navigates to a new screen or
+              /// when a modal is shown (yet to be confirmed)
+              if (info.visibleFraction == 0) {
+                _videoController?.pause();
+              }
+            },
+            key: Key('visibility_key'),
+            child: YoutubePlayerBuilder(
+              player: YoutubePlayer(
+                controller: _videoController,
+                showVideoProgressIndicator: true,
+                progressIndicatorColor: Theme.of(context).primaryColor,
+                topActions: <Widget>[
+                  smallHorizontalSizedBox,
+                  Expanded(
+                    child: Text(
+                      _videoController.metadata.title,
+                      style: const TextStyle(
+                        color: Colors.white,
+                        fontSize: 18.0,
+                      ),
+                      overflow: TextOverflow.ellipsis,
+                      maxLines: 1,
                     ),
-                    overflow: TextOverflow.ellipsis,
-                    maxLines: 1,
                   ),
-                ),
-              ],
-              onReady: () {
-                _isPlayerReady = true;
-              },
-              onEnded: (YoutubeMetaData data) {
-                _controller
-                    .load(_ids[(_ids.indexOf(data.videoId) + 1) % _ids.length]);
-                Scaffold.of(context)
-                  ..hideCurrentSnackBar()
-                  ..showSnackBar(FeedUtils.snackbar(
-                      content: 'Next video started!',
-                      durationSeconds: kShortSnackbarDuration));
-              },
-            ),
-            builder: (BuildContext context, Widget player) => Scaffold(
-              body: ListView(
+                ],
+                onReady: () {
+                  setState(() {
+                    _isPlayerReady = true;
+                  });
+                },
+                onEnded: (YoutubeMetaData data) {
+                  _videoController.load(_videoIds[
+                      (_videoIds.indexOf(data.videoId) + 1) %
+                          _videoIds.length]);
+                  Scaffold.of(context)
+                    ..hideCurrentSnackBar()
+                    ..showSnackBar(FeedUtils.snackbar(
+                        content: 'Playing your next video...',
+                        durationSeconds: kShortSnackbarDuration));
+                },
+              ),
+              builder: (BuildContext context, Widget player) => ListView(
+                shrinkWrap: true,
                 children: <Widget>[
                   player,
                   Padding(
@@ -134,23 +142,24 @@ class _VideoPlayerState extends State<VideoPlayer> {
                             IconButton(
                               icon: const Icon(Icons.skip_previous),
                               onPressed: _isPlayerReady
-                                  ? () => _controller.load(_ids[(_ids.indexOf(
-                                              _controller.metadata.videoId) -
-                                          1) %
-                                      _ids.length])
+                                  ? () => _videoController.load(_videoIds[
+                                      (_videoIds.indexOf(_videoController
+                                                  .metadata.videoId) -
+                                              1) %
+                                          _videoIds.length])
                                   : null,
                             ),
                             IconButton(
                               icon: Icon(
-                                _controller.value.isPlaying
+                                _videoController.value.isPlaying
                                     ? Icons.pause
                                     : Icons.play_arrow,
                               ),
                               onPressed: _isPlayerReady
                                   ? () {
-                                      _controller.value.isPlaying
-                                          ? _controller.pause()
-                                          : _controller.play();
+                                      _videoController.value.isPlaying
+                                          ? _videoController.pause()
+                                          : _videoController.play();
                                       setState(() {});
                                     }
                                   : null,
@@ -161,8 +170,8 @@ class _VideoPlayerState extends State<VideoPlayer> {
                               onPressed: _isPlayerReady
                                   ? () {
                                       _muted
-                                          ? _controller.unMute()
-                                          : _controller.mute();
+                                          ? _videoController.unMute()
+                                          : _videoController.mute();
                                       setState(() {
                                         _muted = !_muted;
                                       });
@@ -172,10 +181,11 @@ class _VideoPlayerState extends State<VideoPlayer> {
                             IconButton(
                               icon: const Icon(Icons.skip_next),
                               onPressed: _isPlayerReady
-                                  ? () => _controller.load(_ids[(_ids.indexOf(
-                                              _controller.metadata.videoId) +
-                                          1) %
-                                      _ids.length])
+                                  ? () => _videoController.load(_videoIds[
+                                      (_videoIds.indexOf(_videoController
+                                                  .metadata.videoId) +
+                                              1) %
+                                          _videoIds.length])
                                   : null,
                             ),
                           ],

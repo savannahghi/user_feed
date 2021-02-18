@@ -26,7 +26,7 @@ void main() {
           home: Scaffold(
               body: NudgeCarousel(
             key: nudgeCarouselKey,
-            flavour: consumerString,
+            flavour: consumerFlavor,
             isAnonymous: false,
             isSmallScreen: false,
             nudgeCarouselCallbacks: getFeedActionCallbacks(),
@@ -117,7 +117,7 @@ void main() {
           home: Scaffold(
               body: NudgeCarousel(
             key: nudgeCarouselKey,
-            flavour: consumerString,
+            flavour: consumerFlavor,
             isAnonymous: false,
             isSmallScreen: false,
             nudgeCarouselCallbacks: getFeedActionCallbacks(),

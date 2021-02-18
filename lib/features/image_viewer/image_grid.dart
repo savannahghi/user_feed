@@ -32,48 +32,51 @@ class FeedItemImageGrid extends StatelessWidget {
                   : Container(
                       padding: EdgeInsets.symmetric(vertical: 15),
                       child: StaggeredGridView.countBuilder(
-                          scrollDirection: Axis.vertical,
-                          physics: BouncingScrollPhysics(),
-                          shrinkWrap: true,
-                          crossAxisCount: 4,
-                          mainAxisSpacing: 5.0,
-                          crossAxisSpacing: 5.0,
-                          itemCount: images.length,
-                          staggeredTileBuilder: (int index) =>
-                              StaggeredTile.count(2, index.isEven ? 2 : 1),
-                          itemBuilder: (BuildContext context, int index) {
-                            final String imageUrl = images[index]['url'];
-                            return GestureDetector(
-                              key: Key(images[index]['url']),
-                              onTap: () {
-                                    Navigator.of(context).push(
-                                        MaterialPageRoute<FeedImageViewer>(
-                                        builder: (_) => FeedImageViewer(
-                                          imageUrl: images[index]['url'],
-                                        ),
-                                      ));
-                              },
-                              child: Container(
-                                alignment: Alignment.center,
-                                decoration: BoxDecoration(
-                                    color: Colors.white,
-                                    image: DecorationImage(
-                                        fit: BoxFit.cover,
-                                        alignment: Alignment.center,
-                                        image: NetworkImage(imageUrl)),
-                                    borderRadius: BorderRadius.circular(5.0),
-                                    boxShadow: <BoxShadow>[
-                                      BoxShadow(
-                                        color: Colors.black54,
-                                        blurRadius: 0.3,
-                                        spreadRadius: 0.0,
-                                        offset: Offset(0.0,
-                                            0.0), // shadow direction: bottom right
-                                      )
-                                    ]),
+                        scrollDirection: Axis.vertical,
+                        physics: BouncingScrollPhysics(),
+                        shrinkWrap: true,
+                        crossAxisCount: 4,
+                        mainAxisSpacing: 5.0,
+                        crossAxisSpacing: 5.0,
+                        itemCount: images.length,
+                        staggeredTileBuilder: (int index) =>
+                            StaggeredTile.count(2, index.isEven ? 2 : 1),
+                        itemBuilder: (BuildContext context, int index) {
+                          final String imageUrl = images[index]['url'];
+                          return GestureDetector(
+                            key: Key(images[index]['url']),
+                            onTap: () {
+                              Navigator.of(context)
+                                  .push(MaterialPageRoute<FeedImageViewer>(
+                                builder: (_) => FeedImageViewer(
+                                  imageUrl: images[index]['url'],
+                                ),
+                              ));
+                            },
+                            child: Container(
+                              alignment: Alignment.center,
+                              decoration: BoxDecoration(
+                                color: Colors.white,
+                                image: DecorationImage(
+                                    fit: BoxFit.cover,
+                                    alignment: Alignment.center,
+                                    image: NetworkImage(imageUrl)),
+                                borderRadius: BorderRadius.circular(5.0),
+                                boxShadow: <BoxShadow>[
+                                  BoxShadow(
+                                    color: Colors.black54,
+                                    blurRadius: 0.3,
+                                    spreadRadius: 0.0,
+                                    offset: Offset(0.0,
+                                        0.0), // shadow direction: bottom right
+                                  )
+                                ],
                               ),
-                            );
-                          })),
+                            ),
+                          );
+                        },
+                      ),
+                    ),
             ],
           ),
         ),

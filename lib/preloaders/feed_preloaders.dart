@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:shimmer/shimmer.dart';
 import 'package:sil_feed/shared/utils/colors.dart';
-import 'package:sil_feed/shared/utils/sizing.dart';
+import 'package:sil_themes/spaces.dart';
 
 class FeedLoadingShimmer extends StatelessWidget {
   const FeedLoadingShimmer({Key key, @required this.flavor}) : super(key: key);

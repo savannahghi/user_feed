@@ -1,4 +1,4 @@
-const String consumerString = 'CONSUMER';
+const String consumerFlavor = 'CONSUMER';
 const String professionalString = 'PRO';
 const String documentString = 'Documents';
 const String imageString = 'Images';
