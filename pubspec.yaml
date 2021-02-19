@@ -32,7 +32,7 @@ dependencies:
   sil_dumb_widgets:
     git:
       url: https://sil_dart_utils:xiFnpjLHssG76bpWxUb9@gitlab.slade360emr.com/optimalhealth/dart_utils/sil_dumb_widgets.git
-      ref: 0.0.4
+      ref: 0.0.6
 
 dev_dependencies:
   flutter_test:
