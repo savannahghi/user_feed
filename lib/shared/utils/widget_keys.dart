@@ -20,3 +20,6 @@ const Key nudgeCarouselKey = Key('nudge_carousel_keys');
 
 // FeedNudge keys
 const Key feedActionButtonKey = Key('feed_action_button_key');
+
+// visibility detector key
+const Key videoPlayerVisibilityDetectorKey = Key('visibility_key');

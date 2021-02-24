@@ -9,7 +9,7 @@ import 'package:sil_feed/shared/utils/colors.dart';
 import 'package:sil_feed/shared/utils/strings.dart';
 import 'package:sil_feed/shared/utils/text_themes.dart';
 import 'package:sil_feed/shared/utils/widget_keys.dart';
-import 'package:sil_feed/shared/widgets/constants.dart';
+import 'package:sil_feed/constants/constants.dart';
 import 'package:sil_feed/shared/widgets/feed_global_action_bar.dart';
 import 'package:sil_feed/shared/widgets/feed_item_wrapper.dart';
 import 'package:sil_feed/shared/widgets/nudge_carousel.dart';
@@ -139,7 +139,7 @@ class FeedComponent extends StatelessWidget {
                 ),
 
               // profile progress indicator for pro
-              if (flavour == professionalString || setupComplete == true)
+              if (flavour == professionalFlavor || setupComplete == true)
                 Container(
                   margin: EdgeInsets.all(15),
                   width: double.infinity,

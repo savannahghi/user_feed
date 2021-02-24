@@ -8,8 +8,8 @@ void main() {
   group('Feed action buttons', () {
     testWidgets('should render primary button correctly',
         (WidgetTester tester) async {
-      final List<int> ints = <int>[];
-      final Function addOne = () => ints.add(1);
+      final List<int> integers = <int>[];
+      final Function addOne = () => integers.add(1);
       final String buttonText = 'Primary Button';
 
       await tester.pumpWidget(MaterialApp(
@@ -26,8 +26,8 @@ void main() {
       await tester.tap(find.byType(FeedPrimaryButton));
       await tester.pumpAndSettle();
 
-      expect(ints.isEmpty, false);
-      expect(ints.first, 1);
+      expect(integers.isEmpty, false);
+      expect(integers.first, 1);
     });
     testWidgets(
         'primary button assertion throws error when onPressed or text is null',
@@ -43,8 +43,8 @@ void main() {
 
     testWidgets('should render secondary button correctly',
         (WidgetTester tester) async {
-      final List<int> ints = <int>[];
-      final Function addOne = () => ints.add(1);
+      final List<int> integers = <int>[];
+      final Function addOne = () => integers.add(1);
       final String buttonText = 'Primary Button';
 
       await tester.pumpWidget(MaterialApp(
@@ -62,8 +62,8 @@ void main() {
       await tester.tap(find.byType(OutlineButton));
       await tester.pumpAndSettle();
 
-      expect(ints.isEmpty, false);
-      expect(ints.first, 1);
+      expect(integers.isEmpty, false);
+      expect(integers.first, 1);
     });
 
     testWidgets(
@@ -80,8 +80,8 @@ void main() {
 
     testWidgets('should render no border button correctly',
         (WidgetTester tester) async {
-      final List<int> ints = <int>[];
-      final Function addOne = () => ints.add(1);
+      final List<int> integers = <int>[];
+      final Function addOne = () => integers.add(1);
       final String buttonText = 'Primary Button';
 
       await tester.pumpWidget(MaterialApp(
@@ -98,8 +98,8 @@ void main() {
       await tester.tap(find.byType(FlatButton));
       await tester.pumpAndSettle();
 
-      expect(ints.isEmpty, false);
-      expect(ints.first, 1);
+      expect(integers.isEmpty, false);
+      expect(integers.first, 1);
     });
 
     testWidgets(
@@ -116,16 +116,16 @@ void main() {
     testWidgets(
         'should render feed action button correctly with a primary action',
         (WidgetTester tester) async {
-      final List<int> ints = <int>[];
-      final Function addOne = () => ints.add(1);
-      final Function addOneAnonymously = () => ints.add(2);
+      final List<int> integers = <int>[];
+      final Function addOne = () => integers.add(1);
+      final Function addOneAnonymously = () => integers.add(2);
 
       final String buttonText = 'Verify Email';
 
       await tester.pumpWidget(MaterialApp(
         home: Scaffold(
             body: FeedActionButton(
-          action: mockfeedPrimaryAction,
+          action: mockFeedPrimaryAction,
           isAnonymous: true,
           flavour: 'PRO',
           customFunction: addOne,
@@ -139,23 +139,23 @@ void main() {
       await tester.tap(find.byType(FeedPrimaryButton));
       await tester.pumpAndSettle();
 
-      expect(ints.isEmpty, false);
-      expect(ints.first, 1);
+      expect(integers.isEmpty, false);
+      expect(integers.first, 1);
     });
 
     testWidgets(
         'should render feed action button correctly with a secondary action',
         (WidgetTester tester) async {
-      final List<int> ints = <int>[];
-      final Function addOne = () => ints.add(1);
-      final Function addOneAnonymously = () => ints.add(2);
+      final List<int> integers = <int>[];
+      final Function addOne = () => integers.add(1);
+      final Function addOneAnonymously = () => integers.add(2);
 
       final String buttonText = 'Verify Email';
 
       await tester.pumpWidget(MaterialApp(
         home: Scaffold(
             body: FeedActionButton(
-          action: mockfeedSecondaryAction,
+          action: mockFeedSecondaryAction,
           isAnonymous: true,
           flavour: 'PRO',
           customFunction: addOne,
@@ -169,23 +169,23 @@ void main() {
       await tester.tap(find.byType(FeedSecondaryButton));
       await tester.pumpAndSettle();
 
-      expect(ints.isEmpty, false);
-      expect(ints.first, 2);
+      expect(integers.isEmpty, false);
+      expect(integers.first, 2);
     });
 
     testWidgets('should show coming soon if now allow function is provided',
         (WidgetTester tester) async {
-      final List<int> ints = <int>[];
-      final Function addOne = () => ints.add(1);
-      final Function addOneAnonymously = () => ints.add(2);
+      final List<int> integers = <int>[];
+      final Function addOne = () => integers.add(1);
+      final Function addOneAnonymously = () => integers.add(2);
 
       final String buttonText = 'Verify Email';
-      mockfeedSecondaryAction['allowAnonymous'] = false;
+      mockFeedSecondaryAction['allowAnonymous'] = false;
 
       await tester.pumpWidget(MaterialApp(
         home: Scaffold(
             body: FeedActionButton(
-          action: mockfeedSecondaryAction,
+          action: mockFeedSecondaryAction,
           isAnonymous: true,
           flavour: 'PRO',
           customFunction: addOne,
@@ -205,17 +205,17 @@ void main() {
 
     testWidgets('should return default feed primary action for other actions',
         (WidgetTester tester) async {
-      final List<int> ints = <int>[];
-      final Function addOne = () => ints.add(1);
-      final Function addOneAnonymously = () => ints.add(2);
+      final List<int> integers = <int>[];
+      final Function addOne = () => integers.add(1);
+      final Function addOneAnonymously = () => integers.add(2);
 
       final String buttonText = 'Default Action';
-      mockfeedSecondaryAction['allowAnonymous'] = false;
+      mockFeedSecondaryAction['allowAnonymous'] = false;
 
       await tester.pumpWidget(MaterialApp(
         home: Scaffold(
             body: FeedActionButton(
-          action: mockfeedOverflowAction,
+          action: mockFeedOverflowAction,
           isAnonymous: true,
           flavour: 'PRO',
           customFunction: addOne,
@@ -233,15 +233,15 @@ void main() {
       expect(find.text('Coming Soon!'), findsOneWidget);
     });
     testWidgets(
-        'FeedActionButtonassertion throws error when onPressed or text is null',
+        'FeedActionButtonAssertion throws error when onPressed or text is null',
         (WidgetTester tester) async {
-      final List<int> ints = <int>[];
-      final Function addOne = () => ints.add(1);
+      final List<int> integers = <int>[];
+      final Function addOne = () => integers.add(1);
 
-      mockfeedSecondaryAction['allowAnonymous'] = false;
+      mockFeedSecondaryAction['allowAnonymous'] = false;
       expect(
           () => FeedActionButton(
-                action: mockfeedOverflowAction,
+                action: mockFeedOverflowAction,
                 isAnonymous: true,
                 flavour: 'PRO',
                 customFunction: addOne,

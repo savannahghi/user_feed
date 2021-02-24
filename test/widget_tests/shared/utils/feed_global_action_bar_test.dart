@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:sil_feed/shared/widgets/constants.dart';
+import 'package:sil_feed/constants/constants.dart';
 import 'package:sil_feed/shared/widgets/feed_global_action_bar.dart';
 
 import '../../../mock_utils.dart';
@@ -9,12 +9,12 @@ import '../../../mocks.dart';
 
 void main() {
   group('FeedGlobalActionBar', () {
-    final List<dynamic> globalActions = <dynamic>[mockFeeditem];
+    final List<dynamic> globalActions = <dynamic>[mockFeedItem];
     testWidgets('should render correctly', (WidgetTester tester) async {
       await tester.pumpWidget(MaterialApp(
         home: Scaffold(
           body: FeedGlobalActionBar(
-            flavour: professionalString,
+            flavour: professionalFlavor,
             globalActions: globalActions,
             isAnonymous: null,
           ),
@@ -59,7 +59,7 @@ void main() {
       await tester.pumpWidget(MaterialApp(
         home: Scaffold(
           body: FeedGlobalActionBar(
-            flavour: professionalString,
+            flavour: professionalFlavor,
             globalActions: globalActions,
             isAnonymous: false,
             isAnonymousFunc: null,

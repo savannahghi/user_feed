@@ -5,7 +5,7 @@ class FeedDocumentListStrings {
   static final String pdfIconUrl = 'assets/icons/pdf.svg';
   static final String fallbackDocumentTitle = 'Document.pdf';
 
-  static final String defaultDocumentIntruction = 'Tap to view';
+  static final String defaultDocumentInstruction = 'Tap to view';
 }
 
 
@@ -14,5 +14,5 @@ class FeedImageGridStrings {
 
   static final String fallbackImageTitle = 'Image';
 
-  static final String defaultImageIntruction = 'Tap to view';
+  static final String defaultImageInstruction = 'Tap to view';
 }

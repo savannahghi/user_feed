@@ -7,8 +7,8 @@ import '../../../mocks.dart';
 void main() {
   group('FeedItemCommentCard', () {
     final List<dynamic> globalAction = <dynamic>[];
-    mockFeeditem
-        .forEach((String k, dynamic v) => globalAction.add(mockFeeditem));
+    mockFeedItem
+        .forEach((String k, dynamic v) => globalAction.add(mockFeedItem));
 
     testWidgets('should render correctly', (WidgetTester tester) async {
       await tester.pumpWidget(MaterialApp(

@@ -9,7 +9,7 @@ class MockRoutes {
   static const String route2 = 'route2';
 }
 
-// these mocks are used to test the back button of silsmallappbar
+// these mocks are used to test the back button of SIL small appbar
 class MockRouteGenerator {
   /// gets the current route based on the [RouteSettings]
   static Route<dynamic> generateRoute(RouteSettings settings) {
@@ -115,7 +115,7 @@ final List<Map<String, String>> mockFeedLinks = <Map<String, String>>[
   },
 ];
 
-final Map<String, dynamic> mockfeedPrimaryAction = <String, dynamic>{
+final Map<String, dynamic> mockFeedPrimaryAction = <String, dynamic>{
   'id': '1lmN7ZKSVsJqfZ0gSJzFGExstWX',
   'name': 'VERIFY_EMAIL',
   'actionType': 'PRIMARY',
@@ -123,7 +123,7 @@ final Map<String, dynamic> mockfeedPrimaryAction = <String, dynamic>{
   'allowAnonymous': true
 };
 
-final Map<String, dynamic> mockfeedSecondaryAction = <String, dynamic>{
+final Map<String, dynamic> mockFeedSecondaryAction = <String, dynamic>{
   'id': '1lmN7ZKSVsJqfZ0gSJzFGExstWX',
   'name': 'VERIFY_EMAIL',
   'actionType': 'SECONDARY',
@@ -131,7 +131,7 @@ final Map<String, dynamic> mockfeedSecondaryAction = <String, dynamic>{
   'allowAnonymous': true
 };
 
-final Map<String, dynamic> mockfeedOverflowAction = <String, dynamic>{
+final Map<String, dynamic> mockFeedOverflowAction = <String, dynamic>{
   'id': '1lmN7ZKSVsJqfZ0gSJzFGExstWX',
   'name': 'VERIFY_EMAIL',
   'actionType': 'OVERFLOW',
@@ -148,7 +148,7 @@ Map<String, dynamic> mockFeedAction = <String, dynamic>{
   'allowAnonymous': false
 };
 
-final List<dynamic> mockFeednudges = <dynamic>[
+final List<dynamic> mockFeedNudges = <dynamic>[
   <String, dynamic>{
     'id': '1608729954',
     'sequenceNumber': 1608729964,
@@ -187,7 +187,7 @@ final List<dynamic> mockFeednudges = <dynamic>[
   },
 ];
 
-Map<String, dynamic> mockFeeditem = <String, dynamic>{
+Map<String, dynamic> mockFeedItem = <String, dynamic>{
   'id': '1ns2oCuWbdA67Qv94XNRM3IXejh',
   'sequenceNumber': 1,
   'expiry': '2121-04-18T07:30:50Z',
@@ -296,8 +296,8 @@ Map<String, dynamic> mockFeeditem = <String, dynamic>{
 };
 
 Map<String, dynamic> mockFeed = <String, dynamic>{
-  'items': <dynamic>[mockFeeditem, mockFeeditem],
-  'nudges': <dynamic>[mockFeednudges, mockFeednudges],
+  'items': <dynamic>[mockFeedItem, mockFeedItem],
+  'nudges': <dynamic>[mockFeedNudges, mockFeedNudges],
   'action': <dynamic>[mockFeedAction, mockFeedAction]
 };
 

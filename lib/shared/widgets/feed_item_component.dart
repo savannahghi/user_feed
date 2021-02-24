@@ -300,7 +300,7 @@ class FeedItemComponent extends StatelessWidget {
                             shrinkWrap: true,
                             physics: NeverScrollableScrollPhysics(),
                             itemCount: (data == true)
-                                ? conversationsLengthBuilder(
+                                ? FeedUtils.conversationsLengthBuilder(
                                     conversations.length)
                                 : conversations.length,
                             itemBuilder: (BuildContext context, int index) {
@@ -404,14 +404,4 @@ class FeedItemComponent extends StatelessWidget {
       ),
     );
   }
-}
-
-int conversationsLengthBuilder(int conversations) {
-  int conversationsLength;
-  if (conversations <= 1) {
-    return conversationsLength = 1;
-  } else if (conversations >= 2) {
-    return conversationsLength = 2;
-  }
-  return conversationsLength;
 }
