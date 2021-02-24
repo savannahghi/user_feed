@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:sil_feed/shared/widgets/constants.dart';
+import 'package:sil_feed/constants/constants.dart';
 import 'package:sil_feed/shared/widgets/feed_action_buttons.dart';
 import 'package:sil_feed/shared/widgets/feed_nudge.dart';
 
@@ -15,14 +15,14 @@ void main() {
         await tester.pumpWidget(MaterialApp(
           home: Scaffold(
             body: FeedNudge(
-                flavor: professionalString,
+                flavor: professionalFlavor,
                 isAnonymous: true,
-                nudge: mockFeednudges[0],
+                nudge: mockFeedNudges[0],
                 isAnonymousFunc: () {}),
           ),
         ));
-        expect(find.text(mockFeednudges[0]['title']), findsOneWidget);
-        expect(find.text(mockFeednudges[0]['text']), findsOneWidget);
+        expect(find.text(mockFeedNudges[0]['title']), findsOneWidget);
+        expect(find.text(mockFeedNudges[0]['text']), findsOneWidget);
         expect(find.byType(FeedActionButton), findsOneWidget);
       });
     });
@@ -35,7 +35,7 @@ void main() {
             () => FeedNudge(
                   flavor: consumerFlavor,
                   isAnonymous: true,
-                  nudge: mockFeednudges[0],
+                  nudge: mockFeedNudges[0],
                   isAnonymousFunc: null,
                 ),
             throwsException);

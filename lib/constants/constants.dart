@@ -1,5 +1,5 @@
 const String consumerFlavor = 'CONSUMER';
-const String professionalString = 'PRO';
+const String professionalFlavor = 'PRO';
 const String documentString = 'Documents';
 const String imageString = 'Images';
 const String primaryActionType = 'PRIMARY';
@@ -25,7 +25,7 @@ const String kGetConsultation = 'GET_CONSULTATION';
 const String kGetCoaching = 'GET_COACHING';
 const String kGetTest = 'GET_TEST';
 
-/// nugde actions
+/// nudge actions
 const String kAddNHIF = 'ADD_NHIF';
 const String kAddInsurance = 'ADD_INSURANCE';
 
@@ -39,24 +39,24 @@ const String kPartnerAccountSetup = 'PARTNER_ACCOUNT_SETUP';
 
 /// nudge actions
 const String kCompleteIndividualRiderKYC = 'COMPLETE_INDIVIDUAL_RIDER_KYC';
-const String kCompleteOrganisationRiderKYC = 'COMPLETE_ORGANISATION_RIDER_KYC';
+const String kCompleteOrganizationRiderKYC = 'COMPLETE_ORGANISATION_RIDER_KYC';
 const String kCompleteIndividualPractitionerKYC =
     'COMPLETE_INDIVIDUAL_PRACTITIONER_KYC';
-const String kCompleteOrganisationPractitionerKYC =
+const String kCompleteOrganizationPractitionerKYC =
     'COMPLETE_ORGANISATION_PRACTITIONER_KYC';
 const String kCompleteIndividualProviderKYC =
     'COMPLETE_INDIVIDUAL_PROVIDER_KYC';
-const String kCompleteOrganisationProviderKYC =
+const String kCompleteOrganizationProviderKYC =
     'COMPLETE_ORGANISATION_PROVIDER_KYC';
-const String kCompleteIndividualPharmacueticalKYC =
+const String kCompleteIndividualPharmaceuticalKYC =
     'COMPLETE_INDIVIDUAL_PHARMACEUTICAL_KYC';
-const String kCompleteOrganisationPharmacueticalKYC =
+const String kCompleteOrganizationPharmaceuticalKYC =
     'COMPLETE_ORGANISATION_PHARMACEUTICAL_KYC';
 const String kCompleteIndividualCoachKYC = 'COMPLETE_INDIVIDUAL_COACH_KYC';
-const String kCompleteOrganisationCoachKYC = 'COMPLETE_ORGANISATION_COACH_KYC';
+const String kCompleteOrganizationCoachKYC = 'COMPLETE_ORGANISATION_COACH_KYC';
 const String kCompleteIndividualNutritionKYC =
     'COMPLETE_INDIVIDUAL_NUTRITION_KYC';
-const String kCompleteOrganisationNutritionKYC =
+const String kCompleteOrganizationNutritionKYC =
     'COMPLETE_ORGANISATION_NUTRITION_KYC';
 
 /// SHARED actions across PRO and CONSUMER
@@ -73,7 +73,7 @@ const String kHideItem = 'HIDE_ITEM';
 ///
 const String kMarkSelectedItem = 'MARK_SELECTED_ITEM';
 
-/// a list of all consumert actions
+/// a list of all consumer actions
 List<String> allConsumerActions = <String>[
   kGetMedicine,
   kGetConsultation,
@@ -98,17 +98,17 @@ List<String> allProActions = <String>[
   kAddPatient,
 
   kCompleteIndividualRiderKYC,
-  kCompleteOrganisationRiderKYC,
+  kCompleteOrganizationRiderKYC,
   kCompleteIndividualPractitionerKYC,
-  kCompleteOrganisationPractitionerKYC,
+  kCompleteOrganizationPractitionerKYC,
   kCompleteIndividualProviderKYC,
-  kCompleteOrganisationProviderKYC,
-  kCompleteIndividualPharmacueticalKYC,
-  kCompleteOrganisationPharmacueticalKYC,
+  kCompleteOrganizationProviderKYC,
+  kCompleteIndividualPharmaceuticalKYC,
+  kCompleteOrganizationPharmaceuticalKYC,
   kCompleteIndividualCoachKYC,
-  kCompleteOrganisationCoachKYC,
+  kCompleteOrganizationCoachKYC,
   kCompleteIndividualNutritionKYC,
-  kCompleteOrganisationNutritionKYC,
+  kCompleteOrganizationNutritionKYC,
   kPartnerAccountSetup,
 
   // shared
@@ -119,3 +119,5 @@ List<String> allProActions = <String>[
   kHideItem,
   kMarkSelectedItem,
 ];
+
+const String defaultInitialFeedVideoUrl = 'gcv2Z2AdpjM';

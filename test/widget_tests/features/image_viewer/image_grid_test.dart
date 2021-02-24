@@ -5,7 +5,7 @@ import 'package:mockito/mockito.dart';
 import 'package:sil_feed/features/image_viewer/image_grid.dart';
 import 'package:sil_feed/shared/router_generator.dart';
 import 'package:sil_feed/shared/utils/widget_keys.dart';
-import 'package:sil_feed/shared/widgets/constants.dart';
+import 'package:sil_feed/constants/constants.dart';
 
 import '../../../mock_utils.dart';
 import '../../../mocks.dart';

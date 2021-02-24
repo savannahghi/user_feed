@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:sil_feed/shared/utils/colors.dart';
 import 'package:sil_feed/shared/utils/text_themes.dart';
 import 'package:sil_feed/shared/utils/widget_keys.dart';
-import 'package:sil_feed/shared/widgets/constants.dart';
+import 'package:sil_feed/constants/constants.dart';
 import 'package:sil_feed/shared/widgets/sil_small_appbar.dart';
 import 'package:sil_feed/shared/widgets/strings.dart';
 import 'package:sil_themes/spaces.dart';
@@ -102,7 +102,7 @@ class FeedItemDocumentGrid extends StatelessWidget {
                                                 // Container(
                                                 //   child: Text(
                                                 //     FeedDocumentListStrings
-                                                //         .defaultDocumentIntruction,
+                                                //         .defaultDocumentInstruction,
                                                 //     overflow:
                                                 //         TextOverflow.ellipsis,
                                                 //     style: TextThemes

@@ -7,7 +7,7 @@ import '../mocks.dart';
 void main() {
   group('SILSmallAppbar', () {
     final String appbarTitle = 'small appbar';
-    final List<String> tabtitles = <String>['Test', 'Coverage', '100%'];
+    final List<String> tabTitles = <String>['Test', 'Coverage', '100%'];
     testWidgets('should render a normal appbar correctly',
         (WidgetTester tester) async {
       await tester.pumpWidget(MaterialApp(
@@ -27,7 +27,7 @@ void main() {
         home: Scaffold(
           appBar: SILSmallAppBar(
             title: appbarTitle,
-            tabTitles: tabtitles,
+            tabTitles: tabTitles,
           ),
         ),
       ));
@@ -38,7 +38,7 @@ void main() {
       expect(find.byIcon(Icons.arrow_back), findsOneWidget);
       expect(find.byType(PreferredSize), findsOneWidget);
       expect(find.byType(TabBar), findsOneWidget);
-      expect(find.byType(Tab), findsNWidgets(tabtitles.length));
+      expect(find.byType(Tab), findsNWidgets(tabTitles.length));
     });
 
     testWidgets('should navigate to back route when provided',
@@ -51,7 +51,7 @@ void main() {
         home: Scaffold(
           appBar: SILSmallAppBar(
             title: appbarTitle,
-            tabTitles: tabtitles,
+            tabTitles: tabTitles,
           ),
         ),
       ));
@@ -74,7 +74,7 @@ void main() {
                 home: Scaffold(
                   appBar: SILSmallAppBar(
                     title: null,
-                    tabTitles: tabtitles,
+                    tabTitles: tabTitles,
                   ),
                 ),
               ),
