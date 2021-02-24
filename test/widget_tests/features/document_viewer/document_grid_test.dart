@@ -4,7 +4,7 @@ import 'package:mockito/mockito.dart';
 import 'package:sil_feed/features/document_viewer/pages/document_grid.dart';
 import 'package:sil_feed/shared/router_generator.dart';
 import 'package:sil_feed/shared/utils/widget_keys.dart';
-import 'package:sil_feed/shared/widgets/constants.dart';
+import 'package:sil_feed/constants/constants.dart';
 
 import '../../../mock_utils.dart';
 import '../../../mocks.dart';
@@ -28,7 +28,7 @@ void main() {
                   'thumbnail': fallbackUrl
                 }
               ],
-              flavour: professionalString,
+              flavour: professionalFlavor,
             ),
           ),
         ));
@@ -40,7 +40,7 @@ void main() {
         expect(find.byType(ListView), findsWidgets);
         expect(find.byKey(Key('some title')), findsOneWidget);
 
-        // tap a document & confirm naviagtion
+        // tap a document & confirm navigation
         await tester.tap(find.byKey(Key('some title')));
         verify(mockObserver.didPush(any, any));
       });
@@ -54,7 +54,7 @@ void main() {
           home: Scaffold(
             body: FeedItemDocumentGrid(
               documents: <Map<String, dynamic>>[],
-              flavour: professionalString,
+              flavour: professionalFlavor,
             ),
           ),
         ));

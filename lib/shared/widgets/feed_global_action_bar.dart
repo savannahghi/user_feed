@@ -4,7 +4,7 @@ import 'package:flutter_svg/svg.dart';
 import 'package:intl/intl.dart';
 import 'package:sil_feed/shared/utils/text_themes.dart';
 import 'package:sil_feed/shared/utils/utils.dart';
-import 'package:sil_feed/shared/widgets/constants.dart';
+import 'package:sil_feed/constants/constants.dart';
 import 'package:sil_themes/spaces.dart';
 
 /// A global action component bar
@@ -66,7 +66,7 @@ class FeedGlobalActionBar extends StatelessWidget {
                   toBeginningOfSentenceCase(actionName.split(' ').first));
               final String secondActionName = FeedUtils.titleCase(
                   toBeginningOfSentenceCase(actionName.split(' ').last));
-              final String actionIconUrl = (flavour == professionalString)
+              final String actionIconUrl = (flavour == professionalFlavor)
                   ? 'no link url'
                   : action['icon']['url'];
 
@@ -112,7 +112,7 @@ class FeedGlobalActionBar extends StatelessWidget {
                                 color: Colors.white, shape: BoxShape.circle),
 
                             // todo(abiud) - replace this url dynamically
-                            child: (flavour == professionalString)
+                            child: (flavour == professionalFlavor)
                                 ? SizedBox()
                                 : SvgPicture.network(
                                     actionIconUrl,

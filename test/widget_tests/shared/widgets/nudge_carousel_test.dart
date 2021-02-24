@@ -4,7 +4,7 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/mockito.dart';
 import 'package:sil_feed/shared/router_generator.dart';
 import 'package:sil_feed/shared/utils/widget_keys.dart';
-import 'package:sil_feed/shared/widgets/constants.dart';
+import 'package:sil_feed/constants/constants.dart';
 import 'package:sil_feed/shared/widgets/nudge_carousel.dart';
 import '../../../mock_utils.dart';
 import '../../../mocks.dart';
@@ -30,7 +30,7 @@ void main() {
             isAnonymous: false,
             isSmallScreen: false,
             nudgeCarouselCallbacks: getFeedActionCallbacks(),
-            nudges: mockFeednudges,
+            nudges: mockFeedNudges,
             single: false,
             unroll: false,
           )),
@@ -62,11 +62,11 @@ void main() {
           home: Scaffold(
               body: NudgeCarousel(
             key: nudgeCarouselKey,
-            flavour: professionalString,
+            flavour: professionalFlavor,
             isAnonymous: false,
             isSmallScreen: false,
             nudgeCarouselCallbacks: getFeedActionCallbacks(),
-            nudges: mockFeednudges,
+            nudges: mockFeedNudges,
             single: false,
             unroll: false,
           )),
@@ -89,11 +89,11 @@ void main() {
           home: Scaffold(
               body: NudgeCarousel(
             key: nudgeCarouselKey,
-            flavour: professionalString,
+            flavour: professionalFlavor,
             isAnonymous: false,
             isSmallScreen: false,
             nudgeCarouselCallbacks: getFeedActionCallbacks(),
-            nudges: mockFeednudges,
+            nudges: mockFeedNudges,
             single: true,
             unroll: true,
           )),
@@ -121,7 +121,7 @@ void main() {
             isAnonymous: false,
             isSmallScreen: false,
             nudgeCarouselCallbacks: getFeedActionCallbacks(),
-            nudges: mockFeednudges,
+            nudges: mockFeedNudges,
             single: false,
             unroll: false,
           )),
@@ -153,12 +153,12 @@ void main() {
                   home: Scaffold(
                       body: NudgeCarousel(
                     key: nudgeCarouselKey,
-                    flavour: professionalString,
+                    flavour: professionalFlavor,
                     isAnonymous: null,
                     isSmallScreen: false,
                     isAnonymousFunc: null,
                     nudgeCarouselCallbacks: getFeedActionCallbacks(),
-                    nudges: mockFeednudges,
+                    nudges: mockFeedNudges,
                     single: true,
                     unroll: true,
                   )),
@@ -170,12 +170,12 @@ void main() {
                   home: Scaffold(
                       body: NudgeCarousel(
                     key: nudgeCarouselKey,
-                    flavour: professionalString,
+                    flavour: professionalFlavor,
                     isAnonymous: true,
                     isSmallScreen: false,
                     isAnonymousFunc: null,
                     nudgeCarouselCallbacks: getFeedActionCallbacks(),
-                    nudges: mockFeednudges,
+                    nudges: mockFeedNudges,
                     single: true,
                     unroll: true,
                   )),

@@ -1,6 +1,6 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
-import 'package:sil_feed/shared/widgets/constants.dart';
+import 'package:sil_feed/constants/constants.dart';
 import 'package:sil_feed/shared/widgets/feed_nudge.dart';
 
 /// [NudgeCarousel] is a carousel that receives a list of nudges and
@@ -42,7 +42,7 @@ class NudgeCarousel extends StatefulWidget {
   final bool isSmallScreen;
   final Map<String, Function> nudgeCarouselCallbacks;
   final List<dynamic> nudges;
-  // whether the carousel was called indepently (as a component on its own)
+  // whether the carousel was called independently (as a component on its own)
   final bool single;
 
   /// whether to unroll the nudges

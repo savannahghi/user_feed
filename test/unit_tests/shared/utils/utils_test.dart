@@ -1,13 +1,13 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:intl/intl.dart';
 import 'package:sil_feed/shared/utils/utils.dart';
-import 'package:sil_feed/shared/widgets/constants.dart';
+import 'package:sil_feed/constants/constants.dart';
 
 import '../../../mocks.dart';
 
 void main() {
   group('FeedUtils', () {
-    test('should titlecase a sentence', () {
+    test('should title case a sentence', () {
       final String sentence = 'the test coverage';
       final String expectedFormattedSentence = 'The Test Coverage';
       final String actualFormattedSentence = FeedUtils.titleCase(sentence);
@@ -93,42 +93,42 @@ void main() {
     });
 
     test('should check on allow anonymous before calling a function', () {
-      final List<int> ints = <int>[];
-      final Function updateIntsAnonymously = () => ints.add(1);
-      final Function updateIntsNormally = () => ints.add(2);
+      final List<int> integers = <int>[];
+      final Function updateIntegersAnonymously = () => integers.add(1);
+      final Function updateIntegersNormally = () => integers.add(2);
 
       bool isAnonymous = true;
       bool allowAnonymous = true;
 
       FeedUtils.checkOnAllowAnonymousBeforeCall(
-          allowFunc: updateIntsAnonymously,
+          allowFunc: updateIntegersAnonymously,
           isAnonymous: isAnonymous,
           allowAnonymous: allowAnonymous,
-          isAnonymousFunc: updateIntsNormally);
+          isAnonymousFunc: updateIntegersNormally);
 
-      expect(ints.isEmpty, false);
-      expect(ints.first, 1);
+      expect(integers.isEmpty, false);
+      expect(integers.first, 1);
 
       /// cleanup the list before performing the next test
-      ints.clear();
+      integers.clear();
       allowAnonymous = false;
       FeedUtils.checkOnAllowAnonymousBeforeCall(
-          allowFunc: updateIntsAnonymously,
+          allowFunc: updateIntegersAnonymously,
           isAnonymous: isAnonymous,
           allowAnonymous: allowAnonymous,
-          isAnonymousFunc: updateIntsNormally);
-      expect(ints.isEmpty, false);
-      expect(ints.first, 2);
+          isAnonymousFunc: updateIntegersNormally);
+      expect(integers.isEmpty, false);
+      expect(integers.first, 2);
 
-      ints.clear();
+      integers.clear();
       isAnonymous = false;
       FeedUtils.checkOnAllowAnonymousBeforeCall(
-          allowFunc: updateIntsAnonymously,
+          allowFunc: updateIntegersAnonymously,
           isAnonymous: isAnonymous,
           allowAnonymous: allowAnonymous,
-          isAnonymousFunc: updateIntsNormally);
-      expect(ints.isEmpty, false);
-      expect(ints.first, 1);
+          isAnonymousFunc: updateIntegersNormally);
+      expect(integers.isEmpty, false);
+      expect(integers.first, 1);
     });
 
     test('should get a feed item action url', () {
