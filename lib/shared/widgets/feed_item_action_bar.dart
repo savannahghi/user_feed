@@ -4,7 +4,7 @@ import 'package:flutter_svg/svg.dart';
 import 'package:sil_feed/shared/type_defs/feed_type_defs.dart';
 import 'package:sil_feed/shared/utils/text_themes.dart';
 import 'package:sil_feed/shared/utils/utils.dart';
-import 'package:sil_feed/shared/widgets/constants.dart';
+import 'package:sil_feed/constants/constants.dart';
 import 'package:sil_feed/shared/widgets/feed_action_buttons.dart';
 import 'package:sil_themes/spaces.dart';
 

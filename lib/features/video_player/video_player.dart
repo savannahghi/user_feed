@@ -1,7 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:sil_feed/shared/utils/utils.dart';
-import 'package:sil_feed/shared/widgets/constants.dart';
+import 'package:sil_feed/shared/utils/widget_keys.dart';
+import 'package:sil_feed/constants/constants.dart';
 import 'package:sil_themes/spaces.dart';
 import 'package:visibility_detector/visibility_detector.dart';
 
@@ -34,8 +35,6 @@ class _VideoPlayerState extends State<VideoPlayer> {
             videoIds.add(YoutubePlayer.convertUrlToId(video['url'])))
         .toList();
     _videoIds = videoIds;
-
-    // check for nulls
   }
 
   @override
@@ -43,7 +42,7 @@ class _VideoPlayerState extends State<VideoPlayer> {
     super.initState();
     getVideoID();
     _videoController = YoutubePlayerController(
-      initialVideoId: _videoIds?.first ?? 'gcv2Z2AdpjM',
+      initialVideoId: _videoIds?.first ?? defaultInitialFeedVideoUrl,
       flags: YoutubePlayerFlags(
         mute: false,
         autoPlay: false,
@@ -90,7 +89,7 @@ class _VideoPlayerState extends State<VideoPlayer> {
                 _videoController?.pause();
               }
             },
-            key: Key('visibility_key'),
+            key: videoPlayerVisibilityDetectorKey,
             child: YoutubePlayerBuilder(
               player: YoutubePlayer(
                 controller: _videoController,

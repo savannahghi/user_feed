@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
-import 'package:sil_feed/shared/widgets/constants.dart';
+import 'package:sil_feed/constants/constants.dart';
 import 'package:sil_feed/shared/widgets/nudge_carousel.dart';
 import 'package:sil_feed/sil_feed.dart';
 
@@ -165,7 +165,7 @@ class FeedUtils {
           }
         },
       ).toList();
-    } else if (flavour == professionalString) {
+    } else if (flavour == professionalFlavor) {
       // loop through the pro actions and call their functions
       allProActions.map(
         (String proAction) {
@@ -246,6 +246,16 @@ class FeedUtils {
       default:
         return null;
     }
+  }
+
+  static int conversationsLengthBuilder(int conversations) {
+    int conversationsLength;
+    if (conversations <= 1) {
+      return conversationsLength = 1;
+    } else if (conversations >= 2) {
+      return conversationsLength = 2;
+    }
+    return conversationsLength;
   }
 }
 

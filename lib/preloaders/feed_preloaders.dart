@@ -3,7 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:shimmer/shimmer.dart';
 
 import 'package:sil_feed/shared/utils/colors.dart';
-import 'package:sil_feed/widgets/responsive_widget.dart';
+import 'package:sil_feed/constants/constants.dart';
+import 'package:sil_misc/responsive_widget.dart';
 import 'package:sil_themes/spaces.dart';
 
 class FeedLoadingShimmer extends StatelessWidget {
@@ -13,10 +14,7 @@ class FeedLoadingShimmer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    double pagePadding = 20;
-    if (ResponsiveWidget.isSmallScreen(context)) {
-      pagePadding = 16;
-    }
+    double pagePadding = ResponsiveWidget.isSmallScreen(context) ? 16 : 20;
 
     return Shimmer.fromColors(
       baseColor: shimmerBaseColor,
@@ -24,24 +22,18 @@ class FeedLoadingShimmer extends StatelessWidget {
       child: Column(
         children: <Widget>[
           // global actions
-          if (flavor != 'PRO') ...<Widget>[
-            GlobalActionItemShimmerRow(
-              horizontalPadding: pagePadding,
-            ),
+          if (flavor != professionalFlavor) ...<Widget>[
+            GlobalActionItemShimmerRow(horizontalPadding: pagePadding),
           ],
 
           mediumVerticalSizedBox,
           // nudges
-          NudgeShimmer(
-            padding: pagePadding,
-          ),
+          NudgeShimmer(padding: pagePadding),
 
           mediumVerticalSizedBox,
 
           // feed items
-          FeedItemShimmer(
-            horizontalPadding: pagePadding,
-          ),
+          FeedItemShimmer(horizontalPadding: pagePadding),
           mediumVerticalSizedBox,
         ],
       ),
@@ -115,7 +107,7 @@ class GlobalActionItemShimmer extends StatelessWidget {
                 shape: BoxShape.rectangle,
                 color: primaryColor,
                 borderRadius: BorderRadius.circular(5)),
-            child: Text('GET MEDICINE'),
+            child: Text(kGetMedicine),
           ),
         ],
       ),

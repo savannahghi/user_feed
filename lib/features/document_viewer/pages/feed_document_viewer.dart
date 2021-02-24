@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:sil_feed/shared/widgets/constants.dart';
+import 'package:sil_feed/constants/constants.dart';
 import 'package:pdf_flutter/pdf_flutter.dart';
 import 'package:sil_feed/shared/widgets/sil_small_appbar.dart';
 
