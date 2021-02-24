@@ -545,8 +545,8 @@ packages:
     dependency: "direct main"
     description:
       path: "."
-      ref: "0.0.6"
-      resolved-ref: "888fcd7e222d1453473e57837cc853df0da24a0b"
+      ref: "0.0.8"
+      resolved-ref: "654809532c6dc204e31a8644c4fac4f9cc772039"
       url: "https://sil_dart_utils:xiFnpjLHssG76bpWxUb9@gitlab.slade360emr.com/optimalhealth/dart_utils/sil_dumb_widgets.git"
     source: git
     version: "0.0.1"
@@ -554,8 +554,8 @@ packages:
     dependency: "direct main"
     description:
       path: "."
-      ref: "0.0.4"
-      resolved-ref: c26a0625fe246a4d263a62120d39d4913740bfed
+      ref: "0.0.6"
+      resolved-ref: c60751e0443232aab90aab64604fd9bf8b9b0129
       url: "https://sil_dart_utils:xiFnpjLHssG76bpWxUb9@gitlab.slade360emr.com/optimalhealth/dart_utils/sil_misc.git"
     source: git
     version: "0.0.1"
@@ -563,8 +563,8 @@ packages:
     dependency: "direct main"
     description:
       path: "."
-      ref: "0.0.1"
-      resolved-ref: "2036d1c47929658b13cb4cfc2403ee677ab23be6"
+      ref: "0.0.2"
+      resolved-ref: ba4a570936af95d8e725b8da9fb10ded4151590e
       url: "https://sil_dart_utils:xiFnpjLHssG76bpWxUb9@gitlab.slade360emr.com/optimalhealth/dart_utils/sil_themes.git"
     source: git
     version: "0.0.1"
