@@ -60,17 +60,28 @@ class GlobalActionItemShimmerRow extends StatelessWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: <Widget>[
-        GlobalActionItemShimmer(
-          width: circleWidth,
-          height: circleWidth,
+        Expanded(
+          flex: 1,
+          child: GlobalActionItemShimmer(
+            width: circleWidth,
+            height: circleWidth,
+          ),
         ),
-        GlobalActionItemShimmer(
-          width: circleWidth,
-          height: circleWidth,
+        size15HorizontalSizedBox,
+        Expanded(
+          flex: 1,
+          child: GlobalActionItemShimmer(
+            width: circleWidth,
+            height: circleWidth,
+          ),
         ),
-        GlobalActionItemShimmer(
-          width: circleWidth,
-          height: circleWidth,
+        size15HorizontalSizedBox,
+        Expanded(
+          flex: 1,
+          child: GlobalActionItemShimmer(
+            width: circleWidth,
+            height: circleWidth,
+          ),
         ),
       ],
     );
