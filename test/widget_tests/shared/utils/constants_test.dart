@@ -10,6 +10,7 @@ void main() {
       kGetTest,
       kAddNHIF,
       kAddInsurance,
+      kGetInsurance,
 
       // shared
       kVerifyEmail,

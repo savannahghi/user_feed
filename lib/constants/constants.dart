@@ -24,6 +24,7 @@ const String kGetMedicine = 'GET_MEDICINE';
 const String kGetConsultation = 'GET_CONSULTATION';
 const String kGetCoaching = 'GET_COACHING';
 const String kGetTest = 'GET_TEST';
+const String kGetInsurance = 'GET_INSURANCE';
 
 /// nudge actions
 const String kAddNHIF = 'ADD_NHIF';
@@ -81,6 +82,7 @@ List<String> allConsumerActions = <String>[
   kGetTest,
   kAddNHIF,
   kAddInsurance,
+  kGetInsurance,
 
   // shared
   kVerifyEmail,
