@@ -147,6 +147,7 @@ class FeedUtils {
             if (callbacks != null && callbacks.containsKey(fullActionName)) {
               /// if it find it, it executes the callback
               callbacks[fullActionName]();
+              return;
             } else {
               /// if it does not, it shows a ['Coming Soon'] snackbar
               Scaffold.of(context)
@@ -155,13 +156,6 @@ class FeedUtils {
                     content: 'Coming Soon!',
                     durationSeconds: kShortSnackbarDuration));
             }
-          } else {
-            /// if it does not, it shows a ['Coming Soon'] snackbar
-            Scaffold.of(context)
-              ..hideCurrentSnackBar()
-              ..showSnackBar(FeedUtils.snackbar(
-                  content: 'Coming Soon!',
-                  durationSeconds: kShortSnackbarDuration));
           }
         },
       ).toList();
@@ -179,6 +173,7 @@ class FeedUtils {
             if (callbacks != null && callbacks.containsKey(fullActionName)) {
               /// if it find it, it executes the callback
               callbacks[fullActionName]();
+              return;
             } else {
               /// if it does not, it shows a ['Coming Soon'] snackbar
               Scaffold.of(context)
@@ -198,11 +193,6 @@ class FeedUtils {
         },
       ).toList();
     }
-
-    Scaffold.of(context)
-      ..hideCurrentSnackBar()
-      ..showSnackBar(FeedUtils.snackbar(
-          content: 'Coming Soon!', durationSeconds: kShortSnackbarDuration));
   }
 
   /// returns an icon based on the [actionName]
