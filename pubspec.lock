@@ -554,8 +554,8 @@ packages:
     dependency: "direct main"
     description:
       path: "."
-      ref: "0.0.7"
-      resolved-ref: "15f29ef4f8be06adbed5fd75e285df2f4a7b07d9"
+      ref: "0.0.9"
+      resolved-ref: "99e64c12b12483f77caabd86707aac55c7bb8eb2"
       url: "https://sil_dart_utils:xiFnpjLHssG76bpWxUb9@gitlab.slade360emr.com/optimalhealth/dart_utils/sil_misc.git"
     source: git
     version: "0.0.1"
