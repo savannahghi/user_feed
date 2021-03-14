@@ -9,15 +9,15 @@ void main() {
   group('FeedItemActionBar  group tests', () {
     testWidgets('should test feed_item_action_bar renderes correctly',
         (WidgetTester tester) async {
-      dynamic genericFunc() {}
+      dynamic genericFunc({required String flavour, required String itemID}) {}
 
       await tester.pumpWidget(MaterialApp(
           home: FeedItemActionBar(
         actions: mockFeedItemActions,
         feedItemID: '',
-        hideFunction: genericFunc(),
-        resolveFunction: genericFunc(),
-        pinFunction: genericFunc(),
+        hideFunction: genericFunc,
+        resolveFunction: genericFunc,
+        pinFunction: genericFunc,
         flavour: 'CONSUMER',
         isAnonymous: false,
         isAnonymousFunc: () {},

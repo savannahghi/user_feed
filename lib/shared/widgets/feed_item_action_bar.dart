@@ -3,30 +3,23 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:sil_feed/shared/type_defs/feed_type_defs.dart';
 import 'package:sil_feed/shared/utils/text_themes.dart';
-import 'package:sil_feed/shared/utils/utils.dart';
 import 'package:sil_feed/constants/constants.dart';
+import 'package:sil_feed/shared/utils/utils.dart';
 import 'package:sil_feed/shared/widgets/feed_action_buttons.dart';
+import 'package:sil_misc/sil_misc.dart';
 import 'package:sil_themes/spaces.dart';
 
 class FeedItemActionBar extends StatelessWidget {
-  FeedItemActionBar({
-    @required this.actions,
-    @required this.flavour,
-    @required this.feedItemID,
-    @required this.resolveFunction,
-    @required this.pinFunction,
-    @required this.hideFunction,
-    @required this.isAnonymous,
-    @required this.isAnonymousFunc,
-  }) : assert(() {
-          if (isAnonymous != null) {
-            if (isAnonymous && isAnonymousFunc == null) {
-              throw Exception(
-                  'when `isAnonymous` is true, `isAnonymousFunc` should not be null');
-            }
-          }
-          return true;
-        }());
+  const FeedItemActionBar({
+    required this.actions,
+    required this.flavour,
+    required this.feedItemID,
+    required this.resolveFunction,
+    required this.pinFunction,
+    required this.hideFunction,
+    required this.isAnonymous,
+    required this.isAnonymousFunc,
+  });
 
   final List<dynamic> actions;
   final String feedItemID;
@@ -55,54 +48,56 @@ class FeedItemActionBar extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: <Widget>[
-          ...actions.map((dynamic action) {
-            final String actionName = action['name'];
-            final String actionNameWithoutUnderscores =
-                FeedUtils.removeUnderscores(actionName).split('Item')?.first;
+          ...actions.map(
+            (dynamic action) {
+              final String actionName = action['name'] as String;
+              final String actionNameWithoutUnderscores =
+                  removeUnderscores(actionName).split('Item').first;
 
-            /// whether an anonymous user is allowed to perform this action
-            final bool allowAnonymous = action['allowAnonymous'];
+              /// whether an anonymous user is allowed to perform this action
+              final bool allowAnonymous = action['allowAnonymous'] as bool;
 
-            return FeedNoBorderButton(
-              onPressed: () {
-                FeedUtils.checkOnAllowAnonymousBeforeCall(
-                  allowFunc: () {
-                    switch (actionName) {
-                      case kResolveItem:
-                        resolveFunction(flavour: flavour, itemID: feedItemID);
-                        break;
-                      case kPinItem:
-                        pinFunction(flavour: flavour, itemID: feedItemID);
-                        break;
-                      case kHideItem:
-                        hideFunction(flavour: flavour, itemID: feedItemID);
-                    }
-                  },
-                  isAnonymous: isAnonymous,
-                  allowAnonymous: allowAnonymous,
-                  isAnonymousFunc: this.isAnonymousFunc,
-                );
-              },
-              text: '',
-              customChild: Center(
-                child: Row(
-                  children: <Widget>[
-                    SvgPicture.asset(
-                      FeedUtils.getFeedItemActionIconUrl(actionName),
-                      height: 20,
-                      width: 20,
-                      color: Theme.of(context).primaryColor,
-                    ),
-                    smallHorizontalSizedBox,
-                    Text(
-                      actionNameWithoutUnderscores.split('ITEM')?.first,
-                      style: TextThemes.boldSize12Text(),
-                    ),
-                  ],
+              return FeedNoBorderButton(
+                onPressed: () {
+                  checkOnAllowAnonymousBeforeCall(
+                    allowFunc: () {
+                      switch (actionName) {
+                        case kResolveItem:
+                          resolveFunction(flavour: flavour, itemID: feedItemID);
+                          break;
+                        case kPinItem:
+                          pinFunction(flavour: flavour, itemID: feedItemID);
+                          break;
+                        case kHideItem:
+                          hideFunction(flavour: flavour, itemID: feedItemID);
+                      }
+                    },
+                    isAnonymous: isAnonymous,
+                    allowAnonymous: allowAnonymous,
+                    isAnonymousFunc: this.isAnonymousFunc,
+                  );
+                },
+                text: '',
+                customChild: Center(
+                  child: Row(
+                    children: <Widget>[
+                      SvgPicture.asset(
+                        getFeedItemActionIconUrl(actionName),
+                        height: 20,
+                        width: 20,
+                        color: Theme.of(context).primaryColor,
+                      ),
+                      smallHorizontalSizedBox,
+                      Text(
+                        actionNameWithoutUnderscores.split('ITEM').first,
+                        style: TextThemes.boldSize12Text(),
+                      ),
+                    ],
+                  ),
                 ),
-              ),
-            );
-          }),
+              );
+            },
+          ),
         ],
       ),
     );
