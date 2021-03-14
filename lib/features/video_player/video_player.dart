@@ -1,40 +1,38 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:sil_feed/shared/utils/utils.dart';
 import 'package:sil_feed/shared/utils/widget_keys.dart';
 import 'package:sil_feed/constants/constants.dart';
+import 'package:sil_misc/sil_misc.dart';
 import 'package:sil_themes/spaces.dart';
 import 'package:visibility_detector/visibility_detector.dart';
-
 import 'package:youtube_player_flutter/youtube_player_flutter.dart';
 
 /// Creates [VideoPlayerWidget] widget.
 /// Creates and embedded video of a mini youtube player
 /// Constrain it using a container in a page the player does not span the whole screen
 class VideoPlayer extends StatefulWidget {
-  final List<dynamic> videos;
+  const VideoPlayer({Key? key, required this.videos}) : super(key: key);
 
-  const VideoPlayer({Key key, @required this.videos}) : super(key: key);
+  final List<dynamic> videos;
 
   @override
   _VideoPlayerState createState() => _VideoPlayerState();
 }
 
 class _VideoPlayerState extends State<VideoPlayer> {
-  YoutubePlayerController _videoController;
+  late YoutubePlayerController _videoController;
 
   bool _muted = false;
   bool _isPlayerReady = false;
 
-  List<String> _videoIds = <String>[];
+  final List<String?> _videoIds = <String>[];
 
   void getVideoID() {
-    List<String> videoIds = <String>[];
     widget.videos
-        .map((dynamic video) =>
-            videoIds.add(YoutubePlayer.convertUrlToId(video['url'])))
+        .map((dynamic video) => this
+            ._videoIds
+            .add(YoutubePlayer.convertUrlToId(video['url'] as String)))
         .toList();
-    _videoIds = videoIds;
   }
 
   @override
@@ -42,15 +40,9 @@ class _VideoPlayerState extends State<VideoPlayer> {
     super.initState();
     getVideoID();
     _videoController = YoutubePlayerController(
-      initialVideoId: _videoIds?.first ?? defaultInitialFeedVideoUrl,
-      flags: YoutubePlayerFlags(
-        mute: false,
+      initialVideoId: _videoIds.first ?? defaultInitialFeedVideoUrl,
+      flags: const YoutubePlayerFlags(
         autoPlay: false,
-        disableDragSeek: false,
-        loop: false,
-        isLive: false,
-        forceHD: false,
-        enableCaption: true,
       ),
     );
     _videoController.addListener(listener);
@@ -86,7 +78,7 @@ class _VideoPlayerState extends State<VideoPlayer> {
               /// this can happen when the user navigates to a new screen or
               /// when a modal is shown (yet to be confirmed)
               if (info.visibleFraction == 0) {
-                _videoController?.pause();
+                _videoController.pause();
               }
             },
             key: videoPlayerVisibilityDetectorKey,
@@ -117,12 +109,13 @@ class _VideoPlayerState extends State<VideoPlayer> {
                 onEnded: (YoutubeMetaData data) {
                   _videoController.load(_videoIds[
                       (_videoIds.indexOf(data.videoId) + 1) %
-                          _videoIds.length]);
-                  Scaffold.of(context)
+                          _videoIds.length]!);
+                  ScaffoldMessenger.of(context)
                     ..hideCurrentSnackBar()
-                    ..showSnackBar(FeedUtils.snackbar(
+                    ..showSnackBar(snackbar(
                         content: 'Playing your next video...',
-                        durationSeconds: kShortSnackbarDuration));
+                        durationSeconds: kShortSnackbarDuration,
+                        label: ''));
                 },
               ),
               builder: (BuildContext context, Widget player) => ListView(
@@ -145,7 +138,7 @@ class _VideoPlayerState extends State<VideoPlayer> {
                                       (_videoIds.indexOf(_videoController
                                                   .metadata.videoId) -
                                               1) %
-                                          _videoIds.length])
+                                          _videoIds.length]!)
                                   : null,
                             ),
                             IconButton(
@@ -184,7 +177,7 @@ class _VideoPlayerState extends State<VideoPlayer> {
                                       (_videoIds.indexOf(_videoController
                                                   .metadata.videoId) +
                                               1) %
-                                          _videoIds.length])
+                                          _videoIds.length]!)
                                   : null,
                             ),
                           ],

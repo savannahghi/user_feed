@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:sil_feed/shared/utils/utils.dart';
+import 'package:sil_misc/sil_misc.dart';
 
 void main() {
   group('FeedUtils', () {
     testWidgets('should show a snackbar', (WidgetTester tester) async {
-      List<int> integers = <int>[];
-      Function addOne = () => integers.add(1);
+      final List<int> integers = <int>[];
+      // ignore: prefer_function_declarations_over_variables
+      final Function addOne = () => integers.add(1);
       const String snackbarText = 'Test coverage achieved';
       await tester.pumpWidget(MaterialApp(
         home: Scaffold(
@@ -16,7 +18,7 @@ void main() {
                   BoxDecoration(gradient: getFeedGlobalActionGradient(context)),
               child: GestureDetector(
                 onTap: () {
-                  Scaffold.of(context).showSnackBar(FeedUtils.snackbar(
+                  ScaffoldMessenger.of(context).showSnackBar(snackbar(
                       content: snackbarText,
                       callback: addOne,
                       label: 'Ok Thanks!'));

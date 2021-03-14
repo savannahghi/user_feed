@@ -13,12 +13,12 @@ import 'package:sil_themes/spaces.dart';
 /// - an optional label
 class FeedItemTitleBar extends StatelessWidget {
   const FeedItemTitleBar({
-    Key key,
-    @required this.author,
-    @required this.tagline,
-    @required this.timestamp,
-    @required this.iconUrl,
-    @required this.itemID,
+    Key? key,
+    required this.author,
+    required this.tagline,
+    required this.timestamp,
+    required this.iconUrl,
+    required this.itemID,
   }) : super(key: key);
 
   final String author;
@@ -26,6 +26,11 @@ class FeedItemTitleBar extends StatelessWidget {
   final String itemID;
   final String tagline;
   final String timestamp;
+
+  String postTimeStampAsMessage(String? timestamp) {
+    if (timestamp == null) return 'Just now';
+    return timestamp;
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -38,12 +43,15 @@ class FeedItemTitleBar extends StatelessWidget {
           height: 60,
           width: 60,
           decoration: BoxDecoration(
-              color: Colors.white,
-              border: Border.all(color: Colors.black87, width: 1),
-              gradient: getFeedGlobalActionGradient(context),
-              shape: BoxShape.circle,
-              image: DecorationImage(
-                  fit: BoxFit.cover, image: NetworkImage(iconUrl))),
+            color: Colors.white,
+            border: Border.all(color: Colors.black87),
+            gradient: getFeedGlobalActionGradient(context),
+            shape: BoxShape.circle,
+            image: DecorationImage(
+              fit: BoxFit.cover,
+              image: NetworkImage(iconUrl),
+            ),
+          ),
         ),
 
         Flexible(
@@ -60,7 +68,7 @@ class FeedItemTitleBar extends StatelessWidget {
 
                   // the tagline
                   Container(
-                    constraints: BoxConstraints(maxWidth: 180),
+                    constraints: const BoxConstraints(maxWidth: 180),
                     child: Text(
                       tagline,
                       style: TextThemes.normalSize14Text(Colors.black54),
@@ -70,7 +78,7 @@ class FeedItemTitleBar extends StatelessWidget {
                   extremelySmallVerticalSizedBox,
 
                   // a formatted human readable timestamp
-                  Text(timestamp ?? 'Just now',
+                  Text(this.postTimeStampAsMessage(timestamp),
                       style: TextThemes.normalSize12Text(
                           Colors.black.withOpacity(0.4)))
                 ],
