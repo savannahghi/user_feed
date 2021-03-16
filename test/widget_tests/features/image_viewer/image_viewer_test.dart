@@ -9,9 +9,11 @@ void main() {
   group('FeedImageViewer page', () {
     testWidgets('should render correctly', (WidgetTester tester) async {
       await provideMockedNetworkImages(() async {
-        await tester.pumpWidget(MaterialApp(
+        await tester.pumpWidget(const MaterialApp(
           home: Scaffold(
-            body: FeedImageViewer(imageUrl: fallbackUrl,),
+            body: FeedImageViewer(
+              imageUrl: fallbackUrl,
+            ),
           ),
         ));
 

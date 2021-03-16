@@ -1,8 +1,8 @@
+import 'dart:io' as io;
+
 import 'package:flutter/material.dart';
 import 'package:mockito/mockito.dart';
-import 'package:sil_feed/shared/widgets/sil_small_appbar.dart';
-
-import 'dart:io' as io;
+import 'package:sil_misc/sil_small_app_bar.dart';
 
 class MockRoutes {
   static const String route1 = 'route1';
@@ -19,7 +19,7 @@ class MockRouteGenerator {
 
       case MockRoutes.route1:
         return MaterialPageRoute<MaterialApp>(
-          builder: (_) => MaterialApp(
+          builder: (_) => const MaterialApp(
             home: Scaffold(
               appBar: SILSmallAppBar(title: MockRoutes.route1),
             ),
@@ -28,7 +28,7 @@ class MockRouteGenerator {
 
       case MockRoutes.route2:
         return MaterialPageRoute<MaterialApp>(
-          builder: (_) => MaterialApp(
+          builder: (_) => const MaterialApp(
             home: Scaffold(
               appBar: SILSmallAppBar(
                 title: MockRoutes.route2,
@@ -40,7 +40,7 @@ class MockRouteGenerator {
     }
 
     return MaterialPageRoute<MaterialApp>(
-      builder: (_) => MaterialApp(
+      builder: (_) => const MaterialApp(
         home: Scaffold(
           appBar: SILSmallAppBar(title: 'Default route'),
         ),
@@ -58,7 +58,12 @@ final List<Map<String, dynamic>> mockFeedItemActions = <Map<String, dynamic>>[
     'name': 'RESOLVE_ITEM',
     'actionType': 'PRIMARY',
     'handling': 'INLINE',
-    'allowAnonymous': false
+    'allowAnonymous': false,
+    'icon': <String, dynamic>{
+        'id': '1ns2oDTr800KQMoAwlyS18DiHnp',
+        'url': 'https://assets.healthcloud.co.ke/bewell_logo.png',
+        'linkType': 'PNG_IMAGE'
+      },
   },
   <String, dynamic>{
     'id': '1oBxEPUVwchV3RPYK37QmywsNq4',
@@ -66,7 +71,12 @@ final List<Map<String, dynamic>> mockFeedItemActions = <Map<String, dynamic>>[
     'name': 'HIDE_ITEM',
     'actionType': 'PRIMARY',
     'handling': 'INLINE',
-    'allowAnonymous': false
+    'allowAnonymous': false,
+    'icon': <String, dynamic>{
+        'id': '1ns2oDTr800KQMoAwlyS18DiHnp',
+        'url': 'https://assets.healthcloud.co.ke/bewell_logo.png',
+        'linkType': 'PNG_IMAGE'
+      },
   },
   <String, dynamic>{
     'id': '1oBxEPUVwchV3RPYK37QmywsNq4',
@@ -74,7 +84,12 @@ final List<Map<String, dynamic>> mockFeedItemActions = <Map<String, dynamic>>[
     'name': 'PIN_ITEM',
     'actionType': 'PRIMARY',
     'handling': 'INLINE',
-    'allowAnonymous': false
+    'allowAnonymous': false,
+    'icon': <String, dynamic>{
+        'id': '1ns2oDTr800KQMoAwlyS18DiHnp',
+        'url': 'https://assets.healthcloud.co.ke/bewell_logo.png',
+        'linkType': 'PNG_IMAGE'
+      },
   }
 ];
 final List<Map<String, dynamic>> mockFeedItemHideActions =
@@ -166,6 +181,54 @@ final List<dynamic> mockFeedNudges = <dynamic>[
         'allowAnonymous': false
       }
     ],
+      'links': <dynamic>[
+    <String, dynamic>{
+      'id': '1ns2o8pktkMsAEmP9dIKFvIhvAC',
+      'url': 'https://youtu.be/gcv2Z2AdpjM',
+      'linkType': 'YOUTUBE_VIDEO',
+      'thumbnail':
+          'https://assets.healthcloud.co.ke/items/videos/thumbs/01_lead.png',
+      'title': 'Be.Well lead'
+    },
+    <String, dynamic>{
+      'id': '1ns2o9kdNr1wyAyuybtsr9VQSs8',
+      'url': 'https://youtu.be/W_daZjDET9Q',
+      'linkType': 'YOUTUBE_VIDEO',
+      'thumbnail':
+          'https://assets.healthcloud.co.ke/items/videos/thumbs/02_prescription.png',
+      'title': 'Prescription delivery'
+    },
+    <String, dynamic>{
+      'id': '1ns2oAO0lVcn7gzAqBZrICZCMr2',
+      'url':
+          'https://assets.healthcloud.co.ke/items/images/bewell_banner05.png',
+      'linkType': 'PNG_IMAGE',
+      'title': 'Wellness review',
+      'description': 'You should have a wellness review daily',
+      'thumbnail':
+          'https://assets.healthcloud.co.ke/items/images/thumbs/bewell_banner05.png'
+    },
+    <String, dynamic>{
+      'id': '1ns2o6JDMlUMtTcwPU2MqvAW5VR',
+      'url':
+          'https://assets.healthcloud.co.ke/items/images/bewell_banner06.png',
+      'linkType': 'PNG_IMAGE',
+      'title': 'Wellness review',
+      'description': 'You should have a wellness review daily',
+      'thumbnail':
+          'https://assets.healthcloud.co.ke/items/images/thumbs/bewell_banner06.png'
+    },
+    <String, dynamic>{
+      'id': '1ns2o9GsFxyltGcAQg6mufS1lAD',
+      'url':
+          'https://assets.healthcloud.co.ke/items/documents/bewell_banner_27.pdf',
+      'linkType': 'PDF_DOCUMENT',
+      'title': 'Need to refill your meds?',
+      'description': 'We will deliver',
+      'thumbnail':
+          'https://assets.healthcloud.co.ke/items/documents/thumbs/bewell_banner_27.png'
+    },
+  ],
   },
   <String, dynamic>{
     'id': '1608729973',
@@ -184,6 +247,54 @@ final List<dynamic> mockFeedNudges = <dynamic>[
         'allowAnonymous': false
       }
     ],
+      'links': <dynamic>[
+    <String, dynamic>{
+      'id': '1ns2o8pktkMsAEmP9dIKFvIhvAC',
+      'url': 'https://youtu.be/gcv2Z2AdpjM',
+      'linkType': 'YOUTUBE_VIDEO',
+      'thumbnail':
+          'https://assets.healthcloud.co.ke/items/videos/thumbs/01_lead.png',
+      'title': 'Be.Well lead'
+    },
+    <String, dynamic>{
+      'id': '1ns2o9kdNr1wyAyuybtsr9VQSs8',
+      'url': 'https://youtu.be/W_daZjDET9Q',
+      'linkType': 'YOUTUBE_VIDEO',
+      'thumbnail':
+          'https://assets.healthcloud.co.ke/items/videos/thumbs/02_prescription.png',
+      'title': 'Prescription delivery'
+    },
+    <String, dynamic>{
+      'id': '1ns2oAO0lVcn7gzAqBZrICZCMr2',
+      'url':
+          'https://assets.healthcloud.co.ke/items/images/bewell_banner05.png',
+      'linkType': 'PNG_IMAGE',
+      'title': 'Wellness review',
+      'description': 'You should have a wellness review daily',
+      'thumbnail':
+          'https://assets.healthcloud.co.ke/items/images/thumbs/bewell_banner05.png'
+    },
+    <String, dynamic>{
+      'id': '1ns2o6JDMlUMtTcwPU2MqvAW5VR',
+      'url':
+          'https://assets.healthcloud.co.ke/items/images/bewell_banner06.png',
+      'linkType': 'PNG_IMAGE',
+      'title': 'Wellness review',
+      'description': 'You should have a wellness review daily',
+      'thumbnail':
+          'https://assets.healthcloud.co.ke/items/images/thumbs/bewell_banner06.png'
+    },
+    <String, dynamic>{
+      'id': '1ns2o9GsFxyltGcAQg6mufS1lAD',
+      'url':
+          'https://assets.healthcloud.co.ke/items/documents/bewell_banner_27.pdf',
+      'linkType': 'PDF_DOCUMENT',
+      'title': 'Need to refill your meds?',
+      'description': 'We will deliver',
+      'thumbnail':
+          'https://assets.healthcloud.co.ke/items/documents/thumbs/bewell_banner_27.png'
+    },
+  ],
   },
 ];
 
@@ -201,6 +312,7 @@ Map<String, dynamic> mockFeedItem = <String, dynamic>{
     'url': 'https://assets.healthcloud.co.ke/bewell_logo.png',
     'linkType': 'PNG_IMAGE'
   },
+  'itemID':'1ns2oDTr800KQMoAwlyS18DiHnp',
   'author': 'Be.Well Team',
   'tagline': 'Welcome to Be.Well',
   'timestamp': '2021-02-01T07:30:50Z',
@@ -262,7 +374,12 @@ Map<String, dynamic> mockFeedItem = <String, dynamic>{
       'name': 'RESOLVE_ITEM',
       'actionType': 'PRIMARY',
       'handling': 'INLINE',
-      'allowAnonymous': false
+      'allowAnonymous': false,
+      'icon': <String, dynamic>{
+        'id': '1ns2oDTr800KQMoAwlyS18DiHnp',
+        'url': 'https://assets.healthcloud.co.ke/items/images/thumbs/bewell_banner01.png',
+        'linkType': 'PNG_IMAGE'
+      },
     },
     <String, dynamic>{
       'id': '1ns2oCwJl5zt3SatNL9N4Jw8TDj',
@@ -270,7 +387,12 @@ Map<String, dynamic> mockFeedItem = <String, dynamic>{
       'name': 'PIN_ITEM',
       'actionType': 'PRIMARY',
       'handling': 'INLINE',
-      'allowAnonymous': true
+      'allowAnonymous': true,
+      'icon': <String, dynamic>{
+        'id': '1ns2oDTr800KQMoAwlyS18DiHnp',
+        'url': 'https://assets.healthcloud.co.ke/items/images/thumbs/bewell_banner01.png',
+        'linkType': 'PNG_IMAGE'
+      },
     },
   ],
   'conversations': <dynamic>[

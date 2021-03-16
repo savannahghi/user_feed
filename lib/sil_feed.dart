@@ -7,7 +7,9 @@ import 'package:flutter_svg/svg.dart';
 import 'package:sil_feed/shared/type_defs/feed_type_defs.dart';
 import 'package:sil_feed/shared/utils/colors.dart';
 import 'package:sil_feed/shared/utils/strings.dart';
+
 import 'package:sil_feed/shared/utils/text_themes.dart';
+import 'package:sil_feed/shared/utils/utils.dart';
 import 'package:sil_feed/shared/utils/widget_keys.dart';
 import 'package:sil_feed/constants/constants.dart';
 import 'package:sil_feed/shared/widgets/feed_global_action_bar.dart';
@@ -16,6 +18,25 @@ import 'package:sil_feed/shared/widgets/nudge_carousel.dart';
 import 'package:sil_themes/spaces.dart';
 
 class FeedComponent extends StatelessWidget {
+  const FeedComponent({
+    Key? key,
+    required this.userFeed,
+    required this.flavour,
+    required this.isSmallScreen,
+    required this.tetherThread,
+    required this.resolveFunction,
+    required this.pinFunction,
+    required this.hideFunction,
+    required this.postedByUID,
+    required this.postedByName,
+    // TODO(abiud): add the others ie pin and hide
+    required this.isAnonymousFunc,
+    required this.feedContentCallbacks,
+    this.profileProgress,
+    this.setupComplete = false,
+    this.replyToFeedItemFunction,
+  }) : super(key: key);
+
   /// the feed
   final Map<String, dynamic> userFeed;
   final String flavour;
@@ -23,7 +44,7 @@ class FeedComponent extends StatelessWidget {
   final bool tetherThread;
 
   ///profile progress for `PRO`
-  final String profileProgress;
+  final String? profileProgress;
   final bool setupComplete;
 
   /// [isAnonymousFunc] function that will be called if the current logged in user is anonymous
@@ -42,37 +63,11 @@ class FeedComponent extends StatelessWidget {
 
   final feedItemActionTypeDef hideFunction;
 
-  final replyToFeedItemTypeDef replyToFeedItemFunction;
+  final replyToFeedItemTypeDef? replyToFeedItemFunction;
 
   // ignore_for_file: todo
   // TODO(abiud): add others eg hide and pin, unpin
 
-  const FeedComponent({
-    Key key,
-    @required this.userFeed,
-    @required this.flavour,
-    @required this.isSmallScreen,
-    @required this.tetherThread,
-    @required this.resolveFunction,
-    @required this.pinFunction,
-    @required this.hideFunction,
-    @required this.postedByUID,
-    @required this.postedByName,
-    this.profileProgress,
-    this.setupComplete = false,
-    this.replyToFeedItemFunction,
-
-    // TODO(abiud): add the others ie pin and hide
-    @required this.isAnonymousFunc,
-    @required this.feedContentCallbacks,
-  })  : assert(feedContentCallbacks != null, 'Feed callbacks can\'t be null'),
-        assert(resolveFunction != null,
-            'A callback to resolve a feed item must be defined'),
-        assert(pinFunction != null,
-            'A callback to pin a feed item must be defined'),
-        assert(hideFunction != null,
-            'A callback to hide a feed item must be defined'),
-        super(key: key);
   @override
   Widget build(BuildContext context) {
     final Map<String, dynamic> feed =
@@ -99,19 +94,18 @@ class FeedComponent extends StatelessWidget {
       shrinkWrap: true,
       key: feedComponentKey,
       padding: EdgeInsets.zero,
-      physics: BouncingScrollPhysics(),
+      physics: const BouncingScrollPhysics(),
       children: <Widget>[
         smallVerticalSizedBox,
         Container(
-          decoration: BoxDecoration(color: backgroundColor),
+          decoration: const BoxDecoration(color: backgroundColor),
           child: Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
             mainAxisSize: MainAxisSize.min,
             children: <Widget>[
               /// feed global actions bar
               if (flavour == consumerFlavor)
                 FeedGlobalActionBar(
-                  globalActions: otherActions,
+                  globalActionsData: otherActions,
                   flavour: flavour,
                   isAnonymousFunc: this.isAnonymousFunc,
                   isAnonymous: isAnonymous,
@@ -125,13 +119,13 @@ class FeedComponent extends StatelessWidget {
               /// todo(future) - hide this if there are no items in the screen
               if (flavour == consumerFlavor)
                 Container(
-                  padding: EdgeInsets.only(right: 10),
+                  padding: const EdgeInsets.only(right: 10),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.end,
                     children: <Widget>[
-                      SvgPicture.asset(FeedStrings.swipeForMoreIconUrl),
+                      SvgPicture.asset(swipeForMoreIconUrl),
                       Text(
-                        FeedStrings.swipeForMore,
+                        swipeForMore,
                         style: TextThemes.normalSize14Text(Colors.black87),
                       )
                     ],
@@ -141,18 +135,16 @@ class FeedComponent extends StatelessWidget {
               // profile progress indicator for pro
               if (flavour == professionalFlavor || setupComplete == true)
                 Container(
-                  margin: EdgeInsets.all(15),
+                  margin: const EdgeInsets.all(15),
                   width: double.infinity,
-                  padding: EdgeInsets.all(10),
+                  padding: const EdgeInsets.all(10),
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(5.0),
                     color: Colors.white,
-                    boxShadow: <BoxShadow>[
+                    boxShadow: const <BoxShadow>[
                       BoxShadow(
                         color: Colors.black54,
                         blurRadius: 0.3,
-                        spreadRadius: 0.0,
-                        offset: Offset(0.0, 0.0),
                       )
                     ],
                   ),
@@ -163,12 +155,12 @@ class FeedComponent extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: <Widget>[
                         Text(
-                          FeedStrings.completeProfileTitle,
+                          completeProfileTitle,
                           style: TextThemes.veryBoldSize16Text(),
                         ),
                         size15VerticalSizedBox,
                         Text(
-                          FeedStrings.displayProgress(profileProgress),
+                          displayProgress(profileProgress),
                           style: TextThemes.normalSize14Text(Colors.grey),
                         ),
                         size15VerticalSizedBox,

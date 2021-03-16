@@ -1,27 +1,34 @@
-class FeedStrings {
-  //profile progress String
-  static final String completeProfileTitle = 'Complete profile';
-  static final String profileComplete = 'You have completed your profile';
-  static String displayProgress(String progress) {
-    return 'Your profile is $progress% complete, complete it now';
-  }
+//profile progress String
 
-  // global action strings
-  static final String swipeForMore = 'Swipe for more';
-  static final String swipeForMoreIconUrl = 'assets/images/swipe.svg';
+const String completeProfileTitle = 'Complete profile';
+const String profileComplete = 'You have completed your profile';
 
-  // the default one, in case there is no url
-  static final String defaultImgUrl = 'assets/images/doctor-bag.svg';
+// global action strings
+String swipeForMore = 'Swipe for more';
+const String swipeForMoreIconUrl = 'assets/images/swipe.svg';
 
-  static final String fallBackBewellLogoUrl =
-      'https://assets.healthcloud.co.ke/bewell_logo.png';
-}
+// the default one, in case there is no url
+const String defaultImgUrl = 'assets/images/doctor-bag.svg';
 
-class FeedItemStrings {
-  static final String likeIconUrl = 'assets/images/like.svg';
-  static final String dislikeIconUrl = 'assets/images/dislike.svg';
-  static final String viewIconUrl = 'assets/images/view.svg';
+const String fallBackBewellLogoUrl =
+    'https://assets.healthcloud.co.ke/bewell_logo.png';
 
-  // title bar strings
-  static final String fallbackLogoIconUrl = 'assets/images/white_logo.png';
-}
+const String likeIconUrl = 'assets/images/like.svg';
+const String dislikeIconUrl = 'assets/images/dislike.svg';
+const String viewIconUrl = 'assets/images/view.svg';
+
+// title bar strings
+const String fallbackLogoIconUrl = 'assets/images/white_logo.png';
+
+const String pageTitleForDocuments = 'Documents';
+
+const String pdfIconUrl = 'assets/icons/pdf.svg';
+const String fallbackDocumentTitle = 'Document.pdf';
+
+const String defaultDocumentInstruction = 'Tap to view';
+
+const String pageTitleForImages = 'Images';
+
+const String fallbackImageTitle = 'Image';
+
+const String defaultImageInstruction = 'Tap to view';
