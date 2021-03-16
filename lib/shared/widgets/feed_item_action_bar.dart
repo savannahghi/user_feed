@@ -58,6 +58,7 @@ class FeedItemActionBar extends StatelessWidget {
               final bool allowAnonymous = action['allowAnonymous'] as bool;
 
               return FeedNoBorderButton(
+                buttonKey: Key(actionName),
                 onPressed: () {
                   checkOnAllowAnonymousBeforeCall(
                     allowFunc: () {

@@ -92,6 +92,33 @@ final List<Map<String, dynamic>> mockFeedItemActions = <Map<String, dynamic>>[
     },
   }
 ];
+final List<Map<String, dynamic>> mockFeedItemActionsAllowAnonymous =
+    <Map<String, dynamic>>[
+  <String, dynamic>{
+    'id': '1oBxEPUVwchV3RPYK37QmywsNq4',
+    'sequenceNumber': 1,
+    'name': 'RESOLVE_ITEM',
+    'actionType': 'PRIMARY',
+    'handling': 'INLINE',
+    'allowAnonymous': true
+  },
+  <String, dynamic>{
+    'id': '1oBxEPUVwchV3RPYK37QmywsNq4',
+    'sequenceNumber': 1,
+    'name': 'HIDE_ITEM',
+    'actionType': 'PRIMARY',
+    'handling': 'INLINE',
+    'allowAnonymous': true
+  },
+  <String, dynamic>{
+    'id': '1oBxEPUVwchV3RPYK37QmywsNq4',
+    'sequenceNumber': 1,
+    'name': 'PIN_ITEM',
+    'actionType': 'PRIMARY',
+    'handling': 'INLINE',
+    'allowAnonymous': true
+  }
+];
 final List<Map<String, dynamic>> mockFeedItemHideActions =
     <Map<String, dynamic>>[
   <String, dynamic>{
@@ -403,7 +430,7 @@ Map<String, dynamic> mockFeedItem = <String, dynamic>{
       'sequenceNumber': 1,
       'text':
           'I\'m the tests service. I\'ll help you deliver quality and affordable diagnostic tests. 👋!',
-      'replyTo': '1ns2o6D3HMWQDa80vvkQSGgzBmc',
+      'replyTo': '',
       'postedByUID': 'hOcaUv8dqqgmWYf9HEhjdudgf0b2',
       'postedByName': 'Tests Service'
     },
@@ -412,12 +439,35 @@ Map<String, dynamic> mockFeedItem = <String, dynamic>{
       'sequenceNumber': 1,
       'text':
           'I\'m the coaching service. I\'ll help you deliver your *awesome* coaching services to clients. 👋!',
-      'replyTo': '1ns2o6D3HMWQDa80vvkQSGgzBmc',
+      'replyTo': '',
       'postedByUID': 'hOcaUv8dqqgmWYf9HEhjdudgf0b2',
       'postedByName': 'Coaching Service'
     },
   ]
 };
+
+// Map<String, dynamic> mockFeedItemConversations = <String, dynamic>{
+//   'conversations': <dynamic>[
+//     <String, dynamic>{
+//       'id': '1ns2oKfXTX1gMoO4VbJN5X0G6uY',
+//       'sequenceNumber': 1,
+//       'text':
+//           'I\'m the tests service. I\'ll help you deliver quality and affordable diagnostic tests. 👋!',
+//       'replyTo': '',
+//       'postedByUID': 'hOcaUv8dqqgmWYf9HEhjdudgf0b2',
+//       'postedByName': 'Tests Service'
+//     },
+//     <String, dynamic>{
+//       'id': '1ns2oKcNl9xSKzrJOl1CMhLhp27',
+//       'sequenceNumber': 1,
+//       'text':
+//           'I\'m the coaching service. I\'ll help you deliver your *awesome* coaching services to clients. 👋!',
+//       'replyTo': '',
+//       'postedByUID': 'hOcaUv8dqqgmWYf9HEhjdudgf0b2',
+//       'postedByName': 'Coaching Service'
+//     },
+//   ]
+// };
 
 Map<String, dynamic> mockFeed = <String, dynamic>{
   'items': <dynamic>[mockFeedItem, mockFeedItem],
