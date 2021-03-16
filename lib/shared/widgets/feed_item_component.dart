@@ -260,7 +260,7 @@ class FeedItemComponent extends StatelessWidget {
                             timeStamp: threadTimeStamp,
                           ),
                         verySmallVerticalSizedBox,
-                        if (replyTo.isEmpty&& conversations.isNotEmpty)
+                        if (replyTo.isEmpty && conversations.isNotEmpty)
                           Row(
                             children: <Widget>[
                               Text(
