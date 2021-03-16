@@ -9,20 +9,25 @@ void main() {
     final List<dynamic> globalAction = <dynamic>[];
     mockFeedItem
         .forEach((String k, dynamic v) => globalAction.add(mockFeedItem));
-
-    testWidgets('should render correctly', (WidgetTester tester) async {
-      await tester.pumpWidget(MaterialApp(
-        home: Scaffold(
-          body: FeedItemCommentCard(
-            senderName: 'John',
-            threadBody: 'Hey',
-            timeStamp: '2021-02-01T07:30:50Z',
+    const String sender = 'John';
+    const String thread = 'Hey';
+    const String time = '2021-02-01T07:30:50Z';
+    testWidgets(
+      'should render correctly',
+      (WidgetTester tester) async {
+        await tester.pumpWidget(const MaterialApp(
+          home: Scaffold(
+            body: FeedItemCommentCard(
+              senderName: sender,
+              threadBody: thread,
+              timeStamp: time,
+            ),
           ),
-        ),
-      )); 
-      expect(find.text('John'), findsOneWidget);
-      expect(find.text('Hey'), findsOneWidget);
-      expect(find.text('2021-02-01T07:30:50Z'), findsOneWidget);
-    });
+        ));
+        expect(find.text(sender), findsOneWidget);
+        expect(find.text(thread), findsOneWidget);
+        expect(find.text(time), findsOneWidget);
+      },
+    );
   });
 }

@@ -8,7 +8,7 @@ R provideMockedNetworkImages<R>(R Function() body,
     {List<int> imageBytes = _transparentImage}) {
   return HttpOverrides.runZoned(
     body,
-    createHttpClient: (_) => _createMockImageHttpClient(_, imageBytes),
+    createHttpClient: (_) => _createMockImageHttpClient(_!, imageBytes),
   );
 }
 
@@ -20,7 +20,7 @@ MockHttpClientIO _createMockImageHttpClient(
   final MockHttpClientResponse response = MockHttpClientResponse();
   final MockHttpHeaders headers = MockHttpHeaders();
 
-  when(client.getUrl(any))
+  when(client.getUrl(Uri.parse('http://example.com')))
       .thenAnswer((_) => Future<HttpClientRequest>.value(request));
   when(request.headers).thenReturn(headers);
   when(request.close())
@@ -28,11 +28,17 @@ MockHttpClientIO _createMockImageHttpClient(
   when(response.contentLength).thenReturn(_transparentImage.length);
   when(response.statusCode).thenReturn(HttpStatus.ok);
   when(response.listen(any)).thenAnswer((Invocation invocation) {
-    final void Function(List<int>) onData = invocation.positionalArguments[0];
-    final void Function() onDone = invocation.namedArguments[#onDone];
-    final void Function(Object, [StackTrace]) onError =
-        invocation.namedArguments[#onError];
-    final bool cancelOnError = invocation.namedArguments[#cancelOnError];
+    final void Function(List<int>) onData =
+        invocation.positionalArguments[0] as void Function(List<int>);
+
+    final void Function() onDone =
+        invocation.namedArguments[#onDone] as void Function();
+
+    final void Function(Object, [StackTrace]) onError = invocation
+        .namedArguments[#onError] as void Function(Object, [StackTrace]);
+
+    final bool cancelOnError =
+        invocation.namedArguments[#cancelOnError] as bool;
 
     return Stream<List<int>>.fromIterable(<List<int>>[imageBytes]).listen(
         onData,

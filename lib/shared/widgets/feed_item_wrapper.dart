@@ -8,17 +8,17 @@ import 'package:sil_feed/shared/widgets/feed_item_component.dart';
 /// - takes in a list of feed items and renders the ui based on that list
 class FeedItemsWrapper extends StatelessWidget {
   const FeedItemsWrapper({
-    Key key,
-    @required this.feedItems,
-    @required this.flavour,
-    @required this.isAnonymousFunc,
-    @required this.resolveFunction,
-    @required this.pinFunction,
-    @required this.hideFunction,
-    @required this.tetherThread,
-    @required this.postedByUID,
-    @required this.isAnonymous,
-    @required this.postedByName,
+    Key? key,
+    required this.feedItems,
+    required this.flavour,
+    required this.isAnonymousFunc,
+    required this.resolveFunction,
+    required this.pinFunction,
+    required this.hideFunction,
+    required this.tetherThread,
+    required this.postedByUID,
+    required this.isAnonymous,
+    required this.postedByName,
   }) : super(key: key);
 
   final List<dynamic> feedItems;
@@ -53,7 +53,7 @@ class FeedItemsWrapper extends StatelessWidget {
             (dynamic feedItem) => FeedItemComponent(
               postedByName: postedByName,
               postedByUID: postedByUID,
-              feedItem: feedItem,
+              feedItem: feedItem as Map<String, dynamic>,
               flavour: flavour,
               resolveFunction: resolveFunction,
               pinFunction: pinFunction,
