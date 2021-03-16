@@ -7,14 +7,14 @@ packages:
       name: _fe_analyzer_shared
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "18.0.0"
+    version: "17.0.0"
   analyzer:
     dependency: transitive
     description:
       name: analyzer
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "1.2.0"
+    version: "1.1.0"
   archive:
     dependency: transitive
     description:
@@ -28,7 +28,7 @@ packages:
       name: args
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "1.6.0"
+    version: "2.0.0"
   async:
     dependency: transitive
     description:
@@ -330,7 +330,7 @@ packages:
       name: logging
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "0.11.4"
+    version: "1.0.0"
   matcher:
     dependency: transitive
     description:
@@ -512,8 +512,8 @@ packages:
     dependency: "direct main"
     description:
       path: "."
-      ref: "0.0.12-nullsafety"
-      resolved-ref: "1e1519bc844d59bcd0b130d87c9f4f598ce7cb2e"
+      ref: "0.0.13"
+      resolved-ref: "5f3df375891cd7c63b56a27c9c96fd74ac7fdd9e"
       url: "https://sil_dart_utils:xiFnpjLHssG76bpWxUb9@gitlab.slade360emr.com/optimalhealth/dart_utils/sil_misc.git"
     source: git
     version: "0.0.1"
@@ -530,8 +530,8 @@ packages:
     dependency: "direct main"
     description:
       path: "."
-      ref: "0.0.21-nullsafety"
-      resolved-ref: "473daea23162b820ff8cacc39a4225cf0d84f2e2"
+      ref: "0.0.22"
+      resolved-ref: "01daf09568cacfe7e6ee3bba5fde37fc4a9bcadb"
       url: "https://sil_dart_utils:xiFnpjLHssG76bpWxUb9@gitlab.slade360emr.com/optimalhealth/dart_utils/sil_ui_components.git"
     source: git
     version: "0.0.1"
@@ -560,7 +560,7 @@ packages:
       name: sqflite
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "2.0.0+3"
+    version: "2.0.0+2"
   sqflite_common:
     dependency: transitive
     description:

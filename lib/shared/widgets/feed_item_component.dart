@@ -106,305 +106,309 @@ class FeedItemComponent extends StatelessWidget {
           ),
         ],
       ),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: <Widget>[
-          smallVerticalSizedBox,
-          // the title bar of the feed item
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 10),
-            child: FeedItemTitleBar(
-              author: author,
-              tagline: tagline,
-              timestamp: timestamp,
-              iconUrl: iconUrl,
-              itemID: feedItemID,
-            ),
-          ),
-
-          // the body of the feed item
-          FeedItemBody(links: links, text: text, flavour: flavour),
-
-          /// feed item action bar
-          if (actions.isNotEmpty) ...<Widget>[
-            const Divider(thickness: 0.5, height: 15, color: primaryColor),
-            FeedItemActionBar(
-              actions: actions,
-              flavour: flavour,
-              feedItemID: feedItemID,
-              resolveFunction: resolveFunction,
-              pinFunction: pinFunction,
-              hideFunction: hideFunction,
-              isAnonymous: isAnonymous,
-              isAnonymousFunc: isAnonymousFunc,
-            ),
-            const Divider(thickness: 0.5, height: 10, color: primaryColor),
-          ],
-
-          if (conversations.isNotEmpty)
+      child: SizedBox(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: <Widget>[
+            smallVerticalSizedBox,
+            // the title bar of the feed item
             Padding(
-              padding: const EdgeInsets.all(15.0),
-              child: TextFormField(
-                controller: commentTextController,
-                style: TextThemes.normalSize12Text(Colors.black87),
-                decoration: InputDecoration(
-                  filled: true,
-                  fillColor: Colors.white,
-                  contentPadding:
-                      const EdgeInsets.symmetric(vertical: 15, horizontal: 15),
-                  labelText: 'Add comment',
-                  labelStyle: TextThemes.normalSize12Text(Colors.grey),
-                  hintStyle: TextThemes.normalSize12Text(Colors.grey),
-                  suffixIcon: IconButton(
-                    onPressed: () async {
-                      if (commentTextController.text.isNotEmpty) {
-                        final String replyTo = conversations[0]['id'] as String;
-                        final int sequenceNumber =
-                            conversations[0]['sequenceNumber'] as int;
-                        final String messageReply = commentTextController.text;
-                        // manager.update(userReply: messageReply);
-                        commentTextController.clear();
-
-                        // the function to reply a message to a feed item should be called here
-                        final FeedComponent replyToMessage = context
-                            .findAncestorWidgetOfExactType<FeedComponent>()!;
-
-                        await replyToMessage.replyToFeedItemFunction!(
-                            replyTo: replyTo,
-                            itemID: feedItemID,
-                            sequenceNumber: sequenceNumber,
-                            postedByName: postedByName,
-                            postedByUID: postedByUID,
-                            replyMessage: messageReply,
-                            timestamp: postMessageTimeStamp);
-                      } else {
-                        ScaffoldMessenger.of(context)
-                          ..hideCurrentSnackBar()
-                          ..showSnackBar(
-                            snackbar(
-                                content: 'You cannot post an empty reply...',
-                                label: ''),
-                          );
-                      }
-                    },
-                    icon: const Icon(
-                      Icons.send,
-                      color: primaryColor,
-                    ),
-                  ),
-                  hintText: 'Add comments',
-                  enabledBorder: const OutlineInputBorder(
-                    borderSide: BorderSide(color: primaryColor),
-                    borderRadius: BorderRadius.all(Radius.circular(40)),
-                  ),
-                  disabledBorder: const OutlineInputBorder(
-                    borderSide: BorderSide(color: Colors.grey),
-                    borderRadius: BorderRadius.all(Radius.circular(40)),
-                  ),
-                  focusedBorder: const OutlineInputBorder(
-                    borderSide: BorderSide(color: primaryColor),
-                    borderRadius: BorderRadius.all(Radius.circular(40)),
-                  ),
-                  errorBorder: const OutlineInputBorder(
-                    borderSide: BorderSide(color: Colors.red),
-                    borderRadius: BorderRadius.all(Radius.circular(40)),
-                  ),
-                  focusedErrorBorder: const OutlineInputBorder(
-                    borderSide: BorderSide(color: Colors.red),
-                    borderRadius: BorderRadius.all(Radius.circular(40)),
-                  ),
-                  focusColor: primaryColor,
-                ),
+              padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 10),
+              child: FeedItemTitleBar(
+                author: author,
+                tagline: tagline,
+                timestamp: timestamp,
+                iconUrl: iconUrl,
+                itemID: feedItemID,
               ),
             ),
 
-          if (conversations.isNotEmpty)
-            Padding(
-              padding: const EdgeInsets.only(left: 15.0),
-              child: Row(
-                children: <Widget>[
-                  Text(
-                    'Comments',
-                    style: TextThemes.boldSize16Text(Colors.black87),
-                  )
-                ],
+            // the body of the feed item
+            FeedItemBody(links: links, text: text, flavour: flavour),
+
+            /// feed item action bar
+            if (actions.isNotEmpty) ...<Widget>[
+              const Divider(thickness: 0.5, height: 15, color: primaryColor),
+              FeedItemActionBar(
+                actions: actions,
+                flavour: flavour,
+                feedItemID: feedItemID,
+                resolveFunction: resolveFunction,
+                pinFunction: pinFunction,
+                hideFunction: hideFunction,
+                isAnonymous: isAnonymous,
+                isAnonymousFunc: isAnonymousFunc,
               ),
-            ),
+              const Divider(thickness: 0.5, height: 10, color: primaryColor),
+            ],
 
-          // show the first message others are replying to
-          if (conversations.isNotEmpty)
-            SizedBox(
-              width: double.infinity,
-              child: Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 15),
-                child: ListView.builder(
-                  shrinkWrap: true,
-                  physics: const NeverScrollableScrollPhysics(),
-                  itemCount: conversations.length,
-                  itemBuilder: (BuildContext context, int index) {
-                    final String senderName =
-                        conversations[index]['postedByName'] as String;
-                    final String threadBody =
-                        conversations[index]['text'] as String;
-                    final String? replyTo =
-                        conversations[index]['replyTo'] as String?;
-                    final String threadTimeStamp = DateFormat('MMM dd, yyyy')
-                        .format(DateTime.parse(
-                            conversations[index]['timestamp'] as String));
-                    return Column(
-                      children: <Widget>[
-                        if (replyTo!.isEmpty)
-                          FeedItemCommentCard(
-                            senderName: senderName,
-                            threadBody: threadBody,
-                            timeStamp: threadTimeStamp,
-                          ),
-                        verySmallVerticalSizedBox,
-                        if (replyTo.isEmpty && conversations.isNotEmpty)
-                          Row(
-                            children: <Widget>[
-                              Text(
-                                'Replies . ',
-                                style:
-                                    TextThemes.boldSize13Text(Colors.black87),
-                              ),
-                              Text(
-                                '${conversations.length - 1} replies',
-                                style:
-                                    TextThemes.normalSize12Text(Colors.black54),
-                              ),
-                            ],
-                          )
-                      ],
-                    );
-                  },
-                ),
-              ),
-            ),
+            if (conversations.isNotEmpty)
+              Padding(
+                padding: const EdgeInsets.all(15.0),
+                child: TextFormField(
+                  controller: commentTextController,
+                  style: TextThemes.normalSize12Text(Colors.black87),
+                  decoration: InputDecoration(
+                    filled: true,
+                    fillColor: Colors.white,
+                    contentPadding: const EdgeInsets.symmetric(
+                        vertical: 15, horizontal: 15),
+                    labelText: 'Add comment',
+                    labelStyle: TextThemes.normalSize12Text(Colors.grey),
+                    hintStyle: TextThemes.normalSize12Text(Colors.grey),
+                    suffixIcon: IconButton(
+                      onPressed: () async {
+                        if (commentTextController.text.isNotEmpty) {
+                          final String replyTo =
+                              conversations[0]['id'] as String;
+                          final int sequenceNumber =
+                              conversations[0]['sequenceNumber'] as int;
+                          final String messageReply =
+                              commentTextController.text;
+                          // manager.update(userReply: messageReply);
+                          commentTextController.clear();
 
-          // feed comments
-          // replies from other users on this specific feed item
-          if (conversations.isNotEmpty)
-            StreamBuilder<bool>(
-                stream: tetherThreads.stream,
-                builder:
-                    (BuildContext context, AsyncSnapshot<dynamic> snapShot) {
-                  // this.manager.initial();
-                  if (snapShot.data == null) {
-                    return const CircularProgressIndicator();
-                  }
-                  if (snapShot.hasData) {
-                    final dynamic data = snapShot.data;
+                          // the function to reply a message to a feed item should be called here
+                          final FeedComponent replyToMessage = context
+                              .findAncestorWidgetOfExactType<FeedComponent>()!;
 
-                    return SizedBox(
-                      width: double.infinity,
-                      child: Padding(
-                        padding: const EdgeInsets.only(
-                            right: 15, bottom: 10, left: 30),
-                        child: ListView.builder(
-                            shrinkWrap: true,
-                            physics: const NeverScrollableScrollPhysics(),
-                            itemCount: (data == true)
-                                ? conversationsLengthBuilder(
-                                    conversations.length)
-                                : conversations.length,
-                            itemBuilder: (BuildContext context, int index) {
-                              final String senderName = conversations[index]
-                                  ['postedByName'] as String;
-                              final String threadBody =
-                                  conversations[index]['text'] as String;
-                              final String replyTo =
-                                  conversations[index]['replyTo'] as String;
-                              final String threadTimeStamp =
-                                  DateFormat('MMM dd, yyyy').format(
-                                      DateTime.parse(conversations[index]
-                                          ['timestamp'] as String));
-                              return Column(
-                                children: <Widget>[
-                                  if (replyTo.isNotEmpty)
-                                    FeedItemCommentCard(
-                                      senderName: senderName,
-                                      threadBody: threadBody,
-                                      timeStamp: threadTimeStamp,
-                                    ),
-                                  smallVerticalSizedBox,
-                                ],
-                              );
-                            }),
+                          await replyToMessage.replyToFeedItemFunction!(
+                              replyTo: replyTo,
+                              itemID: feedItemID,
+                              sequenceNumber: sequenceNumber,
+                              postedByName: postedByName,
+                              postedByUID: postedByUID,
+                              replyMessage: messageReply,
+                              timestamp: postMessageTimeStamp);
+                        } else {
+                          ScaffoldMessenger.of(context)
+                            ..hideCurrentSnackBar()
+                            ..showSnackBar(
+                              snackbar(
+                                  content: 'You cannot post an empty reply...',
+                                  label: ''),
+                            );
+                        }
+                      },
+                      icon: const Icon(
+                        Icons.send,
+                        color: primaryColor,
                       ),
-                    );
-                  }
-                  return Container();
-                }),
+                    ),
+                    hintText: 'Add comments',
+                    enabledBorder: const OutlineInputBorder(
+                      borderSide: BorderSide(color: primaryColor),
+                      borderRadius: BorderRadius.all(Radius.circular(40)),
+                    ),
+                    disabledBorder: const OutlineInputBorder(
+                      borderSide: BorderSide(color: Colors.grey),
+                      borderRadius: BorderRadius.all(Radius.circular(40)),
+                    ),
+                    focusedBorder: const OutlineInputBorder(
+                      borderSide: BorderSide(color: primaryColor),
+                      borderRadius: BorderRadius.all(Radius.circular(40)),
+                    ),
+                    errorBorder: const OutlineInputBorder(
+                      borderSide: BorderSide(color: Colors.red),
+                      borderRadius: BorderRadius.all(Radius.circular(40)),
+                    ),
+                    focusedErrorBorder: const OutlineInputBorder(
+                      borderSide: BorderSide(color: Colors.red),
+                      borderRadius: BorderRadius.all(Radius.circular(40)),
+                    ),
+                    focusColor: primaryColor,
+                  ),
+                ),
+              ),
 
-          if (conversations.isNotEmpty)
-            StreamBuilder<bool>(
-                stream: tetherThreads.stream,
-                builder:
-                    (BuildContext context, AsyncSnapshot<dynamic> snapShot) {
-                  if (snapShot.data == null) {
-                    return const CircularProgressIndicator();
-                  }
-                  if (snapShot.hasData) {
-                    final dynamic data = snapShot.data;
-                    return Column(
-                      children: <Widget>[
-                        if (data == true)
-                          GestureDetector(
-                            onTap: () {
-                              tetherThreads.add(false);
-                              // this.manager.update(tetherThread: false);
-                            },
-                            child: Padding(
-                              padding: const EdgeInsets.only(
-                                  right: 15.0, bottom: 15.0),
-                              child: Row(
-                                mainAxisAlignment: MainAxisAlignment.end,
-                                children: <Widget>[
-                                  Text(
-                                    'View All Comments',
-                                    style: TextThemes.boldSize12Text(
-                                            Colors.black54)
-                                        .copyWith(
-                                            decoration:
-                                                TextDecoration.underline),
-                                  )
-                                ],
+            if (conversations.isNotEmpty)
+              Padding(
+                padding: const EdgeInsets.only(left: 15.0),
+                child: Row(
+                  children: <Widget>[
+                    Text(
+                      'Comments',
+                      style: TextThemes.boldSize16Text(Colors.black87),
+                    )
+                  ],
+                ),
+              ),
+
+            // show the first message others are replying to
+            if (conversations.isNotEmpty)
+              SizedBox(
+                width: double.infinity,
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 15),
+                  child: ListView.builder(
+                    shrinkWrap: true,
+                    physics: const NeverScrollableScrollPhysics(),
+                    itemCount: conversations.length,
+                    itemBuilder: (BuildContext context, int index) {
+                      final String senderName =
+                          conversations[index]['postedByName'] as String;
+                      final String threadBody =
+                          conversations[index]['text'] as String;
+                      final String? replyTo =
+                          conversations[index]['replyTo'] as String?;
+                      final String threadTimeStamp = DateFormat('MMM dd, yyyy')
+                          .format(DateTime.parse(
+                              conversations[index]['timestamp'] as String));
+                      return Column(
+                        children: <Widget>[
+                          if (replyTo!.isEmpty)
+                            FeedItemCommentCard(
+                              senderName: senderName,
+                              threadBody: threadBody,
+                              timeStamp: threadTimeStamp,
+                            ),
+                          verySmallVerticalSizedBox,
+                          if (replyTo.isEmpty && conversations.isNotEmpty)
+                            Row(
+                              children: <Widget>[
+                                Text(
+                                  'Replies . ',
+                                  style:
+                                      TextThemes.boldSize13Text(Colors.black87),
+                                ),
+                                Text(
+                                  '${conversations.length - 1} replies',
+                                  style: TextThemes.normalSize12Text(
+                                      Colors.black54),
+                                ),
+                              ],
+                            )
+                        ],
+                      );
+                    },
+                  ),
+                ),
+              ),
+
+            // feed comments
+            // replies from other users on this specific feed item
+            if (conversations.isNotEmpty)
+              StreamBuilder<bool>(
+                  stream: tetherThreads.stream,
+                  builder:
+                      (BuildContext context, AsyncSnapshot<dynamic> snapShot) {
+                    // this.manager.initial();
+                    if (snapShot.data == null) {
+                      return const CircularProgressIndicator();
+                    }
+                    if (snapShot.hasData) {
+                      final dynamic data = snapShot.data;
+
+                      return SizedBox(
+                        width: double.infinity,
+                        child: Padding(
+                          padding: const EdgeInsets.only(
+                              right: 15, bottom: 10, left: 30),
+                          child: ListView.builder(
+                              shrinkWrap: true,
+                              physics: const NeverScrollableScrollPhysics(),
+                              itemCount: (data == true)
+                                  ? conversationsLengthBuilder(
+                                      conversations.length)
+                                  : conversations.length,
+                              itemBuilder: (BuildContext context, int index) {
+                                final String senderName = conversations[index]
+                                    ['postedByName'] as String;
+                                final String threadBody =
+                                    conversations[index]['text'] as String;
+                                final String replyTo =
+                                    conversations[index]['replyTo'] as String;
+                                final String threadTimeStamp =
+                                    DateFormat('MMM dd, yyyy').format(
+                                        DateTime.parse(conversations[index]
+                                            ['timestamp'] as String));
+                                return Column(
+                                  children: <Widget>[
+                                    if (replyTo.isNotEmpty)
+                                      FeedItemCommentCard(
+                                        senderName: senderName,
+                                        threadBody: threadBody,
+                                        timeStamp: threadTimeStamp,
+                                      ),
+                                    smallVerticalSizedBox,
+                                  ],
+                                );
+                              }),
+                        ),
+                      );
+                    }
+                    return Container();
+                  }),
+
+            if (conversations.isNotEmpty)
+              StreamBuilder<bool>(
+                  stream: tetherThreads.stream,
+                  builder:
+                      (BuildContext context, AsyncSnapshot<dynamic> snapShot) {
+                    if (snapShot.data == null) {
+                      return const CircularProgressIndicator();
+                    }
+                    if (snapShot.hasData) {
+                      final dynamic data = snapShot.data;
+                      return Column(
+                        children: <Widget>[
+                          if (data == true)
+                            GestureDetector(
+                              onTap: () {
+                                tetherThreads.add(false);
+                                // this.manager.update(tetherThread: false);
+                              },
+                              child: Padding(
+                                padding: const EdgeInsets.only(
+                                    right: 15.0, bottom: 15.0),
+                                child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.end,
+                                  children: <Widget>[
+                                    Text(
+                                      'View All Comments',
+                                      style: TextThemes.boldSize12Text(
+                                              Colors.black54)
+                                          .copyWith(
+                                              decoration:
+                                                  TextDecoration.underline),
+                                    )
+                                  ],
+                                ),
                               ),
                             ),
-                          ),
-                        if (data == false)
-                          GestureDetector(
-                            onTap: () {
-                              tetherThreads.add(true);
-                              // this.manager.update(tetherThread: true);
-                            },
-                            child: Padding(
-                              padding: const EdgeInsets.only(
-                                  right: 15.0, bottom: 15.0),
-                              child: Row(
-                                mainAxisAlignment: MainAxisAlignment.end,
-                                children: <Widget>[
-                                  Text(
-                                    'Show less',
-                                    style: TextThemes.boldSize12Text(
-                                            Colors.black54)
-                                        .copyWith(
-                                            decoration:
-                                                TextDecoration.underline),
-                                  )
-                                ],
+                          if (data == false)
+                            GestureDetector(
+                              onTap: () {
+                                tetherThreads.add(true);
+                                // this.manager.update(tetherThread: true);
+                              },
+                              child: Padding(
+                                padding: const EdgeInsets.only(
+                                    right: 15.0, bottom: 15.0),
+                                child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.end,
+                                  children: <Widget>[
+                                    Text(
+                                      'Show less',
+                                      style: TextThemes.boldSize12Text(
+                                              Colors.black54)
+                                          .copyWith(
+                                              decoration:
+                                                  TextDecoration.underline),
+                                    )
+                                  ],
+                                ),
                               ),
                             ),
-                          ),
-                      ],
-                    );
-                  }
-                  return Container();
-                }),
+                        ],
+                      );
+                    }
+                    return Container();
+                  }),
 
-          smallVerticalSizedBox,
-        ],
+            smallVerticalSizedBox,
+          ],
+        ),
       ),
     );
   }

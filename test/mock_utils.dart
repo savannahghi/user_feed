@@ -1,21 +1,86 @@
+import 'dart:async';
+import 'dart:convert';
 import 'dart:io';
+import 'dart:typed_data';
 
 import 'package:mockito/mockito.dart';
 
-import 'mocks.dart';
-
-R provideMockedNetworkImages<R>(R Function() body,
-    {List<int> imageBytes = _transparentImage}) {
+R provideMockedNetworkImages<R>(
+  R Function() body,
+) {
   return HttpOverrides.runZoned(
     body,
-    createHttpClient: (_) => _createMockImageHttpClient(_!, imageBytes),
+    createHttpClient: (_) => createMockImageHttpClient(),
   );
 }
 
-// Returns a mock HTTP client that responds with an image to all requests.
-MockHttpClientIO _createMockImageHttpClient(
-    SecurityContext _, List<int> imageBytes) {
-  final MockHttpClientIO client = MockHttpClientIO();
+class MockHttpClient extends Mock implements HttpClient {
+  @override
+  Future<HttpClientRequest> getUrl(Uri? url) async {
+    return super.noSuchMethod(
+      // ignore: always_specify_types
+      Invocation.method(#getUrl, [url]),
+      returnValue: Future<HttpClientRequest>.value(
+        MockHttpClientRequest(),
+      ),
+    ) as Future<HttpClientRequest>;
+  }
+}
+
+class MockHttpClientRequest extends Mock implements HttpClientRequest {
+  @override
+  HttpHeaders get headers => super.noSuchMethod(Invocation.getter(#headers),
+      returnValue: MockHttpHeaders()) as HttpHeaders;
+
+  @override
+  Future<HttpClientResponse> close() =>
+      // ignore: always_specify_types
+      super.noSuchMethod(Invocation.method(#close, []),
+              returnValue:
+                  Future<HttpClientResponse>.value(MockHttpClientResponse()))
+          as Future<HttpClientResponse>;
+}
+
+class MockHttpClientResponse extends Mock implements HttpClientResponse {
+  @override
+  HttpClientResponseCompressionState get compressionState =>
+      super.noSuchMethod(Invocation.getter(#compressionState),
+              returnValue: HttpClientResponseCompressionState.notCompressed)
+          as HttpClientResponseCompressionState;
+
+  @override
+  int get contentLength =>
+      super.noSuchMethod(Invocation.getter(#contentLength), returnValue: 0)
+          as int;
+
+  @override
+  int get statusCode =>
+      super.noSuchMethod(Invocation.getter(#statusCode), returnValue: 0) as int;
+
+  @override
+  StreamSubscription<List<int>> listen(void Function(List<int>)? onData,
+          {Function? onError, void Function()? onDone, bool? cancelOnError}) =>
+      super.noSuchMethod(
+              // ignore: always_specify_types
+              Invocation.method(#listen, [
+                onData,
+                // ignore: always_specify_types
+              ], {
+                const Symbol('onError'): onError,
+                const Symbol('onDone'): onDone,
+                const Symbol('cancelOnError'): cancelOnError,
+              }),
+              returnValue: MockStreamSubscription<List<int>>())
+          as StreamSubscription<List<int>>;
+}
+
+class MockHttpHeaders extends Mock implements HttpHeaders {}
+
+class MockStreamSubscription<T> extends Mock implements StreamSubscription<T> {}
+
+/// Returns a [MockHttpClient] that responds with demo image to all requests.
+MockHttpClient createMockImageHttpClient() {
+  final MockHttpClient client = MockHttpClient();
   final MockHttpClientRequest request = MockHttpClientRequest();
   final MockHttpClientResponse response = MockHttpClientResponse();
   final MockHttpHeaders headers = MockHttpHeaders();
@@ -25,22 +90,26 @@ MockHttpClientIO _createMockImageHttpClient(
   when(request.headers).thenReturn(headers);
   when(request.close())
       .thenAnswer((_) => Future<HttpClientResponse>.value(response));
-  when(response.contentLength).thenReturn(_transparentImage.length);
+  when(response.compressionState)
+      .thenReturn(HttpClientResponseCompressionState.notCompressed);
+  when(response.contentLength).thenReturn(transparentImage.length);
   when(response.statusCode).thenReturn(HttpStatus.ok);
-  when(response.listen(any)).thenAnswer((Invocation invocation) {
+  when(response.listen(
+    any,
+    onError: anyNamed('onError'),
+    onDone: anyNamed('onDone'),
+    cancelOnError: anyNamed('cancelOnError'),
+  )).thenAnswer((Invocation invocation) {
     final void Function(List<int>) onData =
         invocation.positionalArguments[0] as void Function(List<int>);
-
     final void Function() onDone =
         invocation.namedArguments[#onDone] as void Function();
-
     final void Function(Object, [StackTrace]) onError = invocation
         .namedArguments[#onError] as void Function(Object, [StackTrace]);
+    final bool? cancelOnError =
+        invocation.namedArguments[#cancelOnError] as bool?;
 
-    final bool cancelOnError =
-        invocation.namedArguments[#cancelOnError] as bool;
-
-    return Stream<List<int>>.fromIterable(<List<int>>[imageBytes]).listen(
+    return Stream<List<int>>.fromIterable(<List<int>>[transparentImage]).listen(
         onData,
         onDone: onDone,
         onError: onError,
@@ -50,69 +119,7 @@ MockHttpClientIO _createMockImageHttpClient(
   return client;
 }
 
-const List<int> _transparentImage = <int>[
-  0x89,
-  0x50,
-  0x4E,
-  0x47,
-  0x0D,
-  0x0A,
-  0x1A,
-  0x0A,
-  0x00,
-  0x00,
-  0x00,
-  0x0D,
-  0x49,
-  0x48,
-  0x44,
-  0x52,
-  0x00,
-  0x00,
-  0x00,
-  0x01,
-  0x00,
-  0x00,
-  0x00,
-  0x01,
-  0x08,
-  0x06,
-  0x00,
-  0x00,
-  0x00,
-  0x1F,
-  0x15,
-  0xC4,
-  0x89,
-  0x00,
-  0x00,
-  0x00,
-  0x0A,
-  0x49,
-  0x44,
-  0x41,
-  0x54,
-  0x78,
-  0x9C,
-  0x63,
-  0x00,
-  0x01,
-  0x00,
-  0x00,
-  0x05,
-  0x00,
-  0x01,
-  0x0D,
-  0x0A,
-  0x2D,
-  0xB4,
-  0x00,
-  0x00,
-  0x00,
-  0x00,
-  0x49,
-  0x45,
-  0x4E,
-  0x44,
-  0xAE,
-];
+// transparent pixel in png format
+final Uint8List transparentImage = base64Decode(
+  'iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mP8z8BQDwAEhQGAhKmMIQAAAABJRU5ErkJggg==',
+);

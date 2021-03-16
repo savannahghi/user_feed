@@ -190,7 +190,7 @@ Map<String, dynamic> mockFeedAction = <String, dynamic>{
   'allowAnonymous': false
 };
 
-final List<dynamic> mockFeedNudges = <dynamic>[
+List<dynamic> mockFeedNudges = <dynamic>[
   <String, dynamic>{
     'id': '1608729954',
     'sequenceNumber': 1608729964,
@@ -347,22 +347,22 @@ Map<String, dynamic> mockFeedItem = <String, dynamic>{
   'text':
       'Be.Well is a virtual and physical healthcare community. Our goal is to make it easy for you to provide affordable high-quality healthcare - whether online or in person.',
   'links': <dynamic>[
-    <String, dynamic>{
-      'id': '1ns2o8pktkMsAEmP9dIKFvIhvAC',
-      'url': 'https://youtu.be/gcv2Z2AdpjM',
-      'linkType': 'YOUTUBE_VIDEO',
-      'thumbnail':
-          'https://assets.healthcloud.co.ke/items/videos/thumbs/01_lead.png',
-      'title': 'Be.Well lead'
-    },
-    <String, dynamic>{
-      'id': '1ns2o9kdNr1wyAyuybtsr9VQSs8',
-      'url': 'https://youtu.be/W_daZjDET9Q',
-      'linkType': 'YOUTUBE_VIDEO',
-      'thumbnail':
-          'https://assets.healthcloud.co.ke/items/videos/thumbs/02_prescription.png',
-      'title': 'Prescription delivery'
-    },
+    // <String, dynamic>{
+    //   'id': '1ns2o8pktkMsAEmP9dIKFvIhvAC',
+    //   'url': 'https://youtu.be/gcv2Z2AdpjM',
+    //   'linkType': 'YOUTUBE_VIDEO',
+    //   'thumbnail':
+    //       'https://assets.healthcloud.co.ke/items/videos/thumbs/01_lead.png',
+    //   'title': 'Be.Well lead'
+    // },
+    // <String, dynamic>{
+    //   'id': '1ns2o9kdNr1wyAyuybtsr9VQSs8',
+    //   'url': 'https://youtu.be/W_daZjDET9Q',
+    //   'linkType': 'YOUTUBE_VIDEO',
+    //   'thumbnail':
+    //       'https://assets.healthcloud.co.ke/items/videos/thumbs/02_prescription.png',
+    //   'title': 'Prescription delivery'
+    // },
     <String, dynamic>{
       'id': '1ns2oAO0lVcn7gzAqBZrICZCMr2',
       'url':
@@ -432,7 +432,7 @@ Map<String, dynamic> mockFeedItem = <String, dynamic>{
           'I\'m the tests service. I\'ll help you deliver quality and affordable diagnostic tests. 👋!',
       'replyTo': '',
       'postedByUID': 'hOcaUv8dqqgmWYf9HEhjdudgf0b2',
-      'postedByName': 'Tests Service'
+      'postedByName': 'Tests Service',
     },
     <String, dynamic>{
       'id': '1ns2oKcNl9xSKzrJOl1CMhLhp27',
