@@ -29,16 +29,16 @@ dependencies:
   sil_misc:
     git:
       url: https://sil_dart_utils:xiFnpjLHssG76bpWxUb9@gitlab.slade360emr.com/optimalhealth/dart_utils/sil_misc.git
-      ref: 0.0.10-nullsafety 
+      ref: 0.0.12-nullsafety 
 
   sil_themes:
     git:
       url: https://sil_dart_utils:xiFnpjLHssG76bpWxUb9@gitlab.slade360emr.com/optimalhealth/dart_utils/sil_themes.git
-      ref: 0.0.3-nullsafety
+      ref: 0.0.4-nullsafety
   sil_ui_components:
     git:
       url: https://sil_dart_utils:xiFnpjLHssG76bpWxUb9@gitlab.slade360emr.com/optimalhealth/dart_utils/sil_ui_components.git
-      ref: 0.0.12-nullsafety  
+      ref: 0.0.13-nullsafety  
 
   visibility_detector: ^0.2.0-nullsafety.1
 
