@@ -7,7 +7,7 @@ import '../../../mocks.dart';
 
 void main() {
   group('FeedGlobalActionBar', () {
-    final List<dynamic> globalActionsData = <dynamic>[mockFeedItem['actions']];
+
     testWidgets('should render correctly', (WidgetTester tester) async {
       await tester.pumpWidget(MaterialApp(
         home: Builder(builder: (BuildContext context) {
