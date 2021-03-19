@@ -143,7 +143,7 @@ class FeedGlobalActionBar extends StatelessWidget {
           smallHorizontalSizedBox,
 
           // todo(abiud) - add checks for when the actions are empty or null
-          for (dynamic action in globalActionsData[0])
+          for (dynamic action in globalActionsData)
             _buildGlobalAction(action: action, context: context),
         ],
       ),
