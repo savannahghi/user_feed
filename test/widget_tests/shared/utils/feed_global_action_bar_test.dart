@@ -7,7 +7,24 @@ import '../../../mocks.dart';
 
 void main() {
   group('FeedGlobalActionBar', () {
-    final List<dynamic> globalActionsData = <dynamic>[mockFeedItem['actions']];
+    final ListMap<<String, dynamic>> globalActionsData = Map<<String, dynamic>>[
+            <String, dynamic>{
+        'id': '1608647089',
+        'sequenceNumber': 1608647089,
+        'name': 'COMPLETE_INDIVIDUAL_RIDER_KYC',
+        'actionType': 'PRIMARY',
+        'handling': 'FULL_PAGE',
+        'allowAnonymous': false
+      },
+            <String, dynamic>{
+        'id': '34564564',
+        'sequenceNumber': 34564564,
+        'name': 'COMPLETE_INDIVIDUAL_RIDER_KYC',
+        'actionType': 'PRIMARY',
+        'handling': 'FULL_PAGE',
+        'allowAnonymous': false
+      }
+    ];
     testWidgets('should render correctly', (WidgetTester tester) async {
       await tester.pumpWidget(MaterialApp(
         home: Builder(builder: (BuildContext context) {
