@@ -22,7 +22,7 @@ void main() {
       ));
 
       expect(find.byType(RawMaterialButton), findsOneWidget);
-     // expect(find.text(buttonText), findsOneWidget);
+      // expect(find.text(buttonText), findsOneWidget);
 
       await tester.tap(find.byType(FeedPrimaryButton));
       await tester.pumpAndSettle();
@@ -133,7 +133,6 @@ void main() {
     //       flavour: 'PRO',
     //       customFunction: addOne,
     //       isAnonymousFunc: addOneAnonymously,
-          
     //     )),
     //   ));
 
@@ -225,7 +224,6 @@ void main() {
                 isAnonymous: true,
                 flavour: 'PRO',
                 customFunction: addOne,
-                
               ),
           throwsException);
     });
