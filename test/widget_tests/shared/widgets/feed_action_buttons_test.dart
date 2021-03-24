@@ -31,31 +31,31 @@ void main() {
       expect(integers.first, 1);
     });
 
-    // testWidgets('should render secondary button correctly',
-    //     (WidgetTester tester) async {
-    //   final List<int> integers = <int>[];
-    //   // ignore: prefer_function_declarations_over_variables
-    //   final VoidCallback addOne = () => integers.add(1);
-    //   const String buttonText = 'Primary Button';
+    testWidgets('should render secondary button correctly',
+        (WidgetTester tester) async {
+      final List<int> integers = <int>[];
+      // ignore: prefer_function_declarations_over_variables
+      final VoidCallback addOne = () => integers.add(1);
+      const String buttonText = 'Primary Button';
 
-    //   await tester.pumpWidget(MaterialApp(
-    //     home: Scaffold(
-    //         body: FeedSecondaryButton(
-    //       onPressed: addOne,
-    //       text: buttonText,
-    //       addBorder: true,
-    //     )),
-    //   ));
+      await tester.pumpWidget(MaterialApp(
+        home: Scaffold(
+            body: FeedSecondaryButton(
+          onPressed: addOne,
+          text: buttonText,
+          addBorder: true,
+        )),
+      ));
 
-    //   expect(find.byType(OutlinedButton), findsOneWidget);
-    //   //expect(find.text(buttonText), findsOneWidget);
+      expect(find.byType(OutlinedButton), findsOneWidget);
+      //expect(find.text(buttonText), findsOneWidget);
 
-    //   await tester.tap(find.byType(OutlinedButton));
-    //   await tester.pumpAndSettle();
+      await tester.tap(find.byType(OutlinedButton));
+      await tester.pumpAndSettle();
 
-    //   expect(integers.isEmpty, false);
-    //   expect(integers.first, 1);
-    // });
+      expect(integers.isEmpty, false);
+      expect(integers.first, 1);
+    });
 
     testWidgets('should render no border button correctly',
         (WidgetTester tester) async {
@@ -146,37 +146,35 @@ void main() {
     //   expect(integers.first, 2);
     // });
 
-    // testWidgets('should show coming soon if now allow function is provided',
-    //     (WidgetTester tester) async {
-    //   final List<int> integers = <int>[];
-    //   // ignore: prefer_function_declarations_over_variables
-    //   final Function addOne = () => integers.add(1);
-    //   // ignore: prefer_function_declarations_over_variables
-    //   final Function addOneAnonymously = () => integers.add(2);
+    testWidgets('should show coming soon if now allow function is provided',
+        (WidgetTester tester) async {
+      final List<int> integers = <int>[];
+      // ignore: prefer_function_declarations_over_variables
+      final Function addOne = () => integers.add(1);
+      // ignore: prefer_function_declarations_over_variables
+      final Function addOneAnonymously = () => integers.add(2);
 
-    //   const String buttonText = 'Verify Email';
-    //   mockFeedSecondaryAction['allowAnonymous'] = false;
+      mockFeedSecondaryAction['allowAnonymous'] = false;
 
-    //   await tester.pumpWidget(MaterialApp(
-    //     home: Scaffold(
-    //         body: FeedActionButton(
-    //       action: mockFeedSecondaryAction,
-    //       isAnonymous: true,
-    //       flavour: 'PRO',
-    //       customFunction: addOne,
-    //       isAnonymousFunc: addOneAnonymously,
-    //     )),
-    //   ));
+      await tester.pumpWidget(MaterialApp(
+        home: Scaffold(
+            body: FeedActionButton(
+          action: mockFeedSecondaryAction,
+          isAnonymous: true,
+          flavour: 'PRO',
+          customFunction: addOne,
+          isAnonymousFunc: addOneAnonymously,
+        )),
+      ));
 
-    //   expect(find.byType(FeedSecondaryButton), findsOneWidget);
-    //   //expect(find.text(buttonText), findsOneWidget);
+      expect(find.byType(FeedSecondaryButton), findsOneWidget);
 
-    //   await tester.tap(find.byType(FeedSecondaryButton));
-    //   await tester.pumpAndSettle();
+      await tester.tap(find.byType(FeedSecondaryButton));
+      await tester.pumpAndSettle();
 
-    //   expect(find.byType(SnackBar), findsOneWidget);
-    //   expect(find.text('Coming Soon!'), findsOneWidget);
-    // });
+      expect(find.byType(SnackBar), findsOneWidget);
+      expect(find.text('Coming Soon!'), findsOneWidget);
+    });
 
     // testWidgets('should return default feed primary action for other actions',
     //     (WidgetTester tester) async {
@@ -193,7 +191,7 @@ void main() {
     //     home: Scaffold(
     //         body: FeedActionButton(
     //       action: mockFeedOverflowAction,
-    //       isAnonymous: true,
+    //       isAnonymous: false,
     //       flavour: 'PRO',
     //       customFunction: addOne,
     //       isAnonymousFunc: addOneAnonymously,

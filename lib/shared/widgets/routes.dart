@@ -9,4 +9,5 @@ class Routes {
   static const String kycPage = '/kycPage';
   static const String addCoverPage = '/addCoverPage';
   static const String feedDocumentViewer = '/feedDocumentViewer';
+  static const String nudgeCarousel = '/nudgeCarousel';
 }

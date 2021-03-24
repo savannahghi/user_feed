@@ -90,7 +90,11 @@ class FeedSecondaryButton extends StatelessWidget {
     return OutlinedButton(
       key: buttonKey,
       onPressed: onPressed,
-      child: customChild!,
+      child: customChild ??Text(
+            text,
+            style: TextThemes.veryBoldSize15Text(
+                textColor ?? Theme.of(context).primaryColor),
+          ),
     );
   }
 }
@@ -229,6 +233,7 @@ class FeedActionButton extends StatelessWidget {
         },
         text: actionName,
         customPadding: const EdgeInsets.symmetric(vertical: 12, horizontal: 15),
+        
       );
     }
 
