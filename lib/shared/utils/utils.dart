@@ -87,11 +87,8 @@ void callFeedAction(
     required BuildContext context,
     required String flavour}) {
   // get the callbacks
-  final Map<String, dynamic> callbacks = (context
-          .findAncestorWidgetOfExactType<FeedComponent>()
-          ?.feedContentCallbacks ??
-      context
-          .findAncestorWidgetOfExactType<NudgeCarousel>()?.nudgeCarouselCallbacks)!;
+  final Map<String, dynamic> callbacks = (context.findAncestorWidgetOfExactType<FeedComponent>()?.feedContentCallbacks ??
+      context.findAncestorWidgetOfExactType<NudgeCarousel>()?.nudgeCarouselCallbacks)!;
 
   if (flavour == consumerFlavor) {
     // loop through the consumer actions and call their functions

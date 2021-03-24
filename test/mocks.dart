@@ -2,17 +2,26 @@ import 'dart:io' as io;
 
 import 'package:flutter/material.dart';
 import 'package:mockito/mockito.dart';
+import 'package:sil_feed/constants/constants.dart';
+import 'package:sil_feed/shared/utils/widget_keys.dart';
+import 'package:sil_feed/shared/widgets/nudge_carousel.dart';
 import 'package:sil_misc/sil_small_app_bar.dart';
 
 class MockRoutes {
-  static const String route1 = 'route1';
-  static const String route2 = 'route2';
+  static const String route1 = '/route1';
+  static const String nudgeCarousel = '/route2';
 }
 
 // these mocks are used to test the back button of SIL small appbar
 class MockRouteGenerator {
   /// gets the current route based on the [RouteSettings]
   static Route<dynamic> generateRoute(RouteSettings settings) {
+    Map<String, Function> getFeedActionCallbacks() {
+      return <String, Function>{
+        kCompleteIndividualRiderKYC: () {},
+      };
+    }
+
     switch (settings.name) {
 
       // the root route config
@@ -26,17 +35,19 @@ class MockRouteGenerator {
           ),
         );
 
-      case MockRoutes.route2:
-        return MaterialPageRoute<MaterialApp>(
-          builder: (_) => const MaterialApp(
-            home: Scaffold(
-              appBar: SILSmallAppBar(
-                title: MockRoutes.route2,
-                backRoute: MockRoutes.route1,
-              ),
-            ),
-          ),
-        );
+      case MockRoutes.nudgeCarousel:
+        return MaterialPageRoute<Widget>(
+            builder: (_) => NudgeCarousel(
+                  key: nudgeCarouselKey,
+                  flavour: consumerFlavor,
+                  isAnonymous: false,
+                  isSmallScreen: false,
+                  isAnonymousFunc: () {},
+                  nudgeCarouselCallbacks: getFeedActionCallbacks(),
+                  nudges: mockFeedNudges,
+                  single: false,
+                  unroll: false,
+                ));
     }
 
     return MaterialPageRoute<MaterialApp>(
@@ -133,7 +144,7 @@ final List<Map<String, dynamic>> mockFeedItemHideActions =
 final List<Map<String, String>> mockFeedLinks = <Map<String, String>>[
   <String, String>{
     'id': '1lmN7huRFi1PTCNIejxPQXy7KkC',
-    'url': 'https://youtu.be/gcv2Z2AdpjM',
+    'url': 'https://www.youtube.com/watch?v=gcv2Z2AdpjM',
     'linkType': 'YOUTUBE_VIDEO',
     'title': 'Be.Well lead',
     'description': 'Introducing Be.Well by Slade 360',
@@ -170,7 +181,10 @@ final Map<String, dynamic> mockFeedSecondaryAction = <String, dynamic>{
   'name': 'VERIFY_EMAIL',
   'actionType': 'SECONDARY',
   'handling': 'FULL_PAGE',
-  'allowAnonymous': true
+  'allowAnonymous': true,
+  'nudgeCallbacks':<String, dynamic>{
+    ' kCompleteIndividualRiderKYC':'445212'
+  }
 };
 
 final Map<String, dynamic> mockFeedOverflowAction = <String, dynamic>{
@@ -189,7 +203,52 @@ Map<String, dynamic> mockFeedAction = <String, dynamic>{
   'handling': 'FULL_PAGE',
   'allowAnonymous': false
 };
-
+Map<String, dynamic> nudge = <String, dynamic>{
+  'id': '1608729954',
+  'sequenceNumber': 1608729964,
+  'visibility': 'SHOW',
+  'status': 'PENDING',
+  'title': 'Complete your rider KYC',
+  'text': 'Fill in your Be.Well business KYC in order to start transacting',
+  'actions': <dynamic>[
+    <String, dynamic>{
+      'id': '1608647889',
+      'sequenceNumber': 1608647899,
+      'name': 'COMPLETE_INDIVIDUAL_RIDER_KYC',
+      'actionType': 'PRIMARY',
+      'handling': 'FULL_PAGE',
+      'allowAnonymous': false
+    }
+  ],
+  'links': <dynamic>[
+    <String, dynamic>{
+      'id': '1ns2o8pktkMsAEmP9dIKFvIhvAC',
+      'url': 'https://youtu.be/gcv2Z2AdpjM',
+      'linkType': 'YOUTUBE_VIDEO',
+      'thumbnail':
+          'https://assets.healthcloud.co.ke/items/videos/thumbs/01_lead.png',
+      'title': 'Be.Well lead'
+    },
+    <String, dynamic>{
+      'id': '1ns2o9kdNr1wyAyuybtsr9VQSs8',
+      'url': 'https://youtu.be/W_daZjDET9Q',
+      'linkType': 'YOUTUBE_VIDEO',
+      'thumbnail':
+          'https://assets.healthcloud.co.ke/items/videos/thumbs/02_prescription.png',
+      'title': 'Prescription delivery'
+    },
+    <String, dynamic>{
+      'id': '1ns2oAO0lVcn7gzAqBZrICZCMr2',
+      'url':
+          'https://assets.healthcloud.co.ke/items/images/bewell_banner05.png',
+      'linkType': 'PNG_IMAGE',
+      'title': 'Wellness review',
+      'description': 'You should have a wellness review daily',
+      'thumbnail':
+          'https://assets.healthcloud.co.ke/items/images/thumbs/bewell_banner05.png'
+    },
+  ],
+};
 List<dynamic> mockFeedNudges = <dynamic>[
   <String, dynamic>{
     'id': '1608729954',
@@ -325,6 +384,12 @@ List<dynamic> mockFeedNudges = <dynamic>[
   },
 ];
 
+const String author = 'Be.Well Team';
+const String iconUrl = 'https://assets.healthcloud.co.ke/bewell_logo.png';
+const String itemID = '1ns2oDTr800KQMoAwlyS18DiHnp';
+const String tagline = 'Welcome to Be.Well';
+const String timestamp = '2021-02-01T07:30:50Z';
+
 Map<String, dynamic> mockFeedItem = <String, dynamic>{
   'id': '1ns2oCuWbdA67Qv94XNRM3IXejh',
   'sequenceNumber': 1,
@@ -336,13 +401,13 @@ Map<String, dynamic> mockFeedItem = <String, dynamic>{
   'name': 'RESOLVE_ITEM',
   'icon': <String, dynamic>{
     'id': '1ns2oDTr800KQMoAwlyS18DiHnp',
-    'url': 'https://assets.healthcloud.co.ke/bewell_logo.png',
+    'url': iconUrl,
     'linkType': 'PNG_IMAGE'
   },
-  'itemID': '1ns2oDTr800KQMoAwlyS18DiHnp',
-  'author': 'Be.Well Team',
-  'tagline': 'Welcome to Be.Well',
-  'timestamp': '2021-02-01T07:30:50Z',
+  'itemID': itemID,
+  'author': author,
+  'tagline': tagline,
+  'timestamp': timestamp,
   'summary': 'What is Be.Well?',
   'text':
       'Be.Well is a virtual and physical healthcare community. Our goal is to make it easy for you to provide affordable high-quality healthcare - whether online or in person.',
