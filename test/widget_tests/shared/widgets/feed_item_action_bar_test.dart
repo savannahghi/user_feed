@@ -181,10 +181,10 @@ void main() {
     });
 
     // testWidgets(
-    //     'throws error when isAnonymous is rue and isAnonymousFunc is null',
+    //     'throws error when isAnonymous is true and isAnonymousFunc is null',
     //     (WidgetTester tester) async {
     //   feedItemActionTypeDef genericFunc() {
-    //     return {};
+    //     return genericFunc();
     //   }
 
     //   expect(() {
@@ -195,7 +195,7 @@ void main() {
     //         pinFunction: genericFunc(),
     //         flavour: 'CONSUMER',
     //         isAnonymous: true,
-    //         isAnonymousFunc:,
+    //         isAnonymousFunc: () => {},
     //         resolveFunction: genericFunc());
     //   }, throwsA(isA<Exception>()));
     // });
