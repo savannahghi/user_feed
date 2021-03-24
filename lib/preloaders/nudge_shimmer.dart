@@ -3,7 +3,7 @@ import 'package:shimmer/shimmer.dart';
 import 'package:sil_feed/shared/utils/colors.dart';
 
 class NudgeShimmer extends StatelessWidget {
-  const NudgeShimmer({this.padding});
+  const NudgeShimmer({required this.padding});
 
   final double? padding;
 

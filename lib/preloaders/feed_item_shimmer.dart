@@ -3,7 +3,8 @@ import 'package:shimmer/shimmer.dart';
 import 'package:sil_feed/shared/utils/colors.dart';
 
 class FeedItemShimmer extends StatelessWidget {
-  const FeedItemShimmer({Key? key, this.horizontalPadding}) : super(key: key);
+  const FeedItemShimmer({Key? key, required this.horizontalPadding})
+      : super(key: key);
 
   final double? horizontalPadding;
 

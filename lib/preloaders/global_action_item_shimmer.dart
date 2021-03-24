@@ -5,7 +5,7 @@ import 'package:sil_feed/shared/utils/colors.dart';
 import 'package:sil_themes/spaces.dart';
 
 class GlobalActionItemShimmerRow extends StatelessWidget {
-  const GlobalActionItemShimmerRow({this.horizontalPadding});
+  const GlobalActionItemShimmerRow({required this.horizontalPadding});
 
   final double? horizontalPadding;
 
