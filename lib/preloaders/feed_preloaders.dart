@@ -11,9 +11,18 @@ import 'package:sil_feed/constants/constants.dart';
 import 'package:sil_themes/spaces.dart';
 
 class FeedLoadingShimmer extends StatelessWidget {
-  const FeedLoadingShimmer({Key? key, required this.flavor}) : super(key: key);
+  const FeedLoadingShimmer(
+      {Key? key,
+      required this.flavor,
+      required this.globalActionShimmerHorizontalPadding,
+      required this.nudgeShimmerPadding,
+      required this.feedItemShimmerPadding})
+      : super(key: key);
 
   final String flavor;
+  final double globalActionShimmerHorizontalPadding;
+  final double nudgeShimmerPadding;
+  final double feedItemShimmerPadding;
 
   @override
   Widget build(BuildContext context) {
@@ -24,26 +33,25 @@ class FeedLoadingShimmer extends StatelessWidget {
         children: <Widget>[
           // global actions
           if (flavor != professionalFlavor) ...<Widget>[
-            const GlobalActionItemShimmerRow(),
+            GlobalActionItemShimmerRow(
+                horizontalPadding: globalActionShimmerHorizontalPadding),
           ],
 
           mediumVerticalSizedBox,
           // nudges
-          const NudgeShimmer(),
+          NudgeShimmer(
+            padding: nudgeShimmerPadding,
+          ),
 
           mediumVerticalSizedBox,
 
           // feed items
-          const FeedItemShimmer(),
+          FeedItemShimmer(
+            horizontalPadding: feedItemShimmerPadding,
+          ),
           mediumVerticalSizedBox,
         ],
       ),
     );
   }
 }
-
-
-
-
-
-
