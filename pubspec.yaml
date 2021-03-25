@@ -6,8 +6,8 @@ homepage: https://gitlab.slade360emr.com/optimalhealth/sil_feed
 publish_to: none
 
 environment:
-  sdk: '>=2.12.0 <3.0.0'
-  flutter: '>=2.0.0'
+  sdk: ">=2.12.0 <3.0.0"
+  flutter: ">=2.0.0"
 
 dependencies:
   carousel_slider: ^4.0.0-nullsafety.0
@@ -29,7 +29,7 @@ dependencies:
   sil_misc:
     git:
       url: https://sil_dart_utils:xiFnpjLHssG76bpWxUb9@gitlab.slade360emr.com/optimalhealth/dart_utils/sil_misc.git
-      ref: 0.0.19-nullsafety
+      ref: 0.0.20-nullsafety
 
   sil_themes:
     git:
