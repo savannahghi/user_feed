@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:sil_feed/shared/utils/text_themes.dart';
-import 'package:sil_feed/shared/utils/utils.dart';
+import 'package:sil_feed/src/shared/utils/utils.dart';
+
 import 'package:sil_themes/spaces.dart';
+import 'package:sil_themes/text_themes.dart';
 
 /// the top bar of the feed item
 ///

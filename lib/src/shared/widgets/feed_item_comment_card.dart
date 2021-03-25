@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:sil_feed/shared/utils/strings.dart';
-import 'package:sil_feed/shared/utils/text_themes.dart';
-import 'package:sil_feed/shared/utils/widget_keys.dart';
+import 'package:sil_feed/src/shared/utils/strings.dart';
+import 'package:sil_feed/src/shared/utils/widget_keys.dart';
+
 import 'package:sil_themes/spaces.dart';
+import 'package:sil_themes/text_themes.dart';
 
 class FeedItemCommentCard extends StatelessWidget {
   const FeedItemCommentCard({

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:shimmer/shimmer.dart';
-import 'package:sil_feed/shared/utils/colors.dart';
+import 'package:sil_feed/src/shared/utils/colors.dart';
 
 class NudgeShimmer extends StatelessWidget {
   const NudgeShimmer({required this.padding});

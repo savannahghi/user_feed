@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:shimmer/shimmer.dart';
-import 'package:sil_feed/constants/constants.dart';
-import 'package:sil_feed/shared/utils/colors.dart';
+import 'package:sil_feed/src/constants/constants.dart';
+import 'package:sil_feed/src/shared/utils/colors.dart';
+
 import 'package:sil_themes/spaces.dart';
 
 class GlobalActionItemShimmerRow extends StatelessWidget {

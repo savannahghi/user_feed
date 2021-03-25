@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:pdf_flutter/pdf_flutter.dart';
-import 'package:sil_feed/features/document_viewer/pages/feed_document_viewer.dart';
+import 'package:sil_feed/src/features/document_viewer/pages/feed_document_viewer.dart';
+
 import 'package:sil_misc/sil_small_app_bar.dart';
 
 void main() {

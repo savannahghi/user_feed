@@ -4,19 +4,20 @@ import 'package:flutter/rendering.dart';
 import 'package:intl/intl.dart';
 
 import 'package:rxdart/rxdart.dart';
-import 'package:sil_feed/shared/type_defs/feed_type_defs.dart';
-import 'package:sil_feed/shared/widgets/feed_item_action_bar.dart';
 
-import 'package:sil_feed/shared/widgets/feed_item_body.dart';
-import 'package:sil_feed/shared/widgets/feed_item_title_bar.dart';
 import 'package:sil_feed/sil_feed.dart';
-import 'package:sil_feed/shared/utils/colors.dart';
-import 'package:sil_feed/shared/utils/text_themes.dart';
-import 'package:sil_feed/shared/utils/utils.dart';
+import 'package:sil_feed/src/shared/type_defs/feed_type_defs.dart';
+import 'package:sil_feed/src/shared/utils/colors.dart';
+import 'package:sil_feed/src/shared/utils/utils.dart';
+import 'package:sil_feed/src/shared/widgets/feed_item_action_bar.dart';
+import 'package:sil_feed/src/shared/widgets/feed_item_body.dart';
+import 'package:sil_feed/src/shared/widgets/feed_item_title_bar.dart';
+
 import 'package:sil_misc/sil_misc.dart';
 import 'package:sil_themes/spaces.dart';
+import 'package:sil_themes/text_themes.dart';
 
-import '../../sil_feed.dart';
+import '../../feed.dart';
 import 'feed_item_comment_card.dart';
 
 // ignore_for_file: todo

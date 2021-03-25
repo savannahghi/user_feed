@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 
 import 'package:photo_view/photo_view.dart';
-import 'package:sil_feed/constants/constants.dart';
+import 'package:sil_feed/src/constants/constants.dart';
+
 import 'package:sil_misc/sil_small_app_bar.dart';
 
 class FeedImageViewer extends StatelessWidget {
