@@ -2,9 +2,10 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:network_image_mock/network_image_mock.dart';
-import 'package:sil_feed/shared/utils/widget_keys.dart';
-import 'package:sil_feed/constants/constants.dart';
-import 'package:sil_feed/shared/widgets/nudge_carousel.dart';
+import 'package:sil_feed/src/constants/constants.dart';
+import 'package:sil_feed/src/shared/utils/widget_keys.dart';
+import 'package:sil_feed/src/shared/widgets/nudge_carousel.dart';
+
 import '../../../mocks.dart';
 
 void main() {
@@ -20,7 +21,7 @@ void main() {
     testWidgets('should render correctly on smallScreen on Consumer',
         (WidgetTester tester) async {
       Function() anonymousUserGenericBottomSheet() {
-        return anonymousUserGenericBottomSheet ;
+        return anonymousUserGenericBottomSheet;
       }
 
       await mockNetworkImagesFor(() => tester.pumpWidget(MaterialApp(

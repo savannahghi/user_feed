@@ -2,8 +2,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
-import 'package:sil_feed/shared/utils/strings.dart';
-import 'package:sil_feed/shared/utils/widget_keys.dart';
+import 'package:sil_feed/src/shared/utils/strings.dart';
+import 'package:sil_feed/src/shared/utils/widget_keys.dart';
 
 import 'package:sil_misc/sil_small_app_bar.dart';
 

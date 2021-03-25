@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
-import 'package:sil_feed/constants/constants.dart';
-import 'package:sil_feed/shared/widgets/nudge_carousel.dart';
+
 import 'package:sil_feed/sil_feed.dart';
+import 'package:sil_feed/src/constants/constants.dart';
+import 'package:sil_feed/src/shared/widgets/nudge_carousel.dart';
 import 'package:sil_misc/sil_misc.dart';
 
 /// returns a human readable format of the date string
@@ -87,8 +88,12 @@ void callFeedAction(
     required BuildContext context,
     required String flavour}) {
   // get the callbacks
-  final Map<String, dynamic> callbacks = (context.findAncestorWidgetOfExactType<FeedComponent>()?.feedContentCallbacks ??
-      context.findAncestorWidgetOfExactType<NudgeCarousel>()?.nudgeCarouselCallbacks)!;
+  final Map<String, dynamic> callbacks = (context
+          .findAncestorWidgetOfExactType<FeedComponent>()
+          ?.feedContentCallbacks ??
+      context
+          .findAncestorWidgetOfExactType<NudgeCarousel>()
+          ?.nudgeCarouselCallbacks)!;
 
   if (flavour == consumerFlavor) {
     // loop through the consumer actions and call their functions
