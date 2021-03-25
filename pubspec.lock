@@ -786,8 +786,8 @@ packages:
     dependency: "direct main"
     description:
       path: "packages/youtube_player_flutter"
-      ref: "0.0.2-nullsafety"
-      resolved-ref: "5f7c8993f55999e81465ac6d95f107457923a6d7"
+      ref: "0.0.3-nullsafety"
+      resolved-ref: e7f1e96ada1ea5d83a5d0fbe9fd9486131654e1e
       url: "https://sil_dart_utils:xiFnpjLHssG76bpWxUb9@gitlab.slade360emr.com/optimalhealth/dart_utils/youtube_player_flutter.git"
     source: git
     version: "7.0.0+7"
