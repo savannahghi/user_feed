@@ -1,12 +1,13 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:sil_feed/features/document_viewer/pages/document_grid.dart';
-import 'package:sil_feed/features/image_viewer/image_grid.dart';
-import 'package:sil_feed/features/video_player/video_player.dart';
-import 'package:sil_feed/shared/utils/colors.dart';
-import 'package:sil_feed/shared/utils/text_themes.dart';
-import 'package:sil_feed/shared/utils/utils.dart';
+import 'package:sil_feed/src/features/document_viewer/pages/document_grid.dart';
+import 'package:sil_feed/src/features/image_viewer/image_grid.dart';
+import 'package:sil_feed/src/features/video_player/video_player.dart';
+import 'package:sil_feed/src/shared/utils/colors.dart';
+import 'package:sil_feed/src/shared/utils/utils.dart';
+
 import 'package:sil_themes/spaces.dart';
+import 'package:sil_themes/text_themes.dart';
 
 class FeedItemBody extends StatelessWidget {
   const FeedItemBody(

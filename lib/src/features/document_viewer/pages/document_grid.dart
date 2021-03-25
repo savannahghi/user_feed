@@ -1,13 +1,13 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:sil_feed/shared/utils/colors.dart';
-import 'package:sil_feed/shared/utils/strings.dart';
-import 'package:sil_feed/shared/utils/text_themes.dart';
-import 'package:sil_feed/shared/utils/widget_keys.dart';
-import 'package:sil_feed/constants/constants.dart';
+import 'package:sil_feed/src/constants/constants.dart';
+import 'package:sil_feed/src/shared/utils/colors.dart';
+import 'package:sil_feed/src/shared/utils/strings.dart';
+import 'package:sil_feed/src/shared/utils/widget_keys.dart';
 
 import 'package:sil_misc/sil_small_app_bar.dart';
 import 'package:sil_themes/spaces.dart';
+import 'package:sil_themes/text_themes.dart';
 
 import 'feed_document_viewer.dart';
 

@@ -2,9 +2,10 @@ import 'dart:io' as io;
 
 import 'package:flutter/material.dart';
 import 'package:mockito/mockito.dart';
-import 'package:sil_feed/constants/constants.dart';
-import 'package:sil_feed/shared/utils/widget_keys.dart';
-import 'package:sil_feed/shared/widgets/nudge_carousel.dart';
+import 'package:sil_feed/src/constants/constants.dart';
+import 'package:sil_feed/src/shared/utils/widget_keys.dart';
+import 'package:sil_feed/src/shared/widgets/nudge_carousel.dart';
+
 import 'package:sil_misc/sil_small_app_bar.dart';
 
 class MockRoutes {
@@ -182,9 +183,7 @@ final Map<String, dynamic> mockFeedSecondaryAction = <String, dynamic>{
   'actionType': 'SECONDARY',
   'handling': 'FULL_PAGE',
   'allowAnonymous': true,
-  'nudgeCallbacks':<String, dynamic>{
-    ' kCompleteIndividualRiderKYC':'445212'
-  }
+  'nudgeCallbacks': <String, dynamic>{' kCompleteIndividualRiderKYC': '445212'}
 };
 
 final Map<String, dynamic> mockFeedOverflowAction = <String, dynamic>{

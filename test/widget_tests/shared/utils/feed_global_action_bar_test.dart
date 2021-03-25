@@ -1,13 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:sil_feed/constants/constants.dart';
-import 'package:sil_feed/shared/widgets/feed_global_action_bar.dart';
+import 'package:sil_feed/src/constants/constants.dart';
+import 'package:sil_feed/src/shared/widgets/feed_global_action_bar.dart';
 
 import '../../../mocks.dart';
 
 void main() {
   group('FeedGlobalActionBar', () {
-
     testWidgets('should render correctly', (WidgetTester tester) async {
       await tester.pumpWidget(MaterialApp(
         home: Builder(builder: (BuildContext context) {
@@ -43,8 +42,7 @@ void main() {
     //   });
     // });
 
-    testWidgets('should show assertion error',
-        (WidgetTester tester) async {
+    testWidgets('should show assertion error', (WidgetTester tester) async {
       expect(
           () => FeedGlobalActionBar(
                 flavour: consumerFlavor,

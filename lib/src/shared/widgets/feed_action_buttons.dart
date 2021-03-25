@@ -1,9 +1,10 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:sil_feed/shared/utils/text_themes.dart';
-import 'package:sil_feed/shared/utils/utils.dart';
-import 'package:sil_feed/constants/constants.dart';
+import 'package:sil_feed/src/constants/constants.dart';
+import 'package:sil_feed/src/shared/utils/utils.dart';
+
 import 'package:sil_misc/sil_misc.dart';
+import 'package:sil_themes/text_themes.dart';
 
 enum ActionType { primary, secondary, tertiary, global }
 
@@ -90,7 +91,8 @@ class FeedSecondaryButton extends StatelessWidget {
     return OutlinedButton(
       key: buttonKey,
       onPressed: onPressed,
-      child: customChild ??Text(
+      child: customChild ??
+          Text(
             text,
             style: TextThemes.veryBoldSize15Text(
                 textColor ?? Theme.of(context).primaryColor),
@@ -233,7 +235,6 @@ class FeedActionButton extends StatelessWidget {
         },
         text: actionName,
         customPadding: const EdgeInsets.symmetric(vertical: 12, horizontal: 15),
-        
       );
     }
 

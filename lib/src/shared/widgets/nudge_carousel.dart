@@ -1,7 +1,7 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
-import 'package:sil_feed/constants/constants.dart';
-import 'package:sil_feed/shared/widgets/feed_nudge.dart';
+import 'package:sil_feed/src/constants/constants.dart';
+import 'package:sil_feed/src/shared/widgets/feed_nudge.dart';
 
 /// [NudgeCarousel] is a carousel that receives a list of nudges and
 /// displays them in the form of cards
