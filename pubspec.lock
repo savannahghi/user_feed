@@ -565,8 +565,8 @@ packages:
     dependency: "direct main"
     description:
       path: "."
-      ref: "0.0.20-nullsafety"
-      resolved-ref: "0dba519a4c67369f5233b9097e9197b9988d5c90"
+      ref: "0.0.21-nullsafety"
+      resolved-ref: e270ffa354388cd808c3fa25e15a6e7e5b9fd24c
       url: "https://sil_dart_utils:xiFnpjLHssG76bpWxUb9@gitlab.slade360emr.com/optimalhealth/dart_utils/sil_misc.git"
     source: git
     version: "0.0.1"

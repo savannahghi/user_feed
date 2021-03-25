@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-
-import 'package:sil_feed/shared/type_defs/feed_type_defs.dart';
-import 'package:sil_feed/shared/widgets/feed_item_component.dart';
+import 'package:sil_feed/src/shared/type_defs/feed_type_defs.dart';
+import 'package:sil_feed/src/shared/widgets/feed_item_component.dart';
 
 /// holds all the feed components together
 ///

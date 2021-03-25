@@ -1,13 +1,14 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:sil_feed/shared/type_defs/feed_type_defs.dart';
-import 'package:sil_feed/shared/utils/text_themes.dart';
-import 'package:sil_feed/constants/constants.dart';
-import 'package:sil_feed/shared/utils/utils.dart';
-import 'package:sil_feed/shared/widgets/feed_action_buttons.dart';
+import 'package:sil_feed/src/constants/constants.dart';
+import 'package:sil_feed/src/shared/type_defs/feed_type_defs.dart';
+import 'package:sil_feed/src/shared/utils/utils.dart';
+import 'package:sil_feed/src/shared/widgets/feed_action_buttons.dart';
+
 import 'package:sil_misc/sil_misc.dart';
 import 'package:sil_themes/spaces.dart';
+import 'package:sil_themes/text_themes.dart';
 
 class FeedItemActionBar extends StatelessWidget {
   const FeedItemActionBar({

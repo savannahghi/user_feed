@@ -2,11 +2,12 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:intl/intl.dart';
-import 'package:sil_feed/shared/utils/text_themes.dart';
-import 'package:sil_feed/shared/utils/utils.dart';
-import 'package:sil_feed/constants/constants.dart';
+import 'package:sil_feed/src/constants/constants.dart';
+import 'package:sil_feed/src/shared/utils/utils.dart';
+
 import 'package:sil_misc/sil_misc.dart';
 import 'package:sil_themes/spaces.dart';
+import 'package:sil_themes/text_themes.dart';
 
 /// A global action component bar
 ///
@@ -47,7 +48,8 @@ class FeedGlobalActionBar extends StatelessWidget {
   /// It is not required since it's only valid for `consumer app` only
   final Function? isAnonymousFunc;
 
-  Widget _buildGlobalAction({required dynamic action,required BuildContext context}) {
+  Widget _buildGlobalAction(
+      {required dynamic action, required BuildContext context}) {
     /// extract the action items here
     final String actionNameWithUnderscores = action['name'] as String;
     final String actionName = removeUnderscores(action['name'] as String);

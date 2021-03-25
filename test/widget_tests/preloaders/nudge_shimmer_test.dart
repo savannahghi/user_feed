@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:sil_feed/preloaders/nudge_shimmer.dart';
+import 'package:sil_feed/src/preloaders/nudge_shimmer.dart';
 
 void main() {
   testWidgets('Should show preloaders for consumer',
