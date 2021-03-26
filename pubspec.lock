@@ -36,13 +36,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "2.5.0"
-  async_redux:
-    dependency: transitive
-    description:
-      name: async_redux
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "9.0.1"
   boolean_selector:
     dependency: transitive
     description:
@@ -71,29 +64,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "8.0.4"
-  camera:
-    dependency: transitive
-    description:
-      name: camera
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "0.8.0"
-  camera_camera:
-    dependency: transitive
-    description:
-      path: "."
-      ref: master
-      resolved-ref: "66b891c895569434312c5c077abccf6942f6a9d3"
-      url: "https://github.com/mattermoran/camera_camera.git"
-    source: git
-    version: "2.0.1"
-  camera_platform_interface:
-    dependency: transitive
-    description:
-      name: camera_platform_interface
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "2.0.1"
   carousel_slider:
     dependency: "direct main"
     description:
@@ -150,13 +120,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "3.0.0"
-  cross_file:
-    dependency: transitive
-    description:
-      name: cross_file
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "0.3.1+1"
   crypto:
     dependency: transitive
     description:
@@ -171,13 +134,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.3.14"
-  dotted_border:
-    dependency: transitive
-    description:
-      name: dotted_border
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "2.0.0-nullsafety.0"
   fake_async:
     dependency: transitive
     description:
@@ -185,13 +141,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.2.0"
-  fast_immutable_collections:
-    dependency: transitive
-    description:
-      name: fast_immutable_collections
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "2.0.2"
   ffi:
     dependency: transitive
     description:
@@ -206,13 +155,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "6.1.0"
-  file_picker:
-    dependency: transitive
-    description:
-      name: file_picker
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "3.0.0"
   fixnum:
     dependency: transitive
     description:
@@ -232,13 +174,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "3.0.0-nullsafety.2"
-  flutter_image_compress:
-    dependency: transitive
-    description:
-      name: flutter_image_compress
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "1.0.0-nullsafety"
   flutter_inappwebview:
     dependency: transitive
     description:
@@ -246,13 +181,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "5.2.0"
-  flutter_plugin_android_lifecycle:
-    dependency: transitive
-    description:
-      name: flutter_plugin_android_lifecycle
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "2.0.0"
   flutter_spinkit:
     dependency: transitive
     description:
@@ -279,18 +207,6 @@ packages:
     description: flutter
     source: sdk
     version: "0.0.0"
-  flutter_web_plugins:
-    dependency: transitive
-    description: flutter
-    source: sdk
-    version: "0.0.0"
-  font_awesome_flutter:
-    dependency: transitive
-    description:
-      name: font_awesome_flutter
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "9.0.0"
   glob:
     dependency: transitive
     description:
@@ -298,13 +214,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "2.0.0"
-  gql:
-    dependency: transitive
-    description:
-      name: gql
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "0.13.0-nullsafety.2"
   http:
     dependency: transitive
     description:
@@ -333,13 +242,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "0.17.0"
-  js:
-    dependency: transitive
-    description:
-      name: js
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "0.6.3"
   lint:
     dependency: "direct dev"
     description:
@@ -347,13 +249,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.5.3"
-  local_auth:
-    dependency: transitive
-    description:
-      name: local_auth
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "1.1.0"
   logging:
     dependency: transitive
     description:
@@ -524,13 +419,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "2.0.0"
-  quiver:
-    dependency: transitive
-    description:
-      name: quiver
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "3.0.0"
   rxdart:
     dependency: "direct main"
     description:
@@ -545,33 +433,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "2.0.0-nullsafety.0"
-  sil_app_wrapper:
-    dependency: transitive
-    description:
-      path: "."
-      ref: "0.0.7-nullsafety"
-      resolved-ref: "7a7f241764fdef57dc984d5aed11501767cee843"
-      url: "https://sil_dart_utils:xiFnpjLHssG76bpWxUb9@gitlab.slade360emr.com/optimalhealth/dart_utils/sil_app_wrapper.git"
-    source: git
-    version: "0.0.1"
-  sil_graphql_client:
-    dependency: transitive
-    description:
-      path: "."
-      ref: "0.0.7-nullsafety"
-      resolved-ref: "0a8130677e634bbbcbaf3c44d5ee4f57ca82ccfd"
-      url: "https://sil_dart_utils:xiFnpjLHssG76bpWxUb9@gitlab.slade360emr.com/optimalhealth/dart_utils/sil_graphql_client.git"
-    source: git
-    version: "0.0.1"
-  sil_misc:
-    dependency: "direct main"
-    description:
-      path: "."
-      ref: "0.0.22-nullsafety"
-      resolved-ref: "041f51bc69cded8f053f08be81bea37270afa98a"
-      url: "https://sil_dart_utils:xiFnpjLHssG76bpWxUb9@gitlab.slade360emr.com/optimalhealth/dart_utils/sil_misc.git"
-    source: git
-    version: "0.0.1"
   sil_themes:
     dependency: "direct main"
     description:
@@ -585,8 +446,8 @@ packages:
     dependency: "direct main"
     description:
       path: "."
-      ref: "0.0.29-nullsafety"
-      resolved-ref: bdd191054061c0dcf05ebcad923a34cd25885376
+      ref: "0.0.30-nullsafety"
+      resolved-ref: "35958ff652c0b609bc2c637a8154b9a4ffbb7aef"
       url: "https://sil_dart_utils:xiFnpjLHssG76bpWxUb9@gitlab.slade360emr.com/optimalhealth/dart_utils/sil_ui_components.git"
     source: git
     version: "0.0.1"
@@ -637,13 +498,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "2.1.0"
-  stream_transform:
-    dependency: transitive
-    description:
-      name: stream_transform
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "2.0.0"
   string_scanner:
     dependency: transitive
     description:
@@ -679,48 +533,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.3.0"
-  url_launcher:
-    dependency: transitive
-    description:
-      name: url_launcher
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "6.0.2"
-  url_launcher_linux:
-    dependency: transitive
-    description:
-      name: url_launcher_linux
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "2.0.0"
-  url_launcher_macos:
-    dependency: transitive
-    description:
-      name: url_launcher_macos
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "2.0.0"
-  url_launcher_platform_interface:
-    dependency: transitive
-    description:
-      name: url_launcher_platform_interface
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "2.0.2"
-  url_launcher_web:
-    dependency: transitive
-    description:
-      name: url_launcher_web
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "2.0.0"
-  url_launcher_windows:
-    dependency: transitive
-    description:
-      name: url_launcher_windows
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "2.0.0"
   uuid:
     dependency: transitive
     description:
@@ -749,13 +561,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.0.0"
-  weak_map:
-    dependency: transitive
-    description:
-      name: weak_map
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "2.0.0"
   win32:
     dependency: transitive
     description:
@@ -788,8 +593,8 @@ packages:
     dependency: "direct main"
     description:
       path: "packages/youtube_player_flutter"
-      ref: "0.0.3-nullsafety"
-      resolved-ref: e7f1e96ada1ea5d83a5d0fbe9fd9486131654e1e
+      ref: "0.0.4-nullsafety"
+      resolved-ref: "2428d91a8e40d1c60944a63c53ea2870655f09ee"
       url: "https://sil_dart_utils:xiFnpjLHssG76bpWxUb9@gitlab.slade360emr.com/optimalhealth/dart_utils/youtube_player_flutter.git"
     source: git
     version: "7.0.0+7"

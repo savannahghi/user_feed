@@ -13,7 +13,6 @@ import 'package:sil_feed/src/shared/widgets/feed_item_action_bar.dart';
 import 'package:sil_feed/src/shared/widgets/feed_item_body.dart';
 import 'package:sil_feed/src/shared/widgets/feed_item_title_bar.dart';
 
-import 'package:sil_misc/sil_misc.dart';
 import 'package:sil_themes/spaces.dart';
 import 'package:sil_themes/text_themes.dart';
 

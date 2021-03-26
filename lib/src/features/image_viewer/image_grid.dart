@@ -4,8 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:sil_feed/src/shared/utils/strings.dart';
 import 'package:sil_feed/src/shared/utils/widget_keys.dart';
-
-import 'package:sil_misc/sil_small_app_bar.dart';
+import 'package:sil_ui_components/sil_small_appbar.dart';
 
 import 'image_viewer.dart';
 

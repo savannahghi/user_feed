@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:pdf_flutter/pdf_flutter.dart';
-import 'package:sil_misc/sil_small_app_bar.dart';
+import 'package:sil_ui_components/sil_small_appbar.dart';
 
 class FeedDocumentViewer extends StatelessWidget {
   const FeedDocumentViewer(
