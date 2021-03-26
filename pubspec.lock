@@ -81,10 +81,12 @@ packages:
   camera_camera:
     dependency: transitive
     description:
-      name: camera_camera
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "2.0.0"
+      path: "."
+      ref: master
+      resolved-ref: "66b891c895569434312c5c077abccf6942f6a9d3"
+      url: "https://github.com/mattermoran/camera_camera.git"
+    source: git
+    version: "2.0.1"
   camera_platform_interface:
     dependency: transitive
     description:
@@ -565,8 +567,8 @@ packages:
     dependency: "direct main"
     description:
       path: "."
-      ref: "0.0.21-nullsafety"
-      resolved-ref: e270ffa354388cd808c3fa25e15a6e7e5b9fd24c
+      ref: "0.0.22-nullsafety"
+      resolved-ref: "041f51bc69cded8f053f08be81bea37270afa98a"
       url: "https://sil_dart_utils:xiFnpjLHssG76bpWxUb9@gitlab.slade360emr.com/optimalhealth/dart_utils/sil_misc.git"
     source: git
     version: "0.0.1"
