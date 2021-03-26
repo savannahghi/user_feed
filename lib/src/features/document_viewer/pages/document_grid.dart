@@ -5,9 +5,9 @@ import 'package:sil_feed/src/shared/utils/colors.dart';
 import 'package:sil_feed/src/shared/utils/strings.dart';
 import 'package:sil_feed/src/shared/utils/widget_keys.dart';
 
-import 'package:sil_misc/sil_small_app_bar.dart';
 import 'package:sil_themes/spaces.dart';
 import 'package:sil_themes/text_themes.dart';
+import 'package:sil_ui_components/sil_small_appbar.dart';
 
 import 'feed_document_viewer.dart';
 

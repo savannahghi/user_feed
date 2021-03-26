@@ -4,7 +4,6 @@ import 'package:intl/intl.dart';
 import 'package:sil_feed/sil_feed.dart';
 import 'package:sil_feed/src/constants/constants.dart';
 import 'package:sil_feed/src/shared/widgets/nudge_carousel.dart';
-import 'package:sil_misc/sil_misc.dart';
 
 /// returns a human readable format of the date string
 /// passed to it
@@ -236,4 +235,37 @@ extension MediaTypeEx on MediaType {
 
 String displayProgress(String? progress) {
   return 'Your profile is $progress% complete, complete it now';
+}
+
+SnackBar snackbar(
+
+    /// [content] must be either of type [Widget] or [String]
+    {required dynamic content,
+    int durationSeconds = 10,
+    String? label,
+    Function? callback}) {
+  return SnackBar(
+    content: content.runtimeType == String
+        ? Text(content as String)
+        : content as Widget,
+    duration: Duration(seconds: durationSeconds),
+    action: callback != null
+        ? SnackBarAction(label: label!, onPressed: callback as void Function())
+        : null,
+  );
+}
+
+/// [removeUnderscores] removes underscores from a sentence
+String removeUnderscores(String sentence) {
+  return titleCase(sentence.toString().replaceAll('_', ' ').toLowerCase());
+}
+
+/// [titleCase] returns a title cased sentence
+String titleCase(String sentence) {
+  return sentence
+      .toLowerCase()
+      .split(' ')
+      .map((String e) => e.trim())
+      .map((String word) => toBeginningOfSentenceCase(word))
+      .join(' ');
 }

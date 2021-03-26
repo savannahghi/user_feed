@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:sil_feed/src/constants/constants.dart';
 import 'package:sil_feed/src/shared/utils/utils.dart';
 
-import 'package:sil_misc/sil_misc.dart';
 import 'package:sil_themes/text_themes.dart';
 
 enum ActionType { primary, secondary, tertiary, global }
