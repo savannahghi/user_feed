@@ -29,7 +29,7 @@ dependencies:
   sil_misc:
     git:
       url: https://sil_dart_utils:xiFnpjLHssG76bpWxUb9@gitlab.slade360emr.com/optimalhealth/dart_utils/sil_misc.git
-      ref: 0.0.21-nullsafety
+      ref: 0.0.22-nullsafety
 
   sil_themes:
     git:
