@@ -42,7 +42,7 @@ dependencies:
     git:
       url: https://sil_dart_utils:xiFnpjLHssG76bpWxUb9@gitlab.slade360emr.com/optimalhealth/dart_utils/youtube_player_flutter.git
       path: packages/youtube_player_flutter
-      ref: 0.0.5-nullsafety
+      ref: 0.0.6-nullsafety
 
 dev_dependencies:
   flutter_test:
