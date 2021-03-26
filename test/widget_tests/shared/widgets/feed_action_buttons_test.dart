@@ -200,7 +200,7 @@ void main() {
     //   ));
 
     //   expect(find.byType(FeedPrimaryButton), findsOneWidget);
-    //  // expect(find.text(buttonText), findsOneWidget);
+    //   // expect(find.text(buttonText), findsOneWidget);
 
     //   await tester.tap(find.byType(FeedPrimaryButton));
     //   await tester.pumpAndSettle();

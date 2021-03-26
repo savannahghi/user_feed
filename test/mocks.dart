@@ -545,7 +545,13 @@ final List<Map<String, dynamic>> globalActionsData = <Map<String, dynamic>>[
     'name': 'COMPLETE_INDIVIDUAL_RIDER_KYC',
     'actionType': 'PRIMARY',
     'handling': 'FULL_PAGE',
-    'allowAnonymous': false
+    'allowAnonymous': false,
+    'icon': <String, dynamic>{
+      'id': '1ns2oDTr800KQMoAwlyS18DiHnp',
+      'url':
+          'https://assets.healthcloud.co.ke/items/images/thumbs/bewell_banner01.png',
+      'linkType': 'PNG_IMAGE'
+    },
   },
   <String, dynamic>{
     'id': '34564564',
@@ -553,7 +559,13 @@ final List<Map<String, dynamic>> globalActionsData = <Map<String, dynamic>>[
     'name': 'GET_TEST',
     'actionType': 'PRIMARY',
     'handling': 'FULL_PAGE',
-    'allowAnonymous': false
+    'allowAnonymous': false,
+    'icon': <String, dynamic>{
+      'id': '1ns2oDTr800KQMoAwlyS18DiHnp',
+      'url':
+          'https://assets.healthcloud.co.ke/items/images/thumbs/bewell_banner01.png',
+      'linkType': 'PNG_IMAGE'
+    },
   }
 ];
 
