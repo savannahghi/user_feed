@@ -42,6 +42,7 @@ void main() {
 
       // tap a document & confirm navigation
       await tester.tap(find.byKey(const Key('some title')));
+      await tester.pump();
     });
 
     testWidgets('should render empty container when documents are empty',
