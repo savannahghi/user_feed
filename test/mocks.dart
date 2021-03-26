@@ -5,8 +5,7 @@ import 'package:mockito/mockito.dart';
 import 'package:sil_feed/src/constants/constants.dart';
 import 'package:sil_feed/src/shared/utils/widget_keys.dart';
 import 'package:sil_feed/src/shared/widgets/nudge_carousel.dart';
-
-import 'package:sil_misc/sil_small_app_bar.dart';
+import 'package:sil_ui_components/sil_small_appbar.dart';
 
 class MockRoutes {
   static const String route1 = '/route1';

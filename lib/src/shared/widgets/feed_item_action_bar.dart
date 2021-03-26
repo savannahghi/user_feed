@@ -6,7 +6,6 @@ import 'package:sil_feed/src/shared/type_defs/feed_type_defs.dart';
 import 'package:sil_feed/src/shared/utils/utils.dart';
 import 'package:sil_feed/src/shared/widgets/feed_action_buttons.dart';
 
-import 'package:sil_misc/sil_misc.dart';
 import 'package:sil_themes/spaces.dart';
 import 'package:sil_themes/text_themes.dart';
 
