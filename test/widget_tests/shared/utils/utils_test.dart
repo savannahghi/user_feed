@@ -2,8 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:sil_feed/src/shared/utils/utils.dart';
 
-import 'package:sil_misc/sil_misc.dart';
-
 void main() {
   group('FeedUtils', () {
     testWidgets('should show a snackbar', (WidgetTester tester) async {
