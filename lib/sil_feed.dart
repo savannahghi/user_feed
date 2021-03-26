@@ -1,5 +1,6 @@
 export 'src/constants/constants.dart';
 export 'src/feed.dart';
+export 'src/preloaders/feed_preloaders.dart';
 export 'src/shared/widgets/feed_action_buttons.dart';
 export 'src/shared/widgets/feed_global_action_bar.dart';
 export 'src/shared/widgets/feed_item_action_bar.dart';
