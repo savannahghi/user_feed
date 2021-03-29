@@ -54,7 +54,11 @@ class FeedPrimaryButton extends StatelessWidget {
             color: borderColor ?? Theme.of(context).accentColor,
             width: borderColor != null ? 1 : 0),
       ),
-      child: customChild,
+      child: Text(
+        text,
+        textAlign: TextAlign.center,
+        style: TextThemes.boldSize14Text(Colors.white),
+      ),
     );
   }
 }
