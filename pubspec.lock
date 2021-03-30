@@ -214,6 +214,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "2.0.0"
+  google_fonts:
+    dependency: transitive
+    description:
+      name: google_fonts
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "2.0.0"
   http:
     dependency: transitive
     description:
@@ -437,8 +444,8 @@ packages:
     dependency: "direct main"
     description:
       path: "."
-      ref: "0.0.4-nullsafety"
-      resolved-ref: d79c608fef625b4db6425a51fbd82b7bbda5ece0
+      ref: "0.0.5-nullsafety"
+      resolved-ref: cff864ff043512febd846763fea49988af31b174
       url: "https://sil_dart_utils:xiFnpjLHssG76bpWxUb9@gitlab.slade360emr.com/optimalhealth/dart_utils/sil_themes.git"
     source: git
     version: "0.0.1"
@@ -446,8 +453,8 @@ packages:
     dependency: "direct main"
     description:
       path: "."
-      ref: "0.0.34-nullsafety"
-      resolved-ref: db75988912a25aafe2b111504e62a4d66b3896c0
+      ref: "0.0.35-nullsafety"
+      resolved-ref: "3d6ee30fa0bea69e7c14bcf14c8472ed4a951292"
       url: "https://sil_dart_utils:xiFnpjLHssG76bpWxUb9@gitlab.slade360emr.com/optimalhealth/dart_utils/sil_ui_components.git"
     source: git
     version: "0.0.1"
