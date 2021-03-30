@@ -16,6 +16,7 @@ const String fallBackBewellLogoUrl =
 const String likeIconUrl = 'assets/images/like.svg';
 const String dislikeIconUrl = 'assets/images/dislike.svg';
 const String viewIconUrl = 'assets/images/view.svg';
+const String tapToViewString = 'Tap to view';
 
 // title bar strings
 const String fallbackLogoIconUrl = 'assets/images/white_logo.png';
