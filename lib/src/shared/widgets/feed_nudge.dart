@@ -69,10 +69,11 @@ class FeedNudge extends StatelessWidget {
               color: Colors.black.withOpacity(0.5),
               borderRadius: const BorderRadius.all(Radius.circular(8)),
             ),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
+            child: ListView(
+              physics: const NeverScrollableScrollPhysics(),
+              shrinkWrap: true,
               children: <Widget>[
-                Text(title, style: TextThemes.veryBoldSize20Text(Colors.white)),
+                Text(title, style: TextThemes.veryBoldSize18Text(Colors.white)),
                 smallVerticalSizedBox,
                 Text(text, style: TextThemes.normalSize16Text(Colors.white)),
                 smallVerticalSizedBox,

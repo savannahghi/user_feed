@@ -4,6 +4,7 @@ import 'package:sil_feed/src/features/document_viewer/pages/document_grid.dart';
 import 'package:sil_feed/src/features/image_viewer/image_grid.dart';
 import 'package:sil_feed/src/features/video_player/video_player.dart';
 import 'package:sil_feed/src/shared/utils/colors.dart';
+import 'package:sil_feed/src/shared/utils/strings.dart';
 import 'package:sil_feed/src/shared/utils/utils.dart';
 
 import 'package:sil_themes/spaces.dart';
@@ -145,12 +146,11 @@ class FeedItemBody extends StatelessWidget {
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: <Widget>[
-                              Text('Documents',
+                              Text('Documents (${documents.length})',
                                   style: TextThemes.boldSize15Text()),
                               verySmallVerticalSizedBox,
                               Text(
-                                // TODO(abiud): check for less that one document
-                                '${documents.length} documents | Tap to view',
+                                tapToViewString,
                                 style: TextThemes.boldSize14Text(Colors.grey),
                               ),
                             ],
