@@ -579,8 +579,8 @@ packages:
     dependency: transitive
     description:
       path: "."
-      ref: "0.0.28-nullsafety"
-      resolved-ref: "33a1563ff354190c4048e5fddfe2a5c3a7c7a727"
+      ref: "0.0.29-nullsafety"
+      resolved-ref: "80170dcbc3321787a864fab72d3f6e9499525c9f"
       url: "https://sil_dart_utils:xiFnpjLHssG76bpWxUb9@gitlab.slade360emr.com/optimalhealth/dart_utils/sil_misc.git"
     source: git
     version: "0.0.1"
@@ -588,8 +588,8 @@ packages:
     dependency: "direct main"
     description:
       path: "."
-      ref: "0.0.5-nullsafety"
-      resolved-ref: cff864ff043512febd846763fea49988af31b174
+      ref: "0.0.6-nullsafety"
+      resolved-ref: "6e72ecb831f12af3f21309dce37d6831e64e2f01"
       url: "https://sil_dart_utils:xiFnpjLHssG76bpWxUb9@gitlab.slade360emr.com/optimalhealth/dart_utils/sil_themes.git"
     source: git
     version: "0.0.1"
@@ -597,8 +597,8 @@ packages:
     dependency: "direct main"
     description:
       path: "."
-      ref: "0.0.39-nullsafety"
-      resolved-ref: "0d3b7d9a7303cb99e0ac570b7275f5ac89a785f1"
+      ref: "0.0.40-nullsafety"
+      resolved-ref: b6076cf83c64ab49ad464d48c8a0ec37483f4970
       url: "https://sil_dart_utils:xiFnpjLHssG76bpWxUb9@gitlab.slade360emr.com/optimalhealth/dart_utils/sil_ui_components.git"
     source: git
     version: "0.0.1"
