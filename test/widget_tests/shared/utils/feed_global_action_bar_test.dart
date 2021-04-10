@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:sil_feed/src/constants/constants.dart';
-import 'package:sil_feed/src/shared/widgets/feed_global_action_bar.dart';
+import 'package:sil_feed/src/domain/value_objects/constants.dart';
+import 'package:sil_feed/src/presentation/widgets/feed_global_action_bar.dart';
 
 import '../../../mocks.dart';
 

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:sil_feed/src/shared/utils/utils.dart';
+import 'package:sil_feed/src/application/helpers/utils.dart';
 
 void main() {
   group('FeedUtils', () {

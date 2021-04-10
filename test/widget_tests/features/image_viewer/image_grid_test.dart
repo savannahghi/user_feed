@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:network_image_mock/network_image_mock.dart';
-import 'package:sil_feed/src/constants/constants.dart';
-import 'package:sil_feed/src/features/image_viewer/image_grid.dart';
-import 'package:sil_feed/src/shared/router_generator.dart';
-import 'package:sil_feed/src/shared/utils/widget_keys.dart';
+import 'package:sil_feed/src/domain/value_objects/constants.dart';
+import 'package:sil_feed/src/presentation/image_viewer/image_grid.dart';
+import 'package:sil_feed/src/presentation/router/router_generator.dart';
+import 'package:sil_feed/src/domain/value_objects/widget_keys.dart';
 
 import '../../../mock_utils.dart';
 import '../../../mocks.dart';

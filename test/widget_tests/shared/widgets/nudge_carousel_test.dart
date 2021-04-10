@@ -2,9 +2,9 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:network_image_mock/network_image_mock.dart';
-import 'package:sil_feed/src/constants/constants.dart';
-import 'package:sil_feed/src/shared/utils/widget_keys.dart';
-import 'package:sil_feed/src/shared/widgets/nudge_carousel.dart';
+import 'package:sil_feed/src/domain/value_objects/constants.dart';
+import 'package:sil_feed/src/domain/value_objects/widget_keys.dart';
+import 'package:sil_feed/src/presentation/widgets/nudge_carousel.dart';
 
 import '../../../mocks.dart';
 
