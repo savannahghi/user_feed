@@ -1,7 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:sil_feed/src/domain/entities/link.dart';
 
 import 'package:sil_feed/src/domain/value_objects/colors.dart';
+import 'package:sil_feed/src/domain/value_objects/enums.dart';
 import 'package:sil_feed/src/domain/value_objects/strings.dart';
 import 'package:sil_feed/src/application/helpers/utils.dart';
 import 'package:sil_feed/src/presentation/document_viewer/document_grid.dart';
@@ -20,24 +22,24 @@ class FeedItemBody extends StatelessWidget {
       required this.flavour})
       : super(key: key);
 
-  final String flavour;
-  final List<dynamic> links;
+  final Flavour flavour;
+  final List<Link> links;
   final String? summary;
   final String text;
 
   @override
   Widget build(BuildContext context) {
     // extract images
-    final List<dynamic> images =
-        processFeedMedia(links: links, mediaType: MediaType.pngImage);
+    final List<Link> images =
+        processFeedMedia(links: links, linkType: LinkType.PNG_IMAGE);
 
     // extract documents
-    final List<dynamic> documents =
-        processFeedMedia(links: links, mediaType: MediaType.pdfDocument);
+    final List<Link> documents =
+        processFeedMedia(links: links, linkType: LinkType.PDF_DOCUMENT);
 
     // extract videos
-    final List<dynamic> videos =
-        processFeedMedia(links: links, mediaType: MediaType.youtubeVideo);
+    final List<Link> videos =
+        processFeedMedia(links: links, linkType: LinkType.YOUTUBE_VIDEO);
 
     final int remainingImageLength = images.length - 1;
 
@@ -69,7 +71,7 @@ class FeedItemBody extends StatelessWidget {
           Stack(
             children: <Widget>[
               // use the first image as a cover
-              Image.network(images.first['url'] as String),
+              Image.network(images.first.url!),
 
               // an indicator to show the number of images remaining in the gallery
               if (remainingImageLength != 0 && remainingImageLength > 1)
@@ -78,11 +80,14 @@ class FeedItemBody extends StatelessWidget {
                   right: 0,
                   child: GestureDetector(
                     onTap: () {
-                      Navigator.of(context)
-                          .push(MaterialPageRoute<FeedItemImageGrid>(
-                        builder: (_) =>
-                            FeedItemImageGrid(images: images, flavour: flavour),
-                      ));
+                      Navigator.of(context).push(
+                        MaterialPageRoute<FeedItemImageGrid>(
+                          builder: (_) => FeedItemImageGrid(
+                            images: images,
+                            flavour: flavour,
+                          ),
+                        ),
+                      );
                     },
                     child: Container(
                       padding: const EdgeInsets.all(10),

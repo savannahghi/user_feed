@@ -2,17 +2,17 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:sil_feed/src/domain/value_objects/constants.dart';
+import 'package:sil_feed/src/domain/value_objects/enums.dart';
 import 'package:sil_feed/src/presentation/video_player/video_player.dart';
 import 'package:sil_feed/src/presentation/widgets/feed_item_body.dart';
 
 import 'package:visibility_detector/visibility_detector.dart';
 
-import '../../../mocks.dart';
+import '../../../mock_data.dart';
 
 void main() {
   setUpAll(() => HttpOverrides.global = null);
-  group('should test feed item body widget', () {
+  group('FeedItemBody : ', () {
     testWidgets('should test feed item comment card',
         (WidgetTester tester) async {
       VisibilityDetectorController.instance.updateInterval = Duration.zero;
@@ -20,7 +20,7 @@ void main() {
       await tester.pumpWidget(MaterialApp(
         home: FeedItemBody(
           links: mockFeedLinks,
-          flavour: professionalFlavor,
+          flavour: Flavour.PRO,
           text: 'This is the feed item body',
         ),
       ));

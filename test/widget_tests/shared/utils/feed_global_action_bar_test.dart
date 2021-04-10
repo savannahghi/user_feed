@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:sil_feed/src/domain/value_objects/constants.dart';
+import 'package:sil_feed/src/domain/value_objects/enums.dart';
+
 import 'package:sil_feed/src/presentation/widgets/feed_global_action_bar.dart';
 
-import '../../../mocks.dart';
+import '../../../mock_data.dart';
 
 void main() {
   group('FeedGlobalActionBar', () {
@@ -13,7 +14,7 @@ void main() {
           return Scaffold(
               body: FeedGlobalActionBar(
                   globalActionsData: globalActionsData,
-                  flavour: professionalFlavor,
+                  flavour: Flavour.PRO,
                   isAnonymous: false));
         }),
       ));
@@ -23,53 +24,14 @@ void main() {
       expect(find.byType(Row), findsWidgets);
     });
 
-    // testWidgets('should render correctly with consumer flavour',
-    //     (WidgetTester tester) async {
-    //   await mockNetworkImagesFor(() =>  tester.pumpWidget(MaterialApp(
-    //       home: Scaffold(
-    //         body: FeedGlobalActionBar(
-    //           flavour: consumerFlavor,
-    //           globalActionsData: globalActionsData,
-    //           isAnonymous: false,
-    //         ),
-    //       ),
-    //     )));
-
-    //     expect(find.byType(SingleChildScrollView), findsWidgets);
-    //     expect(find.byType(Row), findsWidgets);
-    //     expect(find.byType(SvgPicture), findsWidgets);
-
-    // });
-
     testWidgets('should show assertion error', (WidgetTester tester) async {
       expect(
           () => FeedGlobalActionBar(
-                flavour: consumerFlavor,
+                flavour: Flavour.CONSUMER,
                 globalActionsData: globalActionsData,
                 isAnonymous: true,
               ),
           throwsException);
     });
-
-    // testWidgets('should be tapped', (WidgetTester tester) async {
-
-    //   await tester.pumpWidget(MaterialApp(
-    //     home: Scaffold(
-    //       body: FeedGlobalActionBar(
-    //         flavour: professionalFlavor,
-    //         globalActionsData: globalActionsData,
-    //         isAnonymous: false,
-    //         isAnonymousFunc: () => true,
-    //       ),
-    //     ),
-    //   ));
-
-    //   final Finder actionText =
-    //       find.byKey(const Key('1608647089'));
-    //   await tester.tap(actionText);
-
-    //   await tester.pumpAndSettle();
-    //   //expect(find.byType(SnackBar), findsOneWidget);
-    // });
   });
 }

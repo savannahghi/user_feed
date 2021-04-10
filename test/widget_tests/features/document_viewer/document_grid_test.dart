@@ -2,11 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 import 'package:network_image_mock/network_image_mock.dart';
-import 'package:sil_feed/src/domain/value_objects/constants.dart';
+import 'package:sil_feed/src/domain/entities/link.dart';
+
+import 'package:sil_feed/src/domain/value_objects/enums.dart';
 import 'package:sil_feed/src/presentation/document_viewer/document_grid.dart';
 import 'package:sil_feed/src/presentation/router/router_generator.dart';
 import 'package:sil_feed/src/domain/value_objects/widget_keys.dart';
 
+import '../../../mock_data.dart';
 import '../../../mock_utils.dart';
 import '../../../mocks.dart';
 
@@ -16,33 +19,27 @@ void main() {
 
     testWidgets('should render document list correctly',
         (WidgetTester tester) async {
-      await mockNetworkImagesFor(() => tester.pumpWidget(MaterialApp(
+      await mockNetworkImagesFor(
+        () => tester.pumpWidget(
+          MaterialApp(
             onGenerateRoute: RouteGenerator.generateRoute,
             navigatorObservers: <NavigatorObserver>[mockObserver],
-            home: const Scaffold(
+            home: Scaffold(
               body: FeedItemDocumentGrid(
-                documents: <Map<String, dynamic>>[
-                  <String, dynamic>{
-                    'url': fallbackUrl,
-                    'title': 'some title',
-                    'thumbnail': fallbackUrl
-                  }
-                ],
-                flavour: professionalFlavor,
+                documents: <Link>[mockPdfLink],
+                flavour: Flavour.PRO,
               ),
             ),
-          )));
+          ),
+        ),
+      );
 
       await tester.pumpAndSettle();
 
       // verify UI renders correctly
       expect(find.byKey(feedDocumentsListPageKey), findsOneWidget);
       expect(find.byType(ListView), findsWidgets);
-      expect(find.byKey(const Key('some title')), findsOneWidget);
-
-      // tap a document & confirm navigation
-      await tester.tap(find.byKey(const Key('some title')));
-      await tester.pump();
+      expect(find.byKey(feedDocumentsListContainerKey), findsOneWidget);
     });
 
     testWidgets('should render empty container when documents are empty',
@@ -52,8 +49,8 @@ void main() {
           navigatorObservers: <NavigatorObserver>[mockObserver],
           home: const Scaffold(
             body: FeedItemDocumentGrid(
-              documents: <Map<String, dynamic>>[],
-              flavour: professionalFlavor,
+              documents: <Link>[],
+              flavour: Flavour.PRO,
             ),
           ),
         ));
@@ -63,7 +60,8 @@ void main() {
         // verify UI renders correctly
         expect(find.byKey(feedDocumentsListPageKey), findsOneWidget);
         expect(find.byType(ListView), findsWidgets);
-        expect(find.byKey(const Key('some title')), findsNothing);
+        expect(find.byKey(feedDocumentsListEmptyContainerKey), findsOneWidget);
+        expect(find.byKey(feedDocumentsListContainerKey), findsNothing);
       });
     });
   });

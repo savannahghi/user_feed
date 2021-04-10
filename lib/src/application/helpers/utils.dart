@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
 import 'package:sil_feed/sil_feed.dart';
+import 'package:sil_feed/src/domain/entities/link.dart';
 import 'package:sil_feed/src/domain/value_objects/constants.dart';
+import 'package:sil_feed/src/domain/value_objects/enums.dart';
 import 'package:sil_feed/src/presentation/widgets/nudge_carousel.dart';
 
 /// returns a human readable format of the date string
@@ -85,7 +87,7 @@ void checkOnAllowAnonymousBeforeCall(
 void callFeedAction(
     {required String fullActionName,
     required BuildContext context,
-    required String flavour}) {
+    required Flavour flavour}) {
   // get the callbacks
   final Map<String, dynamic> callbacks = (context
           .findAncestorWidgetOfExactType<FeedComponent>()
@@ -94,7 +96,7 @@ void callFeedAction(
           .findAncestorWidgetOfExactType<NudgeCarousel>()
           ?.nudgeCarouselCallbacks)!;
 
-  if (flavour == consumerFlavor) {
+  if (flavour == Flavour.CONSUMER) {
     // loop through the consumer actions and call their functions
     allConsumerActions.map(
       (String consumerAction) {
@@ -123,7 +125,7 @@ void callFeedAction(
         }
       },
     ).toList();
-  } else if (flavour == professionalFlavor) {
+  } else if (flavour == Flavour.PRO) {
     // loop through the pro actions and call their functions
     allProActions.map(
       (String proAction) {
@@ -178,23 +180,23 @@ String getFeedItemActionIconUrl(String actionName) {
 }
 
 /// processes media from the feed [links]
-List<dynamic> processFeedMedia(
-    {required List<dynamic> links, required MediaType mediaType}) {
-  switch (mediaType) {
-    case MediaType.pngImage:
+List<Link> processFeedMedia(
+    {required List<Link> links, required LinkType linkType}) {
+  switch (linkType) {
+    case LinkType.PNG_IMAGE:
       return links
-          .where((dynamic link) => link['linkType'] == MediaType.pngImage.name)
+          .where((Link link) => link.linkType == LinkType.PNG_IMAGE)
           .toList();
-    case MediaType.pdfDocument:
+    case LinkType.PDF_DOCUMENT:
       return links
-          .where(
-              (dynamic link) => link['linkType'] == MediaType.pdfDocument.name)
+          .where((Link link) => link.linkType == LinkType.PDF_DOCUMENT)
           .toList();
-    case MediaType.youtubeVideo:
+    case LinkType.YOUTUBE_VIDEO:
       return links
-          .where(
-              (dynamic link) => link['linkType'] == MediaType.youtubeVideo.name)
+          .where((Link link) => link.linkType == LinkType.YOUTUBE_VIDEO)
           .toList();
+    default:
+      return links;
   }
 }
 
@@ -215,23 +217,6 @@ LinearGradient getFeedGlobalActionGradient(BuildContext context) =>
       ],
       stops: const <double>[0.4, 1],
     );
-
-enum MediaType { pngImage, pdfDocument, youtubeVideo }
-
-/// [TablesEx] extends [Tables] enum to get the values as
-/// strings
-extension MediaTypeEx on MediaType {
-  String get name {
-    switch (this) {
-      case MediaType.pngImage:
-        return 'PNG_IMAGE';
-      case MediaType.pdfDocument:
-        return 'PDF_DOCUMENT';
-      case MediaType.youtubeVideo:
-        return 'YOUTUBE_VIDEO';
-    }
-  }
-}
 
 String displayProgress(String? progress) {
   return 'Your profile is $progress% complete, complete it now';

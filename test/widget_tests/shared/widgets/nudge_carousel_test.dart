@@ -2,10 +2,12 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:network_image_mock/network_image_mock.dart';
-import 'package:sil_feed/src/domain/value_objects/constants.dart';
+import 'package:sil_feed/src/domain/value_objects/enums.dart';
+
 import 'package:sil_feed/src/domain/value_objects/widget_keys.dart';
 import 'package:sil_feed/src/presentation/widgets/nudge_carousel.dart';
 
+import '../../../mock_data.dart';
 import '../../../mocks.dart';
 
 void main() {
@@ -28,7 +30,7 @@ void main() {
             home: Scaffold(
                 body: NudgeCarousel(
               key: nudgeCarouselKey,
-              flavour: consumerFlavor,
+              flavour: Flavour.CONSUMER,
               isAnonymous: false,
               isSmallScreen: false,
               isAnonymousFunc: anonymousUserGenericBottomSheet(),
@@ -63,7 +65,7 @@ void main() {
             home: Scaffold(
                 body: NudgeCarousel(
               key: nudgeCarouselKey,
-              flavour: professionalFlavor,
+              flavour: Flavour.PRO,
               isAnonymous: false,
               isSmallScreen: false,
               nudgeCarouselCallbacks: getFeedActionCallbacks(),
@@ -88,7 +90,7 @@ void main() {
             home: Scaffold(
                 body: NudgeCarousel(
               key: nudgeCarouselKey,
-              flavour: professionalFlavor,
+              flavour: Flavour.PRO,
               isAnonymous: false,
               isAnonymousFunc: () {},
               isSmallScreen: false,
@@ -116,7 +118,7 @@ void main() {
             home: Scaffold(
                 body: NudgeCarousel(
               key: nudgeCarouselKey,
-              flavour: consumerFlavor,
+              flavour: Flavour.CONSUMER,
               isAnonymous: false,
               isSmallScreen: false,
               isAnonymousFunc: () {},
@@ -152,7 +154,7 @@ void main() {
                   home: Scaffold(
                       body: NudgeCarousel(
                     key: nudgeCarouselKey,
-                    flavour: professionalFlavor,
+                    flavour: Flavour.PRO,
                     isAnonymous: true,
                     isSmallScreen: false,
                     nudgeCarouselCallbacks: getFeedActionCallbacks(),
@@ -168,7 +170,7 @@ void main() {
                   home: Scaffold(
                       body: NudgeCarousel(
                     key: nudgeCarouselKey,
-                    flavour: professionalFlavor,
+                    flavour: Flavour.PRO,
                     isAnonymous: true,
                     isSmallScreen: false,
                     nudgeCarouselCallbacks: getFeedActionCallbacks(),

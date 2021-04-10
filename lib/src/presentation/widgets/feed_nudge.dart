@@ -1,4 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:sil_feed/src/domain/entities/action.dart' as feed_action;
+import 'package:sil_feed/src/domain/entities/link.dart';
+import 'package:sil_feed/src/domain/entities/nudge.dart';
+import 'package:sil_feed/src/domain/value_objects/enums.dart';
 import 'package:sil_feed/src/domain/value_objects/strings.dart';
 import 'package:sil_feed/src/domain/value_objects/widget_keys.dart';
 import 'package:sil_feed/src/presentation/widgets/feed_action_buttons.dart';
@@ -15,7 +19,7 @@ class FeedNudge extends StatelessWidget {
       required this.isAnonymousFunc,
       required this.flavor});
 
-  final String flavor;
+  final Flavour flavor;
 
   /// [isAnonymous] indicated whether the logged in user is iAnonymous
   final bool isAnonymous;
@@ -24,17 +28,17 @@ class FeedNudge extends StatelessWidget {
   /// It is not required since it's only valid for `consumer app` only
   final Function isAnonymousFunc;
 
-  final Map<String, dynamic> nudge;
+  final Nudge nudge;
 
   @override
   Widget build(BuildContext context) {
     /// extract the necessary nudge items
-    final String title = nudge['title'] as String;
-    final String text = nudge['text'] as String;
+    final String title = nudge.title!;
+    final String text = nudge.text!;
 
-    final List<dynamic> nudgeMedia = nudge['links'] as List<dynamic>;
+    final List<Link> nudgeMedia = nudge.links!;
 
-    final List<dynamic> nudgeActions = nudge['actions'] as List<dynamic>;
+    final List<feed_action.Action> nudgeActions = nudge.actions!;
 
     return Stack(
       children: <Widget>[
@@ -45,7 +49,7 @@ class FeedNudge extends StatelessWidget {
             decoration: BoxDecoration(
               image: DecorationImage(
                   image: NetworkImage(nudgeMedia.isNotEmpty
-                      ? nudge['links'][0]['url'] as String
+                      ? nudge.links!.first.url!
                       : fallBackBewellLogoUrl),
                   fit: BoxFit.contain),
               borderRadius: const BorderRadius.all(Radius.circular(8)),
@@ -82,9 +86,9 @@ class FeedNudge extends StatelessWidget {
                   children: <Widget>[
                     ...nudgeActions
                         .map(
-                          (dynamic nudgeAction) => FeedActionButton(
+                          (feed_action.Action nudgeAction) => FeedActionButton(
                             key: feedActionButtonKey,
-                            action: nudgeAction as Map<String, dynamic>,
+                            action: nudgeAction,
                             isAnonymous: this.isAnonymous,
                             isAnonymousFunc: this.isAnonymousFunc,
                             flavour: flavor,

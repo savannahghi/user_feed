@@ -1,4 +1,5 @@
 export 'src/domain/value_objects/constants.dart';
+export 'src/domain/value_objects/enums.dart';
 export 'src/presentation/core/feed.dart';
 export 'src/presentation/preloaders/feed_preloaders.dart';
 export 'src/presentation/widgets/feed_action_buttons.dart';

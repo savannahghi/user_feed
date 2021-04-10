@@ -1,9 +1,12 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:sil_feed/src/domain/entities/link.dart';
 import 'package:sil_feed/src/domain/value_objects/constants.dart';
 import 'package:sil_feed/src/domain/value_objects/colors.dart';
+import 'package:sil_feed/src/domain/value_objects/enums.dart';
 import 'package:sil_feed/src/domain/value_objects/strings.dart';
 import 'package:sil_feed/src/domain/value_objects/widget_keys.dart';
+import 'package:sil_feed/src/presentation/widgets/feed_zero_state.dart';
 
 import 'package:sil_themes/spaces.dart';
 import 'package:sil_themes/text_themes.dart';
@@ -15,8 +18,8 @@ class FeedItemDocumentGrid extends StatelessWidget {
   const FeedItemDocumentGrid({Key? key, required this.documents, this.flavour})
       : super(key: key);
 
-  final List<dynamic> documents;
-  final String? flavour;
+  final List<Link> documents;
+  final Flavour? flavour;
 
   @override
   Widget build(BuildContext context) {
@@ -30,26 +33,24 @@ class FeedItemDocumentGrid extends StatelessWidget {
           physics: const BouncingScrollPhysics(),
           children: <Widget>[
             if (documents.isEmpty)
-              Container()
+              const FeedZeroState(
+                key: feedDocumentsListEmptyContainerKey,
+                subtitle: noDocumentFound,
+              )
             else
               Container(
+                key: feedDocumentsListContainerKey,
                 padding: const EdgeInsets.symmetric(vertical: 15),
                 child: ListView.builder(
                   physics: const BouncingScrollPhysics(),
                   shrinkWrap: true,
                   itemCount: documents.length,
                   itemBuilder: (BuildContext context, int index) {
-                    // extract the pdf url and name if any
-                    // final Map<String, dynamic> pdfDocumentObject =
-                    //     documents[index];
-
                     final String? documentThumbnail =
-                        documents[index]['thumbnail'] as String?;
+                        documents[index].thumbnail;
 
-                    final String documentTitle =
-                        documents[index]['title'] as String;
-                    final String documentURL =
-                        documents[index]['url'] as String;
+                    final String documentTitle = documents[index].title!;
+                    final String documentURL = documents[index].url!;
                     return Column(
                       children: <Widget>[
                         Padding(
@@ -57,13 +58,14 @@ class FeedItemDocumentGrid extends StatelessWidget {
                           child: GestureDetector(
                             key: Key(documentTitle),
                             onTap: () {
-                              Navigator.of(context)
-                                  .push(MaterialPageRoute<FeedDocumentViewer>(
-                                builder: (_) => FeedDocumentViewer(
-                                    documentURL: documentURL,
-                                    flavour: flavour,
-                                    documentTitle: documentTitle),
-                              ));
+                              Navigator.of(context).push(
+                                MaterialPageRoute<FeedDocumentViewer>(
+                                  builder: (_) => FeedDocumentViewer(
+                                      documentURL: documentURL,
+                                      flavour: flavour,
+                                      documentTitle: documentTitle),
+                                ),
+                              );
                             },
                             child: Card(
                               elevation: 0,
@@ -96,20 +98,7 @@ class FeedItemDocumentGrid extends StatelessWidget {
                                                   TextThemes.boldSize16Text(),
                                               overflow: TextOverflow.ellipsis,
                                             ),
-
                                             verySmallVerticalSizedBox,
-                                            // Container(
-                                            //   child: Text(
-                                            //     FeedDocumentListStrings
-                                            //         .defaultDocumentInstruction,
-                                            //     overflow:
-                                            //         TextOverflow.ellipsis,
-                                            //     style: TextThemes
-                                            //         .boldSize14Text(
-                                            //       Colors.grey,
-                                            //     ),
-                                            //   ),
-                                            // ),
                                           ],
                                         ),
                                       ],

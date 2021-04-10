@@ -1,5 +1,6 @@
-const String consumerFlavor = 'CONSUMER';
-const String professionalFlavor = 'PRO';
+// const String consumerFlavor = 'CONSUMER';
+// const String professionalFlavor = 'PRO';
+
 const String documentString = 'Documents';
 const String imageString = 'Images';
 const String primaryActionType = 'PRIMARY';
@@ -16,6 +17,8 @@ const String fallbackUrl =
 const String resolveIconUrl = 'assets/images/resolve.svg';
 const String hideIconUrl = 'assets/images/hide.svg';
 const String pinIconUrl = 'assets/images/pin.svg';
+
+const String zeroStateUrl = 'assets/images/zero-state.png';
 
 /// CONSUMER
 ///

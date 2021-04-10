@@ -1,42 +1,30 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:sil_feed/src/domain/value_objects/constants.dart';
+import 'package:sil_feed/src/domain/value_objects/enums.dart';
 import 'package:sil_feed/src/domain/value_objects/feed_type_defs.dart';
 import 'package:sil_feed/src/presentation/widgets/feed_action_buttons.dart';
 import 'package:sil_feed/src/presentation/widgets/feed_item_action_bar.dart';
 
-import '../../../mocks.dart';
+import '../../../mock_data.dart';
 
 void main() {
-  group('FeedItemActionBar  group tests', () {
-    testWidgets('should test feed_item_action_bar render correctly',
-        (WidgetTester tester) async {
-      dynamic genericFunc({required String flavour, required String itemID}) {}
-
-      await tester.pumpWidget(MaterialApp(
-          home: FeedItemActionBar(
-        actions: mockFeedItemActions,
-        feedItemID: '',
-        hideFunction: genericFunc,
-        resolveFunction: genericFunc,
-        pinFunction: genericFunc,
-        flavour: 'CONSUMER',
-        isAnonymous: false,
-        isAnonymousFunc: () {},
-      )));
-      final Finder feedItemBarButton = find.byType(FeedNoBorderButton);
-      expect(feedItemBarButton, findsNWidgets(3));
-      await tester.pumpAndSettle();
-    });
-
-    testWidgets(
-        'is anonymous func works correctly when FeedNoBorderButton pressed ',
-        (WidgetTester tester) async {
-      feedItemActionTypeDef genericFunc() {
-        return ({required String flavour, required String itemID}) {};
+  feedItemActionTypeDef genericFunc({Function? func}) {
+    return ({required Flavour flavour, required String itemID}) {
+      if (func != null) {
+        return func();
       }
+      return;
+    };
+  }
 
-      bool isAnonymousFunc = false;
+  group('FeedItemActionBar', () {
+    testWidgets('should resolve feed item', (WidgetTester tester) async {
+      final List<int> integers = <int>[];
+      // ignore: prefer_function_declarations_over_variables
+      final Function addOne = () => integers.add(1);
+      // ignore: prefer_function_declarations_over_variables
+      final Function addOneAnonymously = () => integers.add(2);
 
       await tester.pumpWidget(
           MaterialApp(home: Builder(builder: (BuildContext context) {
@@ -44,13 +32,11 @@ void main() {
           actions: mockFeedItemActions,
           feedItemID: '1',
           hideFunction: genericFunc(),
-          resolveFunction: genericFunc(),
           pinFunction: genericFunc(),
-          flavour: 'CONSUMER',
-          isAnonymous: true,
-          isAnonymousFunc: () {
-            isAnonymousFunc = true;
-          },
+          flavour: Flavour.CONSUMER,
+          isAnonymous: false,
+          isAnonymousFunc: addOneAnonymously,
+          resolveFunction: genericFunc(func: addOne),
         );
       })));
       final Finder feedItemBarButton = find.byType(FeedNoBorderButton);
@@ -59,37 +45,30 @@ void main() {
       await tester.tap(find.byKey(const Key(kResolveItem)));
       await tester.pumpAndSettle();
 
-      expect(isAnonymousFunc, true);
+      expect(integers.isEmpty, false);
+      expect(integers.first, 1);
     });
 
-    testWidgets('allow func  works correctly when resolve button  pressed',
+    testWidgets('should resolve feed item for anonymous user',
         (WidgetTester tester) async {
-      feedItemActionTypeDef genericFunc() {
-        return ({required String flavour, required String itemID}) {};
-      }
+      final List<int> integers = <int>[];
+      // ignore: prefer_function_declarations_over_variables
+      final Function addOne = () => integers.add(1);
+      // ignore: prefer_function_declarations_over_variables
+      final Function addOneAnonymously = () => integers.add(2);
 
-      bool isAnonymousFunc = false;
-      String flavourTest = '';
-      String itemIDTest = '';
       await tester.pumpWidget(
           MaterialApp(home: Builder(builder: (BuildContext context) {
         return FeedItemActionBar(
-            actions: mockFeedItemActionsAllowAnonymous,
-            feedItemID: '1',
-            hideFunction: genericFunc(),
-            pinFunction: genericFunc(),
-            flavour: 'CONSUMER',
-            isAnonymous: true,
-            isAnonymousFunc: () {
-              isAnonymousFunc = true;
-            },
-            resolveFunction: (
-                {required String flavour, required String itemID}) {
-              flavour = 'CONSUMER';
-              flavourTest = flavour;
-              itemID = '1';
-              itemIDTest = itemID;
-            });
+          actions: mockFeedItemActions,
+          feedItemID: '1',
+          hideFunction: genericFunc(),
+          pinFunction: genericFunc(),
+          flavour: Flavour.CONSUMER,
+          isAnonymous: true,
+          isAnonymousFunc: addOneAnonymously,
+          resolveFunction: genericFunc(func: addOne),
+        );
       })));
       final Finder feedItemBarButton = find.byType(FeedNoBorderButton);
       expect(feedItemBarButton, findsNWidgets(3));
@@ -97,38 +76,29 @@ void main() {
       await tester.tap(find.byKey(const Key(kResolveItem)));
       await tester.pumpAndSettle();
 
-      expect(flavourTest, 'CONSUMER');
-      expect(itemIDTest, '1');
-      expect(isAnonymousFunc, false);
+      expect(integers.isEmpty, false);
+      expect(integers.first, 2);
     });
 
-    testWidgets('allow func  works correctly when pin button pressed',
-        (WidgetTester tester) async {
-      feedItemActionTypeDef genericFunc() {
-        return ({required String flavour, required String itemID}) {};
-      }
+    testWidgets('should pin feed item', (WidgetTester tester) async {
+      final List<int> integers = <int>[];
+      // ignore: prefer_function_declarations_over_variables
+      final Function addOne = () => integers.add(1);
+      // ignore: prefer_function_declarations_over_variables
+      final Function addOneAnonymously = () => integers.add(2);
 
-      bool isAnonymousFunc = false;
-      String flavourTest = '';
-      String itemIDTest = '';
       await tester.pumpWidget(
           MaterialApp(home: Builder(builder: (BuildContext context) {
         return FeedItemActionBar(
-            actions: mockFeedItemActionsAllowAnonymous,
-            feedItemID: '1',
-            hideFunction: genericFunc(),
-            pinFunction: ({required String flavour, required String itemID}) {
-              flavour = 'CONSUMER';
-              flavourTest = flavour;
-              itemID = '1';
-              itemIDTest = itemID;
-            },
-            flavour: 'CONSUMER',
-            isAnonymous: true,
-            isAnonymousFunc: () {
-              isAnonymousFunc = true;
-            },
-            resolveFunction: genericFunc());
+          actions: mockFeedItemActions,
+          feedItemID: '1',
+          hideFunction: genericFunc(),
+          flavour: Flavour.CONSUMER,
+          isAnonymous: false,
+          isAnonymousFunc: addOneAnonymously,
+          resolveFunction: genericFunc(),
+          pinFunction: genericFunc(func: addOne),
+        );
       })));
       final Finder feedItemBarButton = find.byType(FeedNoBorderButton);
       expect(feedItemBarButton, findsNWidgets(3));
@@ -136,38 +106,60 @@ void main() {
       await tester.tap(find.byKey(const Key(kPinItem)));
       await tester.pumpAndSettle();
 
-      expect(flavourTest, 'CONSUMER');
-      expect(itemIDTest, '1');
-      expect(isAnonymousFunc, false);
+      expect(integers.isEmpty, false);
+      expect(integers.first, 1);
     });
 
-    testWidgets('allow func  works correctly when hide button pressed',
+    testWidgets('should pin feed item for anonymous user',
         (WidgetTester tester) async {
-      feedItemActionTypeDef genericFunc() {
-        return ({required String flavour, required String itemID}) {};
-      }
+      final List<int> integers = <int>[];
+      // ignore: prefer_function_declarations_over_variables
+      final Function addOne = () => integers.add(1);
+      // ignore: prefer_function_declarations_over_variables
+      final Function addOneAnonymously = () => integers.add(2);
 
-      bool isAnonymousFunc = false;
-      String flavourTest = '';
-      String itemIDTest = '';
       await tester.pumpWidget(
           MaterialApp(home: Builder(builder: (BuildContext context) {
         return FeedItemActionBar(
-            actions: mockFeedItemActionsAllowAnonymous,
-            feedItemID: '1',
-            hideFunction: ({required String flavour, required String itemID}) {
-              flavour = 'CONSUMER';
-              flavourTest = flavour;
-              itemID = '1';
-              itemIDTest = itemID;
-            },
-            pinFunction: genericFunc(),
-            flavour: 'CONSUMER',
-            isAnonymous: true,
-            isAnonymousFunc: () {
-              isAnonymousFunc = true;
-            },
-            resolveFunction: genericFunc());
+          actions: mockFeedItemActions,
+          feedItemID: '1',
+          hideFunction: genericFunc(),
+          flavour: Flavour.CONSUMER,
+          isAnonymous: true,
+          isAnonymousFunc: addOneAnonymously,
+          resolveFunction: genericFunc(),
+          pinFunction: genericFunc(func: addOne),
+        );
+      })));
+      final Finder feedItemBarButton = find.byType(FeedNoBorderButton);
+      expect(feedItemBarButton, findsNWidgets(3));
+
+      await tester.tap(find.byKey(const Key(kPinItem)));
+      await tester.pumpAndSettle();
+
+      expect(integers.isEmpty, false);
+      expect(integers.first, 2);
+    });
+
+    testWidgets('should hide feed item', (WidgetTester tester) async {
+      final List<int> integers = <int>[];
+      // ignore: prefer_function_declarations_over_variables
+      final Function addOne = () => integers.add(1);
+      // ignore: prefer_function_declarations_over_variables
+      final Function addOneAnonymously = () => integers.add(2);
+
+      await tester.pumpWidget(
+          MaterialApp(home: Builder(builder: (BuildContext context) {
+        return FeedItemActionBar(
+          actions: mockFeedItemActions,
+          feedItemID: '1',
+          pinFunction: genericFunc(),
+          flavour: Flavour.CONSUMER,
+          isAnonymous: false,
+          isAnonymousFunc: addOneAnonymously,
+          resolveFunction: genericFunc(),
+          hideFunction: genericFunc(func: addOne),
+        );
       })));
       final Finder feedItemBarButton = find.byType(FeedNoBorderButton);
       expect(feedItemBarButton, findsNWidgets(3));
@@ -175,29 +167,39 @@ void main() {
       await tester.tap(find.byKey(const Key(kHideItem)));
       await tester.pumpAndSettle();
 
-      expect(flavourTest, 'CONSUMER');
-      expect(itemIDTest, '1');
-      expect(isAnonymousFunc, false);
+      expect(integers.isEmpty, false);
+      expect(integers.first, 1);
     });
 
-    // testWidgets(
-    //     'throws error when isAnonymous is true and isAnonymousFunc is null',
-    //     (WidgetTester tester) async {
-    //   feedItemActionTypeDef genericFunc() {
-    //     return genericFunc();
-    //   }
+    testWidgets('should hide feed item for anonymous user',
+        (WidgetTester tester) async {
+      final List<int> integers = <int>[];
+      // ignore: prefer_function_declarations_over_variables
+      final Function addOne = () => integers.add(1);
+      // ignore: prefer_function_declarations_over_variables
+      final Function addOneAnonymously = () => integers.add(2);
 
-    //   expect(() {
-    //     FeedItemActionBar(
-    //         actions: mockFeedItemActionsAllowAnonymous,
-    //         feedItemID: '1',
-    //         hideFunction: genericFunc(),
-    //         pinFunction: genericFunc(),
-    //         flavour: 'CONSUMER',
-    //         isAnonymous: true,
-    //         isAnonymousFunc: () => {},
-    //         resolveFunction: genericFunc());
-    //   }, throwsA(isA<Exception>()));
-    // });
+      await tester.pumpWidget(
+          MaterialApp(home: Builder(builder: (BuildContext context) {
+        return FeedItemActionBar(
+          actions: mockFeedItemActions,
+          feedItemID: '1',
+          pinFunction: genericFunc(),
+          flavour: Flavour.CONSUMER,
+          isAnonymous: true,
+          isAnonymousFunc: addOneAnonymously,
+          resolveFunction: genericFunc(),
+          hideFunction: genericFunc(func: addOne),
+        );
+      })));
+      final Finder feedItemBarButton = find.byType(FeedNoBorderButton);
+      expect(feedItemBarButton, findsNWidgets(3));
+
+      await tester.tap(find.byKey(const Key(kHideItem)));
+      await tester.pumpAndSettle();
+
+      expect(integers.isEmpty, false);
+      expect(integers.first, 2);
+    });
   });
 }
