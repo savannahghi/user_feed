@@ -73,7 +73,11 @@ class FeedComponent extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+<<<<<<< HEAD
     final Feed feed = this.userFeed.data.data;
+=======
+    final Feed feed = this.userFeed.data.getFeed;
+>>>>>>> feat : add strong typing
 
     // check if the user is anonymous
     final bool isAnonymous = feed.isAnonymous!;

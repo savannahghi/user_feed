@@ -10,140 +10,141 @@ const String itemID = '1ns2oDTr800KQMoAwlyS18DiHnp';
 const String tagline = 'Welcome to Be.Well';
 const String timestamp = '2021-02-01T07:30:50Z';
 
-final List<Nudge> mockFeedNudges = <Nudge>[
-  Nudge.fromJson(<String, dynamic>{
-    'id': '1608729954',
-    'sequenceNumber': 1608729964,
-    'visibility': 'SHOW',
-    'status': 'PENDING',
-    'title': 'Complete your rider KYC',
-    'text': 'Fill in your Be.Well business KYC in order to start transacting',
-    'actions': <dynamic>[
-      <String, dynamic>{
-        'id': '1608647889',
-        'sequenceNumber': 1608647899,
-        'name': 'COMPLETE_INDIVIDUAL_RIDER_KYC',
-        'actionType': 'PRIMARY',
-        'handling': 'FULL_PAGE',
-        'allowAnonymous': false
-      }
-    ],
-    'links': <dynamic>[
-      <String, dynamic>{
-        'id': '1ns2o8pktkMsAEmP9dIKFvIhvAC',
-        'url': 'https://youtu.be/gcv2Z2AdpjM',
-        'linkType': 'YOUTUBE_VIDEO',
-        'thumbnail':
-            'https://assets.healthcloud.co.ke/items/videos/thumbs/01_lead.png',
-        'title': 'Be.Well lead'
-      },
-      <String, dynamic>{
-        'id': '1ns2o9kdNr1wyAyuybtsr9VQSs8',
-        'url': 'https://youtu.be/W_daZjDET9Q',
-        'linkType': 'YOUTUBE_VIDEO',
-        'thumbnail':
-            'https://assets.healthcloud.co.ke/items/videos/thumbs/02_prescription.png',
-        'title': 'Prescription delivery'
-      },
-      <String, dynamic>{
-        'id': '1ns2oAO0lVcn7gzAqBZrICZCMr2',
-        'url':
-            'https://assets.healthcloud.co.ke/items/images/bewell_banner05.png',
-        'linkType': 'PNG_IMAGE',
-        'title': 'Wellness review',
-        'description': 'You should have a wellness review daily',
-        'thumbnail':
-            'https://assets.healthcloud.co.ke/items/images/thumbs/bewell_banner05.png'
-      },
-      <String, dynamic>{
-        'id': '1ns2o6JDMlUMtTcwPU2MqvAW5VR',
-        'url':
-            'https://assets.healthcloud.co.ke/items/images/bewell_banner06.png',
-        'linkType': 'PNG_IMAGE',
-        'title': 'Wellness review',
-        'description': 'You should have a wellness review daily',
-        'thumbnail':
-            'https://assets.healthcloud.co.ke/items/images/thumbs/bewell_banner06.png'
-      },
-      <String, dynamic>{
-        'id': '1ns2o9GsFxyltGcAQg6mufS1lAD',
-        'url':
-            'https://assets.healthcloud.co.ke/items/documents/bewell_banner_27.pdf',
-        'linkType': 'PDF_DOCUMENT',
-        'title': 'Need to refill your meds?',
-        'description': 'We will deliver',
-        'thumbnail':
-            'https://assets.healthcloud.co.ke/items/documents/thumbs/bewell_banner_27.png'
-      },
-    ],
-  }),
-  Nudge.fromJson(<String, dynamic>{
-    'id': '1608729973',
-    'sequenceNumber': 1608729973,
-    'visibility': 'SHOW',
-    'status': 'PENDING',
-    'title': 'Complete',
-    'text': 'Fill in your Be.Well business KYC in order to start transacting',
-    'actions': <dynamic>[
-      <String, dynamic>{
-        'id': '1608647089',
-        'sequenceNumber': 1608647089,
-        'name': 'COMPLETE_INDIVIDUAL_RIDER_KYC',
-        'actionType': 'PRIMARY',
-        'handling': 'FULL_PAGE',
-        'allowAnonymous': false
-      }
-    ],
-    'links': <dynamic>[
-      <String, dynamic>{
-        'id': '1ns2o8pktkMsAEmP9dIKFvIhvAC',
-        'url': 'https://youtu.be/gcv2Z2AdpjM',
-        'linkType': 'YOUTUBE_VIDEO',
-        'thumbnail':
-            'https://assets.healthcloud.co.ke/items/videos/thumbs/01_lead.png',
-        'title': 'Be.Well lead'
-      },
-      <String, dynamic>{
-        'id': '1ns2o9kdNr1wyAyuybtsr9VQSs8',
-        'url': 'https://youtu.be/W_daZjDET9Q',
-        'linkType': 'YOUTUBE_VIDEO',
-        'thumbnail':
-            'https://assets.healthcloud.co.ke/items/videos/thumbs/02_prescription.png',
-        'title': 'Prescription delivery'
-      },
-      <String, dynamic>{
-        'id': '1ns2oAO0lVcn7gzAqBZrICZCMr2',
-        'url':
-            'https://assets.healthcloud.co.ke/items/images/bewell_banner05.png',
-        'linkType': 'PNG_IMAGE',
-        'title': 'Wellness review',
-        'description': 'You should have a wellness review daily',
-        'thumbnail':
-            'https://assets.healthcloud.co.ke/items/images/thumbs/bewell_banner05.png'
-      },
-      <String, dynamic>{
-        'id': '1ns2o6JDMlUMtTcwPU2MqvAW5VR',
-        'url':
-            'https://assets.healthcloud.co.ke/items/images/bewell_banner06.png',
-        'linkType': 'PNG_IMAGE',
-        'title': 'Wellness review',
-        'description': 'You should have a wellness review daily',
-        'thumbnail':
-            'https://assets.healthcloud.co.ke/items/images/thumbs/bewell_banner06.png'
-      },
-      <String, dynamic>{
-        'id': '1ns2o9GsFxyltGcAQg6mufS1lAD',
-        'url':
-            'https://assets.healthcloud.co.ke/items/documents/bewell_banner_27.pdf',
-        'linkType': 'PDF_DOCUMENT',
-        'title': 'Need to refill your meds?',
-        'description': 'We will deliver',
-        'thumbnail':
-            'https://assets.healthcloud.co.ke/items/documents/thumbs/bewell_banner_27.png'
-      },
-    ],
-  }),
-];
+final List<Nudge> mockFeedNudges = <Nudge>[mockNudge1, mockNudge2];
+
+final Nudge mockNudge1 = Nudge.fromJson(<String, dynamic>{
+  'id': '1608729954',
+  'sequenceNumber': 1608729964,
+  'visibility': 'SHOW',
+  'status': 'PENDING',
+  'title': 'Complete your rider KYC',
+  'text': 'Fill in your Be.Well business KYC in order to start transacting',
+  'actions': <dynamic>[
+    <String, dynamic>{
+      'id': '1608647889',
+      'sequenceNumber': 1608647899,
+      'name': 'COMPLETE_INDIVIDUAL_RIDER_KYC',
+      'actionType': 'PRIMARY',
+      'handling': 'FULL_PAGE',
+      'allowAnonymous': false
+    }
+  ],
+  'links': <dynamic>[
+    <String, dynamic>{
+      'id': '1ns2o8pktkMsAEmP9dIKFvIhvAC',
+      'url': 'https://youtu.be/gcv2Z2AdpjM',
+      'linkType': 'YOUTUBE_VIDEO',
+      'thumbnail':
+          'https://assets.healthcloud.co.ke/items/videos/thumbs/01_lead.png',
+      'title': 'Be.Well lead'
+    },
+    <String, dynamic>{
+      'id': '1ns2o9kdNr1wyAyuybtsr9VQSs8',
+      'url': 'https://youtu.be/W_daZjDET9Q',
+      'linkType': 'YOUTUBE_VIDEO',
+      'thumbnail':
+          'https://assets.healthcloud.co.ke/items/videos/thumbs/02_prescription.png',
+      'title': 'Prescription delivery'
+    },
+    <String, dynamic>{
+      'id': '1ns2oAO0lVcn7gzAqBZrICZCMr2',
+      'url':
+          'https://assets.healthcloud.co.ke/items/images/bewell_banner05.png',
+      'linkType': 'PNG_IMAGE',
+      'title': 'Wellness review',
+      'description': 'You should have a wellness review daily',
+      'thumbnail':
+          'https://assets.healthcloud.co.ke/items/images/thumbs/bewell_banner05.png'
+    },
+    <String, dynamic>{
+      'id': '1ns2o6JDMlUMtTcwPU2MqvAW5VR',
+      'url':
+          'https://assets.healthcloud.co.ke/items/images/bewell_banner06.png',
+      'linkType': 'PNG_IMAGE',
+      'title': 'Wellness review',
+      'description': 'You should have a wellness review daily',
+      'thumbnail':
+          'https://assets.healthcloud.co.ke/items/images/thumbs/bewell_banner06.png'
+    },
+    <String, dynamic>{
+      'id': '1ns2o9GsFxyltGcAQg6mufS1lAD',
+      'url':
+          'https://assets.healthcloud.co.ke/items/documents/bewell_banner_27.pdf',
+      'linkType': 'PDF_DOCUMENT',
+      'title': 'Need to refill your meds?',
+      'description': 'We will deliver',
+      'thumbnail':
+          'https://assets.healthcloud.co.ke/items/documents/thumbs/bewell_banner_27.png'
+    },
+  ],
+});
+
+final Nudge mockNudge2 = Nudge.fromJson(<String, dynamic>{
+  'id': '1608729973',
+  'sequenceNumber': 1608729973,
+  'visibility': 'SHOW',
+  'status': 'PENDING',
+  'title': 'Complete',
+  'text': 'Fill in your Be.Well business KYC in order to start transacting',
+  'actions': <dynamic>[
+    <String, dynamic>{
+      'id': '1608647089',
+      'sequenceNumber': 1608647089,
+      'name': 'COMPLETE_INDIVIDUAL_RIDER_KYC',
+      'actionType': 'PRIMARY',
+      'handling': 'FULL_PAGE',
+      'allowAnonymous': false
+    }
+  ],
+  'links': <dynamic>[
+    <String, dynamic>{
+      'id': '1ns2o8pktkMsAEmP9dIKFvIhvAC',
+      'url': 'https://youtu.be/gcv2Z2AdpjM',
+      'linkType': 'YOUTUBE_VIDEO',
+      'thumbnail':
+          'https://assets.healthcloud.co.ke/items/videos/thumbs/01_lead.png',
+      'title': 'Be.Well lead'
+    },
+    <String, dynamic>{
+      'id': '1ns2o9kdNr1wyAyuybtsr9VQSs8',
+      'url': 'https://youtu.be/W_daZjDET9Q',
+      'linkType': 'YOUTUBE_VIDEO',
+      'thumbnail':
+          'https://assets.healthcloud.co.ke/items/videos/thumbs/02_prescription.png',
+      'title': 'Prescription delivery'
+    },
+    <String, dynamic>{
+      'id': '1ns2oAO0lVcn7gzAqBZrICZCMr2',
+      'url':
+          'https://assets.healthcloud.co.ke/items/images/bewell_banner05.png',
+      'linkType': 'PNG_IMAGE',
+      'title': 'Wellness review',
+      'description': 'You should have a wellness review daily',
+      'thumbnail':
+          'https://assets.healthcloud.co.ke/items/images/thumbs/bewell_banner05.png'
+    },
+    <String, dynamic>{
+      'id': '1ns2o6JDMlUMtTcwPU2MqvAW5VR',
+      'url':
+          'https://assets.healthcloud.co.ke/items/images/bewell_banner06.png',
+      'linkType': 'PNG_IMAGE',
+      'title': 'Wellness review',
+      'description': 'You should have a wellness review daily',
+      'thumbnail':
+          'https://assets.healthcloud.co.ke/items/images/thumbs/bewell_banner06.png'
+    },
+    <String, dynamic>{
+      'id': '1ns2o9GsFxyltGcAQg6mufS1lAD',
+      'url':
+          'https://assets.healthcloud.co.ke/items/documents/bewell_banner_27.pdf',
+      'linkType': 'PDF_DOCUMENT',
+      'title': 'Need to refill your meds?',
+      'description': 'We will deliver',
+      'thumbnail':
+          'https://assets.healthcloud.co.ke/items/documents/thumbs/bewell_banner_27.png'
+    },
+  ],
+});
 
 final List<Action> mockFeedItemActions = <Action>[
   Action.fromJson(
@@ -361,22 +362,22 @@ final Item mockFeedItem = Item.fromJson(
     'text':
         'Be.Well is a virtual and physical healthcare community. Our goal is to make it easy for you to provide affordable high-quality healthcare - whether online or in person.',
     'links': <Map<String, dynamic>>[
-      // <String, dynamic>{
-      //   'id': '1ns2o8pktkMsAEmP9dIKFvIhvAC',
-      //   'url': 'https://youtu.be/gcv2Z2AdpjM',
-      //   'linkType': 'YOUTUBE_VIDEO',
-      //   'thumbnail':
-      //       'https://assets.healthcloud.co.ke/items/videos/thumbs/01_lead.png',
-      //   'title': 'Be.Well lead'
-      // },
-      // <String, dynamic>{
-      //   'id': '1ns2o9kdNr1wyAyuybtsr9VQSs8',
-      //   'url': 'https://youtu.be/W_daZjDET9Q',
-      //   'linkType': 'YOUTUBE_VIDEO',
-      //   'thumbnail':
-      //       'https://assets.healthcloud.co.ke/items/videos/thumbs/02_prescription.png',
-      //   'title': 'Prescription delivery'
-      // },
+      <String, dynamic>{
+        'id': '1ns2o8pktkMsAEmP9dIKFvIhvAC',
+        'url': 'https://youtu.be/gcv2Z2AdpjM',
+        'linkType': 'YOUTUBE_VIDEO',
+        'thumbnail':
+            'https://assets.healthcloud.co.ke/items/videos/thumbs/01_lead.png',
+        'title': 'Be.Well lead'
+      },
+      <String, dynamic>{
+        'id': '1ns2o9kdNr1wyAyuybtsr9VQSs8',
+        'url': 'https://youtu.be/W_daZjDET9Q',
+        'linkType': 'YOUTUBE_VIDEO',
+        'thumbnail':
+            'https://assets.healthcloud.co.ke/items/videos/thumbs/02_prescription.png',
+        'title': 'Prescription delivery'
+      },
       <String, dynamic>{
         'id': '1ns2oAO0lVcn7gzAqBZrICZCMr2',
         'url':

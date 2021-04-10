@@ -43,5 +43,40 @@ void main() {
       expect(integers.isEmpty, false);
       expect(integers.first, 1);
     });
+
+    // testWidgets(
+    //   'should callFeedAction from consumer ',
+    //   (WidgetTester tester) async {
+    //     await tester.runAsync(
+    //       () async {
+    //         await tester.pumpWidget(
+    //           MaterialApp(
+    //             home: Material(
+    //               child: Scaffold(
+    //                 body: Builder(
+    //                   builder: (BuildContext context) {
+    //                     return TextButton(
+    //                       onPressed: () => callFeedAction(
+    //                           context: context,
+    //                           flavour: Flavour.CONSUMER,
+    //                           fullActionName: 'kGetMedicine'),
+    //                       child: const Text('btn'),
+    //                     );
+    //                   },
+    //                 ),
+    //               ),
+    //             ),
+    //           ),
+    //         );
+
+    //         await tester.pumpAndSettle();
+    //         expect(find.byType(TextButton), findsWidgets);
+
+    //         await tester.tap(find.byType(TextButton));
+    //         await tester.pumpAndSettle();
+    //       },
+    //     );
+    //   },
+    // );
   });
 }
