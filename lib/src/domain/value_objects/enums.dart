@@ -47,11 +47,7 @@ extension LinkTypeEx on LinkType {
 }
 
 /// [Channel]
-<<<<<<< HEAD
-enum Channel { FCM, EMAIL, SMS, whatsApp, UNKNOWN }
-=======
 enum Channel { FCM, EMAIL, SMS, WHATSAPP, UNKNOWN }
->>>>>>> feat : add strong typing
 
 /// [ChannelEx] extends [Channel] enum to get the values as
 /// strings
