@@ -33,3 +33,8 @@ const String pageTitleForImages = 'Images';
 const String fallbackImageTitle = 'Image';
 
 const String defaultImageInstruction = 'Tap to view';
+
+const String nothingToSee = 'Oops!! Nothing to see here';
+
+const String noDocumentFound =
+    'Could not find the document you were looking for';

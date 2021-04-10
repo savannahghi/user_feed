@@ -1,6 +1,7 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
-import 'package:sil_feed/src/domain/value_objects/constants.dart';
+import 'package:sil_feed/src/domain/entities/nudge.dart';
+import 'package:sil_feed/src/domain/value_objects/enums.dart';
 import 'package:sil_feed/src/presentation/widgets/feed_nudge.dart';
 
 /// [NudgeCarousel] is a carousel that receives a list of nudges and
@@ -27,7 +28,7 @@ class NudgeCarousel extends StatefulWidget {
         super(key: key);
 
   /// the flavor in which the app is running on
-  final String flavour;
+  final Flavour flavour;
 
   /// [isAnonymous] indicated whether the logged in user is iAnonymous
   final bool isAnonymous;
@@ -38,7 +39,7 @@ class NudgeCarousel extends StatefulWidget {
 
   final bool isSmallScreen;
   final Map<String, Function> nudgeCarouselCallbacks;
-  final List<dynamic> nudges;
+  final List<Nudge> nudges;
   // whether the carousel was called independently (as a component on its own)
   final bool single;
 
@@ -59,7 +60,7 @@ class _NudgeCarouselState extends State<NudgeCarousel> {
 
     /// this nudge carousel that this feed is being rendered alongside the feed
     final bool isConsumerOrSmallScreen =
-        widget.isSmallScreen == true || widget.flavour == consumerFlavor;
+        widget.isSmallScreen == true || widget.flavour == Flavour.CONSUMER;
 
     // TODO(abiud): anticipate empty nudges. this might involve a zero state
     // if (widget.nudges.isEmpty) return Container();
@@ -69,8 +70,8 @@ class _NudgeCarouselState extends State<NudgeCarousel> {
       child: Column(
         children: singleUnroll
             ? widget.nudges
-                .map((dynamic nudge) => FeedNudge(
-                      nudge: nudge as Map<String, dynamic>,
+                .map((Nudge nudge) => FeedNudge(
+                      nudge: nudge,
                       isAnonymous: widget.isAnonymous,
                       isAnonymousFunc: widget.isAnonymousFunc!,
                       flavor: widget.flavour,
@@ -80,8 +81,8 @@ class _NudgeCarouselState extends State<NudgeCarousel> {
                 if (isConsumerOrSmallScreen)
                   CarouselSlider(
                     items: widget.nudges
-                        .map((dynamic nudge) => FeedNudge(
-                              nudge: nudge as Map<String, dynamic>,
+                        .map((Nudge nudge) => FeedNudge(
+                              nudge: nudge,
                               isAnonymous: widget.isAnonymous,
                               isAnonymousFunc: widget.isAnonymousFunc!,
                               flavor: widget.flavour,
@@ -107,7 +108,7 @@ class _NudgeCarouselState extends State<NudgeCarousel> {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: widget.nudges.map(
-                      (dynamic nudge) {
+                      (Nudge nudge) {
                         // the index of the nudge that is currently in view
                         final int activeNudgeIndex =
                             widget.nudges.indexOf(nudge);

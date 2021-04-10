@@ -12,7 +12,8 @@ analyzer:
     - 'lib/generated_plugin_*.dart'
     - 'bin/cache/**'
     - 'lib/**/*.g.dart'
-    - 'lib/**/*.freezed.dart' 
+    - 'lib/**/*.freezed.dart'     
+
     
 
 linter:

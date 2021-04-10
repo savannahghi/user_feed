@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
 import 'package:shimmer/shimmer.dart';
-import 'package:sil_feed/src/domain/value_objects/constants.dart';
 
 import 'package:sil_feed/src/domain/value_objects/colors.dart';
+import 'package:sil_feed/src/domain/value_objects/enums.dart';
 import 'package:sil_feed/src/presentation/preloaders/feed_item_shimmer.dart';
 import 'package:sil_feed/src/presentation/preloaders/global_action_item_shimmer.dart';
 import 'package:sil_feed/src/presentation/preloaders/nudge_shimmer.dart';
@@ -19,7 +19,7 @@ class FeedLoadingShimmer extends StatelessWidget {
       required this.feedItemShimmerPadding})
       : super(key: key);
 
-  final String flavor;
+  final Flavour flavor;
   final double globalActionShimmerHorizontalPadding;
   final double nudgeShimmerPadding;
   final double feedItemShimmerPadding;
@@ -32,7 +32,7 @@ class FeedLoadingShimmer extends StatelessWidget {
       child: Column(
         children: <Widget>[
           // global actions
-          if (flavor != professionalFlavor) ...<Widget>[
+          if (flavor != Flavour.PRO) ...<Widget>[
             GlobalActionItemShimmerRow(
                 horizontalPadding: globalActionShimmerHorizontalPadding),
           ],

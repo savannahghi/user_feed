@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:sil_feed/src/domain/entities/item.dart';
+import 'package:sil_feed/src/domain/value_objects/enums.dart';
 import 'package:sil_feed/src/domain/value_objects/feed_type_defs.dart';
 import 'package:sil_feed/src/presentation/widgets/feed_item_component.dart';
 
@@ -20,8 +22,8 @@ class FeedItemsWrapper extends StatelessWidget {
     required this.postedByName,
   }) : super(key: key);
 
-  final List<dynamic> feedItems;
-  final String flavour;
+  final List<Item> feedItems;
+  final Flavour flavour;
   final String postedByUID;
   final bool tetherThread;
   final String postedByName;
@@ -49,10 +51,10 @@ class FeedItemsWrapper extends StatelessWidget {
       child: Column(
         children: <Widget>[
           ...feedItems.map(
-            (dynamic feedItem) => FeedItemComponent(
+            (Item feedItem) => FeedItemComponent(
               postedByName: postedByName,
               postedByUID: postedByUID,
-              feedItem: feedItem as Map<String, dynamic>,
+              feedItem: feedItem,
               flavour: flavour,
               resolveFunction: resolveFunction,
               pinFunction: pinFunction,

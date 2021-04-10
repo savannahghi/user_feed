@@ -16,11 +16,13 @@ class FeedImageViewer extends StatelessWidget {
       body: Container(
         padding: const EdgeInsets.symmetric(horizontal: 10.0, vertical: 20.0),
         child: Center(
-          child: PhotoView(
-            imageProvider: NetworkImage(imageUrl ?? fallbackUrl),
-            backgroundDecoration: const BoxDecoration(color: Colors.white),
-            initialScale: PhotoViewComputedScale.contained,
-            basePosition: Alignment.center,
+          child: InteractiveViewer(
+            child: PhotoView(
+              imageProvider: NetworkImage(imageUrl ?? fallbackUrl),
+              backgroundDecoration: const BoxDecoration(color: Colors.white),
+              initialScale: PhotoViewComputedScale.contained,
+              basePosition: Alignment.center,
+            ),
           ),
         ),
       ),

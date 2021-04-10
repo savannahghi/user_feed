@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:sil_feed/src/domain/entities/link.dart';
 import 'package:sil_feed/src/domain/value_objects/constants.dart';
 import 'package:sil_feed/src/application/helpers/utils.dart';
 import 'package:sil_feed/src/domain/value_objects/widget_keys.dart';
@@ -14,7 +15,7 @@ import 'package:youtube_player_flutter/youtube_player_flutter.dart';
 class VideoPlayer extends StatefulWidget {
   const VideoPlayer({Key? key, required this.videos}) : super(key: key);
 
-  final List<dynamic> videos;
+  final List<Link> videos;
 
   @override
   _VideoPlayerState createState() => _VideoPlayerState();
@@ -30,9 +31,8 @@ class _VideoPlayerState extends State<VideoPlayer> {
 
   void getVideoID() {
     widget.videos
-        .map((dynamic video) => this
-            ._videoIds
-            .add(YoutubePlayer.convertUrlToId(video['url'] as String)))
+        .map((Link video) =>
+            this._videoIds.add(YoutubePlayer.convertUrlToId(video.url!)))
         .toList();
   }
 

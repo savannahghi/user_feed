@@ -2,6 +2,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
+import 'package:sil_feed/src/domain/entities/link.dart';
+import 'package:sil_feed/src/domain/value_objects/enums.dart';
 import 'package:sil_feed/src/domain/value_objects/strings.dart';
 import 'package:sil_feed/src/domain/value_objects/widget_keys.dart';
 import 'package:sil_ui_components/sil_small_appbar.dart';
@@ -13,8 +15,8 @@ class FeedItemImageGrid extends StatelessWidget {
       {Key? key, required this.images, required this.flavour})
       : super(key: key);
 
-  final List<dynamic> images;
-  final String flavour;
+  final List<Link> images;
+  final Flavour flavour;
 
   @override
   Widget build(BuildContext context) {
@@ -43,14 +45,14 @@ class FeedItemImageGrid extends StatelessWidget {
                     staggeredTileBuilder: (int index) =>
                         StaggeredTile.count(2, index.isEven ? 2 : 1),
                     itemBuilder: (BuildContext context, int index) {
-                      final String imageUrl = images[index]['url'] as String;
+                      final String imageUrl = images[index].url!;
                       return GestureDetector(
-                        key: Key(images[index]['url'] as String),
+                        key: Key(images[index].url!),
                         onTap: () {
                           Navigator.of(context).push(
                             MaterialPageRoute<FeedImageViewer>(
                               builder: (_) => FeedImageViewer(
-                                imageUrl: images[index]['url'] as String,
+                                imageUrl: images[index].url,
                               ),
                             ),
                           );

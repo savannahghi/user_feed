@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:sil_feed/src/domain/value_objects/enums.dart';
 import 'package:sil_feed/src/presentation/preloaders/feed_item_shimmer.dart';
 import 'package:sil_feed/src/presentation/preloaders/feed_preloaders.dart';
 import 'package:sil_feed/src/presentation/preloaders/global_action_item_shimmer.dart';
@@ -14,7 +15,7 @@ void main() {
           shrinkWrap: true,
           children: const <Widget>[
             FeedLoadingShimmer(
-              flavor: 'CONSUMER',
+              flavor: Flavour.CONSUMER,
               feedItemShimmerPadding: 20,
               globalActionShimmerHorizontalPadding: 20,
               nudgeShimmerPadding: 20,
@@ -36,7 +37,7 @@ void main() {
           shrinkWrap: true,
           children: const <Widget>[
             FeedLoadingShimmer(
-              flavor: 'PRO',
+              flavor: Flavour.PRO,
               feedItemShimmerPadding: 20,
               globalActionShimmerHorizontalPadding: 20,
               nudgeShimmerPadding: 20,

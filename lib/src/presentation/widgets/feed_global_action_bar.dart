@@ -2,8 +2,10 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:intl/intl.dart';
-import 'package:sil_feed/src/domain/value_objects/constants.dart';
+
 import 'package:sil_feed/src/application/helpers/utils.dart';
+import 'package:sil_feed/src/domain/value_objects/enums.dart';
+import 'package:sil_feed/src/domain/entities/action.dart' as feed_action;
 
 import 'package:sil_themes/spaces.dart';
 import 'package:sil_themes/text_themes.dart';
@@ -17,7 +19,7 @@ import 'package:sil_themes/text_themes.dart';
 ///
 /// Inputs
 ///
-/// - a [List<Map<String, dynamic>> list] list of global actions in JSON format
+
 class FeedGlobalActionBar extends StatelessWidget {
   FeedGlobalActionBar({
     Key? key,
@@ -35,10 +37,10 @@ class FeedGlobalActionBar extends StatelessWidget {
         }()),
         super(key: key);
 
-  final List<dynamic> globalActionsData;
+  final List<feed_action.Action> globalActionsData;
 
   // the flavor in which the app is running
-  final String flavour;
+  final Flavour flavour;
 
   /// [isAnonymous] indicated whether the logged in user is iAnonymous
   final bool isAnonymous;
@@ -48,22 +50,21 @@ class FeedGlobalActionBar extends StatelessWidget {
   final Function? isAnonymousFunc;
 
   Widget _buildGlobalAction(
-      {required dynamic action, required BuildContext context}) {
+      {required feed_action.Action action, required BuildContext context}) {
     /// extract the action items here
-    final String actionNameWithUnderscores = action['name'] as String;
-    final String actionName = removeUnderscores(action['name'] as String);
+    final String actionNameWithUnderscores = action.name!;
+    final String actionName = removeUnderscores(action.name!);
     final String firstActionName =
         titleCase(toBeginningOfSentenceCase(actionName.split(' ').first)!);
 
     final String secondActionName =
         titleCase(toBeginningOfSentenceCase(actionName.split(' ').last)!);
 
-    final String actionIconUrl = flavour == professionalFlavor
-        ? 'no link url'
-        : action['icon']['url'] as String;
+    final String actionIconUrl =
+        flavour == Flavour.PRO ? 'no link url' : action.link!.url!;
 
     /// whether an anonymous user is allowed to perform this action
-    final bool allowAnonymous = action['allowAnonymous'] as bool;
+    final bool allowAnonymous = action.allowAnonymous!;
 
     return GestureDetector(
       onTap: () async {
@@ -85,7 +86,7 @@ class FeedGlobalActionBar extends StatelessWidget {
           children: <Widget>[
             // icon
             Container(
-              key: Key(action['id'] as String),
+              key: Key(action.id!),
               padding: const EdgeInsets.all(1),
               decoration: BoxDecoration(
                   boxShadow: const <BoxShadow>[
@@ -103,7 +104,7 @@ class FeedGlobalActionBar extends StatelessWidget {
                     color: Colors.white, shape: BoxShape.circle),
 
                 // todo(abiud) - replace this url dynamically
-                child: (flavour == professionalFlavor)
+                child: (flavour == Flavour.PRO)
                     ? const SizedBox()
                     : SvgPicture.network(
                         actionIconUrl,
@@ -144,7 +145,7 @@ class FeedGlobalActionBar extends StatelessWidget {
           smallHorizontalSizedBox,
 
           // todo(abiud) - add checks for when the actions are empty or null
-          for (dynamic action in globalActionsData)
+          for (feed_action.Action action in globalActionsData)
             _buildGlobalAction(action: action, context: context),
         ],
       ),

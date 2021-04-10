@@ -4,8 +4,13 @@ import 'package:flutter/material.dart';
 
 import 'package:flutter_svg/svg.dart';
 import 'package:sil_feed/src/application/helpers/utils.dart';
+import 'package:sil_feed/src/domain/entities/action.dart' as feed_action;
+import 'package:sil_feed/src/domain/entities/feed.dart';
+import 'package:sil_feed/src/domain/entities/item.dart';
+import 'package:sil_feed/src/domain/entities/nudge.dart';
+import 'package:sil_feed/src/domain/resources/inputs.dart';
 import 'package:sil_feed/src/domain/value_objects/colors.dart';
-import 'package:sil_feed/src/domain/value_objects/constants.dart';
+import 'package:sil_feed/src/domain/value_objects/enums.dart';
 import 'package:sil_feed/src/domain/value_objects/feed_type_defs.dart';
 import 'package:sil_feed/src/domain/value_objects/strings.dart';
 import 'package:sil_feed/src/domain/value_objects/widget_keys.dart';
@@ -37,8 +42,8 @@ class FeedComponent extends StatelessWidget {
   }) : super(key: key);
 
   /// the feed
-  final Map<String, dynamic> userFeed;
-  final String flavour;
+  final FeedResponsePayload userFeed;
+  final Flavour flavour;
   final bool isSmallScreen;
   final bool tetherThread;
 
@@ -68,25 +73,24 @@ class FeedComponent extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final Map<String, dynamic> feed =
-        (userFeed['data']['getFeed'] as Map<String, dynamic>)
-            .cast<String, dynamic>();
+    final Feed feed = this.userFeed.data.data;
 
     // check if the user is anonymous
-    final bool isAnonymous = feed['isAnonymous'] as bool;
+    final bool isAnonymous = feed.isAnonymous!;
 
     // global actions
-    final List<dynamic> feedActions = feed['actions'] as List<dynamic>;
+    final List<feed_action.Action>? feedActions = feed.actions;
 
-    final List<dynamic> otherActions = feedActions
-        .where((dynamic actionItem) => actionItem['actionType'] != 'FLOATING')
+    final List<feed_action.Action> otherActions = feedActions!
+        .where((feed_action.Action actionItem) =>
+            actionItem.actionType != ActionType.FLOATING)
         .toList();
 
     // nudges
-    final List<dynamic> feedNudges = feed['nudges'] as List<dynamic>;
+    final List<Nudge> feedNudges = feed.nudges!;
 
     // feed items
-    final List<dynamic> feedItems = feed['items'] as List<dynamic>;
+    final List<Item> feedItems = feed.items!;
 
     return ListView(
       shrinkWrap: true,
@@ -101,7 +105,7 @@ class FeedComponent extends StatelessWidget {
             mainAxisSize: MainAxisSize.min,
             children: <Widget>[
               /// feed global actions bar
-              if (flavour == consumerFlavor)
+              if (flavour == Flavour.CONSUMER)
                 FeedGlobalActionBar(
                   globalActionsData: otherActions,
                   flavour: flavour,
@@ -115,7 +119,7 @@ class FeedComponent extends StatelessWidget {
               /// than the ones displayed in the screen
               ///
               /// todo(future) - hide this if there are no items in the screen
-              if (flavour == consumerFlavor)
+              if (flavour == Flavour.CONSUMER)
                 Container(
                   padding: const EdgeInsets.only(right: 10),
                   child: Row(
@@ -131,7 +135,7 @@ class FeedComponent extends StatelessWidget {
                 ),
 
               // profile progress indicator for pro
-              if (flavour == professionalFlavor || setupComplete == true)
+              if (flavour == Flavour.PRO || setupComplete == true)
                 Container(
                   margin: const EdgeInsets.all(15),
                   width: double.infinity,

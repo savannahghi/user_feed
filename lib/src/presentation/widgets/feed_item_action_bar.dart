@@ -2,9 +2,11 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:sil_feed/src/domain/value_objects/constants.dart';
+import 'package:sil_feed/src/domain/value_objects/enums.dart';
 import 'package:sil_feed/src/domain/value_objects/feed_type_defs.dart';
 import 'package:sil_feed/src/application/helpers/utils.dart';
 import 'package:sil_feed/src/presentation/widgets/feed_action_buttons.dart';
+import 'package:sil_feed/src/domain/entities/action.dart' as feed_action;
 
 import 'package:sil_themes/spaces.dart';
 import 'package:sil_themes/text_themes.dart';
@@ -21,9 +23,9 @@ class FeedItemActionBar extends StatelessWidget {
     required this.isAnonymousFunc,
   });
 
-  final List<dynamic> actions;
+  final List<feed_action.Action> actions;
   final String feedItemID;
-  final String flavour;
+  final Flavour flavour;
 
   // a callback to resolve an item
   final feedItemActionTypeDef resolveFunction;
@@ -49,13 +51,13 @@ class FeedItemActionBar extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: <Widget>[
           ...actions.map(
-            (dynamic action) {
-              final String actionName = action['name'] as String;
+            (feed_action.Action action) {
+              final String actionName = action.name!;
               final String actionNameWithoutUnderscores =
                   removeUnderscores(actionName).split('Item').first;
 
               /// whether an anonymous user is allowed to perform this action
-              final bool allowAnonymous = action['allowAnonymous'] as bool;
+              final bool allowAnonymous = action.allowAnonymous!;
 
               return FeedNoBorderButton(
                 buttonKey: Key(actionName),

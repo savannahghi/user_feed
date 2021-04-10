@@ -2,13 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:sil_feed/src/presentation/widgets/feed_item_comment_card.dart';
 
-import '../../../mocks.dart';
-
 void main() {
   group('FeedItemCommentCard', () {
-    final List<dynamic> globalAction = <dynamic>[];
-    mockFeedItem
-        .forEach((String k, dynamic v) => globalAction.add(mockFeedItem));
     const String sender = 'John';
     const String thread = 'Hey';
     const String time = '2021-02-01T07:30:50Z';

@@ -11,6 +11,9 @@ const Key senderReplyColumn = Key('sender_column_key');
 
 // pdf view keys
 const Key feedDocumentsListPageKey = Key('feed_document_view_page');
+const Key feedDocumentsListContainerKey = Key('feed_document_view_container');
+const Key feedDocumentsListEmptyContainerKey =
+    Key('feed_document_view_empty_container');
 
 // image roll view keys
 const Key feedImageGridPageKey = Key('feed_document_view_page');

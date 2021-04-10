@@ -1,9 +1,11 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:intl/intl.dart';
+import 'package:sil_feed/src/domain/entities/link.dart';
 import 'package:sil_feed/src/domain/value_objects/constants.dart';
 import 'package:sil_feed/src/application/helpers/utils.dart';
+import 'package:sil_feed/src/domain/value_objects/enums.dart';
 
-import '../../../mocks.dart';
+import '../mock_data.dart';
 
 void main() {
   group('FeedUtils', () {
@@ -141,21 +143,21 @@ void main() {
     });
 
     test('should process feed media', () {
-      final List<dynamic> images =
-          processFeedMedia(links: mockFeedLinks, mediaType: MediaType.pngImage);
-      expect(images, isA<List<dynamic>>());
+      final List<Link> images =
+          processFeedMedia(links: mockFeedLinks, linkType: LinkType.PNG_IMAGE);
+      expect(images, isA<List<Link>>());
       expect(images.isEmpty, false);
       expect(images.length, 1);
 
-      final List<dynamic> videos = processFeedMedia(
-          links: mockFeedLinks, mediaType: MediaType.youtubeVideo);
-      expect(videos, isA<List<dynamic>>());
+      final List<Link> videos = processFeedMedia(
+          links: mockFeedLinks, linkType: LinkType.YOUTUBE_VIDEO);
+      expect(videos, isA<List<Link>>());
       expect(videos.isEmpty, false);
       expect(videos.length, 1);
 
-      final List<dynamic> documents = processFeedMedia(
-          links: mockFeedLinks, mediaType: MediaType.pdfDocument);
-      expect(documents, isA<List<dynamic>>());
+      final List<Link> documents = processFeedMedia(
+          links: mockFeedLinks, linkType: LinkType.PDF_DOCUMENT);
+      expect(documents, isA<List<Link>>());
       expect(documents.isEmpty, false);
       expect(documents.length, 1);
     });

@@ -2,17 +2,10 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:sil_feed/src/domain/value_objects/constants.dart';
 import 'package:sil_feed/src/application/helpers/utils.dart';
+import 'package:sil_feed/src/domain/entities/action.dart' as feed_action;
+import 'package:sil_feed/src/domain/value_objects/enums.dart';
 
 import 'package:sil_themes/text_themes.dart';
-
-enum ActionType { primary, secondary, tertiary, global }
-
-// return extension names as strings
-extension FeedActionTypeEx on ActionType {
-  String get name {
-    return describeEnum(this).toUpperCase();
-  }
-}
 
 class FeedPrimaryButton extends StatelessWidget {
   const FeedPrimaryButton(
@@ -157,7 +150,7 @@ class FeedActionButton extends StatelessWidget {
         super(key: key);
 
   /// the name of the action
-  final Map<String, dynamic> action;
+  final feed_action.Action action;
 
   /// [isAnonymous] indicated whether the logged in user is iAnonymous
   final bool isAnonymous;
@@ -167,7 +160,7 @@ class FeedActionButton extends StatelessWidget {
   final Function? isAnonymousFunc;
 
   // the flavor in which the app is running
-  final String flavour;
+  final Flavour flavour;
 
   /// Any custom function you wish to run instead of the default [callFeedAction]
   final Function? customFunction;
@@ -180,14 +173,14 @@ class FeedActionButton extends StatelessWidget {
     // extract the handling into a variable from the JSON
 
     // extract the action name from the JSON
-    final String actionNameWithUnderscore = action['name'] as String;
-    final String actionName = removeUnderscores(action['name'] as String);
-    final String actionType = action['actionType'] as String;
+    final String actionNameWithUnderscore = action.name!;
+    final String actionName = removeUnderscores(action.name!);
+    final ActionType? actionType = action.actionType;
 
     /// whether an anonymous user is allowed to perform this action
-    final bool allowAnonymous = action['allowAnonymous'] as bool;
+    final bool allowAnonymous = action.allowAnonymous!;
 
-    if (actionType == ActionType.primary.name) {
+    if (actionType == ActionType.PRIMARY) {
       return FeedPrimaryButton(
         onPressed: () {
           checkOnAllowAnonymousBeforeCall(
@@ -214,7 +207,7 @@ class FeedActionButton extends StatelessWidget {
       );
     }
 
-    if (actionType == ActionType.secondary.name) {
+    if (actionType == ActionType.SECONDARY) {
       return FeedSecondaryButton(
         onPressed: () {
           if (allowAnonymous == false) {

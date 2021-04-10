@@ -6,6 +6,10 @@ import 'package:intl/intl.dart';
 import 'package:rxdart/rxdart.dart';
 
 import 'package:sil_feed/sil_feed.dart';
+import 'package:sil_feed/src/domain/entities/action.dart' as feed_action;
+import 'package:sil_feed/src/domain/entities/item.dart';
+import 'package:sil_feed/src/domain/entities/link.dart';
+import 'package:sil_feed/src/domain/entities/message.dart';
 import 'package:sil_feed/src/domain/value_objects/feed_type_defs.dart';
 import 'package:sil_feed/src/domain/value_objects/colors.dart';
 import 'package:sil_feed/src/application/helpers/utils.dart';
@@ -16,7 +20,6 @@ import 'package:sil_feed/src/presentation/widgets/feed_item_title_bar.dart';
 import 'package:sil_themes/spaces.dart';
 import 'package:sil_themes/text_themes.dart';
 
-import '../core/feed.dart';
 import 'feed_item_comment_card.dart';
 
 // ignore_for_file: todo
@@ -36,8 +39,8 @@ class FeedItemComponent extends StatelessWidget {
     this.userReply,
   });
 
-  final Map<String, dynamic> feedItem;
-  final String flavour;
+  final Item feedItem;
+  final Flavour flavour;
 
   /// [isAnonymousFunc] function that will be called if the current logged in user is anonymous
   /// It is not required since it's only valid for `consumer app` only
@@ -68,28 +71,27 @@ class FeedItemComponent extends StatelessWidget {
     final TextEditingController commentTextController = TextEditingController();
 
     /// for the [FeedItemTitleBar]
-    final String feedItemID = feedItem['id'] as String;
-    final String author = feedItem['author'] as String;
-    final String tagline = feedItem['tagline'] as String;
-    final String iconUrl = feedItem['icon']['url'] as String;
-    final String timestamp =
-        getHumanReadableTimestamp(feedItem['timestamp'] as String);
+    final String feedItemID = feedItem.id!;
+    final String author = feedItem.author!;
+    final String tagline = feedItem.tagline!;
+    final String iconUrl = feedItem.icon!.url!;
+    final String timestamp = getHumanReadableTimestamp(feedItem.timestamp!);
 
     /// global actions for a post
     /// - located in the bottom sheet shown the 3 dots at the title bar
-    final List<dynamic> actions = feedItem['actions'] as List<dynamic>;
+    final List<feed_action.Action> actions = feedItem.actions!;
 
     /// for the [FeedItemBody]
     ///
     /// - links contain a mixture of docs, images and videos
-    final List<dynamic> links = feedItem['links'] as List<dynamic>;
+    final List<Link> links = feedItem.links!;
 
     // the long text
-    final String text = feedItem['text'] as String;
+    final String text = feedItem.text!;
 
     // comments of a feed item
-    final List<dynamic> conversations =
-        feedItem['conversations'] as List<dynamic>;
+    final List<Message> conversations = feedItem.conversations!;
+
     final String postMessageTimeStamp =
         DateTime.now().toUtc().toIso8601String();
 
@@ -159,10 +161,11 @@ class FeedItemComponent extends StatelessWidget {
                     suffixIcon: IconButton(
                       onPressed: () async {
                         if (commentTextController.text.isNotEmpty) {
-                          final String replyTo =
-                              conversations[0]['id'] as String;
+                          final String replyTo = conversations.first.id!;
+
                           final int sequenceNumber =
-                              conversations[0]['sequenceNumber'] as int;
+                              conversations.first.sequenceNumber!;
+
                           final String messageReply =
                               commentTextController.text;
                           // manager.update(userReply: messageReply);
@@ -246,14 +249,16 @@ class FeedItemComponent extends StatelessWidget {
                     itemCount: conversations.length,
                     itemBuilder: (BuildContext context, int index) {
                       final String senderName =
-                          conversations[index]['postedByName'] as String;
-                      final String threadBody =
-                          conversations[index]['text'] as String;
-                      final String? replyTo =
-                          conversations[index]['replyTo'] as String?;
+                          conversations[index].postedByName!;
+
+                      final String threadBody = conversations[index].text!;
+
+                      final String? replyTo = conversations[index].replyTo;
+
                       final String threadTimeStamp = DateFormat('MMM dd, yyyy')
-                          .format(DateTime.parse(
-                              conversations[index]['timestamp'] as String));
+                          .format(
+                              DateTime.parse(conversations[index].timestamp!));
+
                       return Column(
                         children: <Widget>[
                           if (replyTo!.isEmpty)
@@ -312,16 +317,19 @@ class FeedItemComponent extends StatelessWidget {
                                       conversations.length)
                                   : conversations.length,
                               itemBuilder: (BuildContext context, int index) {
-                                final String senderName = conversations[index]
-                                    ['postedByName'] as String;
+                                final String senderName =
+                                    conversations[index].postedByName!;
+
                                 final String threadBody =
-                                    conversations[index]['text'] as String;
+                                    conversations[index].text!;
+
                                 final String replyTo =
-                                    conversations[index]['replyTo'] as String;
+                                    conversations[index].replyTo!;
+
                                 final String threadTimeStamp =
                                     DateFormat('MMM dd, yyyy').format(
-                                        DateTime.parse(conversations[index]
-                                            ['timestamp'] as String));
+                                        DateTime.parse(
+                                            conversations[index].timestamp!));
                                 return Column(
                                   children: <Widget>[
                                     if (replyTo.isNotEmpty)
