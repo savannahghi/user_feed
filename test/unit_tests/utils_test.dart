@@ -1,9 +1,12 @@
+import 'package:flutter/widgets.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:intl/intl.dart';
 import 'package:sil_feed/src/domain/entities/link.dart';
 import 'package:sil_feed/src/domain/value_objects/constants.dart';
 import 'package:sil_feed/src/application/helpers/utils.dart';
 import 'package:sil_feed/src/domain/value_objects/enums.dart';
+import 'package:sil_feed/src/presentation/router/router_generator.dart';
+import 'package:sil_feed/src/presentation/router/routes.dart';
 
 import '../mock_data.dart';
 
@@ -160,6 +163,15 @@ void main() {
       expect(documents, isA<List<Link>>());
       expect(documents.isEmpty, false);
       expect(documents.length, 1);
+    });
+
+    test('should return router page ', () {
+      final Route<dynamic> page1 = RouteGenerator.generateRoute(
+          const RouteSettings(name: Routes.feedDocumentViewer));
+      final Route<dynamic> page2 =
+          RouteGenerator.generateRoute(const RouteSettings());
+      expect(page1, isNotNull);
+      expect(page2, isNotNull);
     });
   });
 }
