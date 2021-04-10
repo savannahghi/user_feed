@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-
-import 'package:sil_feed/src/shared/widgets/feed_action_buttons.dart';
+import 'package:sil_feed/src/presentation/widgets/feed_action_buttons.dart';
 
 import '../../../mocks.dart';
 

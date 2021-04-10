@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:network_image_mock/network_image_mock.dart';
-import 'package:sil_feed/src/shared/widgets/feed_item_title_bar.dart';
+import 'package:sil_feed/src/presentation/widgets/feed_item_title_bar.dart';
 
 import '../../../mocks.dart';
 

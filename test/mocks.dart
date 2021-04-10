@@ -2,9 +2,10 @@ import 'dart:io' as io;
 
 import 'package:flutter/material.dart';
 import 'package:mockito/mockito.dart';
-import 'package:sil_feed/src/constants/constants.dart';
-import 'package:sil_feed/src/shared/utils/widget_keys.dart';
-import 'package:sil_feed/src/shared/widgets/nudge_carousel.dart';
+import 'package:sil_feed/src/domain/value_objects/constants.dart';
+import 'package:sil_feed/src/domain/value_objects/widget_keys.dart';
+import 'package:sil_feed/src/presentation/widgets/nudge_carousel.dart';
+
 import 'package:sil_ui_components/sil_small_appbar.dart';
 
 class MockRoutes {
