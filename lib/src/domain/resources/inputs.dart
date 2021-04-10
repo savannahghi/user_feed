@@ -17,7 +17,7 @@ class FeedResponsePayload with _$FeedResponsePayload {
 @freezed
 class GetFeedData with _$GetFeedData {
   factory GetFeedData({
-    @JsonKey(name: 'getFeed') required Feed data,
+    @JsonKey(name: 'getFeed') required Feed getFeed,
   }) = _GetFeedData;
 
   factory GetFeedData.fromJson(Map<String, dynamic> json) =>
