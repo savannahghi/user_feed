@@ -26,8 +26,10 @@ _$_Nudge _$_$_NudgeFromJson(Map<String, dynamic> json) {
     groups:
         (json['groups'] as List<dynamic>?)?.map((e) => e as String).toList(),
     users: (json['users'] as List<dynamic>?)?.map((e) => e as String).toList(),
-    notificationChannels:
-        _$enumDecodeNullable(_$ChannelEnumMap, json['notificationChannels']),
+    notificationChannels: (json['notificationChannels'] as List<dynamic>?)
+        ?.map((e) =>
+            _$enumDecode(_$ChannelEnumMap, e, unknownValue: Channel.UNKNOWN))
+        .toList(),
   );
 }
 
@@ -43,7 +45,9 @@ Map<String, dynamic> _$_$_NudgeToJson(_$_Nudge instance) => <String, dynamic>{
       'links': instance.links?.map((e) => e.toJson()).toList(),
       'groups': instance.groups,
       'users': instance.users,
-      'notificationChannels': _$ChannelEnumMap[instance.notificationChannels],
+      'notificationChannels': instance.notificationChannels
+          ?.map((e) => _$ChannelEnumMap[e])
+          .toList(),
     };
 
 K _$enumDecode<K, V>(
