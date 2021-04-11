@@ -43,8 +43,8 @@ class _$NudgeTearOff {
           List<String>? groups,
       @JsonKey(name: 'users')
           List<String>? users,
-      @JsonKey(name: 'notificationChannels')
-          Channel? notificationChannels}) {
+      @JsonKey(name: 'notificationChannels', unknownEnumValue: Channel.UNKNOWN)
+          List<Channel>? notificationChannels}) {
     return _Nudge(
       id: id,
       sequenceNumber: sequenceNumber,
@@ -93,8 +93,8 @@ mixin _$Nudge {
   List<String>? get groups => throw _privateConstructorUsedError;
   @JsonKey(name: 'users')
   List<String>? get users => throw _privateConstructorUsedError;
-  @JsonKey(name: 'notificationChannels')
-  Channel? get notificationChannels => throw _privateConstructorUsedError;
+  @JsonKey(name: 'notificationChannels', unknownEnumValue: Channel.UNKNOWN)
+  List<Channel>? get notificationChannels => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -128,8 +128,8 @@ abstract class $NudgeCopyWith<$Res> {
           List<String>? groups,
       @JsonKey(name: 'users')
           List<String>? users,
-      @JsonKey(name: 'notificationChannels')
-          Channel? notificationChannels});
+      @JsonKey(name: 'notificationChannels', unknownEnumValue: Channel.UNKNOWN)
+          List<Channel>? notificationChannels});
 }
 
 /// @nodoc
@@ -203,7 +203,7 @@ class _$NudgeCopyWithImpl<$Res> implements $NudgeCopyWith<$Res> {
       notificationChannels: notificationChannels == freezed
           ? _value.notificationChannels
           : notificationChannels // ignore: cast_nullable_to_non_nullable
-              as Channel?,
+              as List<Channel>?,
     ));
   }
 }
@@ -236,8 +236,8 @@ abstract class _$NudgeCopyWith<$Res> implements $NudgeCopyWith<$Res> {
           List<String>? groups,
       @JsonKey(name: 'users')
           List<String>? users,
-      @JsonKey(name: 'notificationChannels')
-          Channel? notificationChannels});
+      @JsonKey(name: 'notificationChannels', unknownEnumValue: Channel.UNKNOWN)
+          List<Channel>? notificationChannels});
 }
 
 /// @nodoc
@@ -312,7 +312,7 @@ class __$NudgeCopyWithImpl<$Res> extends _$NudgeCopyWithImpl<$Res>
       notificationChannels: notificationChannels == freezed
           ? _value.notificationChannels
           : notificationChannels // ignore: cast_nullable_to_non_nullable
-              as Channel?,
+              as List<Channel>?,
     ));
   }
 }
@@ -344,7 +344,7 @@ class _$_Nudge implements _Nudge {
           this.groups,
       @JsonKey(name: 'users')
           this.users,
-      @JsonKey(name: 'notificationChannels')
+      @JsonKey(name: 'notificationChannels', unknownEnumValue: Channel.UNKNOWN)
           this.notificationChannels});
 
   factory _$_Nudge.fromJson(Map<String, dynamic> json) =>
@@ -384,8 +384,8 @@ class _$_Nudge implements _Nudge {
   @JsonKey(name: 'users')
   final List<String>? users;
   @override
-  @JsonKey(name: 'notificationChannels')
-  final Channel? notificationChannels;
+  @JsonKey(name: 'notificationChannels', unknownEnumValue: Channel.UNKNOWN)
+  final List<Channel>? notificationChannels;
 
   @override
   String toString() {
@@ -477,8 +477,8 @@ abstract class _Nudge implements Nudge {
           List<String>? groups,
       @JsonKey(name: 'users')
           List<String>? users,
-      @JsonKey(name: 'notificationChannels')
-          Channel? notificationChannels}) = _$_Nudge;
+      @JsonKey(name: 'notificationChannels', unknownEnumValue: Channel.UNKNOWN)
+          List<Channel>? notificationChannels}) = _$_Nudge;
 
   factory _Nudge.fromJson(Map<String, dynamic> json) = _$_Nudge.fromJson;
 
@@ -516,8 +516,8 @@ abstract class _Nudge implements Nudge {
   @JsonKey(name: 'users')
   List<String>? get users => throw _privateConstructorUsedError;
   @override
-  @JsonKey(name: 'notificationChannels')
-  Channel? get notificationChannels => throw _privateConstructorUsedError;
+  @JsonKey(name: 'notificationChannels', unknownEnumValue: Channel.UNKNOWN)
+  List<Channel>? get notificationChannels => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
   _$NudgeCopyWith<_Nudge> get copyWith => throw _privateConstructorUsedError;

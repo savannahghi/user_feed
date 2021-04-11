@@ -21,7 +21,8 @@ class Nudge with _$Nudge {
     @JsonKey(name: 'links') List<Link>? links,
     @JsonKey(name: 'groups') List<String>? groups,
     @JsonKey(name: 'users') List<String>? users,
-    @JsonKey(name: 'notificationChannels') Channel? notificationChannels,
+    @JsonKey(name: 'notificationChannels', unknownEnumValue: Channel.UNKNOWN)
+        List<Channel>? notificationChannels,
   }) = _Nudge;
 
   factory Nudge.fromJson(Map<String, dynamic> json) => _$NudgeFromJson(json);
