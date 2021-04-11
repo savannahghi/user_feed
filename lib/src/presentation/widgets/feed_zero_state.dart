@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:sil_feed/src/domain/value_objects/constants.dart';
+import 'package:sil_feed/src/domain/value_objects/asset_strings.dart';
 import 'package:sil_feed/src/domain/value_objects/strings.dart';
 
 import 'package:sil_themes/colors.dart';
@@ -17,6 +17,7 @@ class FeedZeroState extends StatelessWidget {
       children: <Widget>[
         Image.asset(
           zeroStateUrl,
+          package: packageName,
           height: MediaQuery.of(context).size.longestSide * 0.50,
           width: MediaQuery.of(context).size.shortestSide,
         ),

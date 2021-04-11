@@ -4,6 +4,7 @@ import 'dart:io';
 import 'dart:typed_data';
 
 import 'package:mockito/mockito.dart';
+import 'package:sil_feed/src/domain/value_objects/constants.dart';
 
 R provideMockedNetworkImages<R>(
   R Function() body,
@@ -123,3 +124,20 @@ MockHttpClient createMockImageHttpClient() {
 final Uint8List transparentImage = base64Decode(
   'iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mP8z8BQDwAEhQGAhKmMIQAAAABJRU5ErkJggg==',
 );
+
+Map<String, Function> mockGetFeedActionCallbacks() => <String, Function>{
+      kCompleteIndividualRiderKYC: () {},
+      kCompleteOrganizationRiderKYC: () {},
+      kCompleteIndividualPractitionerKYC: () {},
+      kCompleteOrganizationPractitionerKYC: () {},
+      kCompleteOrganizationProviderKYC: () {},
+      kCompleteIndividualPharmaceuticalKYC: () {},
+      kCompleteOrganizationPharmaceuticalKYC: () {},
+      kCompleteIndividualCoachKYC: () {},
+      kCompleteOrganizationCoachKYC: () {},
+      kCompleteIndividualNutritionKYC: () {},
+      kCompleteOrganizationNutritionKYC: () {},
+      kCompleteProfile: () {},
+      kVerifyEmail: () {},
+      kPartnerAccountSetup: () {},
+    };

@@ -60,8 +60,8 @@ class FeedGlobalActionBar extends StatelessWidget {
     final String secondActionName =
         titleCase(toBeginningOfSentenceCase(actionName.split(' ').last)!);
 
-    final String actionIconUrl =
-        flavour == Flavour.PRO ? 'no link url' : action.link!.url!;
+    final String? actionIconUrl =
+        flavour == Flavour.PRO ? 'no link url' : action.icon?.url;
 
     /// whether an anonymous user is allowed to perform this action
     final bool allowAnonymous = action.allowAnonymous!;
@@ -106,11 +106,13 @@ class FeedGlobalActionBar extends StatelessWidget {
                 // todo(abiud) - replace this url dynamically
                 child: (flavour == Flavour.PRO)
                     ? const SizedBox()
-                    : SvgPicture.network(
-                        actionIconUrl,
-                        height: 40,
-                        width: 40,
-                      ),
+                    : actionIconUrl != null
+                        ? SvgPicture.network(
+                            actionIconUrl,
+                            height: 40,
+                            width: 40,
+                          )
+                        : const SizedBox(),
               ),
             ),
 

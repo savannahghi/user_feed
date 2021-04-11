@@ -1,29 +1,19 @@
 //profile progress String
-
 const String completeProfileTitle = 'Complete profile';
 const String profileComplete = 'You have completed your profile';
 
 // global action strings
 String swipeForMore = 'Swipe for more';
-const String swipeForMoreIconUrl = 'assets/images/swipe.svg';
 
 // the default one, in case there is no url
-const String defaultImgUrl = 'assets/images/doctor-bag.svg';
 
-const String fallBackBewellLogoUrl =
-    'https://assets.healthcloud.co.ke/bewell_logo.png';
-
-const String likeIconUrl = 'assets/images/like.svg';
-const String dislikeIconUrl = 'assets/images/dislike.svg';
-const String viewIconUrl = 'assets/images/view.svg';
 const String tapToViewString = 'Tap to view';
 
 // title bar strings
-const String fallbackLogoIconUrl = 'assets/images/white_logo.png';
+const String fallbackLogoIconUrl = 'assets/white_logo.png';
 
 const String pageTitleForDocuments = 'Documents';
 
-const String pdfIconUrl = 'assets/icons/pdf.svg';
 const String fallbackDocumentTitle = 'Document.pdf';
 
 const String defaultDocumentInstruction = 'Tap to view';
@@ -38,3 +28,5 @@ const String nothingToSee = 'Oops!! Nothing to see here';
 
 const String noDocumentFound =
     'Could not find the document you were looking for';
+
+const String packageName = 'sil_feed';

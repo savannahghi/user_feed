@@ -14,12 +14,6 @@ const String fallbackPdfUrl =
 const String fallbackUrl =
     'https://assets.healthcloud.co.ke/items/images/thumbs/bewell_banner01.png';
 
-const String resolveIconUrl = 'assets/images/resolve.svg';
-const String hideIconUrl = 'assets/images/hide.svg';
-const String pinIconUrl = 'assets/images/pin.svg';
-
-const String zeroStateUrl = 'assets/images/zero-state.png';
-
 /// CONSUMER
 ///
 /// feed global actions

@@ -15,7 +15,7 @@ _$_Action _$_$_ActionFromJson(Map<String, dynamic> json) {
     handling: _$enumDecodeNullable(_$HandlingEnumMap, json['handling'],
         unknownValue: Handling.UNKNOWN),
     name: json['name'] as String?,
-    link: json['icon'] == null
+    icon: json['icon'] == null
         ? null
         : Link.fromJson(json['icon'] as Map<String, dynamic>),
     allowAnonymous: json['allowAnonymous'] as bool?,
@@ -28,7 +28,7 @@ Map<String, dynamic> _$_$_ActionToJson(_$_Action instance) => <String, dynamic>{
       'actionType': _$ActionTypeEnumMap[instance.actionType],
       'handling': _$HandlingEnumMap[instance.handling],
       'name': instance.name,
-      'icon': instance.link?.toJson(),
+      'icon': instance.icon?.toJson(),
       'allowAnonymous': instance.allowAnonymous,
     };
 

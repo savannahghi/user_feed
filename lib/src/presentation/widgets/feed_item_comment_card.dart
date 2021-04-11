@@ -36,7 +36,9 @@ class FeedItemCommentCard extends StatelessWidget {
               key: iconAvatarContainer,
               decoration: const BoxDecoration(
                 image: DecorationImage(
-                    image: AssetImage(fallbackLogoIconUrl), fit: BoxFit.fill),
+                    image:
+                        AssetImage(fallbackLogoIconUrl, package: packageName),
+                    fit: BoxFit.fill),
                 // color: Colors.white,
                 shape: BoxShape.circle,
               ),

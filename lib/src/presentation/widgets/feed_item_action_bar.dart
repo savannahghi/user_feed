@@ -5,6 +5,7 @@ import 'package:sil_feed/src/domain/value_objects/constants.dart';
 import 'package:sil_feed/src/domain/value_objects/enums.dart';
 import 'package:sil_feed/src/domain/value_objects/feed_type_defs.dart';
 import 'package:sil_feed/src/application/helpers/utils.dart';
+import 'package:sil_feed/src/domain/value_objects/strings.dart';
 import 'package:sil_feed/src/presentation/widgets/feed_action_buttons.dart';
 import 'package:sil_feed/src/domain/entities/action.dart' as feed_action;
 
@@ -86,6 +87,7 @@ class FeedItemActionBar extends StatelessWidget {
                     children: <Widget>[
                       SvgPicture.asset(
                         getFeedItemActionIconUrl(actionName),
+                        package: packageName,
                         height: 20,
                         width: 20,
                         color: Theme.of(context).primaryColor,

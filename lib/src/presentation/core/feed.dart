@@ -9,6 +9,7 @@ import 'package:sil_feed/src/domain/entities/feed.dart';
 import 'package:sil_feed/src/domain/entities/item.dart';
 import 'package:sil_feed/src/domain/entities/nudge.dart';
 import 'package:sil_feed/src/domain/resources/inputs.dart';
+import 'package:sil_feed/src/domain/value_objects/asset_strings.dart';
 import 'package:sil_feed/src/domain/value_objects/colors.dart';
 import 'package:sil_feed/src/domain/value_objects/enums.dart';
 import 'package:sil_feed/src/domain/value_objects/feed_type_defs.dart';
@@ -97,6 +98,81 @@ class FeedComponent extends StatelessWidget {
     // feed items
     final List<Item> feedItems = feed.items!;
 
+    Widget showGlobalActionsBar(Flavour flavour) {
+      if (flavour == Flavour.CONSUMER) {
+        return FeedGlobalActionBar(
+          globalActionsData: otherActions,
+          flavour: flavour,
+          isAnonymousFunc: this.isAnonymousFunc,
+          isAnonymous: isAnonymous,
+        );
+      }
+      return const SizedBox();
+    }
+
+    Widget showProfileSetupProgress(Flavour flavour,
+        {required bool setupComplete}) {
+      if (flavour == Flavour.PRO || setupComplete) {
+        return Container(
+          margin: const EdgeInsets.all(15),
+          width: double.infinity,
+          padding: const EdgeInsets.all(10),
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(5.0),
+            color: Colors.white,
+            boxShadow: const <BoxShadow>[
+              BoxShadow(
+                color: Colors.black54,
+                blurRadius: 0.3,
+              )
+            ],
+          ),
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 10),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: <Widget>[
+                Text(
+                  completeProfileTitle,
+                  style: TextThemes.veryBoldSize16Text(),
+                ),
+                size15VerticalSizedBox,
+                Text(
+                  displayProgress(profileProgress),
+                  style: TextThemes.normalSize14Text(Colors.grey),
+                ),
+                size15VerticalSizedBox,
+              ],
+            ),
+          ),
+        );
+      }
+      return const SizedBox();
+    }
+
+    /// [swipeMoreControl] shows the swipe more control for [consumer]
+    Widget swipeMoreControl(Flavour flavour) {
+      if (flavour == Flavour.CONSUMER) {
+        return Container(
+          padding: const EdgeInsets.only(right: 10),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.end,
+            children: <Widget>[
+              SvgPicture.asset(
+                swipeForMoreIconUrl,
+                package: packageName,
+              ),
+              Text(
+                swipeForMore,
+                style: TextThemes.normalSize14Text(Colors.black87),
+              )
+            ],
+          ),
+        );
+      }
+      return const SizedBox();
+    }
+
     return ListView(
       shrinkWrap: true,
       key: feedComponentKey,
@@ -110,13 +186,7 @@ class FeedComponent extends StatelessWidget {
             mainAxisSize: MainAxisSize.min,
             children: <Widget>[
               /// feed global actions bar
-              if (flavour == Flavour.CONSUMER)
-                FeedGlobalActionBar(
-                  globalActionsData: otherActions,
-                  flavour: flavour,
-                  isAnonymousFunc: this.isAnonymousFunc,
-                  isAnonymous: isAnonymous,
-                ),
+              showGlobalActionsBar(flavour),
 
               /// the swipe for more icon below the feed global action bar
               ///
@@ -124,57 +194,10 @@ class FeedComponent extends StatelessWidget {
               /// than the ones displayed in the screen
               ///
               /// todo(future) - hide this if there are no items in the screen
-              if (flavour == Flavour.CONSUMER)
-                Container(
-                  padding: const EdgeInsets.only(right: 10),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.end,
-                    children: <Widget>[
-                      SvgPicture.asset(swipeForMoreIconUrl),
-                      Text(
-                        swipeForMore,
-                        style: TextThemes.normalSize14Text(Colors.black87),
-                      )
-                    ],
-                  ),
-                ),
+              swipeMoreControl(flavour),
 
               // profile progress indicator for pro
-              if (flavour == Flavour.PRO || setupComplete == true)
-                Container(
-                  margin: const EdgeInsets.all(15),
-                  width: double.infinity,
-                  padding: const EdgeInsets.all(10),
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(5.0),
-                    color: Colors.white,
-                    boxShadow: const <BoxShadow>[
-                      BoxShadow(
-                        color: Colors.black54,
-                        blurRadius: 0.3,
-                      )
-                    ],
-                  ),
-                  child: Padding(
-                    padding: const EdgeInsets.symmetric(
-                        horizontal: 15, vertical: 10),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: <Widget>[
-                        Text(
-                          completeProfileTitle,
-                          style: TextThemes.veryBoldSize16Text(),
-                        ),
-                        size15VerticalSizedBox,
-                        Text(
-                          displayProgress(profileProgress),
-                          style: TextThemes.normalSize14Text(Colors.grey),
-                        ),
-                        size15VerticalSizedBox,
-                      ],
-                    ),
-                  ),
-                ),
+              showProfileSetupProgress(flavour, setupComplete: setupComplete),
 
               NudgeCarousel(
                 nudges: feedNudges,
