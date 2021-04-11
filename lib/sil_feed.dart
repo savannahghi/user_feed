@@ -1,3 +1,4 @@
+export 'src/domain/resources/inputs.dart';
 export 'src/domain/value_objects/constants.dart';
 export 'src/domain/value_objects/enums.dart';
 export 'src/presentation/core/feed.dart';

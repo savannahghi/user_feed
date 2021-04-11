@@ -49,13 +49,18 @@ class FeedComponent extends StatelessWidget {
 
   ///profile progress for `PRO`
   final String? profileProgress;
+
+  /// [setupComplete] indicated whether setup is complete. Valid only for `PRO`
   final bool setupComplete;
 
   /// [isAnonymousFunc] function that will be called if the current logged in user is anonymous
   /// It is not required since it's only valid for `consumer app` only
   final Function isAnonymousFunc;
 
+  /// [postedByUID] uid of the currently logged in user
   final String postedByUID;
+
+  /// [postedByName] name of the currently logged in user
   final String postedByName;
 
   /// callbacks that will be used in the feed items
