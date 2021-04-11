@@ -57,5 +57,11 @@ dev_dependencies:
 
 flutter:
   uses-material-design: true
-  assets:
-    - assets/images/
+  assets:  
+    - packages/sil_feed/assets/hide.svg  
+    - packages/sil_feed/assets/pin.svg 
+    - packages/sil_feed/assets/resolve.svg 
+    - packages/sil_feed/assets/white_logo.png
+    - packages/sil_feed/assets/white_logo.svg
+    - packages/sil_feed/assets/zero-state.png
+    - packages/sil_feed/assets/swipe.png

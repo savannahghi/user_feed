@@ -15,7 +15,7 @@ class Action with _$Action {
     @JsonKey(name: 'handling', unknownEnumValue: Handling.UNKNOWN)
         Handling? handling,
     @JsonKey(name: 'name') String? name,
-    @JsonKey(name: 'icon') Link? link,
+    @JsonKey(name: 'icon') Link? icon,
     @JsonKey(name: 'allowAnonymous') bool? allowAnonymous,
   }) = _Action;
 

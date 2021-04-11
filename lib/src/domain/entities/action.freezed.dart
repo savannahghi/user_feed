@@ -32,7 +32,7 @@ class _$ActionTearOff {
       @JsonKey(name: 'name')
           String? name,
       @JsonKey(name: 'icon')
-          Link? link,
+          Link? icon,
       @JsonKey(name: 'allowAnonymous')
           bool? allowAnonymous}) {
     return _Action(
@@ -41,7 +41,7 @@ class _$ActionTearOff {
       actionType: actionType,
       handling: handling,
       name: name,
-      link: link,
+      icon: icon,
       allowAnonymous: allowAnonymous,
     );
   }
@@ -67,7 +67,7 @@ mixin _$Action {
   @JsonKey(name: 'name')
   String? get name => throw _privateConstructorUsedError;
   @JsonKey(name: 'icon')
-  Link? get link => throw _privateConstructorUsedError;
+  Link? get icon => throw _privateConstructorUsedError;
   @JsonKey(name: 'allowAnonymous')
   bool? get allowAnonymous => throw _privateConstructorUsedError;
 
@@ -92,11 +92,11 @@ abstract class $ActionCopyWith<$Res> {
       @JsonKey(name: 'name')
           String? name,
       @JsonKey(name: 'icon')
-          Link? link,
+          Link? icon,
       @JsonKey(name: 'allowAnonymous')
           bool? allowAnonymous});
 
-  $LinkCopyWith<$Res>? get link;
+  $LinkCopyWith<$Res>? get icon;
 }
 
 /// @nodoc
@@ -114,7 +114,7 @@ class _$ActionCopyWithImpl<$Res> implements $ActionCopyWith<$Res> {
     Object? actionType = freezed,
     Object? handling = freezed,
     Object? name = freezed,
-    Object? link = freezed,
+    Object? icon = freezed,
     Object? allowAnonymous = freezed,
   }) {
     return _then(_value.copyWith(
@@ -138,9 +138,9 @@ class _$ActionCopyWithImpl<$Res> implements $ActionCopyWith<$Res> {
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String?,
-      link: link == freezed
-          ? _value.link
-          : link // ignore: cast_nullable_to_non_nullable
+      icon: icon == freezed
+          ? _value.icon
+          : icon // ignore: cast_nullable_to_non_nullable
               as Link?,
       allowAnonymous: allowAnonymous == freezed
           ? _value.allowAnonymous
@@ -150,13 +150,13 @@ class _$ActionCopyWithImpl<$Res> implements $ActionCopyWith<$Res> {
   }
 
   @override
-  $LinkCopyWith<$Res>? get link {
-    if (_value.link == null) {
+  $LinkCopyWith<$Res>? get icon {
+    if (_value.icon == null) {
       return null;
     }
 
-    return $LinkCopyWith<$Res>(_value.link!, (value) {
-      return _then(_value.copyWith(link: value));
+    return $LinkCopyWith<$Res>(_value.icon!, (value) {
+      return _then(_value.copyWith(icon: value));
     });
   }
 }
@@ -178,12 +178,12 @@ abstract class _$ActionCopyWith<$Res> implements $ActionCopyWith<$Res> {
       @JsonKey(name: 'name')
           String? name,
       @JsonKey(name: 'icon')
-          Link? link,
+          Link? icon,
       @JsonKey(name: 'allowAnonymous')
           bool? allowAnonymous});
 
   @override
-  $LinkCopyWith<$Res>? get link;
+  $LinkCopyWith<$Res>? get icon;
 }
 
 /// @nodoc
@@ -202,7 +202,7 @@ class __$ActionCopyWithImpl<$Res> extends _$ActionCopyWithImpl<$Res>
     Object? actionType = freezed,
     Object? handling = freezed,
     Object? name = freezed,
-    Object? link = freezed,
+    Object? icon = freezed,
     Object? allowAnonymous = freezed,
   }) {
     return _then(_Action(
@@ -226,9 +226,9 @@ class __$ActionCopyWithImpl<$Res> extends _$ActionCopyWithImpl<$Res>
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String?,
-      link: link == freezed
-          ? _value.link
-          : link // ignore: cast_nullable_to_non_nullable
+      icon: icon == freezed
+          ? _value.icon
+          : icon // ignore: cast_nullable_to_non_nullable
               as Link?,
       allowAnonymous: allowAnonymous == freezed
           ? _value.allowAnonymous
@@ -254,7 +254,7 @@ class _$_Action implements _Action {
       @JsonKey(name: 'name')
           this.name,
       @JsonKey(name: 'icon')
-          this.link,
+          this.icon,
       @JsonKey(name: 'allowAnonymous')
           this.allowAnonymous});
 
@@ -278,14 +278,14 @@ class _$_Action implements _Action {
   final String? name;
   @override
   @JsonKey(name: 'icon')
-  final Link? link;
+  final Link? icon;
   @override
   @JsonKey(name: 'allowAnonymous')
   final bool? allowAnonymous;
 
   @override
   String toString() {
-    return 'Action(id: $id, sequenceNumber: $sequenceNumber, actionType: $actionType, handling: $handling, name: $name, link: $link, allowAnonymous: $allowAnonymous)';
+    return 'Action(id: $id, sequenceNumber: $sequenceNumber, actionType: $actionType, handling: $handling, name: $name, icon: $icon, allowAnonymous: $allowAnonymous)';
   }
 
   @override
@@ -305,8 +305,8 @@ class _$_Action implements _Action {
                     .equals(other.handling, handling)) &&
             (identical(other.name, name) ||
                 const DeepCollectionEquality().equals(other.name, name)) &&
-            (identical(other.link, link) ||
-                const DeepCollectionEquality().equals(other.link, link)) &&
+            (identical(other.icon, icon) ||
+                const DeepCollectionEquality().equals(other.icon, icon)) &&
             (identical(other.allowAnonymous, allowAnonymous) ||
                 const DeepCollectionEquality()
                     .equals(other.allowAnonymous, allowAnonymous)));
@@ -320,7 +320,7 @@ class _$_Action implements _Action {
       const DeepCollectionEquality().hash(actionType) ^
       const DeepCollectionEquality().hash(handling) ^
       const DeepCollectionEquality().hash(name) ^
-      const DeepCollectionEquality().hash(link) ^
+      const DeepCollectionEquality().hash(icon) ^
       const DeepCollectionEquality().hash(allowAnonymous);
 
   @JsonKey(ignore: true)
@@ -347,7 +347,7 @@ abstract class _Action implements Action {
       @JsonKey(name: 'name')
           String? name,
       @JsonKey(name: 'icon')
-          Link? link,
+          Link? icon,
       @JsonKey(name: 'allowAnonymous')
           bool? allowAnonymous}) = _$_Action;
 
@@ -370,7 +370,7 @@ abstract class _Action implements Action {
   String? get name => throw _privateConstructorUsedError;
   @override
   @JsonKey(name: 'icon')
-  Link? get link => throw _privateConstructorUsedError;
+  Link? get icon => throw _privateConstructorUsedError;
   @override
   @JsonKey(name: 'allowAnonymous')
   bool? get allowAnonymous => throw _privateConstructorUsedError;
