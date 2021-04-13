@@ -119,4 +119,4 @@ List<String> allProActions = <String>[
   kMarkSelectedItem,
 ];
 
-const String defaultInitialFeedVideoUrl = 'gcv2Z2AdpjM';
+const String defaultInitialFeedVideoUrl = 'mKnlXcS3_Z0';
