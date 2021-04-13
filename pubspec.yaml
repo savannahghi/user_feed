@@ -6,8 +6,8 @@ homepage: https://gitlab.slade360emr.com/optimalhealth/sil_feed
 publish_to: none
 
 environment:
-  sdk: ">=2.12.0 <3.0.0"
-  flutter: ">=2.0.0"
+  sdk: '>=2.12.0 <3.0.0'
+  flutter: '>=2.0.0'
 
 dependencies:
   carousel_slider: ^4.0.0-nullsafety.0
@@ -16,7 +16,7 @@ dependencies:
 
   flutter_staggered_grid_view: ^0.4.0-nullsafety.3
   flutter_svg: ^0.21.0-nullsafety.0
-  freezed: ^0.14.0+1  
+  freezed: ^0.14.0+1
   freezed_annotation: ^0.14.0
   intl: ^0.17.0
   json_annotation: ^4.0.0
@@ -38,7 +38,7 @@ dependencies:
   sil_ui_components:
     git:
       url: https://sil_dart_utils:xiFnpjLHssG76bpWxUb9@gitlab.slade360emr.com/optimalhealth/dart_utils/sil_ui_components.git
-      ref: 0.0.47-nullsafety
+      ref: 0.0.48-nullsafety
 
   visibility_detector: ^0.2.0-nullsafety.1
 
@@ -57,10 +57,10 @@ dev_dependencies:
 
 flutter:
   uses-material-design: true
-  assets:  
-    - packages/sil_feed/assets/hide.svg  
-    - packages/sil_feed/assets/pin.svg 
-    - packages/sil_feed/assets/resolve.svg 
+  assets:
+    - packages/sil_feed/assets/hide.svg
+    - packages/sil_feed/assets/pin.svg
+    - packages/sil_feed/assets/resolve.svg
     - packages/sil_feed/assets/white_logo.png
     - packages/sil_feed/assets/white_logo.svg
     - packages/sil_feed/assets/zero-state.png
