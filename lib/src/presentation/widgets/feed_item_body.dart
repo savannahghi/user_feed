@@ -6,6 +6,7 @@ import 'package:sil_feed/src/domain/value_objects/colors.dart';
 import 'package:sil_feed/src/domain/value_objects/enums.dart';
 import 'package:sil_feed/src/domain/value_objects/strings.dart';
 import 'package:sil_feed/src/application/helpers/utils.dart';
+import 'package:sil_feed/src/domain/value_objects/widget_keys.dart';
 import 'package:sil_feed/src/presentation/document_viewer/document_grid.dart';
 import 'package:sil_feed/src/presentation/image_viewer/image_grid.dart';
 import 'package:sil_feed/src/presentation/video_player/video_player.dart';
@@ -90,6 +91,7 @@ class FeedItemBody extends StatelessWidget {
                       );
                     },
                     child: Container(
+                      key: remainingPhotosKey,
                       padding: const EdgeInsets.all(10),
                       margin: const EdgeInsets.all(8),
                       decoration: BoxDecoration(

@@ -22,6 +22,14 @@ final List<Link> mockFeedLinks = <Link>[
   mockPdfLink
 ];
 
+final List<Link> mockMultipleFeedLinks = <Link>[
+  mockYoutubeVideoLink,
+  mockImageLink,
+  mockImageLink,
+  mockImageLink,
+  mockPdfLink
+];
+
 final Map<String, dynamic> mockNudgeData1 = <String, dynamic>{
   'id': '1608729954',
   'sequenceNumber': 1608729964,
@@ -455,6 +463,7 @@ final Map<String, dynamic> mockItemData = <String, dynamic>{
       'replyTo': '',
       'postedByUID': 'hOcaUv8dqqgmWYf9HEhjdudgf0b2',
       'postedByName': 'Tests Service',
+      'timestamp': '2021-04-11T14:08:10Z'
     },
     <String, dynamic>{
       'id': '1ns2oKcNl9xSKzrJOl1CMhLhp27',
@@ -463,7 +472,8 @@ final Map<String, dynamic> mockItemData = <String, dynamic>{
           'I\'m the coaching service. I\'ll help you deliver your *awesome* coaching services to clients. 👋!',
       'replyTo': '',
       'postedByUID': 'hOcaUv8dqqgmWYf9HEhjdudgf0b2',
-      'postedByName': 'Coaching Service'
+      'postedByName': 'Coaching Service',
+      'timestamp': '2021-04-11T14:08:10Z'
     },
   ]
 };
