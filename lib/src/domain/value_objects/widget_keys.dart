@@ -8,6 +8,9 @@ const Key feedContainer = Key('feed_container');
 const Key feedItemCommentCard = Key('feed_item_comment_card');
 const Key iconAvatarContainer = Key('icon_avatar_container');
 const Key senderReplyColumn = Key('sender_column_key');
+const Key remainingPhotosKey = Key('remaining_photos');
+const Key addCommentTextFormKey = Key('add_comment_text_key');
+const Key addCommentIconButtonKey = Key('add_comment_icon_button_key');
 
 // pdf view keys
 const Key feedDocumentsListPageKey = Key('feed_document_view_page');

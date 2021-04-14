@@ -5,7 +5,6 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:sil_feed/src/domain/value_objects/enums.dart';
 import 'package:sil_feed/src/presentation/video_player/video_player.dart';
 import 'package:sil_feed/src/presentation/widgets/feed_item_body.dart';
-
 import 'package:visibility_detector/visibility_detector.dart';
 
 import '../../../mock_data.dart';
@@ -19,7 +18,7 @@ void main() {
 
       await tester.pumpWidget(MaterialApp(
         home: FeedItemBody(
-          links: mockFeedLinks,
+          links: mockMultipleFeedLinks,
           flavour: Flavour.PRO,
           text: 'This is the feed item body',
         ),

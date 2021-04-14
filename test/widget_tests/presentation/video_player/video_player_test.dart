@@ -1,37 +1,35 @@
+import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:sil_feed/src/domain/entities/link.dart';
+import 'package:sil_feed/src/presentation/router/router_generator.dart';
+import 'package:sil_feed/src/presentation/video_player/video_player.dart';
+import 'package:youtube_player_flutter/youtube_player_flutter.dart';
+
+import '../../../mock_data.dart';
+import '../../../mocks.dart';
 
 void main() {
   group('VideoPlayer', () {
-    //final MockNavigatorObserver mockObserver = MockNavigatorObserver();
+    final MockNavigatorObserver mockObserver = MockNavigatorObserver();
 
-    // testWidgets('should render videos correctly', (WidgetTester tester) async {
-    //   await tester.runAsync(() async {
-    //     await provideMockedNetworkImages(() async {
-    //       await tester.pumpWidget(
-    //         MaterialApp(
-    //           onGenerateRoute: RouteGenerator.generateRoute,
-    //           navigatorObservers: <NavigatorObserver>[mockObserver],
-    //           home: const Scaffold(
-    //             body: VideoPlayer(
-    //               videos: <dynamic>[
-    //                 <String, dynamic>{
-    //                   'id': '1ns2o8pktkMsAEmP9dIKFvIhvAC',
-    //                   'url': 'https://youtu.be/gcv2Z2AdpjM',
-    //                   'linkType': 'YOUTUBE_VIDEO',
-    //                   'thumbnail':
-    //                       'https://assets.healthcloud.co.ke/items/videos/thumbs/01_lead.png',
-    //                   'title': 'Be.Well lead'
-    //                 }
-    //               ],
-    //             ),
-    //           ),
-    //         ),
-    //       );
-
-    //       // verify UI renders correctly
-    //       expect(find.byType(YoutubePlayerBuilder), findsOneWidget);
-    //     });
-    //   });
-    //});
+    testWidgets('should render videos correctly', (WidgetTester tester) async {
+      await tester.runAsync(() async {
+        await tester.pumpWidget(
+          MaterialApp(
+            onGenerateRoute: RouteGenerator.generateRoute,
+            navigatorObservers: <NavigatorObserver>[mockObserver],
+            home: Scaffold(
+              body: VideoPlayer(videos: <Link>[mockYoutubeVideoLink]),
+            ),
+          ),
+        );
+        await tester.pump();
+        // verify UI renders correctly
+        expect(find.byType(YoutubePlayerBuilder), findsOneWidget);
+        expect(find.byType(IconButton), findsOneWidget);
+        await tester.tap(find.byType(IconButton));
+        await tester.pump();
+      });
+    });
   });
 }
