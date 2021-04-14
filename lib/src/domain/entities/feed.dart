@@ -23,8 +23,9 @@ class Feed with _$Feed {
     @JsonKey(name: 'items') List<Item>? items,
   }) = _Feed;
 
-  /// [intial] returns initial invalid feed. The caller, usually in the app, should check the validity of the feed.
-  factory Feed.intial() => Feed();
+  /// [initial] returns initial invalid feed. The caller, usually in the app,
+  ///  should check the validity of the feed.
+  factory Feed.initial() => Feed();
 
   factory Feed.fromJson(Map<String, dynamic> json) => _$FeedFromJson(json);
 }

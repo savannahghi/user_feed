@@ -1,11 +1,12 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:intl/intl.dart';
 
 import 'package:sil_feed/src/application/helpers/utils.dart';
 import 'package:sil_feed/src/domain/value_objects/enums.dart';
 import 'package:sil_feed/src/domain/entities/action.dart' as feed_action;
+import 'package:sil_feed/src/domain/value_objects/feed_store.dart';
+import 'package:sil_feed/src/domain/value_objects/strings.dart';
 
 import 'package:sil_themes/spaces.dart';
 import 'package:sil_themes/text_themes.dart';
@@ -21,16 +22,13 @@ import 'package:sil_themes/text_themes.dart';
 ///
 
 class FeedGlobalActionBar extends StatelessWidget {
-  const FeedGlobalActionBar({
-    Key? key,
-    required this.globalActionsData,
-    required this.flavour,
-  }) : super(key: key);
+  FeedGlobalActionBar({Key? key, required this.globalActionsData})
+      : super(key: key);
 
   final List<feed_action.Action> globalActionsData;
 
   // the flavor in which the app is running
-  final Flavour flavour;
+  final Flavour _flavour = FeedStore().flavour.valueWrapper!.value;
 
   Widget _buildGlobalAction(
       {required feed_action.Action action, required BuildContext context}) {
@@ -43,15 +41,15 @@ class FeedGlobalActionBar extends StatelessWidget {
     final String secondActionName =
         titleCase(toBeginningOfSentenceCase(actionName.split(' ').last)!);
 
+    final String combinedActionName = '$firstActionName $secondActionName';
+
     final String? actionIconUrl =
-        flavour == Flavour.PRO ? 'no link url' : action.icon?.url;
+        _flavour == Flavour.PRO ? UNKNOWN : action.icon?.url;
 
     return GestureDetector(
       onTap: () {
         callFeedAction(
-            fullActionName: actionNameWithUnderscores,
-            context: context,
-            flavour: flavour);
+            fullActionName: actionNameWithUnderscores, context: context);
       },
       child: Padding(
         padding: const EdgeInsets.all(8.0),
@@ -75,16 +73,10 @@ class FeedGlobalActionBar extends StatelessWidget {
                 padding: const EdgeInsets.all(15),
                 decoration: const BoxDecoration(
                     color: Colors.white, shape: BoxShape.circle),
-
-                // todo(abiud) - replace this url dynamically
-                child: (flavour == Flavour.PRO)
+                child: (_flavour == Flavour.PRO)
                     ? const SizedBox()
-                    : actionIconUrl != null
-                        ? SvgPicture.network(
-                            actionIconUrl,
-                            height: 40,
-                            width: 40,
-                          )
+                    : (actionIconUrl != null && actionIconUrl != UNKNOWN)
+                        ? Image.network(actionIconUrl, height: 40, width: 40)
                         : const SizedBox(),
               ),
             ),
@@ -95,12 +87,7 @@ class FeedGlobalActionBar extends StatelessWidget {
             Row(
               children: <Widget>[
                 Text(
-                  firstActionName,
-                  style: TextThemes.veryBoldSize14Text(Colors.black),
-                ),
-                const Text(' '),
-                Text(
-                  secondActionName,
+                  combinedActionName,
                   style: TextThemes.veryBoldSize14Text(Colors.black),
                 ),
               ],

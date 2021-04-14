@@ -2,6 +2,7 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:sil_feed/src/domain/entities/nudge.dart';
 import 'package:sil_feed/src/domain/value_objects/enums.dart';
+import 'package:sil_feed/src/domain/value_objects/feed_store.dart';
 import 'package:sil_feed/src/presentation/widgets/feed_nudge.dart';
 
 /// [NudgeCarousel] is a carousel that receives a list of nudges and
@@ -10,19 +11,14 @@ class NudgeCarousel extends StatefulWidget {
   const NudgeCarousel({
     Key? key,
     required this.nudges,
-    required this.flavour,
     required this.unroll,
     required this.single,
     required this.isSmallScreen,
-    required this.nudgeCarouselCallbacks,
   }) : super(key: key);
 
-  /// the flavor in which the app is running on
-  final Flavour flavour;
-
   final bool isSmallScreen;
-  final Map<String, Function> nudgeCarouselCallbacks;
   final List<Nudge> nudges;
+
   // whether the carousel was called independently (as a component on its own)
   final bool single;
 
@@ -38,12 +34,14 @@ class _NudgeCarouselState extends State<NudgeCarousel> {
 
   @override
   Widget build(BuildContext context) {
+    final Flavour _flavour = FeedStore().flavour.valueWrapper!.value;
+
     /// if this carousel is being called independently
     final bool singleUnroll = widget.single == true && widget.unroll == true;
 
     /// this nudge carousel that this feed is being rendered alongside the feed
     final bool isConsumerOrSmallScreen =
-        widget.isSmallScreen == true || widget.flavour == Flavour.CONSUMER;
+        widget.isSmallScreen == true || _flavour == Flavour.CONSUMER;
 
     // TODO(abiud): anticipate empty nudges. this might involve a zero state
     // if (widget.nudges.isEmpty) return Container();
@@ -53,19 +51,15 @@ class _NudgeCarouselState extends State<NudgeCarousel> {
       child: Column(
         children: singleUnroll
             ? widget.nudges
-                .map((Nudge nudge) => FeedNudge(
-                      nudge: nudge,
-                      flavor: widget.flavour,
-                    ))
+                .map(
+                  (Nudge nudge) => FeedNudge(nudge: nudge),
+                )
                 .toList()
             : <Widget>[
                 if (isConsumerOrSmallScreen)
                   CarouselSlider(
                     items: widget.nudges
-                        .map((Nudge nudge) => FeedNudge(
-                              nudge: nudge,
-                              flavor: widget.flavour,
-                            ))
+                        .map((Nudge nudge) => FeedNudge(nudge: nudge))
                         .toList(),
                     options: CarouselOptions(
                       height: 190,

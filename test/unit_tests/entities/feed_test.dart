@@ -1,4 +1,5 @@
 import 'package:flutter_test/flutter_test.dart';
+import 'package:sil_feed/sil_feed.dart';
 import 'package:sil_feed/src/domain/entities/feed.dart';
 import 'package:sil_feed/src/domain/entities/item.dart';
 
@@ -29,7 +30,18 @@ void main() {
     );
 
     test('should return feed object from initial method', () {
-      final Feed feed = Feed.intial();
+      final Feed feed = Feed.initial();
+      expect(feed.actions, isNull);
+      expect(feed.id, isNull);
+      expect(feed.items, isNull);
+    });
+
+    test('should return feed response object from initial method', () {
+      final GetFeedData getFeedData = GetFeedData.initial();
+      expect(getFeedData, isA<GetFeedData>());
+
+      final Feed feed = getFeedData.getFeed;
+
       expect(feed.actions, isNull);
       expect(feed.id, isNull);
       expect(feed.items, isNull);

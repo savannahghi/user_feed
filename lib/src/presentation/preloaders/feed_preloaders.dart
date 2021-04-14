@@ -12,12 +12,10 @@ import 'package:sil_themes/spaces.dart';
 
 class FeedLoadingShimmer extends StatelessWidget {
   const FeedLoadingShimmer(
-      {Key? key,
-      required this.flavor,
+      {required this.flavor,
       required this.globalActionShimmerHorizontalPadding,
       required this.nudgeShimmerPadding,
-      required this.feedItemShimmerPadding})
-      : super(key: key);
+      required this.feedItemShimmerPadding});
 
   final Flavour flavor;
   final double globalActionShimmerHorizontalPadding;

@@ -11,18 +11,10 @@ import 'package:sil_feed/src/presentation/widgets/feed_item_title_bar.dart';
 
 import 'package:sil_themes/spaces.dart';
 
-// ignore_for_file: todo
 class FeedItemComponent extends StatelessWidget {
-  const FeedItemComponent({
-    required this.feedItem,
-    required this.flavour,
-    this.currentSignedInUser,
-  });
+  const FeedItemComponent({required this.feedItem});
 
   final Item feedItem;
-  final Flavour flavour;
-
-  final String? currentSignedInUser;
 
   @override
   Widget build(BuildContext context) {
@@ -74,7 +66,7 @@ class FeedItemComponent extends StatelessWidget {
               ),
 
               // the body of the feed item
-              FeedItemBody(links: links, text: text, flavour: flavour),
+              FeedItemBody(links: links, text: text),
               smallVerticalSizedBox,
             ],
           ),

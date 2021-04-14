@@ -6,7 +6,7 @@ import 'package:sil_feed/src/domain/entities/link.dart';
 import 'package:sil_feed/src/domain/value_objects/asset_strings.dart';
 import 'package:sil_feed/src/domain/value_objects/constants.dart';
 import 'package:sil_feed/src/domain/value_objects/enums.dart';
-import 'package:sil_feed/src/presentation/widgets/nudge_carousel.dart';
+import 'package:sil_feed/src/domain/value_objects/feed_store.dart';
 
 /// returns a human readable format of the date string
 /// passed to it
@@ -62,18 +62,17 @@ String getHumanReadableTimestamp(String date) {
 /// looks through the list of allowed actions [allConsumerActions and AllProActions]
 /// and executes the respective function
 void callFeedAction(
-    {required String fullActionName,
-    required BuildContext context,
-    required Flavour flavour}) {
-  // get the callbacks
-  final Map<String, dynamic> callbacks = (context
-          .findAncestorWidgetOfExactType<FeedComponent>()
-          ?.feedContentCallbacks ??
-      context
-          .findAncestorWidgetOfExactType<NudgeCarousel>()
-          ?.nudgeCarouselCallbacks)!;
+    {required String fullActionName, required BuildContext context}) {
+  final FeedStore _feedContentCallbacksStore = FeedStore();
 
-  if (flavour == Flavour.CONSUMER) {
+  // get the callbacks
+  final Map<String, Function> _callbacks =
+      _feedContentCallbacksStore.feedContentCallbacks.valueWrapper!.value;
+
+  final Flavour _flavour =
+      _feedContentCallbacksStore.flavour.valueWrapper!.value;
+
+  if (_flavour == Flavour.CONSUMER) {
     // loop through the consumer actions and call their functions
     allConsumerActions.map(
       (String consumerAction) {
@@ -84,9 +83,10 @@ void callFeedAction(
         if (fullActionName == consumerAction) {
           /// looks through the callbacks you provided and searches for the
           /// callback that has the key with the name [fullActionName]
-          if (callbacks.containsKey(fullActionName)) {
+          if (_callbacks.containsKey(fullActionName)) {
             /// if it find it, it executes the callback
-            callbacks[fullActionName]();
+            _callbacks[fullActionName]!();
+
             return;
           } else {
             /// if it does not, it shows a ['Coming Soon'] snackbar
@@ -102,7 +102,7 @@ void callFeedAction(
         }
       },
     ).toList();
-  } else if (flavour == Flavour.PRO) {
+  } else if (_flavour == Flavour.PRO) {
     // loop through the pro actions and call their functions
     allProActions.map(
       (String proAction) {
@@ -113,9 +113,9 @@ void callFeedAction(
         if (fullActionName == proAction) {
           /// looks through the callbacks you provided and searches for the
           /// callback that has the key with the name [fullActionName]
-          if (callbacks.containsKey(fullActionName)) {
+          if (_callbacks.containsKey(fullActionName)) {
             /// if it find it, it executes the callback
-            callbacks[fullActionName]();
+            _callbacks[fullActionName]!();
             return;
           } else {
             /// if it does not, it shows a ['Coming Soon'] snackbar
@@ -175,13 +175,6 @@ List<Link> processFeedMedia(
     default:
       return links;
   }
-}
-
-int conversationsLengthBuilder(int conversations) {
-  if (conversations <= 1) {
-    return 1;
-  }
-  return 2;
 }
 
 LinearGradient getFeedGlobalActionGradient(BuildContext context) =>

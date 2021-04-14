@@ -21,9 +21,7 @@ void main() {
         };
 
         final Map<String, dynamic> payload = <String, dynamic>{
-          'data': <String, dynamic>{
-            'getFeed': feed,
-          },
+          'data': <String, dynamic>{'getFeed': feed},
         };
 
         final FeedResponsePayload _payload =

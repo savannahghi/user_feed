@@ -29,3 +29,9 @@ const Key feedActionButtonKey = Key('feed_action_button_key');
 
 // visibility detector key
 const Key videoPlayerVisibilityDetectorKey = Key('visibility_key');
+
+const Key navigateToPhotos = Key('navigate_to_photos');
+
+const Key navigateToDocuments = Key('navigate_to_photos');
+
+const Key videoPlayPauseKey = Key('play_or_pause_video');

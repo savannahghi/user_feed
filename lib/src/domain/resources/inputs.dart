@@ -21,7 +21,7 @@ class GetFeedData with _$GetFeedData {
   }) = _GetFeedData;
 
   factory GetFeedData.initial() {
-    return GetFeedData(getFeed: Feed.intial());
+    return GetFeedData(getFeed: Feed.initial());
   }
 
   factory GetFeedData.fromJson(Map<String, dynamic> json) =>

@@ -88,7 +88,7 @@ void main() {
       expect(readableDate, isA<String>());
     });
 
-    test('displayProgressMessage succefully', () {
+    test('displayProgressMessage successfully', () {
       const String progress = '20';
       final String message = displayProgress(progress);
       expect(message, 'Your profile is $progress% complete, complete it now');

@@ -14,10 +14,7 @@ void main() {
         await tester.pumpWidget(MaterialApp(home: Material(
           child: Scaffold(
             body: Builder(builder: (BuildContext context) {
-              return FeedItemComponent(
-                feedItem: mockFeedItem,
-                flavour: Flavour.CONSUMER,
-              );
+              return FeedItemComponent(feedItem: mockFeedItem);
             }),
           ),
         )));
