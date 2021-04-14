@@ -525,7 +525,7 @@ final Map<String, dynamic> mockFeedResponsePayload = <String, dynamic>{
   'data': <String, dynamic>{
     'getFeed': <String, dynamic>{
       'uid': '90B3cB9zPSciHC37RqBivbGrRa33',
-      'flavour': 'PRO',
+      'flavour': 'CONSUMER',
       'isAnonymous': false,
       'actions': <Map<String, dynamic>>[
         <String, dynamic>{
