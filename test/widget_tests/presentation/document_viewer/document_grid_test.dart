@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 
@@ -10,59 +12,68 @@ import 'package:sil_feed/src/presentation/router/router_generator.dart';
 import 'package:sil_feed/src/domain/value_objects/widget_keys.dart';
 
 import '../../../mock_data.dart';
-import '../../../mock_utils.dart';
 import '../../../mocks.dart';
+import '../../mock_image_http_client.dart';
 
 void main() {
   group('Feed Document List page', () {
+    setUpAll(() {
+      HttpOverrides.global = MockTestHttpOverrides();
+    });
     final MockNavigatorObserver mockObserver = MockNavigatorObserver();
 
     testWidgets('should render document list correctly',
         (WidgetTester tester) async {
-      await mockNetworkImagesFor(
-        () => tester.pumpWidget(
-          MaterialApp(
-            onGenerateRoute: RouteGenerator.generateRoute,
-            navigatorObservers: <NavigatorObserver>[mockObserver],
-            home: Scaffold(
-              body: FeedItemDocumentGrid(
-                documents: <Link>[mockPdfLink],
-                flavour: Flavour.PRO,
+      await tester.runAsync(() async {
+        await mockNetworkImagesFor(
+          () => tester.pumpWidget(
+            MaterialApp(
+              onGenerateRoute: RouteGenerator.generateRoute,
+              navigatorObservers: <NavigatorObserver>[mockObserver],
+              home: Scaffold(
+                body: FeedItemDocumentGrid(
+                  documents: <Link>[mockPdfLink],
+                  flavour: Flavour.PRO,
+                ),
               ),
             ),
           ),
+        );
+
+        // verify UI renders correctly
+        expect(find.byKey(feedDocumentsListPageKey), findsOneWidget);
+        expect(find.byType(ListView), findsWidgets);
+        expect(find.byKey(feedDocumentsListContainerKey), findsOneWidget);
+
+        expect(find.byKey(const Key('How do you get your kids to take meds?')),
+            findsOneWidget);
+
+        await tester.tap(
+            find.byKey(const Key('How do you get your kids to take meds?')));
+
+        await tester.pump();
+      });
+    });
+
+    testWidgets('should render empty container when documents are empty',
+        (WidgetTester tester) async {
+      await tester.pumpWidget(MaterialApp(
+        navigatorObservers: <NavigatorObserver>[mockObserver],
+        home: const Scaffold(
+          body: FeedItemDocumentGrid(
+            documents: <Link>[],
+            flavour: Flavour.PRO,
+          ),
         ),
-      );
+      ));
 
       await tester.pumpAndSettle();
 
       // verify UI renders correctly
       expect(find.byKey(feedDocumentsListPageKey), findsOneWidget);
       expect(find.byType(ListView), findsWidgets);
-      expect(find.byKey(feedDocumentsListContainerKey), findsOneWidget);
-    });
-
-    testWidgets('should render empty container when documents are empty',
-        (WidgetTester tester) async {
-      await provideMockedNetworkImages(() async {
-        await tester.pumpWidget(MaterialApp(
-          navigatorObservers: <NavigatorObserver>[mockObserver],
-          home: const Scaffold(
-            body: FeedItemDocumentGrid(
-              documents: <Link>[],
-              flavour: Flavour.PRO,
-            ),
-          ),
-        ));
-
-        await tester.pumpAndSettle();
-
-        // verify UI renders correctly
-        expect(find.byKey(feedDocumentsListPageKey), findsOneWidget);
-        expect(find.byType(ListView), findsWidgets);
-        expect(find.byKey(feedDocumentsListEmptyContainerKey), findsOneWidget);
-        expect(find.byKey(feedDocumentsListContainerKey), findsNothing);
-      });
+      expect(find.byKey(feedDocumentsListEmptyContainerKey), findsOneWidget);
+      expect(find.byKey(feedDocumentsListContainerKey), findsNothing);
     });
   });
 }

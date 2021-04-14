@@ -5,6 +5,7 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:sil_feed/src/domain/resources/inputs.dart';
 import 'package:sil_feed/src/domain/value_objects/enums.dart';
 import 'package:sil_feed/src/domain/value_objects/feed_type_defs.dart';
+import 'package:sil_feed/src/domain/value_objects/strings.dart';
 import 'package:sil_feed/src/presentation/core/feed.dart';
 
 import '../../../mock_data.dart';
@@ -94,6 +95,7 @@ void main() {
                   ),
                 ),
               );
+              expect(find.text(completeProfileTitle), findsOneWidget);
             },
           );
         },
