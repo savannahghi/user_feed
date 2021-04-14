@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:sil_feed/sil_feed.dart';
 import 'package:sil_feed/src/application/helpers/utils.dart';
+
+import '../../../test_helpers.dart';
 
 void main() {
   group('FeedUtils', () {
@@ -9,24 +12,28 @@ void main() {
       // ignore: prefer_function_declarations_over_variables
       final Function addOne = () => integers.add(1);
       const String snackbarText = 'Test coverage achieved';
-      await tester.pumpWidget(MaterialApp(
-        home: Scaffold(
-          body: Builder(builder: (BuildContext context) {
+
+      await buildTestWidget(
+        tester: tester,
+        child: Builder(
+          builder: (BuildContext context) {
             return Container(
               decoration:
                   BoxDecoration(gradient: getFeedGlobalActionGradient(context)),
               child: GestureDetector(
                 onTap: () {
-                  ScaffoldMessenger.of(context).showSnackBar(snackbar(
-                      content: snackbarText,
-                      callback: addOne,
-                      label: 'Ok Thanks!'));
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    snackbar(
+                        content: snackbarText,
+                        callback: addOne,
+                        label: 'Ok Thanks!'),
+                  );
                 },
               ),
             );
-          }),
+          },
         ),
-      ));
+      );
 
       expect(find.byType(GestureDetector), findsOneWidget);
 
@@ -44,39 +51,159 @@ void main() {
       expect(integers.first, 1);
     });
 
-    // testWidgets(
-    //   'should callFeedAction from consumer ',
-    //   (WidgetTester tester) async {
-    //     await tester.runAsync(
-    //       () async {
-    //         await tester.pumpWidget(
-    //           MaterialApp(
-    //             home: Material(
-    //               child: Scaffold(
-    //                 body: Builder(
-    //                   builder: (BuildContext context) {
-    //                     return TextButton(
-    //                       onPressed: () => callFeedAction(
-    //                           context: context,
-    //                           flavour: Flavour.CONSUMER,
-    //                           fullActionName: 'kGetMedicine'),
-    //                       child: const Text('btn'),
-    //                     );
-    //                   },
-    //                 ),
-    //               ),
-    //             ),
-    //           ),
-    //         );
+    testWidgets(
+      'should execute a feed action from consumer ',
+      (WidgetTester tester) async {
+        final List<bool> callSequence = <bool>[];
 
-    //         await tester.pumpAndSettle();
-    //         expect(find.byType(TextButton), findsWidgets);
+        await buildTestWidget(
+          tester: tester,
+          customCallbacks: <String, Function>{
+            kGetMedicine: () {
+              callSequence.add(true);
+            }
+          },
+          child: Builder(
+            builder: (BuildContext context) {
+              return GestureDetector(
+                onTap: () => callFeedAction(
+                    context: context, fullActionName: kGetMedicine),
+                child: const Text('btn'),
+              );
+            },
+          ),
+        );
 
-    //         await tester.tap(find.byType(TextButton));
-    //         await tester.pumpAndSettle();
-    //       },
-    //     );
-    //   },
-    // );
+        expect(find.byType(GestureDetector), findsWidgets);
+
+        await tester.tap(find.byType(GestureDetector));
+        await tester.pumpAndSettle();
+
+        expect(callSequence.isNotEmpty, true);
+
+        // the function should be called once
+        expect(callSequence.length, 1);
+        expect(callSequence, <bool>[true]);
+
+        await tester.tap(find.byType(GestureDetector));
+        await tester.pumpAndSettle();
+
+        expect(callSequence.isNotEmpty, true);
+
+        // the function should be called once
+        expect(callSequence.length, 2);
+        expect(callSequence, <bool>[true, true]);
+      },
+    );
+
+    testWidgets(
+      'should show a snackbar if the specified action is not contained in '
+      'our predefined list of CONSUMER actions',
+      (WidgetTester tester) async {
+        final List<bool> callSequence = <bool>[];
+
+        await buildTestWidget(
+          tester: tester,
+          customCallbacks: <String, Function>{
+            'someUnknownAction': () {
+              callSequence.add(true);
+            }
+          },
+          child: Builder(
+            builder: (BuildContext context) {
+              return GestureDetector(
+                onTap: () => callFeedAction(
+                    context: context, fullActionName: kGetMedicine),
+                child: const Text('btn'),
+              );
+            },
+          ),
+        );
+
+        expect(find.byType(GestureDetector), findsWidgets);
+
+        await tester.tap(find.byType(GestureDetector));
+        await tester.pumpAndSettle();
+
+        expect(callSequence.isEmpty, true);
+        expect(callSequence.length, 0);
+
+        expect(find.byType(SnackBar), findsOneWidget);
+      },
+    );
+
+    testWidgets(
+      'should execute a feed action from PRO ',
+      (WidgetTester tester) async {
+        final List<bool> callSequence = <bool>[];
+
+        await buildTestWidget(
+          tester: tester,
+          flavour: Flavour.PRO,
+          customCallbacks: <String, Function>{
+            kAddPatient: () {
+              callSequence.add(true);
+            }
+          },
+          child: Builder(
+            builder: (BuildContext context) {
+              return GestureDetector(
+                onTap: () => callFeedAction(
+                    context: context, fullActionName: kAddPatient),
+                child: const Text('btn'),
+              );
+            },
+          ),
+        );
+
+        expect(find.byType(GestureDetector), findsWidgets);
+
+        await tester.tap(find.byType(GestureDetector));
+        await tester.pumpAndSettle();
+
+        expect(callSequence.isNotEmpty, true);
+
+        // the function should be called once
+        expect(callSequence.length, 1);
+        expect(callSequence, <bool>[true]);
+      },
+    );
+
+    testWidgets(
+      'should show a snackbar if the specified action is not contained in '
+      'our predefined list of PRO actions',
+      (WidgetTester tester) async {
+        final List<bool> callSequence = <bool>[];
+
+        await buildTestWidget(
+          tester: tester,
+          flavour: Flavour.PRO,
+          customCallbacks: <String, Function>{
+            'someUnknownAction': () {
+              callSequence.add(true);
+            }
+          },
+          child: Builder(
+            builder: (BuildContext context) {
+              return GestureDetector(
+                onTap: () => callFeedAction(
+                    context: context, fullActionName: kAddPatient),
+                child: const Text('btn'),
+              );
+            },
+          ),
+        );
+
+        expect(find.byType(GestureDetector), findsWidgets);
+
+        await tester.tap(find.byType(GestureDetector));
+        await tester.pumpAndSettle();
+
+        expect(callSequence.isEmpty, true);
+        expect(callSequence.length, 0);
+
+        expect(find.byType(SnackBar), findsOneWidget);
+      },
+    );
   });
 }

@@ -131,24 +131,10 @@ class FeedNoBorderButton extends StatelessWidget {
 /// [FeedActionButton] is a component which when passed in one action,
 /// returns a button with the contents in the actions
 class FeedActionButton extends StatelessWidget {
-  const FeedActionButton({
-    Key? key,
-    required this.action,
-    required this.flavour,
-    this.customFunction,
-  }) : super(key: key);
+  const FeedActionButton({Key? key, required this.action}) : super(key: key);
 
   /// the name of the action
   final feed_action.Action action;
-
-  // the flavor in which the app is running
-  final Flavour flavour;
-
-  /// Any custom function you wish to run instead of the default [callFeedAction]
-  final Function? customFunction;
-
-  /// the event that will be fired once the button is tapped
-  // todo(abiud): add event here
 
   @override
   Widget build(BuildContext context) {
@@ -162,15 +148,8 @@ class FeedActionButton extends StatelessWidget {
     if (actionType == ActionType.PRIMARY) {
       return FeedPrimaryButton(
         onPressed: () {
-          if (customFunction != null) {
-            /// call any custom functions if available
-            customFunction!();
-          } else {
-            callFeedAction(
-                fullActionName: actionNameWithUnderscore,
-                context: context,
-                flavour: flavour);
-          }
+          callFeedAction(
+              fullActionName: actionNameWithUnderscore, context: context);
         },
         text: actionName,
         buttonColor: Theme.of(context).accentColor,
@@ -183,24 +162,19 @@ class FeedActionButton extends StatelessWidget {
       return FeedSecondaryButton(
         onPressed: () {
           callFeedAction(
-              fullActionName: actionNameWithUnderscore,
-              context: context,
-              flavour: flavour);
+              fullActionName: actionNameWithUnderscore, context: context);
         },
         text: actionName,
         customPadding: const EdgeInsets.symmetric(vertical: 12, horizontal: 15),
       );
     }
 
-    // todo: handle tertiary and global later
     return FeedPrimaryButton(
       onPressed: () {
         callFeedAction(
-            fullActionName: actionNameWithUnderscore,
-            context: context,
-            flavour: flavour);
+            fullActionName: actionNameWithUnderscore, context: context);
       },
-      text: 'Default Action',
+      text: actionName,
     );
   }
 }

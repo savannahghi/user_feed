@@ -22,7 +22,7 @@ void main() {
         kMarkSelectedItem,
       ]);
     });
-    test('should return allProrActions', () {
+    test('should return allProActions', () {
       expect(allProActions, <String>[
         kSearchPatient,
         kGetHelp,

@@ -2,7 +2,6 @@ library sil_feed;
 
 import 'package:flutter/material.dart';
 
-import 'package:flutter_svg/svg.dart';
 import 'package:sil_feed/src/application/helpers/utils.dart';
 import 'package:sil_feed/src/domain/entities/action.dart' as feed_action;
 import 'package:sil_feed/src/domain/entities/feed.dart';
@@ -12,6 +11,7 @@ import 'package:sil_feed/src/domain/resources/inputs.dart';
 import 'package:sil_feed/src/domain/value_objects/asset_strings.dart';
 import 'package:sil_feed/src/domain/value_objects/colors.dart';
 import 'package:sil_feed/src/domain/value_objects/enums.dart';
+import 'package:sil_feed/src/domain/value_objects/feed_store.dart';
 import 'package:sil_feed/src/domain/value_objects/strings.dart';
 import 'package:sil_feed/src/domain/value_objects/widget_keys.dart';
 import 'package:sil_feed/src/presentation/widgets/feed_global_action_bar.dart';
@@ -21,14 +21,12 @@ import 'package:sil_feed/src/presentation/widgets/nudge_carousel.dart';
 import 'package:sil_themes/spaces.dart';
 import 'package:sil_themes/text_themes.dart';
 
-class FeedComponent extends StatelessWidget {
+class FeedComponent extends StatefulWidget {
   const FeedComponent({
     Key? key,
     required this.userFeed,
     required this.flavour,
     required this.isSmallScreen,
-
-    // TODO(abiud): add the others ie pin and hide
     required this.feedContentCallbacks,
     this.profileProgress,
     this.setupComplete = false,
@@ -36,23 +34,38 @@ class FeedComponent extends StatelessWidget {
 
   /// the feed
   final FeedResponsePayload userFeed;
+
+  /// The flavour in which the app is running on
   final Flavour flavour;
+
+  /// If this app is running on a small screen
   final bool isSmallScreen;
 
-  ///profile progress for `PRO`
+  /// profile progress for `PRO`
   final String? profileProgress;
 
   /// [setupComplete] indicated whether setup is complete. Valid only for `PRO`
   final bool setupComplete;
 
-  /// callbacks that will be used in the feed items
+  /// Callbacks(functions) that will be used in the feed items
   final Map<String, Function> feedContentCallbacks;
 
-  // TODO(abiud): add others eg hide and pin, unpin
+  @override
+  _FeedComponentState createState() => _FeedComponentState();
+}
+
+class _FeedComponentState extends State<FeedComponent> {
+  @override
+  void initState() {
+    super.initState();
+    FeedStore()
+      ..feedContentCallbacks.add(widget.feedContentCallbacks)
+      ..flavour.add(widget.flavour);
+  }
 
   @override
   Widget build(BuildContext context) {
-    final Feed feed = this.userFeed.data.getFeed;
+    final Feed feed = this.widget.userFeed.data.getFeed;
 
     // global actions
     final List<feed_action.Action>? feedActions = feed.actions;
@@ -70,10 +83,7 @@ class FeedComponent extends StatelessWidget {
 
     Widget showGlobalActionsBar(Flavour flavour) {
       if (flavour == Flavour.CONSUMER) {
-        return FeedGlobalActionBar(
-          globalActionsData: otherActions,
-          flavour: flavour,
-        );
+        return FeedGlobalActionBar(globalActionsData: otherActions);
       }
       return const SizedBox();
     }
@@ -89,10 +99,7 @@ class FeedComponent extends StatelessWidget {
             borderRadius: BorderRadius.circular(5.0),
             color: Colors.white,
             boxShadow: const <BoxShadow>[
-              BoxShadow(
-                color: Colors.black54,
-                blurRadius: 0.3,
-              )
+              BoxShadow(color: Colors.black54, blurRadius: 0.3)
             ],
           ),
           child: Padding(
@@ -106,7 +113,7 @@ class FeedComponent extends StatelessWidget {
                 ),
                 size15VerticalSizedBox,
                 Text(
-                  displayProgress(profileProgress),
+                  displayProgress(widget.profileProgress),
                   style: TextThemes.normalSize14Text(Colors.grey),
                 ),
                 size15VerticalSizedBox,
@@ -122,14 +129,16 @@ class FeedComponent extends StatelessWidget {
     Widget swipeMoreControl(Flavour flavour) {
       if (flavour == Flavour.CONSUMER) {
         return Container(
-          padding: const EdgeInsets.only(right: 10),
+          padding: const EdgeInsets.only(right: 12),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.end,
             children: <Widget>[
-              SvgPicture.asset(
+              Image.asset(
                 swipeForMoreIconUrl,
                 package: packageName,
+                height: 30,
               ),
+              const SizedBox(width: 5),
               Text(
                 swipeForMore,
                 style: TextThemes.normalSize14Text(Colors.black87),
@@ -154,7 +163,7 @@ class FeedComponent extends StatelessWidget {
             mainAxisSize: MainAxisSize.min,
             children: <Widget>[
               /// feed global actions bar
-              showGlobalActionsBar(flavour),
+              showGlobalActionsBar(widget.flavour),
 
               /// the swipe for more icon below the feed global action bar
               ///
@@ -162,25 +171,21 @@ class FeedComponent extends StatelessWidget {
               /// than the ones displayed in the screen
               ///
               /// todo(future) - hide this if there are no items in the screen
-              swipeMoreControl(flavour),
+              swipeMoreControl(widget.flavour),
 
               // profile progress indicator for pro
-              showProfileSetupProgress(flavour, setupComplete: setupComplete),
+              showProfileSetupProgress(widget.flavour,
+                  setupComplete: widget.setupComplete),
 
               NudgeCarousel(
                 nudges: feedNudges,
-                flavour: flavour,
                 single: false,
                 unroll: false,
-                isSmallScreen: isSmallScreen,
-                nudgeCarouselCallbacks: feedContentCallbacks,
+                isSmallScreen: widget.isSmallScreen,
               ),
 
               // feed item wrapper contains a list of all the feed items
-              FeedItemsWrapper(
-                feedItems: feedItems,
-                flavour: flavour,
-              )
+              FeedItemsWrapper(feedItems: feedItems)
             ],
           ),
         ),

@@ -7,6 +7,7 @@ void main() {
     const String sender = 'John';
     const String thread = 'Hey';
     const String time = '2021-02-01T07:30:50Z';
+
     testWidgets(
       'should render correctly',
       (WidgetTester tester) async {

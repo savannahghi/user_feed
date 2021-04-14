@@ -2,8 +2,6 @@ import 'dart:io' as io;
 
 import 'package:flutter/material.dart';
 import 'package:mockito/mockito.dart';
-import 'package:sil_feed/src/domain/value_objects/constants.dart';
-import 'package:sil_feed/src/domain/value_objects/enums.dart';
 import 'package:sil_feed/src/domain/value_objects/widget_keys.dart';
 import 'package:sil_feed/src/presentation/widgets/nudge_carousel.dart';
 
@@ -20,16 +18,9 @@ class MockRoutes {
 class MockRouteGenerator {
   /// gets the current route based on the [RouteSettings]
   static Route<dynamic> generateRoute(RouteSettings settings) {
-    Map<String, Function> getFeedActionCallbacks() {
-      return <String, Function>{
-        kCompleteIndividualRiderKYC: () {},
-      };
-    }
-
     switch (settings.name) {
 
       // the root route config
-
       case MockRoutes.route1:
         return MaterialPageRoute<MaterialApp>(
           builder: (_) => const MaterialApp(
@@ -41,22 +32,19 @@ class MockRouteGenerator {
 
       case MockRoutes.nudgeCarousel:
         return MaterialPageRoute<Widget>(
-            builder: (_) => NudgeCarousel(
-                  key: nudgeCarouselKey,
-                  flavour: Flavour.CONSUMER,
-                  isSmallScreen: false,
-                  nudgeCarouselCallbacks: getFeedActionCallbacks(),
-                  nudges: mockFeedNudges,
-                  single: false,
-                  unroll: false,
-                ));
+          builder: (_) => NudgeCarousel(
+            key: nudgeCarouselKey,
+            isSmallScreen: false,
+            nudges: mockFeedNudges,
+            single: false,
+            unroll: false,
+          ),
+        );
     }
 
     return MaterialPageRoute<MaterialApp>(
       builder: (_) => const MaterialApp(
-        home: Scaffold(
-          appBar: SILSmallAppBar(title: 'Default route'),
-        ),
+        home: Scaffold(appBar: SILSmallAppBar(title: 'Default route')),
       ),
     );
   }

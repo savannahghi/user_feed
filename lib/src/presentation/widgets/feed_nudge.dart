@@ -3,7 +3,6 @@ import 'package:sil_feed/src/domain/entities/action.dart' as feed_action;
 import 'package:sil_feed/src/domain/entities/link.dart';
 import 'package:sil_feed/src/domain/entities/nudge.dart';
 import 'package:sil_feed/src/domain/value_objects/asset_strings.dart';
-import 'package:sil_feed/src/domain/value_objects/enums.dart';
 
 import 'package:sil_feed/src/domain/value_objects/widget_keys.dart';
 import 'package:sil_feed/src/presentation/widgets/feed_action_buttons.dart';
@@ -14,9 +13,7 @@ import 'package:sil_themes/text_themes.dart';
 /// [FeedNudge] takes in a [Map<String, dynamic> nudge] nudge, in form of a JSON,
 /// and returns a nudge card with all the actions provided
 class FeedNudge extends StatelessWidget {
-  const FeedNudge({required this.nudge, required this.flavor});
-
-  final Flavour flavor;
+  const FeedNudge({required this.nudge});
 
   final Nudge nudge;
 
@@ -79,7 +76,6 @@ class FeedNudge extends StatelessWidget {
                           (feed_action.Action nudgeAction) => FeedActionButton(
                             key: feedActionButtonKey,
                             action: nudgeAction,
-                            flavour: flavor,
                           ),
                         )
                         .toList()

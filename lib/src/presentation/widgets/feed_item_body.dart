@@ -16,14 +16,9 @@ import 'package:sil_themes/text_themes.dart';
 
 class FeedItemBody extends StatelessWidget {
   const FeedItemBody(
-      {Key? key,
-      required this.links,
-      this.summary,
-      required this.text,
-      required this.flavour})
+      {Key? key, required this.links, this.summary, required this.text})
       : super(key: key);
 
-  final Flavour flavour;
   final List<Link> links;
   final String? summary;
   final String text;
@@ -54,7 +49,7 @@ class FeedItemBody extends StatelessWidget {
           padding: const EdgeInsets.symmetric(horizontal: 15),
           child: Text(
             text,
-            style: TextThemes.normalSize14Text(Colors.black87),
+            style: TextThemes.normalSize14Text(Colors.black.withOpacity(0.6)),
           ),
         ),
 
@@ -80,13 +75,11 @@ class FeedItemBody extends StatelessWidget {
                   bottom: 0,
                   right: 0,
                   child: GestureDetector(
+                    key: navigateToPhotos,
                     onTap: () {
                       Navigator.of(context).push(
                         MaterialPageRoute<FeedItemImageGrid>(
-                          builder: (_) => FeedItemImageGrid(
-                            images: images,
-                            flavour: flavour,
-                          ),
+                          builder: (_) => FeedItemImageGrid(images: images),
                         ),
                       );
                     },
@@ -114,13 +107,11 @@ class FeedItemBody extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 15),
             child: GestureDetector(
+              key: navigateToDocuments,
               onTap: () {
                 Navigator.of(context).push(
                   MaterialPageRoute<FeedItemDocumentGrid>(
-                    builder: (_) => FeedItemDocumentGrid(
-                      documents: documents,
-                      flavour: flavour,
-                    ),
+                    builder: (_) => FeedItemDocumentGrid(documents: documents),
                   ),
                 );
               },

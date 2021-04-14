@@ -30,6 +30,10 @@ class _VideoPlayerState extends State<VideoPlayer> {
   final List<String?> _videoIds = <String>[];
 
   void getVideoID() {
+    if (widget.videos.isEmpty) {
+      return this._videoIds.add(defaultInitialFeedVideoUrl);
+    }
+
     widget.videos
         .map((Link video) =>
             this._videoIds.add(YoutubePlayer.convertUrlToId(video.url!)))
@@ -40,6 +44,7 @@ class _VideoPlayerState extends State<VideoPlayer> {
   void initState() {
     super.initState();
     getVideoID();
+
     _videoController = YoutubePlayerController(
       initialVideoId: _videoIds.first ?? defaultInitialFeedVideoUrl,
       flags: const YoutubePlayerFlags(
@@ -70,127 +75,131 @@ class _VideoPlayerState extends State<VideoPlayer> {
 
   @override
   Widget build(BuildContext context) {
-    return widget.videos.isEmpty
-        ? Container()
-        : VisibilityDetector(
-            onVisibilityChanged: (VisibilityInfo info) {
-              /// only pause the video when the widget's visibility is hidden
-              ///
-              /// this can happen when the user navigates to a new screen or
-              /// when a modal is shown (yet to be confirmed)
-              if (info.visibleFraction == 0) {
-                _videoController.pause();
-              }
-            },
-            key: videoPlayerVisibilityDetectorKey,
-            child: YoutubePlayerBuilder(
-              player: YoutubePlayer(
-                controller: _videoController,
-                showVideoProgressIndicator: true,
-                progressIndicatorColor: Theme.of(context).primaryColor,
-                topActions: <Widget>[
-                  smallHorizontalSizedBox,
-                  Expanded(
-                    child: Text(
-                      _videoController.metadata.title,
-                      style: const TextStyle(
-                        color: Colors.white,
-                        fontSize: 18.0,
-                      ),
-                      overflow: TextOverflow.ellipsis,
-                      maxLines: 1,
-                    ),
+    if (widget.videos.isEmpty) {
+      return const SizedBox();
+    } else {
+      return VisibilityDetector(
+        onVisibilityChanged: (VisibilityInfo info) {
+          /// only pause the video when the widget's visibility is hidden
+          ///
+          /// this can happen when the user navigates to a new screen or
+          /// when a modal is shown (yet to be confirmed)
+          if (info.visibleFraction == 0) {
+            _videoController.pause();
+          }
+        },
+        key: videoPlayerVisibilityDetectorKey,
+        child: YoutubePlayerBuilder(
+          player: YoutubePlayer(
+            controller: _videoController,
+            showVideoProgressIndicator: true,
+            progressIndicatorColor: Theme.of(context).primaryColor,
+            topActions: <Widget>[
+              smallHorizontalSizedBox,
+              Expanded(
+                child: Text(
+                  _videoController.metadata.title,
+                  style: const TextStyle(
+                    color: Colors.white,
+                    fontSize: 18.0,
                   ),
-                ],
-                onReady: () {
-                  setState(() {
-                    _isPlayerReady = true;
-                  });
-                },
-                onEnded: (YoutubeMetaData data) {
-                  _videoController.load(_videoIds[
-                      (_videoIds.indexOf(data.videoId) + 1) %
-                          _videoIds.length]!);
-                  ScaffoldMessenger.of(context)
-                    ..hideCurrentSnackBar()
-                    ..showSnackBar(snackbar(
-                        content: 'Playing your next video...',
-                        durationSeconds: kShortSnackbarDuration,
-                        label: ''));
-                },
+                  overflow: TextOverflow.ellipsis,
+                  maxLines: 1,
+                ),
               ),
-              builder: (BuildContext context, Widget player) => ListView(
-                shrinkWrap: true,
-                children: <Widget>[
-                  player,
-                  Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.stretch,
+            ],
+            onReady: () {
+              setState(() {
+                _isPlayerReady = true;
+              });
+            },
+            onEnded: (YoutubeMetaData data) {
+              _videoController.load(_videoIds[
+                  (_videoIds.indexOf(data.videoId) + 1) % _videoIds.length]!);
+              ScaffoldMessenger.of(context)
+                ..hideCurrentSnackBar()
+                ..showSnackBar(
+                  snackbar(
+                      content: 'Playing your next video...',
+                      durationSeconds: kShortSnackbarDuration,
+                      label: ''),
+                );
+            },
+          ),
+          builder: (BuildContext context, Widget player) => ListView(
+            shrinkWrap: true,
+            children: <Widget>[
+              player,
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
+                  children: <Widget>[
+                    _space,
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: <Widget>[
-                        _space,
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                          children: <Widget>[
-                            IconButton(
-                              icon: const Icon(Icons.skip_previous),
-                              onPressed: _isPlayerReady
-                                  ? () => _videoController.load(_videoIds[
-                                      (_videoIds.indexOf(_videoController
-                                                  .metadata.videoId) -
-                                              1) %
-                                          _videoIds.length]!)
-                                  : null,
-                            ),
-                            IconButton(
-                              icon: Icon(
-                                _videoController.value.isPlaying
-                                    ? Icons.pause
-                                    : Icons.play_arrow,
-                              ),
-                              onPressed: _isPlayerReady
-                                  ? () {
-                                      _videoController.value.isPlaying
-                                          ? _videoController.pause()
-                                          : _videoController.play();
-                                      setState(() {});
-                                    }
-                                  : null,
-                            ),
-                            IconButton(
-                              icon: Icon(
-                                  _muted ? Icons.volume_off : Icons.volume_up),
-                              onPressed: _isPlayerReady
-                                  ? () {
-                                      _muted
-                                          ? _videoController.unMute()
-                                          : _videoController.mute();
-                                      setState(() {
-                                        _muted = !_muted;
-                                      });
-                                    }
-                                  : null,
-                            ),
-                            IconButton(
-                              icon: const Icon(Icons.skip_next),
-                              onPressed: _isPlayerReady
-                                  ? () => _videoController.load(_videoIds[
-                                      (_videoIds.indexOf(_videoController
-                                                  .metadata.videoId) +
-                                              1) %
-                                          _videoIds.length]!)
-                                  : null,
-                            ),
-                          ],
+                        IconButton(
+                          icon: const Icon(Icons.skip_previous),
+                          onPressed: _isPlayerReady
+                              ? () => _videoController.load(_videoIds[
+                                  (_videoIds.indexOf(_videoController
+                                              .metadata.videoId) -
+                                          1) %
+                                      _videoIds.length]!)
+                              : null,
                         ),
-                        _space,
+                        IconButton(
+                          key: videoPlayPauseKey,
+                          icon: Icon(
+                            _videoController.value.isPlaying
+                                ? Icons.pause
+                                : Icons.play_arrow,
+                          ),
+                          onPressed: _isPlayerReady
+                              ? () {
+                                  _videoController.value.isPlaying
+                                      ? _videoController.pause()
+                                      : _videoController.play();
+                                  setState(() {});
+                                }
+                              : null,
+                        ),
+                        IconButton(
+                          icon:
+                              Icon(_muted ? Icons.volume_off : Icons.volume_up),
+                          onPressed: _isPlayerReady
+                              ? () {
+                                  _muted
+                                      ? _videoController.unMute()
+                                      : _videoController.mute();
+                                  setState(() {
+                                    _muted = !_muted;
+                                  });
+                                }
+                              : null,
+                        ),
+                        IconButton(
+                          icon: const Icon(Icons.skip_next),
+                          onPressed: _isPlayerReady
+                              ? () => _videoController.load(_videoIds[
+                                  (_videoIds.indexOf(_videoController
+                                              .metadata.videoId) +
+                                          1) %
+                                      _videoIds.length]!)
+                              : null,
+                        ),
                       ],
                     ),
-                  ),
-                ],
+                    _space,
+                  ],
+                ),
               ),
-            ),
-          );
+            ],
+          ),
+        ),
+      );
+    }
   }
 
   Widget get _space => const SizedBox(height: 10);

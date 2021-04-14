@@ -7,11 +7,10 @@ import 'package:sil_themes/text_themes.dart';
 
 class FeedItemCommentCard extends StatelessWidget {
   const FeedItemCommentCard({
-    Key? key,
     required this.senderName,
     required this.threadBody,
     required this.timeStamp,
-  }) : super(key: key);
+  });
 
   final String senderName;
   final String threadBody;

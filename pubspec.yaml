@@ -42,11 +42,7 @@ dependencies:
 
   visibility_detector: ^0.2.0-nullsafety.1
 
-  youtube_player_flutter:
-    git:
-      url: https://sil_dart_utils:xiFnpjLHssG76bpWxUb9@gitlab.slade360emr.com/optimalhealth/dart_utils/youtube_player_flutter.git
-      path: packages/youtube_player_flutter
-      ref: 0.0.8-nullsafety
+  youtube_player_flutter: ^8.0.0
 
 dev_dependencies:
   build_runner: ^1.8.0

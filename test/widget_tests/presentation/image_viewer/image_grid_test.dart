@@ -7,7 +7,6 @@ import 'package:network_image_mock/network_image_mock.dart';
 import 'package:photo_view/photo_view.dart';
 import 'package:sil_feed/src/domain/entities/link.dart';
 import 'package:sil_feed/src/domain/value_objects/constants.dart';
-import 'package:sil_feed/src/domain/value_objects/enums.dart';
 import 'package:sil_feed/src/presentation/image_viewer/image_grid.dart';
 import 'package:sil_feed/src/presentation/image_viewer/image_viewer.dart';
 import 'package:sil_feed/src/presentation/router/router_generator.dart';
@@ -32,7 +31,6 @@ void main() {
             home: Scaffold(
               body: FeedItemImageGrid(
                 images: <Link>[mockImageLink],
-                flavour: Flavour.CONSUMER,
               ),
             ),
           )));
@@ -64,10 +62,7 @@ void main() {
         onGenerateRoute: RouteGenerator.generateRoute,
         navigatorObservers: <NavigatorObserver>[mockObserver],
         home: const Scaffold(
-          body: FeedItemImageGrid(
-            images: <Link>[],
-            flavour: Flavour.CONSUMER,
-          ),
+          body: FeedItemImageGrid(images: <Link>[]),
         ),
       ));
 

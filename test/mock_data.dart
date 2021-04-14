@@ -27,7 +27,14 @@ final List<Link> mockMultipleFeedLinks = <Link>[
   mockImageLink,
   mockImageLink,
   mockImageLink,
-  mockPdfLink
+  mockImageLink,
+  mockImageLink,
+  mockImageLink,
+  mockPdfLink,
+  mockPdfLink,
+  mockPdfLink,
+  mockPdfLink,
+  mockPdfLink,
 ];
 
 final Map<String, dynamic> mockNudgeData1 = <String, dynamic>{
@@ -486,12 +493,12 @@ final Feed mockFeed = Feed.fromJson(
   },
 );
 
-final List<Action> globalActionsData = <Action>[
+final List<Action> consumerGlobalActionsData = <Action>[
   Action.fromJson(
     <String, dynamic>{
-      'id': '1608647089',
-      'sequenceNumber': 1608647089,
-      'name': 'COMPLETE_INDIVIDUAL_RIDER_KYC',
+      'id': '34564564',
+      'sequenceNumber': 34564564,
+      'name': 'GET_TEST',
       'actionType': 'PRIMARY',
       'handling': 'FULL_PAGE',
       'allowAnonymous': false,
@@ -503,11 +510,14 @@ final List<Action> globalActionsData = <Action>[
       },
     },
   ),
+];
+
+final List<Action> proGlobalActionData = <Action>[
   Action.fromJson(
     <String, dynamic>{
-      'id': '34564564',
-      'sequenceNumber': 34564564,
-      'name': 'GET_TEST',
+      'id': '1608647089',
+      'sequenceNumber': 1608647089,
+      'name': 'COMPLETE_INDIVIDUAL_RIDER_KYC',
       'actionType': 'PRIMARY',
       'handling': 'FULL_PAGE',
       'allowAnonymous': false,

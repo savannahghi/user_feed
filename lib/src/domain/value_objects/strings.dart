@@ -30,3 +30,5 @@ const String noDocumentFound =
     'Could not find the document you were looking for';
 
 const String packageName = 'sil_feed';
+
+const String UNKNOWN = 'UNKNOWN';

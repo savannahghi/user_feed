@@ -2,7 +2,8 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:network_image_mock/network_image_mock.dart';
-import 'package:sil_feed/src/domain/value_objects/enums.dart';
+import 'package:sil_feed/sil_feed.dart';
+import 'package:sil_feed/src/domain/value_objects/feed_store.dart';
 
 import 'package:sil_feed/src/domain/value_objects/widget_keys.dart';
 import 'package:sil_feed/src/presentation/widgets/nudge_carousel.dart';
@@ -12,28 +13,30 @@ import '../../../mocks.dart';
 
 void main() {
   group('NudgeCarousel', () {
-    const String kCompleteIndividualRiderKYC = 'COMPLETE_INDIVIDUAL_RIDER_KYC';
+    setUpAll(() {
+      FeedStore()
+        ..flavour.add(Flavour.CONSUMER)
+        ..feedContentCallbacks.add(<String, Function>{kGetMedicine: () {}});
+    });
+
     final MockNavigatorObserver mockObserver = MockNavigatorObserver();
-    Map<String, Function> getFeedActionCallbacks() {
-      return <String, Function>{
-        kCompleteIndividualRiderKYC: () {},
-      };
-    }
 
     testWidgets('should render correctly on smallScreen on Consumer',
         (WidgetTester tester) async {
-      await mockNetworkImagesFor(() => tester.pumpWidget(MaterialApp(
+      await mockNetworkImagesFor(
+        () => tester.pumpWidget(
+          MaterialApp(
             home: Scaffold(
                 body: NudgeCarousel(
               key: nudgeCarouselKey,
-              flavour: Flavour.CONSUMER,
               isSmallScreen: false,
-              nudgeCarouselCallbacks: getFeedActionCallbacks(),
               nudges: mockFeedNudges,
               single: false,
               unroll: false,
             )),
-          )));
+          ),
+        ),
+      );
 
       // check that UI renders correctly
       expect(find.byType(CarouselSlider), findsOneWidget);
@@ -55,13 +58,13 @@ void main() {
 
     testWidgets('should render correctly on smallScreen on Pro',
         (WidgetTester tester) async {
+      FeedStore().flavour.add(Flavour.PRO);
+
       await mockNetworkImagesFor(() => tester.pumpWidget(MaterialApp(
             home: Scaffold(
                 body: NudgeCarousel(
               key: nudgeCarouselKey,
-              flavour: Flavour.PRO,
               isSmallScreen: false,
-              nudgeCarouselCallbacks: getFeedActionCallbacks(),
               nudges: mockFeedNudges,
               single: false,
               unroll: false,
@@ -79,18 +82,22 @@ void main() {
 
     testWidgets('should render independently on largeScreen on Pro',
         (WidgetTester tester) async {
-      await mockNetworkImagesFor(() => tester.pumpWidget(MaterialApp(
+      FeedStore().flavour.add(Flavour.PRO);
+
+      await mockNetworkImagesFor(
+        () => tester.pumpWidget(
+          MaterialApp(
             home: Scaffold(
                 body: NudgeCarousel(
               key: nudgeCarouselKey,
-              flavour: Flavour.PRO,
               isSmallScreen: false,
-              nudgeCarouselCallbacks: getFeedActionCallbacks(),
               nudges: mockFeedNudges,
               single: true,
               unroll: true,
             )),
-          )));
+          ),
+        ),
+      );
 
       // check that UI renders correctly
       expect(find.byType(CarouselSlider), findsNothing);
@@ -102,6 +109,8 @@ void main() {
     });
 
     testWidgets('tapping feedNudge navigates', (WidgetTester tester) async {
+      FeedStore().flavour.add(Flavour.CONSUMER);
+
       await mockNetworkImagesFor(() => tester.pumpWidget(MaterialApp(
             navigatorObservers: <NavigatorObserver>[mockObserver],
             onGenerateRoute: MockRouteGenerator.generateRoute,
@@ -109,9 +118,7 @@ void main() {
             home: Scaffold(
                 body: NudgeCarousel(
               key: nudgeCarouselKey,
-              flavour: Flavour.CONSUMER,
               isSmallScreen: false,
-              nudgeCarouselCallbacks: getFeedActionCallbacks(),
               nudges: mockFeedNudges,
               single: false,
               unroll: false,
@@ -141,9 +148,7 @@ void main() {
         expect(
             NudgeCarousel(
               key: nudgeCarouselKey,
-              flavour: Flavour.PRO,
               isSmallScreen: false,
-              nudgeCarouselCallbacks: getFeedActionCallbacks(),
               nudges: mockFeedNudges,
               single: true,
               unroll: true,

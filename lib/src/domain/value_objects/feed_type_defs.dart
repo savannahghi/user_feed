@@ -1,10 +1,10 @@
 import 'package:sil_feed/src/domain/value_objects/enums.dart';
 
 /// a flavor and an itemId must be provided for this to work
-typedef feedItemActionTypeDef = dynamic Function(
+typedef FeedItemActionTypeDef = dynamic Function(
     {required Flavour flavour, required String itemID});
 
-typedef replyToFeedItemTypeDef = dynamic Function(
+typedef ReplyToFeedItemTypeDef = dynamic Function(
     {required String replyMessage,
     required String replyTo,
     required String postedByUID,
