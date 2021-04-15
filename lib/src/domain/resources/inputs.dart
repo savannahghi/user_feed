@@ -20,6 +20,10 @@ class GetFeedData with _$GetFeedData {
     @JsonKey(name: 'getFeed') required Feed getFeed,
   }) = _GetFeedData;
 
+  factory GetFeedData.initial() {
+    return GetFeedData(getFeed: Feed.intial());
+  }
+
   factory GetFeedData.fromJson(Map<String, dynamic> json) =>
       _$GetFeedDataFromJson(json);
 }
