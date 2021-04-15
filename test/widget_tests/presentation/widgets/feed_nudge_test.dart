@@ -14,10 +14,9 @@ void main() {
       await mockNetworkImagesFor(() => tester.pumpWidget(MaterialApp(
             home: Scaffold(
               body: FeedNudge(
-                  flavor: Flavour.PRO,
-                  isAnonymous: true,
-                  nudge: nudge,
-                  isAnonymousFunc: () {}),
+                flavor: Flavour.PRO,
+                nudge: nudge,
+              ),
             ),
           )));
       expect(find.text('Complete your rider KYC'), findsOneWidget);

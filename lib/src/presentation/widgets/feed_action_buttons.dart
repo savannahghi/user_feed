@@ -1,6 +1,5 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:sil_feed/src/domain/value_objects/constants.dart';
 import 'package:sil_feed/src/application/helpers/utils.dart';
 import 'package:sil_feed/src/domain/entities/action.dart' as feed_action;
 import 'package:sil_feed/src/domain/value_objects/enums.dart';
@@ -132,32 +131,15 @@ class FeedNoBorderButton extends StatelessWidget {
 /// [FeedActionButton] is a component which when passed in one action,
 /// returns a button with the contents in the actions
 class FeedActionButton extends StatelessWidget {
-  FeedActionButton({
+  const FeedActionButton({
     Key? key,
     required this.action,
-    required this.isAnonymous,
     required this.flavour,
     this.customFunction,
-    this.isAnonymousFunc,
-  })  : assert(() {
-          if (isAnonymous && isAnonymousFunc == null) {
-            throw Exception(
-                'when `isAnonymous` is true, `isAnonymousFunc` should not be null');
-          }
-
-          return true;
-        }()),
-        super(key: key);
+  }) : super(key: key);
 
   /// the name of the action
   final feed_action.Action action;
-
-  /// [isAnonymous] indicated whether the logged in user is iAnonymous
-  final bool isAnonymous;
-
-  /// [isAnonymousFunc] function that will be called if the current logged in user is anonymous
-  /// It is not required since it's only valid for `consumer app` only
-  final Function? isAnonymousFunc;
 
   // the flavor in which the app is running
   final Flavour flavour;
@@ -177,28 +159,18 @@ class FeedActionButton extends StatelessWidget {
     final String actionName = removeUnderscores(action.name!);
     final ActionType? actionType = action.actionType;
 
-    /// whether an anonymous user is allowed to perform this action
-    final bool allowAnonymous = action.allowAnonymous!;
-
     if (actionType == ActionType.PRIMARY) {
       return FeedPrimaryButton(
         onPressed: () {
-          checkOnAllowAnonymousBeforeCall(
-              allowFunc: () {
-                if (customFunction != null) {
-                  /// call any custom functions if available
-                  customFunction!();
-                } else {
-                  callFeedAction(
-                      fullActionName: actionNameWithUnderscore,
-                      context: context,
-                      flavour: flavour);
-                }
-              },
-              isAnonymous: isAnonymous,
-              allowAnonymous: allowAnonymous,
-              isAnonymousFunc: this.isAnonymousFunc!);
-          // dispatch event
+          if (customFunction != null) {
+            /// call any custom functions if available
+            customFunction!();
+          } else {
+            callFeedAction(
+                fullActionName: actionNameWithUnderscore,
+                context: context,
+                flavour: flavour);
+          }
         },
         text: actionName,
         buttonColor: Theme.of(context).accentColor,
@@ -210,20 +182,6 @@ class FeedActionButton extends StatelessWidget {
     if (actionType == ActionType.SECONDARY) {
       return FeedSecondaryButton(
         onPressed: () {
-          if (allowAnonymous == false) {
-            ScaffoldMessenger.of(context).showSnackBar(snackbar(
-                content: 'Coming Soon!',
-                durationSeconds: kShortSnackbarDuration,
-                label: 'Coming Soon'));
-            return;
-          }
-
-          /// called when action can not be done by an anonymous user
-          if (this.isAnonymousFunc != null) {
-            this.isAnonymousFunc!();
-          } else {}
-
-          // process these actions for a user that is not anonymous
           callFeedAction(
               fullActionName: actionNameWithUnderscore,
               context: context,

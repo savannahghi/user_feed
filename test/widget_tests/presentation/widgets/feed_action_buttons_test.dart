@@ -89,17 +89,13 @@ void main() {
       final List<int> integers = <int>[];
       // ignore: prefer_function_declarations_over_variables
       final Function addOne = () => integers.add(1);
-      // ignore: prefer_function_declarations_over_variables
-      final Function addOneAnonymously = () => integers.add(2);
 
       await tester.pumpWidget(MaterialApp(
         home: Scaffold(
           body: FeedActionButton(
             action: mockFeedPrimaryAction,
-            isAnonymous: true,
             flavour: Flavour.PRO,
             customFunction: addOne,
-            isAnonymousFunc: addOneAnonymously,
           ),
         ),
       ));
@@ -118,8 +114,6 @@ void main() {
       final List<int> integers = <int>[];
       // ignore: prefer_function_declarations_over_variables
       final Function addOne = () => integers.add(1);
-      // ignore: prefer_function_declarations_over_variables
-      final Function addOneAnonymously = () => integers.add(2);
 
       final feed_action.Action _mockFeedPrimaryAction =
           mockFeedPrimaryAction.copyWith.call(allowAnonymous: false);
@@ -128,38 +122,8 @@ void main() {
         home: Scaffold(
           body: FeedActionButton(
             action: _mockFeedPrimaryAction,
-            isAnonymous: true,
             flavour: Flavour.PRO,
             customFunction: addOne,
-            isAnonymousFunc: addOneAnonymously,
-          ),
-        ),
-      ));
-
-      expect(find.byType(FeedPrimaryButton), findsOneWidget);
-
-      await tester.tap(find.byType(FeedPrimaryButton));
-      await tester.pumpAndSettle();
-
-      expect(integers.isEmpty, false);
-      expect(integers.first, 2);
-    });
-
-    testWidgets('should trigger default action', (WidgetTester tester) async {
-      final List<int> integers = <int>[];
-      // ignore: prefer_function_declarations_over_variables
-      final Function addOne = () => integers.add(1);
-      // ignore: prefer_function_declarations_over_variables
-      final Function addOneAnonymously = () => integers.add(2);
-
-      await tester.pumpWidget(MaterialApp(
-        home: Scaffold(
-          body: FeedActionButton(
-            action: mockFeedPrimaryAction,
-            isAnonymous: false,
-            flavour: Flavour.PRO,
-            customFunction: addOne,
-            isAnonymousFunc: addOneAnonymously,
           ),
         ),
       ));
@@ -173,35 +137,28 @@ void main() {
       expect(integers.first, 1);
     });
 
-    testWidgets('should show coming soon if now allow function is provided',
-        (WidgetTester tester) async {
+    testWidgets('should trigger default action', (WidgetTester tester) async {
       final List<int> integers = <int>[];
       // ignore: prefer_function_declarations_over_variables
       final Function addOne = () => integers.add(1);
-      // ignore: prefer_function_declarations_over_variables
-      final Function addOneAnonymously = () => integers.add(2);
-
-      final feed_action.Action _mockFeedSecondaryAction =
-          mockFeedSecondaryAction..copyWith.call(allowAnonymous: false);
 
       await tester.pumpWidget(MaterialApp(
         home: Scaffold(
-            body: FeedActionButton(
-          action: _mockFeedSecondaryAction,
-          isAnonymous: true,
-          flavour: Flavour.PRO,
-          customFunction: addOne,
-          isAnonymousFunc: addOneAnonymously,
-        )),
+          body: FeedActionButton(
+            action: mockFeedPrimaryAction,
+            flavour: Flavour.PRO,
+            customFunction: addOne,
+          ),
+        ),
       ));
 
-      expect(find.byType(FeedSecondaryButton), findsOneWidget);
+      expect(find.byType(FeedPrimaryButton), findsOneWidget);
 
-      await tester.tap(find.byType(FeedSecondaryButton));
+      await tester.tap(find.byType(FeedPrimaryButton));
       await tester.pumpAndSettle();
 
-      expect(find.byType(SnackBar), findsOneWidget);
-      expect(find.text('Coming Soon!'), findsOneWidget);
+      expect(integers.isEmpty, false);
+      expect(integers.first, 1);
     });
 
     testWidgets(
@@ -213,13 +170,12 @@ void main() {
       final Function addOne = () => integers.add(1);
 
       expect(
-          () => FeedActionButton(
-                action: mockFeedOverflowAction,
-                isAnonymous: true,
-                flavour: Flavour.PRO,
-                customFunction: addOne,
-              ),
-          throwsException);
+          FeedActionButton(
+            action: mockFeedOverflowAction,
+            flavour: Flavour.PRO,
+            customFunction: addOne,
+          ),
+          isA<FeedActionButton>());
     });
   });
 }

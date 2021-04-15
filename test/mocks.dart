@@ -44,9 +44,7 @@ class MockRouteGenerator {
             builder: (_) => NudgeCarousel(
                   key: nudgeCarouselKey,
                   flavour: Flavour.CONSUMER,
-                  isAnonymous: false,
                   isSmallScreen: false,
-                  isAnonymousFunc: () {},
                   nudgeCarouselCallbacks: getFeedActionCallbacks(),
                   nudges: mockFeedNudges,
                   single: false,

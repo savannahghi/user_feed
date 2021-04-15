@@ -13,9 +13,9 @@ void main() {
         home: Builder(builder: (BuildContext context) {
           return Scaffold(
               body: FeedGlobalActionBar(
-                  globalActionsData: globalActionsData,
-                  flavour: Flavour.PRO,
-                  isAnonymous: false));
+            globalActionsData: globalActionsData,
+            flavour: Flavour.PRO,
+          ));
         }),
       ));
 
@@ -26,12 +26,11 @@ void main() {
 
     testWidgets('should show assertion error', (WidgetTester tester) async {
       expect(
-          () => FeedGlobalActionBar(
-                flavour: Flavour.CONSUMER,
-                globalActionsData: globalActionsData,
-                isAnonymous: true,
-              ),
-          throwsException);
+          FeedGlobalActionBar(
+            flavour: Flavour.CONSUMER,
+            globalActionsData: globalActionsData,
+          ),
+          isA<FeedGlobalActionBar>());
     });
   });
 }

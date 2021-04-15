@@ -5,7 +5,6 @@ export 'src/presentation/core/feed.dart';
 export 'src/presentation/preloaders/feed_preloaders.dart';
 export 'src/presentation/widgets/feed_action_buttons.dart';
 export 'src/presentation/widgets/feed_global_action_bar.dart';
-export 'src/presentation/widgets/feed_item_action_bar.dart';
 export 'src/presentation/widgets/feed_item_body.dart';
 export 'src/presentation/widgets/feed_item_comment_card.dart';
 export 'src/presentation/widgets/feed_item_component.dart';

@@ -14,20 +14,9 @@ import 'package:sil_themes/text_themes.dart';
 /// [FeedNudge] takes in a [Map<String, dynamic> nudge] nudge, in form of a JSON,
 /// and returns a nudge card with all the actions provided
 class FeedNudge extends StatelessWidget {
-  const FeedNudge(
-      {required this.nudge,
-      required this.isAnonymous,
-      required this.isAnonymousFunc,
-      required this.flavor});
+  const FeedNudge({required this.nudge, required this.flavor});
 
   final Flavour flavor;
-
-  /// [isAnonymous] indicated whether the logged in user is iAnonymous
-  final bool isAnonymous;
-
-  /// [isAnonymousFunc] function that will be called if the current logged in user is anonymous
-  /// It is not required since it's only valid for `consumer app` only
-  final Function isAnonymousFunc;
 
   final Nudge nudge;
 
@@ -90,8 +79,6 @@ class FeedNudge extends StatelessWidget {
                           (feed_action.Action nudgeAction) => FeedActionButton(
                             key: feedActionButtonKey,
                             action: nudgeAction,
-                            isAnonymous: this.isAnonymous,
-                            isAnonymousFunc: this.isAnonymousFunc,
                             flavour: flavor,
                           ),
                         )
