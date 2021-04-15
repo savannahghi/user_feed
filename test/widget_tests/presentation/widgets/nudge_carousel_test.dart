@@ -22,18 +22,12 @@ void main() {
 
     testWidgets('should render correctly on smallScreen on Consumer',
         (WidgetTester tester) async {
-      Function() anonymousUserGenericBottomSheet() {
-        return anonymousUserGenericBottomSheet;
-      }
-
       await mockNetworkImagesFor(() => tester.pumpWidget(MaterialApp(
             home: Scaffold(
                 body: NudgeCarousel(
               key: nudgeCarouselKey,
               flavour: Flavour.CONSUMER,
-              isAnonymous: false,
               isSmallScreen: false,
-              isAnonymousFunc: anonymousUserGenericBottomSheet(),
               nudgeCarouselCallbacks: getFeedActionCallbacks(),
               nudges: mockFeedNudges,
               single: false,
@@ -66,7 +60,6 @@ void main() {
                 body: NudgeCarousel(
               key: nudgeCarouselKey,
               flavour: Flavour.PRO,
-              isAnonymous: false,
               isSmallScreen: false,
               nudgeCarouselCallbacks: getFeedActionCallbacks(),
               nudges: mockFeedNudges,
@@ -91,8 +84,6 @@ void main() {
                 body: NudgeCarousel(
               key: nudgeCarouselKey,
               flavour: Flavour.PRO,
-              isAnonymous: false,
-              isAnonymousFunc: () {},
               isSmallScreen: false,
               nudgeCarouselCallbacks: getFeedActionCallbacks(),
               nudges: mockFeedNudges,
@@ -119,9 +110,7 @@ void main() {
                 body: NudgeCarousel(
               key: nudgeCarouselKey,
               flavour: Flavour.CONSUMER,
-              isAnonymous: false,
               isSmallScreen: false,
-              isAnonymousFunc: () {},
               nudgeCarouselCallbacks: getFeedActionCallbacks(),
               nudges: mockFeedNudges,
               single: false,
@@ -150,36 +139,16 @@ void main() {
       await mockNetworkImagesFor(() async {
         // verify throws assertion Error when isAnonymous || isAnonymousFunc is null
         expect(
-            () => MaterialApp(
-                  home: Scaffold(
-                      body: NudgeCarousel(
-                    key: nudgeCarouselKey,
-                    flavour: Flavour.PRO,
-                    isAnonymous: true,
-                    isSmallScreen: false,
-                    nudgeCarouselCallbacks: getFeedActionCallbacks(),
-                    nudges: mockFeedNudges,
-                    single: true,
-                    unroll: true,
-                  )),
-                ),
-            throwsException);
-
-        expect(
-            () => MaterialApp(
-                  home: Scaffold(
-                      body: NudgeCarousel(
-                    key: nudgeCarouselKey,
-                    flavour: Flavour.PRO,
-                    isAnonymous: true,
-                    isSmallScreen: false,
-                    nudgeCarouselCallbacks: getFeedActionCallbacks(),
-                    nudges: mockFeedNudges,
-                    single: true,
-                    unroll: true,
-                  )),
-                ),
-            throwsException);
+            NudgeCarousel(
+              key: nudgeCarouselKey,
+              flavour: Flavour.PRO,
+              isSmallScreen: false,
+              nudgeCarouselCallbacks: getFeedActionCallbacks(),
+              nudges: mockFeedNudges,
+              single: true,
+              unroll: true,
+            ),
+            isA<NudgeCarousel>());
       });
     });
   });

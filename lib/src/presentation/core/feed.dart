@@ -12,7 +12,6 @@ import 'package:sil_feed/src/domain/resources/inputs.dart';
 import 'package:sil_feed/src/domain/value_objects/asset_strings.dart';
 import 'package:sil_feed/src/domain/value_objects/colors.dart';
 import 'package:sil_feed/src/domain/value_objects/enums.dart';
-import 'package:sil_feed/src/domain/value_objects/feed_type_defs.dart';
 import 'package:sil_feed/src/domain/value_objects/strings.dart';
 import 'package:sil_feed/src/domain/value_objects/widget_keys.dart';
 import 'package:sil_feed/src/presentation/widgets/feed_global_action_bar.dart';
@@ -28,25 +27,17 @@ class FeedComponent extends StatelessWidget {
     required this.userFeed,
     required this.flavour,
     required this.isSmallScreen,
-    required this.tetherThread,
-    required this.resolveFunction,
-    required this.pinFunction,
-    required this.hideFunction,
-    required this.postedByUID,
-    required this.postedByName,
+
     // TODO(abiud): add the others ie pin and hide
-    required this.isAnonymousFunc,
     required this.feedContentCallbacks,
     this.profileProgress,
     this.setupComplete = false,
-    this.replyToFeedItemFunction,
   }) : super(key: key);
 
   /// the feed
   final FeedResponsePayload userFeed;
   final Flavour flavour;
   final bool isSmallScreen;
-  final bool tetherThread;
 
   ///profile progress for `PRO`
   final String? profileProgress;
@@ -54,35 +45,14 @@ class FeedComponent extends StatelessWidget {
   /// [setupComplete] indicated whether setup is complete. Valid only for `PRO`
   final bool setupComplete;
 
-  /// [isAnonymousFunc] function that will be called if the current logged in user is anonymous
-  /// It is not required since it's only valid for `consumer app` only
-  final Function isAnonymousFunc;
-
-  /// [postedByUID] uid of the currently logged in user
-  final String postedByUID;
-
-  /// [postedByName] name of the currently logged in user
-  final String postedByName;
-
   /// callbacks that will be used in the feed items
   final Map<String, Function> feedContentCallbacks;
-
-  final feedItemActionTypeDef resolveFunction;
-
-  final feedItemActionTypeDef pinFunction;
-
-  final feedItemActionTypeDef hideFunction;
-
-  final replyToFeedItemTypeDef? replyToFeedItemFunction;
 
   // TODO(abiud): add others eg hide and pin, unpin
 
   @override
   Widget build(BuildContext context) {
     final Feed feed = this.userFeed.data.getFeed;
-
-    // check if the user is anonymous
-    final bool isAnonymous = feed.isAnonymous!;
 
     // global actions
     final List<feed_action.Action>? feedActions = feed.actions;
@@ -103,8 +73,6 @@ class FeedComponent extends StatelessWidget {
         return FeedGlobalActionBar(
           globalActionsData: otherActions,
           flavour: flavour,
-          isAnonymousFunc: this.isAnonymousFunc,
-          isAnonymous: isAnonymous,
         );
       }
       return const SizedBox();
@@ -202,8 +170,6 @@ class FeedComponent extends StatelessWidget {
               NudgeCarousel(
                 nudges: feedNudges,
                 flavour: flavour,
-                isAnonymousFunc: this.isAnonymousFunc,
-                isAnonymous: isAnonymous,
                 single: false,
                 unroll: false,
                 isSmallScreen: isSmallScreen,
@@ -212,16 +178,8 @@ class FeedComponent extends StatelessWidget {
 
               // feed item wrapper contains a list of all the feed items
               FeedItemsWrapper(
-                postedByName: postedByName,
-                postedByUID: postedByUID,
                 feedItems: feedItems,
                 flavour: flavour,
-                tetherThread: tetherThread,
-                resolveFunction: resolveFunction,
-                pinFunction: pinFunction,
-                hideFunction: hideFunction,
-                isAnonymous: isAnonymous,
-                isAnonymousFunc: isAnonymousFunc,
               )
             ],
           ),

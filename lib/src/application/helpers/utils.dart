@@ -59,30 +59,6 @@ String getHumanReadableTimestamp(String date) {
   return DateFormat('MMMd, yyyy').format(parsedDate);
 }
 
-/// checks whether an anonymous user is allowed to perform an action when they are anonymous
-void checkOnAllowAnonymousBeforeCall(
-    {required Function allowFunc,
-    required bool isAnonymous,
-    required bool allowAnonymous,
-    required Function isAnonymousFunc}) {
-  // check whether the user is anonymous and that this action can be triggered by an anonymous user
-  if (isAnonymous && allowAnonymous) {
-    allowFunc();
-    return;
-  }
-
-  // check whether the user is anonymous and this action cannot be triggered by an anonymous user
-  if (isAnonymous && !allowAnonymous) {
-    /// called when action can not be done by an anonymous user
-    isAnonymousFunc();
-    return;
-  }
-
-  // default to calling [allowFunc]
-  allowFunc();
-  return;
-}
-
 /// looks through the list of allowed actions [allConsumerActions and AllProActions]
 /// and executes the respective function
 void callFeedAction(

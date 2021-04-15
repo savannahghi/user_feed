@@ -7,35 +7,18 @@ import 'package:sil_feed/src/presentation/widgets/feed_nudge.dart';
 /// [NudgeCarousel] is a carousel that receives a list of nudges and
 /// displays them in the form of cards
 class NudgeCarousel extends StatefulWidget {
-  NudgeCarousel({
+  const NudgeCarousel({
     Key? key,
     required this.nudges,
     required this.flavour,
-    required this.isAnonymous,
-    this.isAnonymousFunc,
     required this.unroll,
     required this.single,
     required this.isSmallScreen,
     required this.nudgeCarouselCallbacks,
-  })   : assert(() {
-          if (isAnonymous && isAnonymousFunc == null) {
-            throw Exception(
-                'when `isAnonymous` is true, `isAnonymousFunc` should not be null');
-          }
-
-          return true;
-        }()),
-        super(key: key);
+  }) : super(key: key);
 
   /// the flavor in which the app is running on
   final Flavour flavour;
-
-  /// [isAnonymous] indicated whether the logged in user is iAnonymous
-  final bool isAnonymous;
-
-  /// [isAnonymousFunc] function that will be called if the current logged in user is anonymous
-  /// It is not required since it's only valid for `consumer app` only
-  final Function? isAnonymousFunc;
 
   final bool isSmallScreen;
   final Map<String, Function> nudgeCarouselCallbacks;
@@ -72,8 +55,6 @@ class _NudgeCarouselState extends State<NudgeCarousel> {
             ? widget.nudges
                 .map((Nudge nudge) => FeedNudge(
                       nudge: nudge,
-                      isAnonymous: widget.isAnonymous,
-                      isAnonymousFunc: widget.isAnonymousFunc!,
                       flavor: widget.flavour,
                     ))
                 .toList()
@@ -83,8 +64,6 @@ class _NudgeCarouselState extends State<NudgeCarousel> {
                     items: widget.nudges
                         .map((Nudge nudge) => FeedNudge(
                               nudge: nudge,
-                              isAnonymous: widget.isAnonymous,
-                              isAnonymousFunc: widget.isAnonymousFunc!,
                               flavor: widget.flavour,
                             ))
                         .toList(),

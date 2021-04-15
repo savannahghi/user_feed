@@ -21,33 +21,16 @@ import 'package:sil_themes/text_themes.dart';
 ///
 
 class FeedGlobalActionBar extends StatelessWidget {
-  FeedGlobalActionBar({
+  const FeedGlobalActionBar({
     Key? key,
     required this.globalActionsData,
     required this.flavour,
-    required this.isAnonymous,
-    this.isAnonymousFunc,
-  })  : assert(() {
-          if (isAnonymous && isAnonymousFunc == null) {
-            throw Exception(
-                'when `isAnonymous` is true, `isAnonymousFunc` should not be null');
-          }
-
-          return true;
-        }()),
-        super(key: key);
+  }) : super(key: key);
 
   final List<feed_action.Action> globalActionsData;
 
   // the flavor in which the app is running
   final Flavour flavour;
-
-  /// [isAnonymous] indicated whether the logged in user is iAnonymous
-  final bool isAnonymous;
-
-  /// [isAnonymousFunc] function that will be called if the current logged in user is anonymous
-  /// It is not required since it's only valid for `consumer app` only
-  final Function? isAnonymousFunc;
 
   Widget _buildGlobalAction(
       {required feed_action.Action action, required BuildContext context}) {
@@ -63,22 +46,12 @@ class FeedGlobalActionBar extends StatelessWidget {
     final String? actionIconUrl =
         flavour == Flavour.PRO ? 'no link url' : action.icon?.url;
 
-    /// whether an anonymous user is allowed to perform this action
-    final bool allowAnonymous = action.allowAnonymous!;
-
     return GestureDetector(
-      onTap: () async {
-        checkOnAllowAnonymousBeforeCall(
-          allowFunc: () {
-            callFeedAction(
-                fullActionName: actionNameWithUnderscores,
-                context: context,
-                flavour: flavour);
-          },
-          isAnonymous: isAnonymous,
-          allowAnonymous: allowAnonymous,
-          isAnonymousFunc: this.isAnonymousFunc!,
-        );
+      onTap: () {
+        callFeedAction(
+            fullActionName: actionNameWithUnderscores,
+            context: context,
+            flavour: flavour);
       },
       child: Padding(
         padding: const EdgeInsets.all(8.0),

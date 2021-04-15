@@ -94,47 +94,6 @@ void main() {
       expect(message, 'Your profile is $progress% complete, complete it now');
     });
 
-    test('should check on allow anonymous before calling a function', () {
-      final List<int> integers = <int>[];
-      // ignore: prefer_function_declarations_over_variables
-      final Function updateIntegersAnonymously = () => integers.add(1);
-      // ignore: prefer_function_declarations_over_variables
-      final Function updateIntegersNormally = () => integers.add(2);
-
-      bool isAnonymous = true;
-      bool allowAnonymous = true;
-
-      checkOnAllowAnonymousBeforeCall(
-          allowFunc: updateIntegersAnonymously,
-          isAnonymous: isAnonymous,
-          allowAnonymous: allowAnonymous,
-          isAnonymousFunc: updateIntegersNormally);
-
-      expect(integers.isEmpty, false);
-      expect(integers.first, 1);
-
-      /// cleanup the list before performing the next test
-      integers.clear();
-      allowAnonymous = false;
-      checkOnAllowAnonymousBeforeCall(
-          allowFunc: updateIntegersAnonymously,
-          isAnonymous: isAnonymous,
-          allowAnonymous: allowAnonymous,
-          isAnonymousFunc: updateIntegersNormally);
-      expect(integers.isEmpty, false);
-      expect(integers.first, 2);
-
-      integers.clear();
-      isAnonymous = false;
-      checkOnAllowAnonymousBeforeCall(
-          allowFunc: updateIntegersAnonymously,
-          isAnonymous: isAnonymous,
-          allowAnonymous: allowAnonymous,
-          isAnonymousFunc: updateIntegersNormally);
-      expect(integers.isEmpty, false);
-      expect(integers.first, 1);
-    });
-
     test('should get a feed item action url', () {
       String actionName = kResolveItem;
       expect(getFeedItemActionIconUrl(actionName), resolveIconUrl);
