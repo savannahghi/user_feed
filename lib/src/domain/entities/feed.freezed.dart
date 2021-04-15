@@ -65,6 +65,8 @@ mixin _$Feed {
   int? get sequenceNumber => throw _privateConstructorUsedError;
   @JsonKey(name: 'uid')
   String? get uid => throw _privateConstructorUsedError;
+
+  /// Note : [isAnonymous] is not removed here since the backend will always return it
   @JsonKey(name: 'isAnonymous')
   bool? get isAnonymous => throw _privateConstructorUsedError;
   @JsonKey(name: 'flavour', unknownEnumValue: Flavour.UNKNOWN)
@@ -268,6 +270,8 @@ class _$_Feed implements _Feed {
   @JsonKey(name: 'uid')
   final String? uid;
   @override
+
+  /// Note : [isAnonymous] is not removed here since the backend will always return it
   @JsonKey(name: 'isAnonymous')
   final bool? isAnonymous;
   @override
@@ -368,6 +372,8 @@ abstract class _Feed implements Feed {
   @JsonKey(name: 'uid')
   String? get uid => throw _privateConstructorUsedError;
   @override
+
+  /// Note : [isAnonymous] is not removed here since the backend will always return it
   @JsonKey(name: 'isAnonymous')
   bool? get isAnonymous => throw _privateConstructorUsedError;
   @override

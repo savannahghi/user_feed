@@ -27,5 +27,12 @@ void main() {
         expect(_feed.items!.length, 1);
       },
     );
+
+    test('should return feed object from initial method', () {
+      final Feed feed = Feed.intial();
+      expect(feed.actions, isNull);
+      expect(feed.id, isNull);
+      expect(feed.items, isNull);
+    });
   });
 }

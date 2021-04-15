@@ -13,6 +13,8 @@ class Feed with _$Feed {
     @JsonKey(name: 'id') String? id,
     @JsonKey(name: 'sequenceNumber') int? sequenceNumber,
     @JsonKey(name: 'uid') String? uid,
+
+    /// Note : [isAnonymous] is not removed here since the backend will always return it
     @JsonKey(name: 'isAnonymous') bool? isAnonymous,
     @JsonKey(name: 'flavour', unknownEnumValue: Flavour.UNKNOWN)
         Flavour? flavour,
@@ -20,6 +22,9 @@ class Feed with _$Feed {
     @JsonKey(name: 'nudges') List<Nudge>? nudges,
     @JsonKey(name: 'items') List<Item>? items,
   }) = _Feed;
+
+  /// [intial] returns initial invalid feed. The caller, usually in the app, should check the validity of the feed.
+  factory Feed.intial() => Feed();
 
   factory Feed.fromJson(Map<String, dynamic> json) => _$FeedFromJson(json);
 }
