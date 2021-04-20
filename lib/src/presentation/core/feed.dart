@@ -8,7 +8,7 @@ import 'package:sil_feed/src/domain/entities/feed.dart';
 import 'package:sil_feed/src/domain/entities/item.dart';
 import 'package:sil_feed/src/domain/entities/nudge.dart';
 import 'package:sil_feed/src/domain/resources/inputs.dart';
-import 'package:sil_feed/src/domain/value_objects/asset_strings.dart';
+
 import 'package:sil_feed/src/domain/value_objects/colors.dart';
 import 'package:sil_feed/src/domain/value_objects/enums.dart';
 import 'package:sil_feed/src/domain/value_objects/feed_store.dart';
@@ -70,11 +70,6 @@ class _FeedComponentState extends State<FeedComponent> {
     // global actions
     final List<feed_action.Action>? feedActions = feed.actions;
 
-    final List<feed_action.Action> otherActions = feedActions!
-        .where((feed_action.Action actionItem) =>
-            actionItem.actionType != ActionType.FLOATING)
-        .toList();
-
     // nudges
     final List<Nudge> feedNudges = feed.nudges!;
 
@@ -83,7 +78,7 @@ class _FeedComponentState extends State<FeedComponent> {
 
     Widget showGlobalActionsBar(Flavour flavour) {
       if (flavour == Flavour.CONSUMER) {
-        return FeedGlobalActionBar(globalActionsData: otherActions);
+        return FeedGlobalActionBar(globalActionsData: feedActions!);
       }
       return const SizedBox();
     }
@@ -125,31 +120,6 @@ class _FeedComponentState extends State<FeedComponent> {
       return const SizedBox();
     }
 
-    /// [swipeMoreControl] shows the swipe more control for [consumer]
-    Widget swipeMoreControl(Flavour flavour) {
-      if (flavour == Flavour.CONSUMER) {
-        return Container(
-          padding: const EdgeInsets.only(right: 12),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.end,
-            children: <Widget>[
-              Image.asset(
-                swipeForMoreIconUrl,
-                package: packageName,
-                height: 30,
-              ),
-              const SizedBox(width: 5),
-              Text(
-                swipeForMore,
-                style: TextThemes.normalSize14Text(Colors.black87),
-              )
-            ],
-          ),
-        );
-      }
-      return const SizedBox();
-    }
-
     return ListView(
       shrinkWrap: true,
       key: feedComponentKey,
@@ -164,14 +134,6 @@ class _FeedComponentState extends State<FeedComponent> {
             children: <Widget>[
               /// feed global actions bar
               showGlobalActionsBar(widget.flavour),
-
-              /// the swipe for more icon below the feed global action bar
-              ///
-              /// - Used to indicate to the user that there are more actions other
-              /// than the ones displayed in the screen
-              ///
-              /// todo(future) - hide this if there are no items in the screen
-              swipeMoreControl(widget.flavour),
 
               // profile progress indicator for pro
               showProfileSetupProgress(widget.flavour,

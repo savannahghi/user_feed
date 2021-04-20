@@ -28,10 +28,12 @@ class FeedItemComponent extends StatelessWidget {
     /// for the [FeedItemBody]
     ///
     /// - links contain a mixture of docs, images and videos
-    final List<Link> links = feedItem.links!;
+    final List<Link>? links = feedItem.links;
 
     // the long text
-    final String text = feedItem.text!;
+    final String? text = feedItem.text;
+
+    final TextType? itemTextType = feedItem.textType;
 
     return Container(
       margin: const EdgeInsets.symmetric(vertical: 5),
@@ -66,7 +68,11 @@ class FeedItemComponent extends StatelessWidget {
               ),
 
               // the body of the feed item
-              FeedItemBody(links: links, text: text),
+              FeedItemBody(
+                links: links,
+                text: text,
+                itemTextType: itemTextType,
+              ),
               smallVerticalSizedBox,
             ],
           ),

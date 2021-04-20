@@ -1,5 +1,6 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:intl/intl.dart';
 
 import 'package:sil_feed/src/application/helpers/utils.dart';
@@ -28,6 +29,7 @@ class FeedGlobalActionBar extends StatelessWidget {
   final List<feed_action.Action> globalActionsData;
 
   // the flavor in which the app is running
+  // ignore: unused_field
   final Flavour _flavour = FeedStore().flavour.valueWrapper!.value;
 
   Widget _buildGlobalAction(
@@ -43,8 +45,7 @@ class FeedGlobalActionBar extends StatelessWidget {
 
     final String combinedActionName = '$firstActionName $secondActionName';
 
-    final String? actionIconUrl =
-        _flavour == Flavour.PRO ? UNKNOWN : action.icon?.url;
+    final String? actionIconUrl = action.icon!.url;
 
     return GestureDetector(
       onTap: () {
@@ -73,11 +74,9 @@ class FeedGlobalActionBar extends StatelessWidget {
                 padding: const EdgeInsets.all(15),
                 decoration: const BoxDecoration(
                     color: Colors.white, shape: BoxShape.circle),
-                child: (_flavour == Flavour.PRO)
-                    ? const SizedBox()
-                    : (actionIconUrl != null && actionIconUrl != UNKNOWN)
-                        ? Image.network(actionIconUrl, height: 40, width: 40)
-                        : const SizedBox(),
+                child: (actionIconUrl != null && actionIconUrl != UNKNOWN)
+                    ? SvgPicture.network(actionIconUrl, height: 40, width: 40)
+                    : const SizedBox(),
               ),
             ),
 
