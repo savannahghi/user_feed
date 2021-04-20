@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:sil_feed/src/domain/value_objects/enums.dart';
 import 'package:sil_feed/src/domain/value_objects/widget_keys.dart';
 import 'package:sil_feed/src/presentation/video_player/video_player.dart';
 import 'package:sil_feed/src/presentation/widgets/feed_item_body.dart';
@@ -24,6 +25,7 @@ void main() {
         child: FeedItemBody(
           links: mockMultipleFeedLinks,
           text: 'Feed item body',
+          itemTextType: TextType.PLAIN,
         ),
       );
 
@@ -48,6 +50,7 @@ void main() {
         child: FeedItemBody(
           links: mockMultipleFeedLinks,
           text: 'Feed item body',
+          itemTextType: TextType.PLAIN,
         ),
       );
 
@@ -66,6 +69,7 @@ void main() {
         child: FeedItemBody(
           links: mockMultipleFeedLinks,
           text: 'Feed item body',
+          itemTextType: TextType.PLAIN,
         ),
       );
 

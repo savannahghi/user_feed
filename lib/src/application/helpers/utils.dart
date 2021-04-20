@@ -158,7 +158,8 @@ String getFeedItemActionIconUrl(String actionName) {
 
 /// processes media from the feed [links]
 List<Link> processFeedMedia(
-    {required List<Link> links, required LinkType linkType}) {
+    {required List<Link>? links, required LinkType linkType}) {
+  if (links == null) return <Link>[];
   switch (linkType) {
     case LinkType.PNG_IMAGE:
       return links
