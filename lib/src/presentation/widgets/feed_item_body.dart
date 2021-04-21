@@ -1,7 +1,5 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_html/flutter_html.dart';
-import 'package:flutter_html/style.dart';
 import 'package:sil_feed/src/domain/entities/link.dart';
 
 import 'package:sil_feed/src/domain/value_objects/colors.dart';
@@ -17,54 +15,17 @@ import 'package:sil_themes/spaces.dart';
 import 'package:sil_themes/text_themes.dart';
 
 class FeedItemBody extends StatelessWidget {
-  const FeedItemBody(
+  const FeedItemBody(this.summary,
       {Key? key,
       required this.links,
-      this.summary,
       required this.text,
       required this.itemTextType})
       : super(key: key);
 
   final List<Link>? links;
-  final String? summary;
+  final String summary;
   final String? text;
   final TextType? itemTextType;
-
-  Widget bodyContent() {
-    /// the contains bit is a cheap hack to allow the frontend correctly identify if the text from the backend
-    /// has html tags. it should be retired once the backend conforms to the feed schema and provide [itemTextType]
-    /// in the data
-    if (this.itemTextType == TextType.HTML ||
-        text!.contains('<p>') ||
-        text!.contains('</p>') ||
-        text!.contains('<ul>') ||
-        text!.contains('</ul>')) {
-      return Html(
-        data: this.text!,
-        style: <String, Style>{
-          'li': Style(
-            lineHeight: LineHeight.em(1.5),
-            fontWeight: FontWeight.bold,
-            color: const Color(0xFF828282),
-            display: Display.LIST_ITEM,
-            listStylePosition: ListStylePosition.INSIDE,
-          ),
-          'a': Style(
-            textDecoration: TextDecoration.none,
-          ),
-          'p': Style(
-            lineHeight: LineHeight.em(1.5),
-            letterSpacing: 0.4,
-          ),
-        },
-      );
-    }
-
-    return Text(
-      text ?? UNKNOWN,
-      style: TextThemes.normalSize14Text(Colors.black.withOpacity(0.6)),
-    );
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -90,7 +51,23 @@ class FeedItemBody extends StatelessWidget {
         // the body text of the feed
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 15),
-          child: bodyContent(),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: <Widget>[
+              Text(
+                summary,
+                overflow: TextOverflow.ellipsis,
+                maxLines: 2,
+                style: TextThemes.normalSize14Text(),
+              ),
+              verySmallVerticalSizedBox,
+              Text(
+                'see more',
+                textAlign: TextAlign.left,
+                style: TextThemes.normalSize14Text(accentColor),
+              ),
+            ],
+          ),
         ),
 
         smallVerticalSizedBox,

@@ -140,6 +140,10 @@ void callFeedAction(
   }
 }
 
+String? removeHyphens(String sentence) {
+  return toBeginningOfSentenceCase(sentence.toString().replaceAll('-', ' ').toLowerCase());
+}
+
 /// returns an icon based on the [actionName]
 ///
 /// this method returns links to **SVG pictures only**

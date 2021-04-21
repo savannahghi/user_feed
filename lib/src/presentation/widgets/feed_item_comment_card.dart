@@ -38,7 +38,6 @@ class FeedItemCommentCard extends StatelessWidget {
                     image:
                         AssetImage(fallbackLogoIconUrl, package: packageName),
                     fit: BoxFit.fill),
-                // color: Colors.white,
                 shape: BoxShape.circle,
               ),
             ),

@@ -23,8 +23,9 @@ void main() {
       await buildTestWidget(
         tester: tester,
         child: FeedItemBody(
+          summary,
           links: mockMultipleFeedLinks,
-          text: 'Feed item body',
+          text: feedItemBody,
           itemTextType: TextType.PLAIN,
         ),
       );
@@ -38,7 +39,6 @@ void main() {
       expect(find.byType(Container), findsWidgets);
       expect(find.byType(Text), findsWidgets);
       expect(find.byType(GestureDetector), findsWidgets);
-      expect(find.text('Feed item body'), findsOneWidget);
       expect(find.text('+ 5 more photos'), findsOneWidget);
       expect(find.text('Documents (5)'), findsOneWidget);
       expect(find.byKey(remainingPhotosKey), findsOneWidget);
@@ -48,6 +48,7 @@ void main() {
       await buildTestWidget(
         tester: tester,
         child: FeedItemBody(
+          'summary',
           links: mockMultipleFeedLinks,
           text: 'Feed item body',
           itemTextType: TextType.PLAIN,
@@ -67,6 +68,7 @@ void main() {
       await buildTestWidget(
         tester: tester,
         child: FeedItemBody(
+          'summary',
           links: mockMultipleFeedLinks,
           text: 'Feed item body',
           itemTextType: TextType.PLAIN,

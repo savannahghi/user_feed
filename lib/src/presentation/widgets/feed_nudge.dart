@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:sil_feed/src/domain/entities/action.dart' as feed_action;
-import 'package:sil_feed/src/domain/entities/link.dart';
 import 'package:sil_feed/src/domain/entities/nudge.dart';
-import 'package:sil_feed/src/domain/value_objects/asset_strings.dart';
+import 'package:sil_feed/src/domain/value_objects/colors.dart';
 
 import 'package:sil_feed/src/domain/value_objects/widget_keys.dart';
 import 'package:sil_feed/src/presentation/widgets/feed_action_buttons.dart';
@@ -23,8 +22,6 @@ class FeedNudge extends StatelessWidget {
     final String title = nudge.title!;
     final String text = nudge.text!;
 
-    final List<Link> nudgeMedia = nudge.links!;
-
     final List<feed_action.Action> nudgeActions = nudge.actions!;
 
     return Stack(
@@ -33,21 +30,9 @@ class FeedNudge extends StatelessWidget {
           padding: const EdgeInsets.all(15),
           child: Container(
             width: double.infinity,
-            decoration: BoxDecoration(
-              image: DecorationImage(
-                  image: NetworkImage(nudgeMedia.isNotEmpty
-                      ? nudge.links!.first.url!
-                      : fallBackBewellLogoUrl),
-                  fit: BoxFit.contain),
-              borderRadius: const BorderRadius.all(Radius.circular(8)),
-              color: Colors.white,
-              boxShadow: <BoxShadow>[
-                BoxShadow(
-                  color: Colors.grey.withOpacity(0.3),
-                  offset: const Offset(0.0, 1.0), //(x,y)
-                  blurRadius: 6.0,
-                ),
-              ],
+            decoration: const BoxDecoration(
+              color: nudgeBackgroundColor,
+              borderRadius: BorderRadius.all(Radius.circular(8)),
             ),
           ),
         ),
@@ -56,16 +41,15 @@ class FeedNudge extends StatelessWidget {
           child: Container(
             width: double.infinity,
             padding: const EdgeInsets.all(15),
-            decoration: BoxDecoration(
-              color: Colors.black.withOpacity(0.5),
-              borderRadius: const BorderRadius.all(Radius.circular(8)),
+            decoration: const BoxDecoration(
+              borderRadius: BorderRadius.all(Radius.circular(8)),
             ),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
-                Text(title, style: TextThemes.veryBoldSize18Text(Colors.white)),
+                Text(title, style: TextThemes.boldSize18Text()),
                 smallVerticalSizedBox,
-                Text(text, style: TextThemes.normalSize16Text(Colors.white)),
+                Text(text, style: TextThemes.normalSize14Text()),
                 smallVerticalSizedBox,
 
                 // todo(future) - check if nudge actions are null

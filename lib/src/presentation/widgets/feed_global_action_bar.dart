@@ -37,13 +37,9 @@ class FeedGlobalActionBar extends StatelessWidget {
     /// extract the action items here
     final String actionNameWithUnderscores = action.name!;
     final String actionName = removeUnderscores(action.name!);
-    final String firstActionName =
-        titleCase(toBeginningOfSentenceCase(actionName.split(' ').first)!);
 
     final String secondActionName =
         titleCase(toBeginningOfSentenceCase(actionName.split(' ').last)!);
-
-    final String combinedActionName = '$firstActionName $secondActionName';
 
     final String? actionIconUrl = action.icon!.url;
 
@@ -53,10 +49,10 @@ class FeedGlobalActionBar extends StatelessWidget {
             fullActionName: actionNameWithUnderscores, context: context);
       },
       child: Padding(
-        padding: const EdgeInsets.all(8.0),
+        padding: const EdgeInsets.all(10.0),
         child: Column(
           children: <Widget>[
-            // icon
+            // Feed Marketplace Icon
             Container(
               key: Key(action.id!),
               padding: const EdgeInsets.all(1),
@@ -71,7 +67,7 @@ class FeedGlobalActionBar extends StatelessWidget {
                   gradient: getFeedGlobalActionGradient(context),
                   shape: BoxShape.circle),
               child: Container(
-                padding: const EdgeInsets.all(15),
+                padding: const EdgeInsets.all(12),
                 decoration: const BoxDecoration(
                     color: Colors.white, shape: BoxShape.circle),
                 child: (actionIconUrl != null && actionIconUrl != UNKNOWN)
@@ -82,14 +78,10 @@ class FeedGlobalActionBar extends StatelessWidget {
 
             smallVerticalSizedBox,
 
-            // text
-            Row(
-              children: <Widget>[
-                Text(
-                  combinedActionName,
-                  style: TextThemes.veryBoldSize14Text(Colors.black),
-                ),
-              ],
+            // Feed Marketplace Title
+            Text(
+              secondActionName,
+              style: TextThemes.boldSize12Text(Colors.black),
             ),
           ],
         ),
@@ -102,9 +94,8 @@ class FeedGlobalActionBar extends StatelessWidget {
     return SingleChildScrollView(
       scrollDirection: Axis.horizontal,
       child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: <Widget>[
-          smallHorizontalSizedBox,
-
           // todo(abiud) - add checks for when the actions are empty or null
           for (feed_action.Action action in globalActionsData)
             _buildGlobalAction(action: action, context: context),

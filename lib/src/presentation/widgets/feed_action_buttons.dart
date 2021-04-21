@@ -2,6 +2,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:sil_feed/src/application/helpers/utils.dart';
 import 'package:sil_feed/src/domain/entities/action.dart' as feed_action;
+import 'package:sil_feed/src/domain/value_objects/colors.dart';
 import 'package:sil_feed/src/domain/value_objects/enums.dart';
 
 import 'package:sil_themes/text_themes.dart';
@@ -152,8 +153,8 @@ class FeedActionButton extends StatelessWidget {
               fullActionName: actionNameWithUnderscore, context: context);
         },
         text: actionName,
-        buttonColor: Theme.of(context).accentColor,
-        customPadding: const EdgeInsets.symmetric(vertical: 12, horizontal: 15),
+        buttonColor: primaryColor,
+        customPadding: const EdgeInsets.symmetric(vertical: 12, horizontal: 14),
         customElevation: 0,
       );
     }
