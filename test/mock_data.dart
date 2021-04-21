@@ -9,6 +9,8 @@ const String iconUrl = 'https://assets.healthcloud.co.ke/bewell_logo.png';
 const String itemID = '1ns2oDTr800KQMoAwlyS18DiHnp';
 const String tagline = 'Welcome to Be.Well';
 const String timestamp = '2021-02-01T07:30:50Z';
+const String summary = 'This is summary';
+const String feedItemBody = 'Feed item body';
 
 final List<Nudge> mockFeedNudges = <Nudge>[mockNudge1, mockNudge2];
 
