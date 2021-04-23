@@ -22,7 +22,7 @@ dependencies:
   intl: ^0.17.0
   json_annotation: ^4.0.0
   json_serializable: ^4.0.2
-  network_image_mock: ^2.0.0
+  mocktail_image_network: ^0.1.0
   pdf_flutter:
     git:
       url: https://sil_dart_utils:xiFnpjLHssG76bpWxUb9@gitlab.slade360emr.com/optimalhealth/dart_utils/pdf_flutter.git

@@ -1,7 +1,7 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:network_image_mock/network_image_mock.dart';
+import 'package:mocktail_image_network/mocktail_image_network.dart';
 import 'package:sil_feed/sil_feed.dart';
 import 'package:sil_feed/src/domain/value_objects/feed_store.dart';
 
@@ -23,8 +23,8 @@ void main() {
 
     testWidgets('should render correctly on smallScreen on Consumer',
         (WidgetTester tester) async {
-      await mockNetworkImagesFor(
-        () => tester.pumpWidget(
+      await mockNetworkImages(() async {
+        await tester.pumpWidget(
           MaterialApp(
             home: Scaffold(
                 body: NudgeCarousel(
@@ -35,8 +35,8 @@ void main() {
               unroll: false,
             )),
           ),
-        ),
-      );
+        );
+      });
 
       // check that UI renders correctly
       expect(find.byType(CarouselSlider), findsOneWidget);
@@ -60,16 +60,18 @@ void main() {
         (WidgetTester tester) async {
       FeedStore().flavour.add(Flavour.PRO);
 
-      await mockNetworkImagesFor(() => tester.pumpWidget(MaterialApp(
-            home: Scaffold(
-                body: NudgeCarousel(
-              key: nudgeCarouselKey,
-              isSmallScreen: false,
-              nudges: mockFeedNudges,
-              single: false,
-              unroll: false,
-            )),
-          )));
+      await mockNetworkImages(() async {
+        await tester.pumpWidget(MaterialApp(
+          home: Scaffold(
+              body: NudgeCarousel(
+            key: nudgeCarouselKey,
+            isSmallScreen: false,
+            nudges: mockFeedNudges,
+            single: false,
+            unroll: false,
+          )),
+        ));
+      });
 
       // check that UI renders correctly
       expect(find.byType(CarouselSlider), findsNothing);
@@ -84,8 +86,8 @@ void main() {
         (WidgetTester tester) async {
       FeedStore().flavour.add(Flavour.PRO);
 
-      await mockNetworkImagesFor(
-        () => tester.pumpWidget(
+      await mockNetworkImages(() async {
+        await tester.pumpWidget(
           MaterialApp(
             home: Scaffold(
                 body: NudgeCarousel(
@@ -96,8 +98,8 @@ void main() {
               unroll: true,
             )),
           ),
-        ),
-      );
+        );
+      });
 
       // check that UI renders correctly
       expect(find.byType(CarouselSlider), findsNothing);
@@ -111,19 +113,21 @@ void main() {
     testWidgets('tapping feedNudge navigates', (WidgetTester tester) async {
       FeedStore().flavour.add(Flavour.CONSUMER);
 
-      await mockNetworkImagesFor(() => tester.pumpWidget(MaterialApp(
-            navigatorObservers: <NavigatorObserver>[mockObserver],
-            onGenerateRoute: MockRouteGenerator.generateRoute,
-            initialRoute: MockRoutes.nudgeCarousel,
-            home: Scaffold(
-                body: NudgeCarousel(
-              key: nudgeCarouselKey,
-              isSmallScreen: false,
-              nudges: mockFeedNudges,
-              single: false,
-              unroll: false,
-            )),
-          )));
+      await mockNetworkImages(() async {
+        await tester.pumpWidget(MaterialApp(
+          navigatorObservers: <NavigatorObserver>[mockObserver],
+          onGenerateRoute: MockRouteGenerator.generateRoute,
+          initialRoute: MockRoutes.nudgeCarousel,
+          home: Scaffold(
+              body: NudgeCarousel(
+            key: nudgeCarouselKey,
+            isSmallScreen: false,
+            nudges: mockFeedNudges,
+            single: false,
+            unroll: false,
+          )),
+        ));
+      });
 
       // check that UI renders correctly
       expect(find.byType(CarouselSlider), findsOneWidget);
@@ -143,7 +147,7 @@ void main() {
     testWidgets(
         'should throw error when isAnonymousFunc is null and isAnonymous is true',
         (WidgetTester tester) async {
-      await mockNetworkImagesFor(() async {
+      await mockNetworkImages(() async {
         // verify throws assertion Error when isAnonymous || isAnonymousFunc is null
         expect(
             NudgeCarousel(

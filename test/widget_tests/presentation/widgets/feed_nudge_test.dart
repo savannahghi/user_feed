@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:network_image_mock/network_image_mock.dart';
+import 'package:mocktail_image_network/mocktail_image_network.dart';
 import 'package:sil_feed/src/presentation/widgets/feed_action_buttons.dart';
 import 'package:sil_feed/src/presentation/widgets/feed_nudge.dart';
 
@@ -10,11 +10,14 @@ void main() {
   group('FeedNudge', () {
     testWidgets('renders correctly and does not throw an error',
         (WidgetTester tester) async {
-      await mockNetworkImagesFor(() => tester.pumpWidget(MaterialApp(
-            home: Scaffold(
-              body: FeedNudge(nudge: nudge),
-            ),
-          )));
+      await mockNetworkImages(() async {
+        await tester.pumpWidget(MaterialApp(
+          home: Scaffold(
+            body: FeedNudge(nudge: nudge),
+          ),
+        ));
+      });
+
       expect(find.text('Complete your rider KYC'), findsOneWidget);
       expect(
           find.text(

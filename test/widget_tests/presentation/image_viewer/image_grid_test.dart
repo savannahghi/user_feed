@@ -3,7 +3,7 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:network_image_mock/network_image_mock.dart';
+import 'package:mocktail_image_network/mocktail_image_network.dart';
 import 'package:photo_view/photo_view.dart';
 import 'package:sil_feed/src/domain/entities/link.dart';
 import 'package:sil_feed/src/domain/value_objects/constants.dart';
@@ -14,26 +14,24 @@ import 'package:sil_feed/src/domain/value_objects/widget_keys.dart';
 
 import '../../../mock_data.dart';
 import '../../../mocks.dart';
-import '../../mock_image_http_client.dart';
 
 void main() {
   group('FeedItemImageGrid page', () {
-    setUpAll(() {
-      HttpOverrides.global = MockTestHttpOverrides();
-    });
     final MockNavigatorObserver mockObserver = MockNavigatorObserver();
 
     testWidgets('should render images grid correctly',
         (WidgetTester tester) async {
-      await mockNetworkImagesFor(() => tester.pumpWidget(MaterialApp(
-            onGenerateRoute: RouteGenerator.generateRoute,
-            navigatorObservers: <NavigatorObserver>[mockObserver],
-            home: Scaffold(
-              body: FeedItemImageGrid(
-                images: <Link>[mockImageLink],
-              ),
+      await mockNetworkImages(() async {
+        await tester.pumpWidget(MaterialApp(
+          onGenerateRoute: RouteGenerator.generateRoute,
+          navigatorObservers: <NavigatorObserver>[mockObserver],
+          home: Scaffold(
+            body: FeedItemImageGrid(
+              images: <Link>[mockImageLink],
             ),
-          )));
+          ),
+        ));
+      });
 
       await tester.pumpAndSettle();
 

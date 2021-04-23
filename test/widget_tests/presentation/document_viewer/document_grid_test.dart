@@ -2,8 +2,8 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:mocktail_image_network/mocktail_image_network.dart';
 
-import 'package:network_image_mock/network_image_mock.dart';
 import 'package:sil_feed/src/domain/entities/link.dart';
 
 import 'package:sil_feed/src/domain/value_objects/enums.dart';
@@ -13,20 +13,16 @@ import 'package:sil_feed/src/domain/value_objects/widget_keys.dart';
 
 import '../../../mock_data.dart';
 import '../../../mocks.dart';
-import '../../mock_image_http_client.dart';
 
 void main() {
   group('Feed Document List page', () {
-    setUpAll(() {
-      HttpOverrides.global = MockTestHttpOverrides();
-    });
     final MockNavigatorObserver mockObserver = MockNavigatorObserver();
 
     testWidgets('should render document list correctly',
         (WidgetTester tester) async {
       await tester.runAsync(() async {
-        await mockNetworkImagesFor(
-          () => tester.pumpWidget(
+        await mockNetworkImages(() async {
+          await tester.pumpWidget(
             MaterialApp(
               onGenerateRoute: RouteGenerator.generateRoute,
               navigatorObservers: <NavigatorObserver>[mockObserver],
@@ -37,8 +33,8 @@ void main() {
                 ),
               ),
             ),
-          ),
-        );
+          );
+        });
 
         // verify UI renders correctly
         expect(find.byKey(feedDocumentsListPageKey), findsOneWidget);
