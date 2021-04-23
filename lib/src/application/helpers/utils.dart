@@ -210,6 +210,7 @@ SnackBar snackbar(
 
 /// [removeUnderscores] removes underscores from a sentence
 String removeUnderscores(String sentence) {
+  if (sentence.toLowerCase().contains('kyc')) return 'Complete Your KYC';
   return titleCase(sentence.toString().replaceAll('_', ' ').toLowerCase());
 }
 

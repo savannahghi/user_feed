@@ -31,6 +31,20 @@ void main() {
     });
 
     test(
+        'should return complete your kyc if a sentence contains '
+        'the string KYC', () {
+      const String sentence = 'kyc_test_coverage_failure';
+      const String expectedSentence = 'Complete Your KYC';
+      String actualFormattedSentence = removeUnderscores(sentence);
+      expect(actualFormattedSentence, expectedSentence);
+      expect(actualFormattedSentence, isA<String>());
+
+      actualFormattedSentence = removeUnderscores('COMPLETE_YOUR_KYC');
+      expect(actualFormattedSentence, expectedSentence);
+      expect(actualFormattedSentence, isA<String>());
+    });
+
+    test(
         'should return "Just Now" if the'
         ' time difference is less than a minute', () {
       final String date = DateTime.now().toIso8601String();
