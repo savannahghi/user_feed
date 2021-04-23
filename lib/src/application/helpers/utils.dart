@@ -126,14 +126,6 @@ void callFeedAction(
                   label: 'Coming Soon',
                   durationSeconds: kShortSnackbarDuration));
           }
-        } else {
-          /// if it does not, it shows a ['Coming Soon'] snackbar
-          ScaffoldMessenger.of(context)
-            ..hideCurrentSnackBar()
-            ..showSnackBar(snackbar(
-                content: 'Coming Soon!',
-                label: 'Coming Soon',
-                durationSeconds: kShortSnackbarDuration));
         }
       },
     ).toList();
@@ -141,7 +133,8 @@ void callFeedAction(
 }
 
 String? removeHyphens(String sentence) {
-  return toBeginningOfSentenceCase(sentence.toString().replaceAll('-', ' ').toLowerCase());
+  return toBeginningOfSentenceCase(
+      sentence.toString().replaceAll('-', ' ').toLowerCase());
 }
 
 /// returns an icon based on the [actionName]
