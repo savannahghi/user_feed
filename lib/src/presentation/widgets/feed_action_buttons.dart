@@ -44,7 +44,7 @@ class FeedPrimaryButton extends StatelessWidget {
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(customRadius ?? 25.0),
         side: BorderSide(
-            color: borderColor ?? Theme.of(context).accentColor,
+            color: borderColor ?? Colors.transparent,
             width: borderColor != null ? 1 : 0),
       ),
       child: Text(
@@ -142,8 +142,10 @@ class FeedActionButton extends StatelessWidget {
     // extract the handling into a variable from the JSON
 
     // extract the action name from the JSON
-    final String actionNameWithUnderscore = action.name!;
-    final String actionName = removeUnderscores(action.name!);
+    final String actionNameWithUnderscore =
+        action.name!; // COMPLETE_YOUR_INDIVIDUAL_RIDER_KYC
+    final String actionName =
+        removeUnderscores(action.name!); // Complete Your Individual KYC
     final ActionType? actionType = action.actionType;
 
     if (actionType == ActionType.PRIMARY) {
