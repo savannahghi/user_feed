@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:sil_feed/src/application/helpers/utils.dart';
+import 'package:sil_themes/colors.dart';
 
 import 'package:sil_themes/spaces.dart';
 import 'package:sil_themes/text_themes.dart';
@@ -16,7 +17,6 @@ class FeedItemTitleBar extends StatelessWidget {
   const FeedItemTitleBar({
     Key? key,
     required this.author,
-    required this.tagline,
     required this.timestamp,
     required this.iconUrl,
     required this.itemID,
@@ -25,7 +25,6 @@ class FeedItemTitleBar extends StatelessWidget {
   final String author;
   final String iconUrl;
   final String itemID;
-  final String tagline;
   final String timestamp;
 
   String postTimeStampAsMessage(String? timestamp) {
@@ -62,26 +61,21 @@ class FeedItemTitleBar extends StatelessWidget {
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
+                  smallVerticalSizedBox,
                   // the author
                   Text(author,
                       style: TextThemes.boldSize16Text(Colors.black87)),
                   extremelySmallVerticalSizedBox,
 
-                  // the tagline
+                  // the date
                   Container(
                     constraints: const BoxConstraints(maxWidth: 180),
-                    child: Text(
-                      tagline,
-                      style: TextThemes.normalSize14Text(Colors.black54),
-                      overflow: TextOverflow.ellipsis,
+                    child: // a formatted human readable timestamp
+                        Text(
+                      this.postTimeStampAsMessage(timestamp),
+                      style: TextThemes.normalSize14Text(grey),
                     ),
                   ),
-                  extremelySmallVerticalSizedBox,
-
-                  // a formatted human readable timestamp
-                  Text(this.postTimeStampAsMessage(timestamp),
-                      style: TextThemes.normalSize12Text(
-                          Colors.black.withOpacity(0.4)))
                 ],
               )
             ],

@@ -6,6 +6,7 @@ import 'package:sil_feed/sil_feed.dart';
 import 'package:sil_feed/src/domain/entities/item.dart';
 import 'package:sil_feed/src/domain/entities/link.dart';
 import 'package:sil_feed/src/application/helpers/utils.dart';
+import 'package:sil_feed/src/domain/value_objects/colors.dart';
 import 'package:sil_feed/src/presentation/widgets/feed_item_body.dart';
 import 'package:sil_feed/src/presentation/widgets/feed_item_detail_view.dart';
 import 'package:sil_feed/src/presentation/widgets/feed_item_title_bar.dart';
@@ -23,7 +24,6 @@ class FeedItemComponent extends StatelessWidget {
     final String feedItemID = feedItem.id!;
     final String author = feedItem.author!;
     final String summary = feedItem.summary!;
-    final String tagline = removeHyphens(feedItem.tagline!)!;
     final String iconUrl = feedItem.icon!.url!;
     final String timestamp = getHumanReadableTimestamp(feedItem.timestamp!);
 
@@ -56,11 +56,11 @@ class FeedItemComponent extends StatelessWidget {
         decoration: BoxDecoration(
           color: Colors.white,
           borderRadius: const BorderRadius.all(Radius.circular(8)),
+          border: Border.all(color: lightGreyColor, width: 0.5),
           boxShadow: <BoxShadow>[
             BoxShadow(
               color: Colors.grey.withOpacity(0.5),
-              offset: const Offset(0.0, 1.0), //(x,y)
-              blurRadius: 2.0,
+              blurRadius: 0.5,
             ),
           ],
         ),
@@ -76,7 +76,6 @@ class FeedItemComponent extends StatelessWidget {
                       const EdgeInsets.symmetric(horizontal: 15, vertical: 10),
                   child: FeedItemTitleBar(
                     author: author,
-                    tagline: tagline,
                     timestamp: timestamp,
                     iconUrl: iconUrl,
                     itemID: feedItemID,

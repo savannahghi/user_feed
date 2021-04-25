@@ -82,11 +82,15 @@ class FeedItemContentView extends StatelessWidget {
     final String iconUrl = feedItem.icon!.url!;
     final String timestamp = getHumanReadableTimestamp(feedItem.timestamp!);
     return Scaffold(
+      backgroundColor: whiteColor,
       appBar: AppBar(
-        iconTheme: const IconThemeData(color: Colors.white),
-        backgroundColor: primaryColor,
+        elevation: 0,
+        backgroundColor: whiteColor,
         leading: IconButton(
-          icon: const Icon(Icons.arrow_back),
+          icon: const Icon(
+            Icons.close,
+            color: primaryColor,
+          ),
           onPressed: () {
             Navigator.of(context).pop();
           },
@@ -105,7 +109,6 @@ class FeedItemContentView extends StatelessWidget {
                   children: <Widget>[
                     FeedItemTitleBar(
                       author: author,
-                      tagline: tagline,
                       timestamp: timestamp,
                       iconUrl: iconUrl,
                       itemID: feedItemID,

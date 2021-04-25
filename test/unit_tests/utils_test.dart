@@ -96,7 +96,7 @@ void main() {
       final String date =
           DateTime.now().subtract(const Duration(days: 30)).toIso8601String();
       final String expectedReadableDate =
-          DateFormat('MMMd, yyyy').format(DateTime.parse(date));
+          DateFormat('d MMMM, yyyy').format(DateTime.parse(date));
       final String readableDate = getHumanReadableTimestamp(date);
       expect(readableDate, expectedReadableDate);
       expect(readableDate, isA<String>());
