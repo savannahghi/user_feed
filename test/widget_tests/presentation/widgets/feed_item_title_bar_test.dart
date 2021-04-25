@@ -15,7 +15,6 @@ void main() {
             author: author,
             iconUrl: iconUrl,
             itemID: itemID,
-            tagline: tagline,
             timestamp: timestamp,
           )),
         ));
@@ -24,11 +23,6 @@ void main() {
       expect(
           find.text(
             author,
-          ),
-          findsOneWidget);
-      expect(
-          find.text(
-            tagline,
           ),
           findsOneWidget);
       expect(find.text(timestamp), findsOneWidget);

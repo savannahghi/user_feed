@@ -58,9 +58,12 @@ class FeedItemBody extends StatelessWidget {
                 summary,
                 overflow: TextOverflow.ellipsis,
                 maxLines: 2,
-                style: TextThemes.normalSize14Text(),
+                style: TextThemes.normalSize14Text().copyWith(
+                  wordSpacing: 0.6,
+                  height: 1.5,
+                ),
               ),
-              verySmallVerticalSizedBox,
+              smallVerticalSizedBox,
               Text(
                 'see more',
                 textAlign: TextAlign.left,

@@ -56,7 +56,7 @@ String getHumanReadableTimestamp(String date) {
   }
 
   // return the actual date and time if it is more than 4 days
-  return DateFormat('MMMd, yyyy').format(parsedDate);
+  return DateFormat('d MMMM, yyyy').format(parsedDate);
 }
 
 /// looks through the list of allowed actions [allConsumerActions and AllProActions]
