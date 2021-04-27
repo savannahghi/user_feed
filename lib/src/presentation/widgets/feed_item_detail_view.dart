@@ -131,25 +131,6 @@ class FeedItemContentView extends StatelessWidget {
                     smallVerticalSizedBox,
                     bodyContent(),
                     largeVerticalSizedBox,
-                    Container(
-                      padding: const EdgeInsets.only(left: 8),
-                      child: Row(children: <Widget>[
-                        Text(
-                          'Sourced from',
-                          style: TextThemes.normalSize12Text(greyColor),
-                          textAlign: TextAlign.start,
-                        ),
-                        verySmallHorizontalSizedBox,
-                        GestureDetector(
-                          onTap: () => launch('https://www.nhs.uk/live-well/'),
-                          child: Text(
-                            'The NHS Website',
-                            style: TextThemes.normalSize12Text(darkBlueColor),
-                            textAlign: TextAlign.start,
-                          ),
-                        )
-                      ]),
-                    ),
                   ],
                 ),
               )
