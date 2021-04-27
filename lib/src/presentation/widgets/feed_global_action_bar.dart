@@ -4,6 +4,7 @@ import 'package:flutter_svg/svg.dart';
 import 'package:intl/intl.dart';
 
 import 'package:sil_feed/src/application/helpers/utils.dart';
+import 'package:sil_feed/src/domain/value_objects/constants.dart';
 import 'package:sil_feed/src/domain/value_objects/enums.dart';
 import 'package:sil_feed/src/domain/entities/action.dart' as feed_action;
 import 'package:sil_feed/src/domain/value_objects/feed_store.dart';
@@ -33,7 +34,12 @@ class FeedGlobalActionBar extends StatelessWidget {
   final Flavour _flavour = FeedStore().flavour.valueWrapper!.value;
 
   Widget _buildGlobalAction(
-      {required feed_action.Action action, required BuildContext context}) {
+      {required List<feed_action.Action> actions,
+      required BuildContext context,
+      required String matcher}) {
+    final feed_action.Action action =
+        actions.singleWhere((feed_action.Action el) => el.name == matcher);
+
     /// extract the action items here
     final String actionNameWithUnderscores = action.name!;
     final String actionName = removeUnderscores(action.name!);
@@ -96,9 +102,21 @@ class FeedGlobalActionBar extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: <Widget>[
-          // todo(abiud) - add checks for when the actions are empty or null
-          for (feed_action.Action action in globalActionsData)
-            _buildGlobalAction(action: action, context: context),
+          /// arrange global actions in order of [Insurance] -> [Consulation] -> [Medication] -> [Tests]
+          _buildGlobalAction(
+              actions: globalActionsData,
+              context: context,
+              matcher: kGetInsurance),
+          _buildGlobalAction(
+              actions: globalActionsData,
+              context: context,
+              matcher: kGetConsultation),
+          _buildGlobalAction(
+              actions: globalActionsData,
+              context: context,
+              matcher: kGetMedicine),
+          _buildGlobalAction(
+              actions: globalActionsData, context: context, matcher: kGetTest),
         ],
       ),
     );

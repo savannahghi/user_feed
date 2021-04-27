@@ -498,9 +498,57 @@ final Feed mockFeed = Feed.fromJson(
 final List<Action> consumerGlobalActionsData = <Action>[
   Action.fromJson(
     <String, dynamic>{
-      'id': '34564564',
-      'sequenceNumber': 34564564,
+      'id': '1',
+      'sequenceNumber': 1,
+      'name': 'GET_MEDICINE',
+      'actionType': 'PRIMARY',
+      'handling': 'FULL_PAGE',
+      'allowAnonymous': false,
+      'icon': <String, dynamic>{
+        'id': '1ns2oDTr800KQMoAwlyS18DiHnp',
+        'url':
+            'https://assets.healthcloud.co.ke/items/images/thumbs/bewell_banner01.png',
+        'linkType': 'PNG_IMAGE'
+      },
+    },
+  ),
+  Action.fromJson(
+    <String, dynamic>{
+      'id': '2',
+      'sequenceNumber': 2,
+      'name': 'GET_CONSULTATION',
+      'actionType': 'PRIMARY',
+      'handling': 'FULL_PAGE',
+      'allowAnonymous': false,
+      'icon': <String, dynamic>{
+        'id': '1ns2oDTr800KQMoAwlyS18DiHnp',
+        'url':
+            'https://assets.healthcloud.co.ke/items/images/thumbs/bewell_banner01.png',
+        'linkType': 'PNG_IMAGE'
+      },
+    },
+  ),
+  Action.fromJson(
+    <String, dynamic>{
+      'id': '3',
+      'sequenceNumber': 3,
       'name': 'GET_TEST',
+      'actionType': 'PRIMARY',
+      'handling': 'FULL_PAGE',
+      'allowAnonymous': false,
+      'icon': <String, dynamic>{
+        'id': '1ns2oDTr800KQMoAwlyS18DiHnp',
+        'url':
+            'https://assets.healthcloud.co.ke/items/images/thumbs/bewell_banner01.png',
+        'linkType': 'PNG_IMAGE'
+      },
+    },
+  ),
+  Action.fromJson(
+    <String, dynamic>{
+      'id': '4',
+      'sequenceNumber': 4,
+      'name': 'GET_INSURANCE',
       'actionType': 'PRIMARY',
       'handling': 'FULL_PAGE',
       'allowAnonymous': false,
