@@ -63,7 +63,7 @@ class FeedItemBody extends StatelessWidget {
                   height: 1.5,
                 ),
               ),
-              smallVerticalSizedBox,
+              extremelySmallVerticalSizedBox,
               Text(
                 'see more',
                 textAlign: TextAlign.left,

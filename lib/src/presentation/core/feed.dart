@@ -87,7 +87,7 @@ class _FeedComponentState extends State<FeedComponent> {
         {required bool setupComplete}) {
       if (flavour == Flavour.PRO || setupComplete) {
         return Container(
-          margin: const EdgeInsets.all(15),
+          margin: const EdgeInsets.all(4),
           width: double.infinity,
           padding: const EdgeInsets.all(10),
           decoration: BoxDecoration(
@@ -139,12 +139,15 @@ class _FeedComponentState extends State<FeedComponent> {
               showProfileSetupProgress(widget.flavour,
                   setupComplete: widget.setupComplete),
 
-              NudgeCarousel(
-                nudges: feedNudges,
-                single: false,
-                unroll: false,
-                isSmallScreen: widget.isSmallScreen,
-              ),
+              if (feedNudges.isEmpty)
+                mediumVerticalSizedBox
+              else
+                NudgeCarousel(
+                  nudges: feedNudges,
+                  single: false,
+                  unroll: false,
+                  isSmallScreen: widget.isSmallScreen,
+                ),
 
               // feed item wrapper contains a list of all the feed items
               FeedItemsWrapper(feedItems: feedItems)

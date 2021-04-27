@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail_image_network/mocktail_image_network.dart';
 import 'package:sil_feed/sil_feed.dart';
+import 'package:sil_feed/src/domain/entities/nudge.dart';
 import 'package:sil_feed/src/domain/value_objects/feed_store.dart';
 
 import 'package:sil_feed/src/domain/value_objects/widget_keys.dart';
@@ -108,6 +109,30 @@ void main() {
       expect(find.byKey(const Key('0')), findsNothing);
       expect(find.byKey(const Key('1')), findsNothing);
       expect(find.text('Complete'), findsOneWidget);
+    });
+
+
+    testWidgets('should show empty space when there is no nudge',
+        (WidgetTester tester) async {
+      FeedStore().flavour.add(Flavour.CONSUMER);
+
+      await mockNetworkImages(() async {
+        await tester.pumpWidget(
+          const MaterialApp(
+            home: Scaffold(
+                body: NudgeCarousel(
+              key: nudgeCarouselKey,
+              isSmallScreen: false,
+              nudges: <Nudge>[],
+              single: true,
+              unroll: true,
+            )),
+          ),
+        );
+      });
+
+      // check that UI renders correctly
+      expect(find.byType(CarouselSlider), findsNothing);
     });
 
     testWidgets('tapping feedNudge navigates', (WidgetTester tester) async {
