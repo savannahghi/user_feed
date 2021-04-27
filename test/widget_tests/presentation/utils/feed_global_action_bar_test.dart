@@ -34,13 +34,14 @@ void main() {
       expect(find.byType(SingleChildScrollView), findsWidgets);
       expect(find.byType(Row), findsWidgets);
 
-      // expect(find.text('Get Test'), findsOneWidget);
-
-      expect(find.byKey(const Key('34564564')), findsOneWidget);
+      expect(find.byKey(const Key('1')), findsOneWidget);
+      expect(find.byKey(const Key('2')), findsOneWidget);
+      expect(find.byKey(const Key('3')), findsOneWidget);
+      expect(find.byKey(const Key('4')), findsOneWidget);
 
       // tap all the button in the global actions bar and make sure it
       // is executed
-      await tester.tap(find.byKey(const Key('34564564')));
+      await tester.tap(find.byKey(const Key('3')));
       await tester.pumpAndSettle();
 
       expect(callSequence.isEmpty, false);
