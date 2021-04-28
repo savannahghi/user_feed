@@ -11,6 +11,7 @@ const Color whiteColor = Color(0xFFFFFFFF);
 
 const Color accentColor = Color(0xFF739A00);
 const Color backgroundColor = Color(0xFFF4F6FA);
+const Color backgroundWhiteColor = Color(0xFFFFFFFF);
 const Color textSelectionColor = Color(0xff0e2153);
 const Color textLightBlack = Color(0xff333333);
 const Color darkBlueColor = Color(0xFF307CC3);

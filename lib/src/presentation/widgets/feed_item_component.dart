@@ -52,7 +52,7 @@ class FeedItemComponent extends StatelessWidget {
         );
       },
       child: Container(
-        margin: const EdgeInsets.symmetric(vertical: 5),
+        margin: const EdgeInsets.symmetric(vertical: 10),
         decoration: BoxDecoration(
           color: Colors.white,
           borderRadius: const BorderRadius.all(Radius.circular(8)),
@@ -70,7 +70,8 @@ class FeedItemComponent extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
                 smallVerticalSizedBox,
-                // the title bar of the feed item
+                /// The title bar of the feed item
+                /// Renders feed item meta-data (author, timestamp, avatar)
                 Padding(
                   padding:
                       const EdgeInsets.symmetric(horizontal: 15, vertical: 10),
@@ -82,7 +83,8 @@ class FeedItemComponent extends StatelessWidget {
                   ),
                 ),
 
-                // the body of the feed item
+                /// The body of the feed item
+                /// Renders texts, images, and or video
                 FeedItemBody(
                   summary,
                   links: links,

@@ -128,7 +128,7 @@ class _FeedComponentState extends State<FeedComponent> {
       children: <Widget>[
         smallVerticalSizedBox,
         Container(
-          decoration: const BoxDecoration(color: backgroundColor),
+          decoration: const BoxDecoration(color: backgroundWhiteColor),
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: <Widget>[
@@ -136,8 +136,9 @@ class _FeedComponentState extends State<FeedComponent> {
               showGlobalActionsBar(widget.flavour),
 
               // profile progress indicator for pro
-              showProfileSetupProgress(widget.flavour,
-                  setupComplete: widget.setupComplete),
+              if (!widget.setupComplete)
+                showProfileSetupProgress(widget.flavour,
+                    setupComplete: widget.setupComplete),
 
               if (feedNudges.isEmpty)
                 mediumVerticalSizedBox
