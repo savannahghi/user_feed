@@ -6,7 +6,6 @@ import 'package:html/dom.dart' as dom;
 import 'package:sil_feed/sil_feed.dart';
 import 'package:sil_feed/src/application/helpers/utils.dart';
 import 'package:sil_feed/src/domain/entities/item.dart';
-import 'package:sil_feed/src/domain/entities/link.dart';
 import 'package:sil_feed/src/domain/value_objects/colors.dart';
 import 'package:sil_feed/src/domain/value_objects/strings.dart';
 import 'package:sil_feed/src/presentation/widgets/feed_item_title_bar.dart';
@@ -18,14 +17,12 @@ class FeedItemContentView extends StatelessWidget {
   const FeedItemContentView({
     Key? key,
     required this.feedItem,
-    required this.links,
     required this.text,
     required this.itemTextType,
     required this.summary,
   }) : super(key: key);
   final Item feedItem;
 
-  final List<Link>? links;
   final String summary;
   final String? text;
   final TextType? itemTextType;

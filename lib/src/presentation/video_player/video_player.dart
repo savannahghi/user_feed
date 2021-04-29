@@ -13,9 +13,11 @@ import 'package:youtube_player_flutter/youtube_player_flutter.dart';
 /// Creates and embedded video of a mini youtube player
 /// Constrain it using a container in a page the player does not span the whole screen
 class VideoPlayer extends StatefulWidget {
-  const VideoPlayer({Key? key, required this.videos}) : super(key: key);
+  const VideoPlayer({Key? key, required this.videos, this.videoController})
+      : super(key: key);
 
   final List<Link> videos;
+  final YoutubePlayerController? videoController;
 
   @override
   _VideoPlayerState createState() => _VideoPlayerState();
@@ -24,7 +26,6 @@ class VideoPlayer extends StatefulWidget {
 class _VideoPlayerState extends State<VideoPlayer> {
   late YoutubePlayerController _videoController;
 
-  bool _muted = false;
   bool _isPlayerReady = false;
 
   final List<String?> _videoIds = <String>[];
@@ -45,12 +46,13 @@ class _VideoPlayerState extends State<VideoPlayer> {
     super.initState();
     getVideoID();
 
-    _videoController = YoutubePlayerController(
-      initialVideoId: _videoIds.first ?? defaultInitialFeedVideoUrl,
-      flags: const YoutubePlayerFlags(
-        autoPlay: false,
-      ),
-    );
+    _videoController = widget.videoController ??
+        YoutubePlayerController(
+          initialVideoId: _videoIds.first ?? defaultInitialFeedVideoUrl,
+          flags: const YoutubePlayerFlags(
+            autoPlay: false,
+          ),
+        );
     _videoController.addListener(listener);
   }
 
@@ -136,60 +138,10 @@ class _VideoPlayerState extends State<VideoPlayer> {
                   crossAxisAlignment: CrossAxisAlignment.stretch,
                   children: <Widget>[
                     _space,
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      children: <Widget>[
-                        IconButton(
-                          icon: const Icon(Icons.skip_previous),
-                          onPressed: _isPlayerReady
-                              ? () => _videoController.load(_videoIds[
-                                  (_videoIds.indexOf(_videoController
-                                              .metadata.videoId) -
-                                          1) %
-                                      _videoIds.length]!)
-                              : null,
-                        ),
-                        IconButton(
-                          key: videoPlayPauseKey,
-                          icon: Icon(
-                            _videoController.value.isPlaying
-                                ? Icons.pause
-                                : Icons.play_arrow,
-                          ),
-                          onPressed: _isPlayerReady
-                              ? () {
-                                  _videoController.value.isPlaying
-                                      ? _videoController.pause()
-                                      : _videoController.play();
-                                  setState(() {});
-                                }
-                              : null,
-                        ),
-                        IconButton(
-                          icon:
-                              Icon(_muted ? Icons.volume_off : Icons.volume_up),
-                          onPressed: _isPlayerReady
-                              ? () {
-                                  _muted
-                                      ? _videoController.unMute()
-                                      : _videoController.mute();
-                                  setState(() {
-                                    _muted = !_muted;
-                                  });
-                                }
-                              : null,
-                        ),
-                        IconButton(
-                          icon: const Icon(Icons.skip_next),
-                          onPressed: _isPlayerReady
-                              ? () => _videoController.load(_videoIds[
-                                  (_videoIds.indexOf(_videoController
-                                              .metadata.videoId) +
-                                          1) %
-                                      _videoIds.length]!)
-                              : null,
-                        ),
-                      ],
+                    VideoControllers(
+                      videoController: _videoController,
+                      videoIds: _videoIds,
+                      isPlayerReady: _isPlayerReady,
                     ),
                     _space,
                   ],
@@ -203,4 +155,84 @@ class _VideoPlayerState extends State<VideoPlayer> {
   }
 
   Widget get _space => const SizedBox(height: 10);
+}
+
+class VideoControllers extends StatefulWidget {
+  const VideoControllers({
+    Key? key,
+    required this.videoController,
+    required this.isPlayerReady,
+    required this.videoIds,
+  }) : super(key: key);
+  final YoutubePlayerController videoController;
+
+  final bool isPlayerReady;
+  final List<String?> videoIds;
+
+  @override
+  _VideoControllersState createState() => _VideoControllersState();
+}
+
+class _VideoControllersState extends State<VideoControllers> {
+  bool _muted = false;
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+      children: <Widget>[
+        IconButton(
+          key: videoPreviousKey,
+          icon: const Icon(Icons.skip_previous),
+          onPressed: widget.isPlayerReady
+              ? () => widget.videoController.load(widget.videoIds[(widget
+                          .videoIds
+                          .indexOf(widget.videoController.metadata.videoId) -
+                      1) %
+                  widget.videoIds.length]!)
+              : null,
+        ),
+        IconButton(
+          key: videoPlayPauseKey,
+          icon: Icon(
+            widget.videoController.value.isPlaying
+                ? Icons.pause
+                : Icons.play_arrow,
+          ),
+          onPressed: widget.isPlayerReady
+              ? () {
+                  widget.videoController.value.isPlaying
+                      ? widget.videoController.pause()
+                      : widget.videoController.play();
+                  setState(() {});
+                }
+              : null,
+        ),
+        IconButton(
+          key: videoVolumeKey,
+          icon: Icon(_muted ? Icons.volume_off : Icons.volume_up),
+          onPressed: widget.isPlayerReady
+              ? () {
+                  _muted
+                      ? widget.videoController.unMute()
+                      : widget.videoController.mute();
+                  setState(() {
+                    _muted = !_muted;
+                  });
+                }
+              : null,
+        ),
+        IconButton(
+          icon: const Icon(Icons.skip_next),
+          key: videoNextKey,
+          onPressed: widget.isPlayerReady
+              ? () => widget.videoController.load(widget.videoIds[(widget
+                          .videoIds
+                          .indexOf(widget.videoController.metadata.videoId) +
+                      1) %
+                  widget.videoIds.length]!)
+              : null,
+        ),
+      ],
+    );
+  }
 }

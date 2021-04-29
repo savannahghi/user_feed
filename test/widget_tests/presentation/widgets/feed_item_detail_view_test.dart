@@ -10,7 +10,8 @@ import '../../../mock_data.dart';
 void main() {
   setUpAll(() => HttpOverrides.global = null);
   group('Feed item detail view', () {
-    testWidgets('widgets are rendered correctly ', (WidgetTester tester) async {
+    testWidgets('widgets are rendered correctly with text plain',
+        (WidgetTester tester) async {
       await tester.runAsync(() async {
         await tester.pumpWidget(MaterialApp(home: Material(
           child: Scaffold(
@@ -18,9 +19,29 @@ void main() {
               return FeedItemContentView(
                 feedItem: mockFeedItem,
                 itemTextType: TextType.PLAIN,
-                links: mockFeedLinks,
                 summary: summary,
                 text: feedItemBody,
+              );
+            }),
+          ),
+        )));
+        expect(find.byType(FeedItemContentView), findsOneWidget);
+        await tester.tap(find.byType(IconButton));
+        await tester.pumpAndSettle();
+      });
+    });
+
+    testWidgets('widgets are rendered correctly with html',
+        (WidgetTester tester) async {
+      await tester.runAsync(() async {
+        await tester.pumpWidget(MaterialApp(home: Material(
+          child: Scaffold(
+            body: Builder(builder: (BuildContext context) {
+              return FeedItemContentView(
+                feedItem: mockFeedItem,
+                itemTextType: TextType.HTML,
+                summary: summary,
+                text: '<a href="https://github.com">Github</a>',
               );
             }),
           ),

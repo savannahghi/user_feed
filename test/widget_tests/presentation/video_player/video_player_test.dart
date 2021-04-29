@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail_image_network/mocktail_image_network.dart';
@@ -9,7 +11,14 @@ import 'package:youtube_player_flutter/youtube_player_flutter.dart';
 import '../../../mock_data.dart';
 import '../../../test_helpers.dart';
 
+class _MyHttpOverrides extends HttpOverrides {}
+
 void main() {
+  TestWidgetsFlutterBinding.ensureInitialized();
+
+  setUp(() {
+    HttpOverrides.global = _MyHttpOverrides();
+  });
   group('VideoPlayer', () {
     testWidgets('should render videos correctly', (WidgetTester tester) async {
       await tester.runAsync(() async {
@@ -38,24 +47,54 @@ void main() {
       });
     });
 
-    testWidgets('should play a video', (WidgetTester tester) async {
-      await tester.runAsync(() async {
-        await mockNetworkImages(() async {
-          await buildTestWidget(
-            tester: tester,
-            child: VideoPlayer(
-              videos: <Link>[mockYoutubeVideoLink],
-            ),
-          );
-        });
+    testWidgets('should test player controllers', (WidgetTester tester) async {
+      final YoutubePlayerController _videoController = YoutubePlayerController(
+        initialVideoId: 'mKnlXcS3_Z0',
+        flags: const YoutubePlayerFlags(
+          autoPlay: false,
+        ),
+      );
 
-        // verify UI renders correctly
-        expect(find.byType(YoutubePlayerBuilder), findsOneWidget);
-        expect(find.byKey(videoPlayPauseKey), findsOneWidget);
-
-        await tester.tap(find.byKey(videoPlayPauseKey));
-        await tester.pumpAndSettle();
+      await mockNetworkImages(() async {
+        await buildTestWidget(
+          tester: tester,
+          child: VideoControllers(
+            videoIds: const <String>[
+              'mKnlXcS3_Z1',
+              'mKnlXcS3_Z2',
+              'mKnlXcS3_Z3'
+            ],
+            isPlayerReady: true,
+            videoController: _videoController,
+          ),
+        );
       });
-    }, skip: true); // the video player tests need to be improved
+      // await tester.pumpAndSettle();
+      // verify UI renders correctly
+      expect(find.byType(VideoControllers), findsOneWidget);
+      await tester.pump(const Duration());
+      expect(find.byType(Row), findsOneWidget);
+      expect(find.byType(IconButton), findsWidgets);
+
+      expect(_videoController.initialVideoId, 'mKnlXcS3_Z0');
+
+      await tester.tap(find.byKey(videoNextKey));
+      await tester.pumpAndSettle();
+      await tester.tap(find.byKey(videoPreviousKey));
+      await tester.pumpAndSettle();
+      await tester.tap(find.byKey(videoVolumeKey));
+      await tester.pumpAndSettle();
+      // unmute
+      await tester.tap(find.byKey(videoVolumeKey));
+
+      // pause video
+      await tester.tap(find.byKey(videoPlayPauseKey));
+      await tester.pumpAndSettle();
+      expect(_videoController.value.isPlaying, false);
+      _videoController.updateValue(YoutubePlayerValue(isPlaying: true));
+      // play video
+      await tester.tap(find.byKey(videoPlayPauseKey));
+      expect(_videoController.value.isPlaying, true);
+    });
   });
 }

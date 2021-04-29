@@ -11,27 +11,27 @@ import '../../../test_helpers.dart';
 
 void main() {
   group('FeedItemComponent', () {
-    // testWidgets(
-    //   'should render correctly for consumer',
-    //   (WidgetTester tester) async {
-    //     await tester.runAsync(
-    //       () async {
-    //         await mockNetworkImages(() async {
-    //           await buildTestWidget(
-    //             tester: tester,
-    //             child: FeedComponent(
-    //               userFeed:
-    //                   FeedResponsePayload.fromJson(mockFeedResponsePayload),
-    //               flavour: Flavour.CONSUMER,
-    //               feedContentCallbacks: mockGetFeedActionCallbacks(),
-    //               isSmallScreen: true,
-    //             ),
-    //           );
-    //         });
-    //       },
-    //     );
-    //   },
-    // );
+    testWidgets(
+      'should render correctly for consumer',
+      (WidgetTester tester) async {
+        await tester.runAsync(
+          () async {
+            await mockNetworkImages(() async {
+              await buildTestWidget(
+                tester: tester,
+                child: FeedComponent(
+                  userFeed: FeedResponsePayload.fromJson(
+                      mockFeedResponsePayload(feedNudges)),
+                  flavour: Flavour.CONSUMER,
+                  feedContentCallbacks: mockGetFeedActionCallbacks(),
+                  isSmallScreen: true,
+                ),
+              );
+            });
+          },
+        );
+      },
+    );
 
     testWidgets(
       'should render correctly for pro',
@@ -43,8 +43,33 @@ void main() {
                 tester: tester,
                 flavour: Flavour.PRO,
                 child: FeedComponent(
-                  userFeed:
-                      FeedResponsePayload.fromJson(mockFeedResponsePayload),
+                  userFeed: FeedResponsePayload.fromJson(
+                      mockFeedResponsePayload(feedNudges)),
+                  flavour: Flavour.PRO,
+                  feedContentCallbacks: mockGetFeedActionCallbacks(),
+                  isSmallScreen: true,
+                ),
+              );
+            });
+
+            expect(find.text(completeProfileTitle), findsOneWidget);
+          },
+        );
+      },
+    );
+
+    testWidgets(
+      'should render correctly empty nudges',
+      (WidgetTester tester) async {
+        await tester.runAsync(
+          () async {
+            await mockNetworkImages(() async {
+              await buildTestWidget(
+                tester: tester,
+                flavour: Flavour.PRO,
+                child: FeedComponent(
+                  userFeed: FeedResponsePayload.fromJson(
+                      mockFeedResponsePayload(<Map<String, dynamic>>[])),
                   flavour: Flavour.PRO,
                   feedContentCallbacks: mockGetFeedActionCallbacks(),
                   isSmallScreen: true,

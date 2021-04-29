@@ -7,6 +7,7 @@ import 'package:sil_feed/src/domain/entities/item.dart';
 import 'package:sil_feed/src/domain/entities/link.dart';
 import 'package:sil_feed/src/application/helpers/utils.dart';
 import 'package:sil_feed/src/domain/value_objects/colors.dart';
+import 'package:sil_feed/src/domain/value_objects/widget_keys.dart';
 import 'package:sil_feed/src/presentation/widgets/feed_item_body.dart';
 import 'package:sil_feed/src/presentation/widgets/feed_item_detail_view.dart';
 import 'package:sil_feed/src/presentation/widgets/feed_item_title_bar.dart';
@@ -38,11 +39,11 @@ class FeedItemComponent extends StatelessWidget {
     final TextType? itemTextType = feedItem.textType;
 
     return InkWell(
+      key: feedItemInkWell,
       onTap: () {
         Navigator.of(context).push(
           MaterialPageRoute<FeedItemContentView>(
             builder: (_) => FeedItemContentView(
-              links: links,
               text: text,
               summary: summary,
               itemTextType: itemTextType,
@@ -70,6 +71,7 @@ class FeedItemComponent extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
                 smallVerticalSizedBox,
+
                 /// The title bar of the feed item
                 /// Renders feed item meta-data (author, timestamp, avatar)
                 Padding(
