@@ -137,6 +137,12 @@ void main() {
       expect(documents, isA<List<Link>>());
       expect(documents.isEmpty, false);
       expect(documents.length, 1);
+
+      final List<Link> links =
+          processFeedMedia(links: null, linkType: LinkType.PDF_DOCUMENT);
+      expect(links, isA<List<Link>>());
+      expect(links.isEmpty, true);
+      expect(links.length, 0);
     });
 
     test('should return router page ', () {

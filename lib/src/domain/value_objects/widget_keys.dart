@@ -34,4 +34,14 @@ const Key navigateToPhotos = Key('navigate_to_photos');
 
 const Key navigateToDocuments = Key('navigate_to_photos');
 
+// video player keys
+
 const Key videoPlayPauseKey = Key('play_or_pause_video');
+
+const Key videoPreviousKey = Key('previous_video');
+
+const Key videoVolumeKey = Key('volume_video');
+
+const Key videoNextKey = Key('next_video');
+
+const Key feedItemInkWell = Key('feed_item_inkwell');

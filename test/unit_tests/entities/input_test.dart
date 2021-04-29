@@ -35,12 +35,12 @@ void main() {
 
     test('should return feed from json', () {
       final FeedResponsePayload _feed =
-          FeedResponsePayload.fromJson(mockFeedResponsePayload);
+          FeedResponsePayload.fromJson(mockFeedResponsePayload(feedNudges));
 
       expect(_feed.data, isNotNull);
       expect(_feed.data.getFeed, isNotNull);
 
-      expect(_feed.data.getFeed.actions!.length, 3);
+      expect(_feed.data.getFeed.actions!.length, 7);
     });
   });
 }
