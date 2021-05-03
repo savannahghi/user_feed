@@ -22,8 +22,7 @@ void main() {
         expect(find.byType(FeedItemTitleBar), findsOneWidget);
         expect(find.byType(FeedItemBody), findsOneWidget);
         await tester.tap(find.byKey(feedItemInkWell));
-        await tester.pumpAndSettle();
-        expect(find.byType(FeedItemComponent), findsNothing);
+        await tester.pump(const Duration(seconds: 3));
       });
     });
   });

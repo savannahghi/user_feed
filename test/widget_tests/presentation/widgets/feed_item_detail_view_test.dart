@@ -21,6 +21,7 @@ void main() {
                 itemTextType: TextType.PLAIN,
                 summary: summary,
                 text: feedItemBody,
+                videos: emptyMockFeedLinks,
               );
             }),
           ),
@@ -42,6 +43,7 @@ void main() {
                 itemTextType: TextType.HTML,
                 summary: summary,
                 text: '<a href="https://github.com">Github</a>',
+                videos: emptyMockFeedLinks,
               );
             }),
           ),

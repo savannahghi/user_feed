@@ -33,6 +33,10 @@ class FeedItemComponent extends StatelessWidget {
     /// - links contain a mixture of docs, images and videos
     final List<Link>? links = feedItem.links;
 
+    // extract videos
+    final List<Link> videos =
+        processFeedMedia(links: links, linkType: LinkType.YOUTUBE_VIDEO);
+
     // the long text
     final String? text = feedItem.text;
 
@@ -48,12 +52,13 @@ class FeedItemComponent extends StatelessWidget {
               summary: summary,
               itemTextType: itemTextType,
               feedItem: feedItem,
+              videos: videos,
             ),
           ),
         );
       },
       child: Container(
-        margin: const EdgeInsets.symmetric(vertical: 10),
+        margin: const EdgeInsets.symmetric(vertical: 8),
         decoration: BoxDecoration(
           color: Colors.white,
           borderRadius: const BorderRadius.all(Radius.circular(8)),

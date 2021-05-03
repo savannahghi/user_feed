@@ -6,26 +6,32 @@ import 'package:html/dom.dart' as dom;
 import 'package:sil_feed/sil_feed.dart';
 import 'package:sil_feed/src/application/helpers/utils.dart';
 import 'package:sil_feed/src/domain/entities/item.dart';
+import 'package:sil_feed/src/domain/entities/link.dart';
 import 'package:sil_feed/src/domain/value_objects/colors.dart';
 import 'package:sil_feed/src/domain/value_objects/strings.dart';
+import 'package:sil_feed/src/presentation/video_player/video_player.dart';
 import 'package:sil_feed/src/presentation/widgets/feed_item_title_bar.dart';
 import 'package:sil_themes/spaces.dart';
 import 'package:sil_themes/text_themes.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class FeedItemContentView extends StatelessWidget {
-  const FeedItemContentView({
-    Key? key,
-    required this.feedItem,
-    required this.text,
-    required this.itemTextType,
-    required this.summary,
-  }) : super(key: key);
+  const FeedItemContentView(
+      {Key? key,
+      required this.feedItem,
+      required this.text,
+      required this.itemTextType,
+      required this.summary,
+      required this.videos,
+      this.links})
+      : super(key: key);
   final Item feedItem;
 
   final String summary;
   final String? text;
   final TextType? itemTextType;
+  final List<Link>? links;
+  final List<Link> videos;
 
   Widget bodyContent() {
     /// the contains bit is a cheap hack to allow the frontend correctly identify if the text from the backend
@@ -65,9 +71,12 @@ class FeedItemContentView extends StatelessWidget {
       );
     }
 
-    return Text(
-      text ?? UNKNOWN,
-      style: TextThemes.normalSize14Text(Colors.black.withOpacity(0.6)),
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 14),
+      child: Text(
+        text ?? UNKNOWN,
+        style: TextThemes.normalSize14Text(Colors.black.withOpacity(0.6)),
+      ),
     );
   }
 
@@ -78,6 +87,7 @@ class FeedItemContentView extends StatelessWidget {
     final String tagline = removeHyphens(feedItem.tagline!)!;
     final String iconUrl = feedItem.icon!.url!;
     final String timestamp = getHumanReadableTimestamp(feedItem.timestamp!);
+
     return Scaffold(
       backgroundColor: whiteColor,
       appBar: AppBar(
@@ -110,6 +120,15 @@ class FeedItemContentView extends StatelessWidget {
                       iconUrl: iconUrl,
                       itemID: feedItemID,
                     ),
+                    mediumVerticalSizedBox,
+                    if (videos.isNotEmpty)
+                      Padding(
+                        padding: const EdgeInsets.only(top: 5),
+                        child: SizedBox(
+                          height: 200,
+                          child: VideoPlayer(videos: videos),
+                        ),
+                      ),
                     mediumVerticalSizedBox,
                     Container(
                       padding: const EdgeInsets.only(left: 8),

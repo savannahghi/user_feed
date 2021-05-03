@@ -9,7 +9,6 @@ import 'package:sil_feed/src/domain/entities/item.dart';
 import 'package:sil_feed/src/domain/entities/nudge.dart';
 import 'package:sil_feed/src/domain/resources/inputs.dart';
 
-import 'package:sil_feed/src/domain/value_objects/colors.dart';
 import 'package:sil_feed/src/domain/value_objects/enums.dart';
 import 'package:sil_feed/src/domain/value_objects/feed_store.dart';
 import 'package:sil_feed/src/domain/value_objects/strings.dart';
@@ -22,15 +21,16 @@ import 'package:sil_themes/spaces.dart';
 import 'package:sil_themes/text_themes.dart';
 
 class FeedComponent extends StatefulWidget {
-  const FeedComponent({
-    Key? key,
-    required this.userFeed,
-    required this.flavour,
-    required this.isSmallScreen,
-    required this.feedContentCallbacks,
-    this.profileProgress,
-    this.setupComplete = false,
-  }) : super(key: key);
+  const FeedComponent(
+      {Key? key,
+      required this.userFeed,
+      required this.flavour,
+      required this.isSmallScreen,
+      required this.feedContentCallbacks,
+      this.profileProgress,
+      this.setupComplete = false,
+      this.feedbackGroundColor})
+      : super(key: key);
 
   /// the feed
   final FeedResponsePayload userFeed;
@@ -49,6 +49,9 @@ class FeedComponent extends StatefulWidget {
 
   /// Callbacks(functions) that will be used in the feed items
   final Map<String, Function> feedContentCallbacks;
+
+  /// Feed background color
+  final Color? feedbackGroundColor;
 
   @override
   _FeedComponentState createState() => _FeedComponentState();
@@ -128,7 +131,7 @@ class _FeedComponentState extends State<FeedComponent> {
       children: <Widget>[
         smallVerticalSizedBox,
         Container(
-          decoration: const BoxDecoration(color: backgroundWhiteColor),
+          decoration: BoxDecoration(color: widget.feedbackGroundColor),
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: <Widget>[
