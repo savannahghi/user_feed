@@ -64,17 +64,18 @@ class FeedItemBody extends StatelessWidget {
                 ),
               ),
               extremelySmallVerticalSizedBox,
-              Text(
-                'see more',
-                textAlign: TextAlign.left,
-                style: TextThemes.normalSize14Text(accentColor),
+              Align(
+                alignment: Alignment.topRight,
+                child: Text(
+                  '...see more',
+                  textAlign: TextAlign.left,
+                  style: TextThemes.normalSize12Text(accentColor),
+                ),
               ),
             ],
           ),
         ),
-
         smallVerticalSizedBox,
-
         // feed item videos are displayed here
         if (videos.isNotEmpty)
           Padding(
