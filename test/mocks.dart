@@ -59,3 +59,5 @@ class MockHttpClientRequest extends Mock implements io.HttpClientRequest {}
 class MockHttpClientResponse extends Mock implements io.HttpClientResponse {}
 
 class MockHttpHeaders extends Mock implements io.HttpHeaders {}
+
+class MockBuildContext extends Mock implements BuildContext {}

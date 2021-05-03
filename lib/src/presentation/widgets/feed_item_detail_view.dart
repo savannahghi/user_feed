@@ -15,7 +15,7 @@ import 'package:sil_themes/spaces.dart';
 import 'package:sil_themes/text_themes.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-class FeedItemContentView extends StatelessWidget {
+class FeedItemContentView extends StatefulWidget {
   const FeedItemContentView(
       {Key? key,
       required this.feedItem,
@@ -33,25 +33,29 @@ class FeedItemContentView extends StatelessWidget {
   final List<Link>? links;
   final List<Link> videos;
 
+  @override
+  FeedItemContentViewState createState() => FeedItemContentViewState();
+}
+
+class FeedItemContentViewState extends State<FeedItemContentView> {
+  void onBodyLinkOrImageTapCallback(String? url, RenderContext context,
+      Map<String, String> attributes, dom.Element? element) {
+    launch(url!);
+  }
+
   Widget bodyContent() {
     /// the contains bit is a cheap hack to allow the frontend correctly identify if the text from the backend
     /// has html tags. it should be retired once the backend conforms to the feed schema and provide [itemTextType]
     /// in the data
-    if (this.itemTextType == TextType.HTML ||
-        text!.contains('<p>') ||
-        text!.contains('</p>') ||
-        text!.contains('<ul>') ||
-        text!.contains('</ul>')) {
+    if (widget.itemTextType == TextType.HTML ||
+        widget.text!.contains('<p>') ||
+        widget.text!.contains('</p>') ||
+        widget.text!.contains('<ul>') ||
+        widget.text!.contains('</ul>')) {
       return Html(
-        data: this.text!,
-        onLinkTap: (String? url, RenderContext context,
-            Map<String, String> attributes, dom.Element? element) {
-          launch(url!);
-        },
-        onImageTap: (String? url, RenderContext context,
-            Map<String, String> attributes, dom.Element? element) {
-          launch(url!);
-        },
+        data: widget.text!,
+        onLinkTap: onBodyLinkOrImageTapCallback,
+        onImageTap: onBodyLinkOrImageTapCallback,
         style: <String, Style>{
           'li': Style(
             lineHeight: LineHeight.em(1.5),
@@ -74,19 +78,29 @@ class FeedItemContentView extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 14),
       child: Text(
-        text ?? UNKNOWN,
+        widget.text ?? UNKNOWN,
         style: TextThemes.normalSize14Text(Colors.black.withOpacity(0.6)),
       ),
     );
   }
 
   @override
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+    return feedItemContentViewState;
+  }
+
+  void navigateWithPopCallback() {
+    Navigator.of(context).pop();
+  }
+
+  @override
   Widget build(BuildContext context) {
-    final String feedItemID = feedItem.id!;
-    final String author = feedItem.author!;
-    final String tagline = removeHyphens(feedItem.tagline!)!;
-    final String iconUrl = feedItem.icon!.url!;
-    final String timestamp = getHumanReadableTimestamp(feedItem.timestamp!);
+    final String feedItemID = widget.feedItem.id!;
+    final String author = widget.feedItem.author!;
+    final String tagline = removeHyphens(widget.feedItem.tagline!)!;
+    final String iconUrl = widget.feedItem.icon!.url!;
+    final String timestamp =
+        getHumanReadableTimestamp(widget.feedItem.timestamp!);
 
     return Scaffold(
       backgroundColor: whiteColor,
@@ -98,9 +112,7 @@ class FeedItemContentView extends StatelessWidget {
             Icons.close,
             color: primaryColor,
           ),
-          onPressed: () {
-            Navigator.of(context).pop();
-          },
+          onPressed: navigateWithPopCallback,
         ),
       ),
       body: SafeArea(
@@ -121,12 +133,12 @@ class FeedItemContentView extends StatelessWidget {
                       itemID: feedItemID,
                     ),
                     mediumVerticalSizedBox,
-                    if (videos.isNotEmpty)
+                    if (widget.videos.isNotEmpty)
                       Padding(
                         padding: const EdgeInsets.only(top: 5),
                         child: SizedBox(
                           height: 200,
-                          child: VideoPlayer(videos: videos),
+                          child: VideoPlayer(videos: widget.videos),
                         ),
                       ),
                     mediumVerticalSizedBox,

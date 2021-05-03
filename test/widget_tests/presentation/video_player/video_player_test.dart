@@ -29,8 +29,6 @@ void main() {
         // verify UI renders correctly
         expect(find.byType(YoutubePlayerBuilder), findsOneWidget);
         expect(find.byType(IconButton), findsOneWidget);
-        await tester.tap(find.byType(IconButton));
-        await tester.pump();
       });
     });
 
@@ -95,6 +93,49 @@ void main() {
       // play video
       await tester.tap(find.byKey(videoPlayPauseKey));
       expect(_videoController.value.isPlaying, true);
+    });
+
+    testWidgets('should call state callbacks', (WidgetTester tester) async {
+      await tester.runAsync(() async {
+        await buildTestWidget(
+          tester: tester,
+          child: Builder(
+            builder: (BuildContext context) {
+              return VideoPlayer(videos: <Link>[mockYoutubeVideoLink]);
+            },
+          ),
+        );
+
+        expect(find.byType(YoutubePlayerBuilder), findsOneWidget);
+        expect(find.byType(YoutubePlayer), findsOneWidget);
+
+        final State<StatefulWidget> state = tester.allStates.singleWhere(
+            (State<StatefulWidget> el) => el.toString() == 'VideoPlayerState');
+        expect(state, isNotNull);
+
+        final VideoPlayerState _state = state as VideoPlayerState;
+
+        expect(_state, isNotNull);
+
+        expect(_state.isPlayerReady, false);
+
+        _state.onReadyCallback();
+
+        expect(_state.isPlayerReady, true);
+
+        expect(_state.mounted, true);
+
+        expect(_state.videoController.value.isFullScreen, false);
+
+        expect(() => _state.listener(), returnsNormally);
+
+        const YoutubeMetaData videoMeta = YoutubeMetaData(
+            videoId: 'https://www.youtube.com/watch?v=gcv2Z2AdpjM');
+
+        expect(videoMeta, isNotNull);
+
+        expect(() => _state.onEndedCallback(videoMeta), returnsNormally);
+      });
     });
   });
 }
