@@ -24,9 +24,9 @@ final List<Link> mockFeedLinks = <Link>[
   mockPdfLink
 ];
 
-final List<Link> emptyMockFeedLinks = <Link>[
-];
+final List<Link> emptyMockFeedLinks = <Link>[];
 
+final List<Link> notEmptyMockFeedLinks = <Link>[mockYoutubeVideoLink];
 
 final List<Link> mockMultipleFeedLinks = <Link>[
   mockYoutubeVideoLink,

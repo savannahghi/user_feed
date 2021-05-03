@@ -14,7 +14,7 @@ import 'package:sil_feed/src/presentation/video_player/video_player.dart';
 import 'package:sil_themes/spaces.dart';
 import 'package:sil_themes/text_themes.dart';
 
-class FeedItemBody extends StatelessWidget {
+class FeedItemBody extends StatefulWidget {
   const FeedItemBody(this.summary,
       {Key? key,
       required this.links,
@@ -28,21 +28,68 @@ class FeedItemBody extends StatelessWidget {
   final TextType? itemTextType;
 
   @override
-  Widget build(BuildContext context) {
+  FeedItemBodyState createState() => FeedItemBodyState();
+}
+
+class FeedItemBodyState extends State<FeedItemBody> {
+  List<Link>? images;
+
+  List<Link>? documents;
+
+  List<Link>? videos;
+
+  int? remainingImageLength;
+
+  @override
+  void initState() {
     // extract images
-    final List<Link> images =
-        processFeedMedia(links: links, linkType: LinkType.PNG_IMAGE);
+    images =
+        processFeedMedia(links: widget.links, linkType: LinkType.PNG_IMAGE);
 
     // extract documents
-    final List<Link> documents =
-        processFeedMedia(links: links, linkType: LinkType.PDF_DOCUMENT);
+    documents =
+        processFeedMedia(links: widget.links, linkType: LinkType.PDF_DOCUMENT);
 
     // extract videos
-    final List<Link> videos =
-        processFeedMedia(links: links, linkType: LinkType.YOUTUBE_VIDEO);
+    videos =
+        processFeedMedia(links: widget.links, linkType: LinkType.YOUTUBE_VIDEO);
 
-    final int remainingImageLength = images.length - 1;
+    remainingImageLength = images!.length - 1;
 
+    super.initState();
+  }
+
+  @override
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+    return feedItemBodyState;
+  }
+
+  void navigateToImagesGrid() {
+    Navigator.of(context).push(
+      MaterialPageRoute<FeedItemImageGrid>(
+        builder: feedItemImageGridNavBuilder,
+      ),
+    );
+  }
+
+  Widget feedItemImageGridNavBuilder(BuildContext context) {
+    return FeedItemImageGrid(images: images!);
+  }
+
+  void navigateToDocumentsGrid() {
+    Navigator.of(context).push(
+      MaterialPageRoute<FeedItemDocumentGrid>(
+        builder: feedItemDocumentGridNavBuilder,
+      ),
+    );
+  }
+
+  Widget feedItemDocumentGridNavBuilder(BuildContext context) {
+    return FeedItemDocumentGrid(documents: documents!);
+  }
+
+  @override
+  Widget build(BuildContext context) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
@@ -55,7 +102,7 @@ class FeedItemBody extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
               Text(
-                summary,
+                widget.summary,
                 overflow: TextOverflow.ellipsis,
                 maxLines: 2,
                 style: TextThemes.normalSize14Text().copyWith(
@@ -77,33 +124,27 @@ class FeedItemBody extends StatelessWidget {
         ),
         smallVerticalSizedBox,
         // feed item videos are displayed here
-        if (videos.isNotEmpty)
+        if (videos!.isNotEmpty)
           Padding(
             padding: const EdgeInsets.only(top: 5),
-            child: SizedBox(height: 200, child: VideoPlayer(videos: videos)),
+            child: SizedBox(height: 200, child: VideoPlayer(videos: videos!)),
           ),
 
         // checks that there are actually images
-        if (images.isNotEmpty)
+        if (images!.isNotEmpty)
           Stack(
             children: <Widget>[
               // use the first image as a cover
-              Image.network(images.first.url!),
+              Image.network(images!.first.url!),
 
               // an indicator to show the number of images remaining in the gallery
-              if (remainingImageLength != 0 && remainingImageLength > 1)
+              if (remainingImageLength != 0 && remainingImageLength! > 1)
                 Positioned(
                   bottom: 0,
                   right: 0,
                   child: GestureDetector(
                     key: navigateToPhotos,
-                    onTap: () {
-                      Navigator.of(context).push(
-                        MaterialPageRoute<FeedItemImageGrid>(
-                          builder: (_) => FeedItemImageGrid(images: images),
-                        ),
-                      );
-                    },
+                    onTap: navigateToImagesGrid,
                     child: Container(
                       key: remainingPhotosKey,
                       padding: const EdgeInsets.all(10),
@@ -124,18 +165,12 @@ class FeedItemBody extends StatelessWidget {
         smallVerticalSizedBox,
 
         // attachments; grid of thumbnails with footer (document title, subtitle)
-        if (documents.isNotEmpty)
+        if (documents!.isNotEmpty)
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 15),
             child: GestureDetector(
               key: navigateToDocuments,
-              onTap: () {
-                Navigator.of(context).push(
-                  MaterialPageRoute<FeedItemDocumentGrid>(
-                    builder: (_) => FeedItemDocumentGrid(documents: documents),
-                  ),
-                );
-              },
+              onTap: navigateToDocumentsGrid,
               child: Container(
                 decoration: BoxDecoration(
                     color: Colors.white,
@@ -166,7 +201,7 @@ class FeedItemBody extends StatelessWidget {
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: <Widget>[
-                              Text('Documents (${documents.length})',
+                              Text('Documents (${documents!.length})',
                                   style: TextThemes.boldSize15Text()),
                               verySmallVerticalSizedBox,
                               Text(
@@ -194,3 +229,22 @@ class FeedItemBody extends StatelessWidget {
     );
   }
 }
+
+// class FeedItemBody extends StatelessWidget {
+//   const FeedItemBody(this.summary,
+//       {Key? key,
+//       required this.links,
+//       required this.text,
+//       required this.itemTextType})
+//       : super(key: key);
+
+//   final List<Link>? links;
+//   final String summary;
+//   final String? text;
+//   final TextType? itemTextType;
+
+//   @override
+//   Widget build(BuildContext context) {
+
+//   }
+// }

@@ -4,6 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:sil_feed/src/domain/value_objects/enums.dart';
 import 'package:sil_feed/src/domain/value_objects/widget_keys.dart';
+import 'package:sil_feed/src/presentation/document_viewer/document_grid.dart';
+import 'package:sil_feed/src/presentation/image_viewer/image_grid.dart';
 import 'package:sil_feed/src/presentation/video_player/video_player.dart';
 import 'package:sil_feed/src/presentation/widgets/feed_item_body.dart';
 import 'package:visibility_detector/visibility_detector.dart';
@@ -32,7 +34,6 @@ void main() {
 
       await tester.pump(VisibilityDetectorController.instance.updateInterval);
 
-      // await tester.pumpAndSettle(Duration(seconds: 3));
       expect(find.byType(VideoPlayer), findsOneWidget);
       expect(find.byType(Stack), findsWidgets);
       expect(find.byType(Positioned), findsWidgets);
@@ -44,43 +45,49 @@ void main() {
       expect(find.byKey(remainingPhotosKey), findsOneWidget);
     });
 
-    testWidgets('should navigate to images page', (WidgetTester tester) async {
-      await buildTestWidget(
-        tester: tester,
-        child: FeedItemBody(
-          'summary',
-          links: mockMultipleFeedLinks,
-          text: 'Feed item body',
-          itemTextType: TextType.PLAIN,
-        ),
-      );
+    testWidgets('should call state callbacks', (WidgetTester tester) async {
+      late BuildContext _context;
+      await tester.runAsync(() async {
+        await buildTestWidget(
+          tester: tester,
+          child: Builder(
+            builder: (BuildContext context) {
+              _context = context;
+              return FeedItemBody(
+                'summary',
+                links: mockMultipleFeedLinks,
+                text: 'Feed item body',
+                itemTextType: TextType.PLAIN,
+              );
+            },
+          ),
+        );
 
-      await tester.pump(const Duration(seconds: 30));
+        expect(find.text('+ 5 more photos'), findsOneWidget);
+        expect(find.text('Documents (5)'), findsOneWidget);
 
-      // await tester.pump(VisibilityDetectorController.instance.updateInterval);
+        expect(_context, isNotNull);
 
-      await tester.tap(find.byKey(navigateToPhotos).first);
-      await tester.pump(const Duration(seconds: 30));
-    });
+        final State<StatefulWidget> state = tester.allStates.singleWhere(
+            (State<StatefulWidget> el) => el.toString() == 'FeedItemBodyState');
+        expect(state, isNotNull);
 
-    testWidgets('should navigate to documents page',
-        (WidgetTester tester) async {
-      await buildTestWidget(
-        tester: tester,
-        child: FeedItemBody(
-          'summary',
-          links: mockMultipleFeedLinks,
-          text: 'Feed item body',
-          itemTextType: TextType.PLAIN,
-        ),
-      );
+        final FeedItemBodyState _state = state as FeedItemBodyState;
 
-      await tester.pump(const Duration(seconds: 30));
+        expect(_state, isNotNull);
 
-      // await tester.pump(VisibilityDetectorController.instance.updateInterval);
+        expect(() => _state.navigateToImagesGrid(), returnsNormally);
+        expect(() => _state.feedItemImageGridNavBuilder(_context),
+            returnsNormally);
+        expect(_state.feedItemImageGridNavBuilder(_context),
+            isA<FeedItemImageGrid>());
 
-      await tester.tap(find.byKey(navigateToDocuments).first);
-      await tester.pump(const Duration(seconds: 30));
+        expect(() => _state.navigateToDocumentsGrid(), returnsNormally);
+        expect(() => _state.feedItemDocumentGridNavBuilder(_context),
+            returnsNormally);
+        expect(_state.feedItemDocumentGridNavBuilder(_context),
+            isA<FeedItemDocumentGrid>());
+      });
     });
   });
 }

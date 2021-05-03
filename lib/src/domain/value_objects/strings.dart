@@ -32,3 +32,9 @@ const String noDocumentFound =
 const String packageName = 'sil_feed';
 
 const String UNKNOWN = 'UNKNOWN';
+
+const String feedItemBodyState = 'FeedItemBodyState';
+
+const String feedItemContentViewState = 'FeedItemContentViewState';
+
+const String videoPlayerState = 'VideoPlayerState';
