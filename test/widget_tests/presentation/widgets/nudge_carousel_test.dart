@@ -111,7 +111,6 @@ void main() {
       expect(find.text('Complete'), findsOneWidget);
     });
 
-
     testWidgets('should show empty space when there is no nudge',
         (WidgetTester tester) async {
       FeedStore().flavour.add(Flavour.CONSUMER);
@@ -162,8 +161,8 @@ void main() {
       expect(find.byKey(const Key('1')), findsOneWidget);
       expect(find.text('Complete'), findsNothing);
       // tap FeedNudge item navigates
-      expect(find.byKey(feedActionButtonKey), findsOneWidget);
-      await tester.tap(find.byKey(feedActionButtonKey));
+      expect(find.byKey(const Key('1608647889')), findsOneWidget);
+      await tester.tap(find.byKey(const Key('1608647889')));
       await tester.pumpAndSettle();
 
       expect(find.byType(NudgeCarousel), findsOneWidget);
