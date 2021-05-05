@@ -814,8 +814,8 @@ packages:
     dependency: "direct main"
     description:
       path: "."
-      ref: "0.0.68-nullsafety"
-      resolved-ref: "0713d4c278e2a1707b3553e65aacb071a22f37e4"
+      ref: "0.0.70"
+      resolved-ref: "66ed4d173947153f4f7ba4312e93ac50e30062ff"
       url: "https://sil_dart_utils:xiFnpjLHssG76bpWxUb9@gitlab.slade360emr.com/optimalhealth/dart_utils/sil_ui_components.git"
     source: git
     version: "0.0.1"
