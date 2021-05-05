@@ -2,8 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:sil_feed/src/domain/entities/action.dart' as feed_action;
 import 'package:sil_feed/src/domain/entities/nudge.dart';
 import 'package:sil_feed/src/domain/value_objects/colors.dart';
-
-import 'package:sil_feed/src/domain/value_objects/widget_keys.dart';
 import 'package:sil_feed/src/presentation/widgets/feed_action_buttons.dart';
 
 import 'package:sil_themes/spaces.dart';
@@ -58,7 +56,7 @@ class FeedNudge extends StatelessWidget {
                     ...nudgeActions
                         .map(
                           (feed_action.Action nudgeAction) => FeedActionButton(
-                            key: nudgeAction.id,
+                            key: Key(nudgeAction.id!),
                             action: nudgeAction,
                           ),
                         )
