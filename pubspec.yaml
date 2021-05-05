@@ -40,7 +40,7 @@ dependencies:
   sil_ui_components:
     git:
       url: https://sil_dart_utils:xiFnpjLHssG76bpWxUb9@gitlab.slade360emr.com/optimalhealth/dart_utils/sil_ui_components.git
-      ref: 0.0.70
+      ref: 0.0.71
 
   visibility_detector: ^0.2.0-nullsafety.1
 
