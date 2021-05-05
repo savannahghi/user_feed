@@ -119,7 +119,7 @@ final Map<String, dynamic> mockNudgeData2 = <String, dynamic>{
   'text': 'Fill in your Be.Well business KYC in order to start transacting',
   'actions': <dynamic>[
     <String, dynamic>{
-      'id': '1608647089',
+      'id': '1608647086',
       'sequenceNumber': 1608647089,
       'name': 'COMPLETE_INDIVIDUAL_RIDER_KYC',
       'actionType': 'PRIMARY',
