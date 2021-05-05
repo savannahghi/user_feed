@@ -58,7 +58,7 @@ class FeedNudge extends StatelessWidget {
                     ...nudgeActions
                         .map(
                           (feed_action.Action nudgeAction) => FeedActionButton(
-                            key: feedActionButtonKey,
+                            key: nudgeAction.id,
                             action: nudgeAction,
                           ),
                         )
