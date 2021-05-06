@@ -796,8 +796,8 @@ packages:
     dependency: transitive
     description:
       path: "."
-      ref: "0.0.32-nullsafety"
-      resolved-ref: f29bd7d20c0965aa5afb5dc44ca35796c78e0150
+      ref: "0.0.34"
+      resolved-ref: f31ad3b41f304ed453dad23bb8dfb0e1cc732ba9
       url: "https://sil_dart_utils:xiFnpjLHssG76bpWxUb9@gitlab.slade360emr.com/optimalhealth/dart_utils/sil_misc.git"
     source: git
     version: "0.0.1"
@@ -814,8 +814,8 @@ packages:
     dependency: "direct main"
     description:
       path: "."
-      ref: "0.0.71"
-      resolved-ref: "80036f1ea548378e677fedc411ac9315eb31c6df"
+      ref: "0.0.72"
+      resolved-ref: d41aabd132fa91f3b7a38310f689431d65658db5
       url: "https://sil_dart_utils:xiFnpjLHssG76bpWxUb9@gitlab.slade360emr.com/optimalhealth/dart_utils/sil_ui_components.git"
     source: git
     version: "0.0.1"
