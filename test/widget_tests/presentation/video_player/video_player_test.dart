@@ -28,7 +28,10 @@ void main() {
 
         // verify UI renders correctly
         expect(find.byType(YoutubePlayerBuilder), findsOneWidget);
-        expect(find.byType(IconButton), findsOneWidget);
+        expect(find.byType(CurrentPosition), findsOneWidget);
+        expect(find.byType(ProgressBar), findsOneWidget);
+        expect(find.byType(RemainingDuration), findsOneWidget);
+        expect(find.byType(PlaybackSpeedButton), findsOneWidget);
       });
     });
 
