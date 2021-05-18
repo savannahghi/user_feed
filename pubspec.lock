@@ -386,7 +386,7 @@ packages:
       name: freezed_annotation
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "0.14.1"
+    version: "0.14.2"
   glob:
     dependency: transitive
     description:
@@ -814,8 +814,8 @@ packages:
     dependency: "direct main"
     description:
       path: "."
-      ref: "0.0.80"
-      resolved-ref: f8baffefb4296af4ecbb4b272e312d0095ca590d
+      ref: "0.0.81"
+      resolved-ref: eba3bed4d0d171a63685082bfeff2794cc1d2187
       url: "https://sil_dart_utils:xiFnpjLHssG76bpWxUb9@gitlab.slade360emr.com/optimalhealth/dart_utils/sil_ui_components.git"
     source: git
     version: "0.0.1"
