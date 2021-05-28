@@ -35,15 +35,15 @@ class FeedNudge extends StatelessWidget {
           ),
         ),
         Padding(
-          padding: const EdgeInsets.all(15),
+          padding: const EdgeInsets.all(15.0),
           child: Container(
-            width: double.infinity,
-            padding: const EdgeInsets.all(15),
+            padding: const EdgeInsets.only(left: 15, bottom: 15, right: 15),
             decoration: const BoxDecoration(
               borderRadius: BorderRadius.all(Radius.circular(8)),
             ),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.end,
               children: <Widget>[
                 Text(title, style: TextThemes.boldSize18Text()),
                 smallVerticalSizedBox,
@@ -52,6 +52,8 @@ class FeedNudge extends StatelessWidget {
 
                 // todo(future) - check if nudge actions are null
                 Row(
+                  crossAxisAlignment: CrossAxisAlignment.end,
+                  mainAxisAlignment: MainAxisAlignment.end,
                   children: <Widget>[
                     ...nudgeActions
                         .map(
