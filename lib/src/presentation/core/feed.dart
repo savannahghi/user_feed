@@ -69,9 +69,6 @@ class _FeedComponentState extends State<FeedComponent> {
   Widget build(BuildContext context) {
     final Feed feed = this.widget.userFeed.data.getFeed;
 
-    // global actions
-    final List<feed_action.Action>? feedActions = feed.actions;
-
     // nudges
     final List<Nudge> feedNudges = feed.nudges!;
 
