@@ -1,7 +1,9 @@
-# CHANGELOG
+### [0.1.22]
 
-## 0.0.1 [20-11-2020]
+* refactor: remove feed_global_action_bar 
 
-Features:
+### Pre - [0.0.6] 
 
-    feat: create initial release of the feed component
+* Code testing, refactor and upgrading design system for sil_feed on both apps
+* Assorted bug fixes and enhancements
+* Migrated to nullsafety

@@ -106,7 +106,7 @@ class VideoPlayerState extends State<VideoPlayer> {
     } else {
       return VisibilityDetector(
         onVisibilityChanged: (VisibilityInfo info) {
-          /// only pause the video when the widget's visibility is hidden
+          /// only pause the video when the visibility is hidden
           ///
           /// this can happen when the user navigates to a new screen or
           /// when a modal is shown (yet to be confirmed)

@@ -1,16 +1,5 @@
-# SIL_FEED
+# sil_feed
 
-SIL_FEED is a wrapper package which is used to render the feed
+`sil_feed` is an open source project &mdash; it's one among many other shared libraries that make up the wider ecosystem of software made and open sourced by `Savannah Informatics Limited`.
 
-## Specifying assets in the application
-
-```yaml
-assets:
-  - packages/sil_feed/assets/hide.svg
-  - packages/sil_feed/assets/pin.svg
-  - packages/sil_feed/assets/resolve.svg
-  - packages/sil_feed/assets/white_logo.png
-  - packages/sil_feed/assets/white_logo.svg
-  - packages/sil_feed/assets/zero-state.png
-  - packages/sil_feed/assets/swipe.png
-```
+It is a shared library between [BeWell-Consumer] and [BeWell-Professional] and is responsible for putting together everything that these app needs in order to run safely. It is like a small preflight check.

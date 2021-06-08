@@ -43,9 +43,6 @@ class _NudgeCarouselState extends State<NudgeCarousel> {
     final bool isConsumerOrSmallScreen =
         widget.isSmallScreen == true || _flavour == Flavour.CONSUMER;
 
-    // TODO(abiud): anticipate empty nudges. this might involve a zero state
-    // if (widget.nudges.isEmpty) return Container();
-
     return Column(
       children: singleUnroll
           ? widget.nudges

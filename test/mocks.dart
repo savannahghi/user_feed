@@ -14,7 +14,7 @@ class MockRoutes {
   static const String nudgeCarousel = '/route2';
 }
 
-// these mocks are used to test the back button of SIL small appbar
+/// These mocks are used to test the back button of SIL small app bar
 class MockRouteGenerator {
   /// gets the current route based on the [RouteSettings]
   static Route<dynamic> generateRoute(RouteSettings settings) {
