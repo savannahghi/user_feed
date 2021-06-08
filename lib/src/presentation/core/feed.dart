@@ -74,7 +74,6 @@ class _FeedComponentState extends State<FeedComponent> {
     // feed items
     final List<Item> feedItems = feed.items!;
 
-
     Widget showProfileSetupProgress(Flavour flavour,
         {required bool setupComplete}) {
       if (flavour == Flavour.PRO || setupComplete) {
@@ -124,7 +123,6 @@ class _FeedComponentState extends State<FeedComponent> {
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: <Widget>[
-
               // profile progress indicator for pro
               if (!widget.setupComplete)
                 showProfileSetupProgress(widget.flavour,
