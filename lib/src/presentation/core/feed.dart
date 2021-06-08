@@ -13,7 +13,6 @@ import 'package:sil_feed/src/domain/value_objects/enums.dart';
 import 'package:sil_feed/src/domain/value_objects/feed_store.dart';
 import 'package:sil_feed/src/domain/value_objects/strings.dart';
 import 'package:sil_feed/src/domain/value_objects/widget_keys.dart';
-import 'package:sil_feed/src/presentation/widgets/feed_global_action_bar.dart';
 import 'package:sil_feed/src/presentation/widgets/feed_item_wrapper.dart';
 import 'package:sil_feed/src/presentation/widgets/nudge_carousel.dart';
 
@@ -79,12 +78,6 @@ class _FeedComponentState extends State<FeedComponent> {
     // feed items
     final List<Item> feedItems = feed.items!;
 
-    Widget showGlobalActionsBar(Flavour flavour) {
-      if (flavour == Flavour.CONSUMER) {
-        return FeedGlobalActionBar(globalActionsData: feedActions!);
-      }
-      return const SizedBox();
-    }
 
     Widget showProfileSetupProgress(Flavour flavour,
         {required bool setupComplete}) {
@@ -135,8 +128,6 @@ class _FeedComponentState extends State<FeedComponent> {
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: <Widget>[
-              /// feed global actions bar
-              showGlobalActionsBar(widget.flavour),
 
               // profile progress indicator for pro
               if (!widget.setupComplete)
