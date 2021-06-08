@@ -3,7 +3,6 @@ library sil_feed;
 import 'package:flutter/material.dart';
 
 import 'package:sil_feed/src/application/helpers/utils.dart';
-import 'package:sil_feed/src/domain/entities/action.dart' as feed_action;
 import 'package:sil_feed/src/domain/entities/feed.dart';
 import 'package:sil_feed/src/domain/entities/item.dart';
 import 'package:sil_feed/src/domain/entities/nudge.dart';
