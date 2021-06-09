@@ -53,7 +53,7 @@ class FeedItemContentViewState extends State<FeedItemContentView> {
         widget.text!.contains('<ul>') ||
         widget.text!.contains('</ul>')) {
       return Html(
-        data: widget.text!,
+        data: widget.text,
         onLinkTap: onBodyLinkOrImageTapCallback,
         onImageTap: onBodyLinkOrImageTapCallback,
         style: <String, Style>{

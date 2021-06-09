@@ -67,10 +67,10 @@ void callFeedAction(
 
   // get the callbacks
   final Map<String, Function> _callbacks =
-      _feedContentCallbacksStore.feedContentCallbacks.valueWrapper!.value;
+      _feedContentCallbacksStore.feedContentCallbacks.valueOrNull!;
 
   final Flavour _flavour =
-      _feedContentCallbacksStore.flavour.valueWrapper!.value;
+      _feedContentCallbacksStore.flavour.valueOrNull!;
 
   if (_flavour == Flavour.CONSUMER) {
     // loop through the consumer actions and call their functions

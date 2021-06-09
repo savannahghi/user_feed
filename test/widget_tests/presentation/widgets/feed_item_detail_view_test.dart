@@ -1,7 +1,9 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_html/flutter_html.dart';
 import 'package:flutter_html/html_parser.dart';
+import 'package:html/parser.dart' as htmlparser;
 import 'package:flutter_html/image_render.dart';
 import 'package:flutter_html/style.dart';
 import 'package:flutter_test/flutter_test.dart';
@@ -15,8 +17,6 @@ import '../../../mocks.dart';
 dynamic customRender(
   RenderContext context,
   Widget parsedChild,
-  Map<String, String> attributes,
-  dom.Element? element,
 ) {}
 
 Widget? imageHtmlRender(
@@ -102,16 +102,22 @@ void main() {
             state as FeedItemContentViewState;
 
         expect(_state, isNotNull);
-
+        const String htmlData = '''<div><h1>Demo Page</h1></div>''';
+     
+        final dom.Document document = htmlparser.parse(htmlData);
         final RenderContext renderContext = RenderContext(
           buildContext: MockBuildContext(),
           style: Style(),
+          tree: StyledElement(
+            children: <StyledElement>[],
+            style: Style(),
+            node: dom.Element.html(htmlData),
+          ),
           parser: HtmlParser(
-            blacklistedElements: const <String>['ul'],
             customRender: const <String, CustomRender>{
               'test': customRender,
             },
-            htmlData: '<p>test</p>',
+            htmlData: document,
             navigationDelegateForIframe: null,
             imageRenders: const <ImageSourceMatcher, ImageRender>{
               imageSourceMatcher: imageHtmlRender
@@ -121,6 +127,12 @@ void main() {
             onLinkTap: null,
             style: <String, Style>{'test': Style()},
             shrinkWrap: false,
+            key: null,
+            onMathError:
+                (String parsedTex, String exception, String exceptionWithType) {
+              return Text(exception);
+            },
+            tagsList: const <String>[],
           ),
         );
 
