@@ -34,7 +34,7 @@ class _NudgeCarouselState extends State<NudgeCarousel> {
 
   @override
   Widget build(BuildContext context) {
-    final Flavour _flavour = FeedStore().flavour.valueWrapper!.value;
+    final Flavour _flavour = FeedStore().flavour.valueOrNull!;
 
     /// if this carousel is being called independently
     final bool singleUnroll = widget.single == true && widget.unroll == true;

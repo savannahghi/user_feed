@@ -14,14 +14,14 @@ dependencies:
   flutter:
     sdk: flutter
 
-  flutter_html: ^2.0.0-nullsafety.0
-  flutter_staggered_grid_view: ^0.4.0-nullsafety.3
-  flutter_svg: ^0.21.0-nullsafety.0
-  freezed: ^0.14.0+1
-  freezed_annotation: ^0.14.0
+  flutter_html: ^2.0.0
+  flutter_staggered_grid_view: ^0.4.0
+  flutter_svg: ^0.22.0
+  freezed: ^0.14.2
+  freezed_annotation: ^0.14.2
   intl: ^0.17.0
-  json_annotation: ^4.0.0
-  json_serializable: ^4.0.2
+  json_annotation: ^4.0.1
+  json_serializable: ^4.1.3
   mocktail_image_network: ^0.1.0
   pdf_flutter:
     git:
@@ -29,29 +29,29 @@ dependencies:
       ref: 0.0.1-nullsafety
 
   photo_view: ^0.11.1
-  rxdart: ^0.26.0
-  shimmer: ^2.0.0-nullsafety.0
+  rxdart: ^0.27.1
+  shimmer: ^2.0.0
 
   sil_themes:
     git:
       url: https://sil_dart_utils:xiFnpjLHssG76bpWxUb9@gitlab.slade360emr.com/optimalhealth/dart_utils/sil_themes.git
-      ref: 0.0.8
+      ref: 0.0.9
 
   sil_ui_components:
     git:
       url: https://sil_dart_utils:xiFnpjLHssG76bpWxUb9@gitlab.slade360emr.com/optimalhealth/dart_utils/sil_ui_components.git
-      ref: 0.1.1
+      ref: 0.1.2
 
-  visibility_detector: ^0.2.0-nullsafety.1
+  visibility_detector: ^0.2.0
 
   youtube_player_flutter: ^8.0.0
 
 dev_dependencies:
-  build_runner: ^1.8.0
+  build_runner: ^2.0.4
   flutter_test:
     sdk: flutter
-  lint: ^1.0.0
-  mockito: ^5.0.7
+  lint: ^1.5.3
+  mockito: ^5.0.10
 
 flutter:
   uses-material-design: true
