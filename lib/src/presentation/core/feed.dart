@@ -111,6 +111,37 @@ class _FeedComponentState extends State<FeedComponent> {
       return const SizedBox();
     }
 
+    // show the call to action widget where the user is prompted to add or buy cover
+    Widget showCallToAction(
+      Flavour flavour,
+    ) {
+      if (flavour == Flavour.CONSUMER) {
+        // TODO: This is a placeholder. Natasha to continue from here. Make it as designed. Remember to add callbacks that should initiate navigation to the marketplace
+        return Container(
+          margin: const EdgeInsets.all(4),
+          width: double.infinity,
+          padding: const EdgeInsets.all(10),
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(5.0),
+            color: Colors.white,
+            boxShadow: const <BoxShadow>[
+              BoxShadow(color: Colors.black54, blurRadius: 0.3)
+            ],
+          ),
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 10),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: <Widget>[
+                size15VerticalSizedBox,
+              ],
+            ),
+          ),
+        );
+      }
+      return const SizedBox();
+    }
+
     return ListView(
       shrinkWrap: true,
       key: feedComponentKey,
@@ -137,6 +168,8 @@ class _FeedComponentState extends State<FeedComponent> {
                   unroll: false,
                   isSmallScreen: widget.isSmallScreen,
                 ),
+
+              showCallToAction(widget.flavour),
 
               // feed item wrapper contains a list of all the feed items
               FeedItemsWrapper(feedItems: feedItems)
