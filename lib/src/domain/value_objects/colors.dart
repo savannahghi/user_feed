@@ -18,3 +18,4 @@ const Color darkBlueColor = Color(0xFF307CC3);
 const Color nudgeBackgroundColor = Color(0xffEFE5FD);
 final Color shimmerBaseColor = Colors.grey[300]!;
 final Color shimmerHighlightColor = const Color(0xFF739A00).withOpacity(0.2);
+const Color coverCallToActionColor = Color(0xff66429C);

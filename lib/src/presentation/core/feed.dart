@@ -12,6 +12,7 @@ import 'package:sil_feed/src/domain/value_objects/enums.dart';
 import 'package:sil_feed/src/domain/value_objects/feed_store.dart';
 import 'package:sil_feed/src/domain/value_objects/strings.dart';
 import 'package:sil_feed/src/domain/value_objects/widget_keys.dart';
+import 'package:sil_feed/src/presentation/widgets/feed_item_cover_action.dart';
 import 'package:sil_feed/src/presentation/widgets/feed_item_wrapper.dart';
 import 'package:sil_feed/src/presentation/widgets/nudge_carousel.dart';
 
@@ -116,28 +117,8 @@ class _FeedComponentState extends State<FeedComponent> {
       Flavour flavour,
     ) {
       if (flavour == Flavour.CONSUMER) {
-        // TODO: This is a placeholder. Natasha to continue from here. Make it as designed. Remember to add callbacks that should initiate navigation to the marketplace
-        return Container(
-          margin: const EdgeInsets.all(4),
-          width: double.infinity,
-          padding: const EdgeInsets.all(10),
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(5.0),
-            color: Colors.white,
-            boxShadow: const <BoxShadow>[
-              BoxShadow(color: Colors.black54, blurRadius: 0.3)
-            ],
-          ),
-          child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 10),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: <Widget>[
-                size15VerticalSizedBox,
-              ],
-            ),
-          ),
-        );
+
+        return FeedItemCoverCallToAction();
       }
       return const SizedBox();
     }

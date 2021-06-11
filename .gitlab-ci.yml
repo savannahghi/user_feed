@@ -1,5 +1,5 @@
 image:
-  name: eu.gcr.io/savannah-emr/fls-image:10-03-21-nullsafety
+  name: eu.gcr.io/savannah-emr/fls-image:11-06-21
 
 stages:
   - test
