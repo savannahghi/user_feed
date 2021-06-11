@@ -63,3 +63,4 @@ flutter:
     - packages/sil_feed/assets/white_logo.svg
     - packages/sil_feed/assets/zero-state.png
     - packages/sil_feed/assets/swipe.png
+    - packages/sil_feed/assets/cover_action.svg
