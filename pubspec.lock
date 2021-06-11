@@ -35,7 +35,7 @@ packages:
       name: async
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "2.6.1"
+    version: "2.5.0"
   async_redux:
     dependency: transitive
     description:
@@ -596,7 +596,7 @@ packages:
       name: node_preamble
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "2.0.0"
+    version: "1.4.13"
   package_config:
     dependency: transitive
     description:
@@ -799,8 +799,8 @@ packages:
     dependency: transitive
     description:
       path: "."
-      ref: "0.0.12"
-      resolved-ref: "8e413ad9e4df9663e0565f7e7f080a77a0a6c0d2"
+      ref: "0.0.13"
+      resolved-ref: b60f804f2272dd2c13665dc30895dd56e216266a
       url: "https://sil_dart_utils:xiFnpjLHssG76bpWxUb9@gitlab.slade360emr.com/optimalhealth/dart_utils/sil_app_wrapper.git"
     source: git
     version: "0.0.1"
@@ -808,8 +808,8 @@ packages:
     dependency: transitive
     description:
       path: "."
-      ref: "0.1.0"
-      resolved-ref: "89123e433fe3c7fe8180e8a9745c5487526e2c05"
+      ref: "0.1.01"
+      resolved-ref: a7987e336f4a0bea3311759500963418ec590962
       url: "https://sil_dart_utils:xiFnpjLHssG76bpWxUb9@gitlab.slade360emr.com/optimalhealth/dart_utils/sil_graphql_client.git"
     source: git
     version: "0.0.1"
@@ -817,8 +817,8 @@ packages:
     dependency: transitive
     description:
       path: "."
-      ref: "0.1.1"
-      resolved-ref: be409548f9977027f7cc5d0353c70471027dbb5b
+      ref: "0.1.13"
+      resolved-ref: "7db54608a8fca97fd525fa0d9bdf34f9b4c84a2c"
       url: "https://sil_dart_utils:xiFnpjLHssG76bpWxUb9@gitlab.slade360emr.com/optimalhealth/dart_utils/sil_misc.git"
     source: git
     version: "0.0.1"
@@ -826,8 +826,8 @@ packages:
     dependency: "direct main"
     description:
       path: "."
-      ref: "0.0.9"
-      resolved-ref: bea8f952a745dbe6b8de3c1882501b986809e5e9
+      ref: "0.1.00"
+      resolved-ref: "280ab60afb899caf401469eb0711c4a136cad97b"
       url: "https://sil_dart_utils:xiFnpjLHssG76bpWxUb9@gitlab.slade360emr.com/optimalhealth/dart_utils/sil_themes.git"
     source: git
     version: "0.0.1"
@@ -835,8 +835,8 @@ packages:
     dependency: "direct main"
     description:
       path: "."
-      ref: "0.1.2"
-      resolved-ref: "3889204977679fcd1e8e759fdc822e949d2624d9"
+      ref: "0.1.23"
+      resolved-ref: "2bb445f2f33da6c0e040de43563739195198dcbf"
       url: "https://sil_dart_utils:xiFnpjLHssG76bpWxUb9@gitlab.slade360emr.com/optimalhealth/dart_utils/sil_ui_components.git"
     source: git
     version: "0.0.1"
@@ -872,7 +872,7 @@ packages:
       name: source_span
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "1.8.1"
+    version: "1.8.0"
   sqflite:
     dependency: transitive
     description:
@@ -935,21 +935,21 @@ packages:
       name: test
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "1.16.8"
+    version: "1.16.5"
   test_api:
     dependency: transitive
     description:
       name: test_api
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "0.3.0"
+    version: "0.2.19"
   test_core:
     dependency: transitive
     description:
       name: test_core
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "0.3.19"
+    version: "0.3.15"
   timing:
     dependency: transitive
     description:
