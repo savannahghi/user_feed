@@ -28,6 +28,7 @@ class FeedComponent extends StatefulWidget {
       required this.feedContentCallbacks,
       this.profileProgress,
       this.setupComplete = false,
+      this.hasCover,
       this.feedbackGroundColor})
       : super(key: key);
 
@@ -51,6 +52,9 @@ class FeedComponent extends StatefulWidget {
 
   /// Feed background color
   final Color? feedbackGroundColor;
+
+  /// indicates if the user has a cover `CONSUMER`
+  final bool? hasCover;
 
   @override
   _FeedComponentState createState() => _FeedComponentState();
@@ -117,8 +121,7 @@ class _FeedComponentState extends State<FeedComponent> {
       Flavour flavour,
     ) {
       if (flavour == Flavour.CONSUMER) {
-
-        return FeedItemCoverCallToAction();
+        return FeedItemCoverCallToAction(hasCover: widget.hasCover!);
       }
       return const SizedBox();
     }

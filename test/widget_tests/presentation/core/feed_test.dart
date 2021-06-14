@@ -29,6 +29,7 @@ void main() {
                   flavour: Flavour.CONSUMER,
                   feedContentCallbacks: mockGetFeedActionCallbacks(),
                   isSmallScreen: true,
+                  hasCover: true,
                 ),
               );
             });
@@ -101,6 +102,7 @@ void main() {
                   flavour: Flavour.CONSUMER,
                   feedContentCallbacks: mockGetFeedActionCallbacks(),
                   isSmallScreen: true,
+                  hasCover: false,
                 ),
               );
             });
@@ -110,6 +112,35 @@ void main() {
             expect(find.text(coverCallToActionBody), findsOneWidget);
 
             await tester.tap(find.byType(SILPrimaryButton));
+            await tester.tap(find.byType(SILSecondaryButton));
+          },
+        );
+      },
+    );
+
+    testWidgets(
+      'should render correctly view cover call to action',
+      (WidgetTester tester) async {
+        await tester.runAsync(
+          () async {
+            await mockNetworkImages(() async {
+              await buildTestWidget(
+                tester: tester,
+                child: FeedComponent(
+                  userFeed: FeedResponsePayload.fromJson(
+                      mockFeedResponsePayload(<Map<String, dynamic>>[])),
+                  flavour: Flavour.CONSUMER,
+                  feedContentCallbacks: mockGetFeedActionCallbacks(),
+                  isSmallScreen: true,
+                  hasCover: true,
+                ),
+              );
+            });
+
+            expect(find.byType(FeedItemCoverCallToAction), findsOneWidget);
+            expect(find.text(viewCoverCallToActionTitle), findsOneWidget);
+            expect(find.text(viewCoverCallToActionBody), findsOneWidget);
+
             await tester.tap(find.byType(SILSecondaryButton));
           },
         );

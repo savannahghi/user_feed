@@ -15,6 +15,7 @@ Map<String, Function> mockGetFeedActionCallbacks() => <String, Function>{
       kCompleteProfile: () {},
       kVerifyEmail: () {},
       kPartnerAccountSetup: () {},
-      kBuyInsurance: (){},
-      kAddInsurance:(){}
+      kBuyInsurance: () {},
+      kAddInsurance: () {},
+      kViewCover: () {}
     };

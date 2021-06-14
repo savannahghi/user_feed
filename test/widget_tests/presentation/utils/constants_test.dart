@@ -12,6 +12,7 @@ void main() {
         kAddNHIF,
         kAddInsurance,
         kBuyInsurance,
+        kViewCover,
 
         // shared
         kVerifyEmail,
