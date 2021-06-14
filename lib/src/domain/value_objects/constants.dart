@@ -23,6 +23,7 @@ const String kGetConsultation = 'GET_CONSULTATION';
 const String kGetCoaching = 'GET_COACHING';
 const String kGetTest = 'GET_TEST';
 const String kBuyInsurance = 'GET_INSURANCE';
+const String kViewCover = 'VIEW_COVER';
 
 /// nudge actions
 const String kAddNHIF = 'ADD_NHIF';
@@ -81,6 +82,7 @@ List<String> allConsumerActions = <String>[
   kAddNHIF,
   kAddInsurance,
   kBuyInsurance,
+  kViewCover,
 
   // shared
   kVerifyEmail,
@@ -123,7 +125,11 @@ List<String> allProActions = <String>[
 const String defaultInitialFeedVideoUrl = 'mKnlXcS3_Z0';
 //cover call to action
 const String coverCallToActionTitle = 'We\'ve got you covered';
+const String viewCoverCallToActionTitle = 'View my Cover';
 const String coverCallToActionBody =
     'Protect yourself and your loved ones by buying or adding a cover for swift healthcare access';
+const String viewCoverCallToActionBody =
+    'Buy a cover or keep up to date with your cover details';
 const String buyInsurance = 'Buy Cover';
-const String addInsurance= 'Add Cover';
+const String addInsurance = 'Add Cover';
+const String viewCover = 'View Cover';
