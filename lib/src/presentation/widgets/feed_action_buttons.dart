@@ -1,11 +1,11 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:sil_feed/src/application/helpers/utils.dart';
-import 'package:sil_feed/src/domain/entities/action.dart' as feed_action;
-import 'package:sil_feed/src/domain/value_objects/colors.dart';
-import 'package:sil_feed/src/domain/value_objects/enums.dart';
+import 'package:user_feed/src/application/helpers/utils.dart';
+import 'package:user_feed/src/domain/entities/action.dart' as feed_action;
+import 'package:user_feed/src/domain/value_objects/colors.dart';
+import 'package:user_feed/src/domain/value_objects/enums.dart';
 
-import 'package:sil_themes/text_themes.dart';
+import 'package:shared_themes/text_themes.dart';
 
 class FeedPrimaryButton extends StatelessWidget {
   const FeedPrimaryButton(

@@ -3,9 +3,9 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail_image_network/mocktail_image_network.dart';
-import 'package:sil_feed/src/domain/entities/link.dart';
-import 'package:sil_feed/src/domain/value_objects/widget_keys.dart';
-import 'package:sil_feed/src/presentation/video_player/video_player.dart';
+import 'package:user_feed/src/domain/entities/link.dart';
+import 'package:user_feed/src/domain/value_objects/widget_keys.dart';
+import 'package:user_feed/src/presentation/video_player/video_player.dart';
 import 'package:youtube_player_flutter/youtube_player_flutter.dart';
 
 import '../../../mock_data.dart';

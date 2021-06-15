@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:sil_feed/src/domain/entities/action.dart' as feed_action;
-import 'package:sil_feed/src/domain/entities/nudge.dart';
-import 'package:sil_feed/src/domain/value_objects/colors.dart';
-import 'package:sil_feed/src/presentation/widgets/feed_action_buttons.dart';
+import 'package:user_feed/src/domain/entities/action.dart' as feed_action;
+import 'package:user_feed/src/domain/entities/nudge.dart';
+import 'package:user_feed/src/domain/value_objects/colors.dart';
+import 'package:user_feed/src/presentation/widgets/feed_action_buttons.dart';
 
-import 'package:sil_themes/spaces.dart';
-import 'package:sil_themes/text_themes.dart';
+import 'package:shared_themes/spaces.dart';
+import 'package:shared_themes/text_themes.dart';
 
 /// [FeedNudge] takes in a [Map<String, dynamic> nudge] nudge, in form of a JSON,
 /// and returns a nudge card with all the actions provided

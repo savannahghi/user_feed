@@ -2,12 +2,12 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:sil_feed/src/domain/value_objects/enums.dart';
-import 'package:sil_feed/src/domain/value_objects/widget_keys.dart';
-import 'package:sil_feed/src/presentation/document_viewer/document_grid.dart';
-import 'package:sil_feed/src/presentation/image_viewer/image_grid.dart';
-import 'package:sil_feed/src/presentation/video_player/video_player.dart';
-import 'package:sil_feed/src/presentation/widgets/feed_item_body.dart';
+import 'package:user_feed/src/domain/value_objects/enums.dart';
+import 'package:user_feed/src/domain/value_objects/widget_keys.dart';
+import 'package:user_feed/src/presentation/document_viewer/document_grid.dart';
+import 'package:user_feed/src/presentation/image_viewer/image_grid.dart';
+import 'package:user_feed/src/presentation/video_player/video_player.dart';
+import 'package:user_feed/src/presentation/widgets/feed_item_body.dart';
 import 'package:visibility_detector/visibility_detector.dart';
 
 import '../../../mock_data.dart';

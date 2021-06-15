@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:sil_feed/src/domain/entities/item.dart';
-import 'package:sil_feed/src/presentation/widgets/feed_item_component.dart';
+import 'package:user_feed/src/domain/entities/item.dart';
+import 'package:user_feed/src/presentation/widgets/feed_item_component.dart';
 
 /// holds all the feed components together
 ///

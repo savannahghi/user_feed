@@ -1,13 +1,13 @@
 import 'package:flutter/widgets.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:intl/intl.dart';
-import 'package:sil_feed/src/domain/entities/link.dart';
-import 'package:sil_feed/src/domain/value_objects/asset_strings.dart';
-import 'package:sil_feed/src/domain/value_objects/constants.dart';
-import 'package:sil_feed/src/application/helpers/utils.dart';
-import 'package:sil_feed/src/domain/value_objects/enums.dart';
-import 'package:sil_feed/src/presentation/router/router_generator.dart';
-import 'package:sil_feed/src/presentation/router/routes.dart';
+import 'package:user_feed/src/domain/entities/link.dart';
+import 'package:user_feed/src/domain/value_objects/asset_strings.dart';
+import 'package:user_feed/src/domain/value_objects/constants.dart';
+import 'package:user_feed/src/application/helpers/utils.dart';
+import 'package:user_feed/src/domain/value_objects/enums.dart';
+import 'package:user_feed/src/presentation/router/router_generator.dart';
+import 'package:user_feed/src/presentation/router/routes.dart';
 
 import '../mock_data.dart';
 

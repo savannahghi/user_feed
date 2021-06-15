@@ -1,5 +1,3 @@
-[![Release](https://img.shields.io/badge/Version-^0.1.27-success.svg?style=for-the-badge)](https://shields.io/)
-[![Maintained](https://img.shields.io/badge/Maintained-Actively-informational.svg?style=for-the-badge)](https://shields.io/)
 # user_feed
 
 `user_feed` is an open source project &mdash; it's one among many other shared libraries that make up the wider ecosystem of software made and open sourced by `Savannah Informatics Limited`.

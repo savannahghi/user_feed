@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:sil_feed/sil_feed.dart';
-import 'package:sil_feed/src/domain/value_objects/feed_store.dart';
-import 'package:sil_feed/src/presentation/router/router_generator.dart';
+import 'package:user_feed/user_feed.dart';
+import 'package:user_feed/src/domain/value_objects/feed_store.dart';
+import 'package:user_feed/src/presentation/router/router_generator.dart';
 
 Future<void> buildTestWidget({
   required WidgetTester tester,

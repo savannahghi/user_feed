@@ -1,6 +1,6 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:sil_feed/src/domain/entities/context.dart';
-import 'package:sil_feed/src/domain/entities/payload.dart';
+import 'package:user_feed/src/domain/entities/context.dart';
+import 'package:user_feed/src/domain/entities/payload.dart';
 
 part 'event.freezed.dart';
 part 'event.g.dart';

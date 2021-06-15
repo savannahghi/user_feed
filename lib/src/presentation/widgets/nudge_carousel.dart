@@ -1,9 +1,9 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
-import 'package:sil_feed/src/domain/entities/nudge.dart';
-import 'package:sil_feed/src/domain/value_objects/enums.dart';
-import 'package:sil_feed/src/domain/value_objects/feed_store.dart';
-import 'package:sil_feed/src/presentation/widgets/feed_nudge.dart';
+import 'package:user_feed/src/domain/entities/nudge.dart';
+import 'package:user_feed/src/domain/value_objects/enums.dart';
+import 'package:user_feed/src/domain/value_objects/feed_store.dart';
+import 'package:user_feed/src/presentation/widgets/feed_nudge.dart';
 
 /// [NudgeCarousel] is a carousel that receives a list of nudges and
 /// displays them in the form of cards

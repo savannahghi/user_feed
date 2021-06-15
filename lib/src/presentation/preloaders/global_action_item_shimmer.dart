@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:shimmer/shimmer.dart';
-import 'package:sil_feed/src/domain/value_objects/constants.dart';
-import 'package:sil_feed/src/domain/value_objects/colors.dart';
+import 'package:user_feed/src/domain/value_objects/constants.dart';
+import 'package:user_feed/src/domain/value_objects/colors.dart';
 
-import 'package:sil_themes/spaces.dart';
+import 'package:shared_themes/spaces.dart';
 
 class GlobalActionItemShimmerRow extends StatelessWidget {
   const GlobalActionItemShimmerRow({required this.horizontalPadding});
