@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:photo_view/photo_view.dart';
-import 'package:sil_feed/src/domain/value_objects/constants.dart';
-import 'package:sil_feed/src/presentation/image_viewer/image_viewer.dart';
+import 'package:user_feed/src/domain/value_objects/constants.dart';
+import 'package:user_feed/src/presentation/image_viewer/image_viewer.dart';
 
 void main() {
   group('FeedImageViewer page', () {

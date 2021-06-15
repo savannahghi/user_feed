@@ -7,8 +7,8 @@ import 'package:html/parser.dart' as htmlparser;
 import 'package:flutter_html/image_render.dart';
 import 'package:flutter_html/style.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:sil_feed/sil_feed.dart';
-import 'package:sil_feed/src/presentation/widgets/feed_item_detail_view.dart';
+import 'package:user_feed/user_feed.dart';
+import 'package:user_feed/src/presentation/widgets/feed_item_detail_view.dart';
 import 'package:html/dom.dart' as dom;
 
 import '../../../mock_data.dart';
@@ -103,7 +103,7 @@ void main() {
 
         expect(_state, isNotNull);
         const String htmlData = '''<div><h1>Demo Page</h1></div>''';
-     
+
         final dom.Document document = htmlparser.parse(htmlData);
         final RenderContext renderContext = RenderContext(
           buildContext: MockBuildContext(),

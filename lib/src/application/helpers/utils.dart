@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
-import 'package:sil_feed/sil_feed.dart';
-import 'package:sil_feed/src/domain/entities/link.dart';
-import 'package:sil_feed/src/domain/value_objects/asset_strings.dart';
-import 'package:sil_feed/src/domain/value_objects/constants.dart';
-import 'package:sil_feed/src/domain/value_objects/enums.dart';
-import 'package:sil_feed/src/domain/value_objects/feed_store.dart';
+import 'package:user_feed/user_feed.dart';
+import 'package:user_feed/src/domain/entities/link.dart';
+import 'package:user_feed/src/domain/value_objects/asset_strings.dart';
+import 'package:user_feed/src/domain/value_objects/constants.dart';
+import 'package:user_feed/src/domain/value_objects/enums.dart';
+import 'package:user_feed/src/domain/value_objects/feed_store.dart';
 
 /// returns a human readable format of the date string
 /// passed to it
@@ -69,8 +69,7 @@ void callFeedAction(
   final Map<String, Function> _callbacks =
       _feedContentCallbacksStore.feedContentCallbacks.valueOrNull!;
 
-  final Flavour _flavour =
-      _feedContentCallbacksStore.flavour.valueOrNull!;
+  final Flavour _flavour = _feedContentCallbacksStore.flavour.valueOrNull!;
 
   if (_flavour == Flavour.CONSUMER) {
     // loop through the consumer actions and call their functions

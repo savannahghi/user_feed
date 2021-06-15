@@ -29,7 +29,7 @@ const String nothingToSee = 'Oops!! Nothing to see here';
 const String noDocumentFound =
     'Could not find the document you were looking for';
 
-const String packageName = 'sil_feed';
+const String packageName = 'user_feed';
 
 const String UNKNOWN = 'UNKNOWN';
 

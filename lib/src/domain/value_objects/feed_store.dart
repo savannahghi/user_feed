@@ -1,5 +1,5 @@
 import 'package:rxdart/rxdart.dart';
-import 'package:sil_feed/sil_feed.dart';
+import 'package:user_feed/user_feed.dart';
 
 class FeedStore {
   factory FeedStore() => _singleton;

@@ -2,12 +2,12 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail_image_network/mocktail_image_network.dart';
-import 'package:sil_feed/sil_feed.dart';
-import 'package:sil_feed/src/domain/entities/nudge.dart';
-import 'package:sil_feed/src/domain/value_objects/feed_store.dart';
+import 'package:user_feed/user_feed.dart';
+import 'package:user_feed/src/domain/entities/nudge.dart';
+import 'package:user_feed/src/domain/value_objects/feed_store.dart';
 
-import 'package:sil_feed/src/domain/value_objects/widget_keys.dart';
-import 'package:sil_feed/src/presentation/widgets/nudge_carousel.dart';
+import 'package:user_feed/src/domain/value_objects/widget_keys.dart';
+import 'package:user_feed/src/presentation/widgets/nudge_carousel.dart';
 
 import '../../../mock_data.dart';
 import '../../../mocks.dart';

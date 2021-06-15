@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 
-import 'package:sil_feed/src/domain/value_objects/colors.dart';
-import 'package:sil_feed/src/domain/value_objects/constants.dart';
-import 'package:sil_feed/src/domain/value_objects/feed_store.dart';
-import 'package:sil_themes/colors.dart';
-import 'package:sil_themes/spaces.dart';
+import 'package:user_feed/src/domain/value_objects/colors.dart';
+import 'package:user_feed/src/domain/value_objects/constants.dart';
+import 'package:user_feed/src/domain/value_objects/feed_store.dart';
+import 'package:shared_themes/colors.dart';
+import 'package:shared_themes/spaces.dart';
 import 'package:sil_ui_components/sil_buttons.dart';
 
 class FeedItemCoverCallToAction extends StatelessWidget {

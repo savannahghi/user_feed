@@ -1,5 +1,5 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:sil_feed/src/domain/value_objects/enums.dart';
+import 'package:user_feed/src/domain/value_objects/enums.dart';
 
 part 'link.freezed.dart';
 part 'link.g.dart';

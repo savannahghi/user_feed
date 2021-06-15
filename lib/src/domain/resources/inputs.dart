@@ -1,5 +1,5 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:sil_feed/src/domain/entities/feed.dart';
+import 'package:user_feed/src/domain/entities/feed.dart';
 
 part 'inputs.freezed.dart';
 part 'inputs.g.dart';

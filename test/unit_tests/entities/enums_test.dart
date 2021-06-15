@@ -1,5 +1,5 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:sil_feed/src/domain/value_objects/enums.dart';
+import 'package:user_feed/src/domain/value_objects/enums.dart';
 
 void main() {
   group('Enum', () {

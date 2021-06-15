@@ -1,4 +1,4 @@
-import 'package:sil_feed/src/domain/value_objects/constants.dart';
+import 'package:user_feed/src/domain/value_objects/constants.dart';
 
 Map<String, Function> mockGetFeedActionCallbacks() => <String, Function>{
       kCompleteIndividualRiderKYC: () {},
