@@ -1,11 +1,11 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:sil_feed/src/application/helpers/utils.dart';
-import 'package:sil_feed/src/domain/entities/link.dart';
-import 'package:sil_feed/src/domain/value_objects/constants.dart';
-import 'package:sil_feed/src/domain/value_objects/strings.dart';
-import 'package:sil_feed/src/domain/value_objects/widget_keys.dart';
-import 'package:sil_themes/spaces.dart';
+import 'package:user_feed/src/application/helpers/utils.dart';
+import 'package:user_feed/src/domain/entities/link.dart';
+import 'package:user_feed/src/domain/value_objects/constants.dart';
+import 'package:user_feed/src/domain/value_objects/strings.dart';
+import 'package:user_feed/src/domain/value_objects/widget_keys.dart';
+import 'package:shared_themes/spaces.dart';
 import 'package:visibility_detector/visibility_detector.dart';
 import 'package:youtube_player_flutter/youtube_player_flutter.dart';
 

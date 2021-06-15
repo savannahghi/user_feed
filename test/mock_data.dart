@@ -1,8 +1,8 @@
-import 'package:sil_feed/src/domain/entities/action.dart';
-import 'package:sil_feed/src/domain/entities/feed.dart';
-import 'package:sil_feed/src/domain/entities/item.dart';
-import 'package:sil_feed/src/domain/entities/link.dart';
-import 'package:sil_feed/src/domain/entities/nudge.dart';
+import 'package:user_feed/src/domain/entities/action.dart';
+import 'package:user_feed/src/domain/entities/feed.dart';
+import 'package:user_feed/src/domain/entities/item.dart';
+import 'package:user_feed/src/domain/entities/link.dart';
+import 'package:user_feed/src/domain/entities/nudge.dart';
 
 const String author = 'Be.Well Team';
 const String iconUrl = 'https://assets.healthcloud.co.ke/bewell_logo.png';

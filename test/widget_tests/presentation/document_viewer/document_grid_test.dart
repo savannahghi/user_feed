@@ -2,12 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail_image_network/mocktail_image_network.dart';
 
-import 'package:sil_feed/src/domain/entities/link.dart';
+import 'package:user_feed/src/domain/entities/link.dart';
 
-import 'package:sil_feed/src/domain/value_objects/enums.dart';
-import 'package:sil_feed/src/presentation/document_viewer/document_grid.dart';
-import 'package:sil_feed/src/presentation/router/router_generator.dart';
-import 'package:sil_feed/src/domain/value_objects/widget_keys.dart';
+import 'package:user_feed/src/domain/value_objects/enums.dart';
+import 'package:user_feed/src/presentation/document_viewer/document_grid.dart';
+import 'package:user_feed/src/presentation/router/router_generator.dart';
+import 'package:user_feed/src/domain/value_objects/widget_keys.dart';
 
 import '../../../mock_data.dart';
 import '../../../mocks.dart';

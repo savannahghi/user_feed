@@ -1,8 +1,8 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:sil_feed/src/domain/entities/action.dart';
-import 'package:sil_feed/src/domain/entities/link.dart';
-import 'package:sil_feed/src/domain/entities/message.dart';
-import 'package:sil_feed/src/domain/value_objects/enums.dart';
+import 'package:user_feed/src/domain/entities/action.dart';
+import 'package:user_feed/src/domain/entities/link.dart';
+import 'package:user_feed/src/domain/entities/message.dart';
+import 'package:user_feed/src/domain/value_objects/enums.dart';
 
 part 'item.freezed.dart';
 part 'item.g.dart';

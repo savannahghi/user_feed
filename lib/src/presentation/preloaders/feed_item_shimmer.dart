@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:shimmer/shimmer.dart';
-import 'package:sil_feed/src/domain/value_objects/colors.dart';
+import 'package:user_feed/src/domain/value_objects/colors.dart';
 
 class FeedItemShimmer extends StatelessWidget {
   const FeedItemShimmer({Key? key, required this.horizontalPadding})
