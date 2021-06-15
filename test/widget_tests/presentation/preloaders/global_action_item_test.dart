@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:sil_feed/src/presentation/preloaders/global_action_item_shimmer.dart';
+import 'package:user_feed/src/presentation/preloaders/global_action_item_shimmer.dart';
 
 void main() {
   testWidgets(

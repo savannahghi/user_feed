@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:sil_feed/src/domain/value_objects/enums.dart';
-import 'package:sil_feed/src/presentation/preloaders/feed_item_shimmer.dart';
-import 'package:sil_feed/src/presentation/preloaders/feed_preloaders.dart';
-import 'package:sil_feed/src/presentation/preloaders/global_action_item_shimmer.dart';
-import 'package:sil_feed/src/presentation/preloaders/nudge_shimmer.dart';
+import 'package:user_feed/src/domain/value_objects/enums.dart';
+import 'package:user_feed/src/presentation/preloaders/feed_item_shimmer.dart';
+import 'package:user_feed/src/presentation/preloaders/feed_preloaders.dart';
+import 'package:user_feed/src/presentation/preloaders/global_action_item_shimmer.dart';
+import 'package:user_feed/src/presentation/preloaders/nudge_shimmer.dart';
 
 void main() {
   testWidgets('Should show preloaders for consumer',

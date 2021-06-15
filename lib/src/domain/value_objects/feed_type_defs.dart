@@ -1,4 +1,4 @@
-import 'package:sil_feed/src/domain/value_objects/enums.dart';
+import 'package:user_feed/src/domain/value_objects/enums.dart';
 
 /// a flavor and an itemId must be provided for this to work
 typedef FeedItemActionTypeDef = dynamic Function(

@@ -1,12 +1,12 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail_image_network/mocktail_image_network.dart';
-import 'package:sil_feed/src/domain/resources/inputs.dart';
-import 'package:sil_feed/src/domain/value_objects/constants.dart';
-import 'package:sil_feed/src/domain/value_objects/enums.dart';
-import 'package:sil_feed/src/domain/value_objects/strings.dart';
-import 'package:sil_feed/src/presentation/core/feed.dart';
+import 'package:user_feed/src/domain/resources/inputs.dart';
+import 'package:user_feed/src/domain/value_objects/constants.dart';
+import 'package:user_feed/src/domain/value_objects/enums.dart';
+import 'package:user_feed/src/domain/value_objects/strings.dart';
+import 'package:user_feed/src/presentation/core/feed.dart';
 
-import 'package:sil_feed/src/presentation/widgets/feed_item_cover_action.dart';
+import 'package:user_feed/src/presentation/widgets/feed_item_cover_action.dart';
 import 'package:sil_ui_components/sil_buttons.dart';
 
 import '../../../mock_data.dart';

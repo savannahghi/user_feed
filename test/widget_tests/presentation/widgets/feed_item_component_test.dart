@@ -2,8 +2,8 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:sil_feed/sil_feed.dart';
-import 'package:sil_feed/src/domain/value_objects/widget_keys.dart';
+import 'package:user_feed/user_feed.dart';
+import 'package:user_feed/src/domain/value_objects/widget_keys.dart';
 
 import '../../../mock_data.dart';
 

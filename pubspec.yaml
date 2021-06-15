@@ -1,8 +1,10 @@
-name: sil_feed
+name: user_feed
 description: A package for viewing a user's feed
-version: 0.0.1
-author: abiud.orina@savannahinformatics.com, dmwangi@savannahinformatics.com
-homepage: https://gitlab.slade360emr.com/optimalhealth/sil_feed
+version: 0.1.27
+homepage: https://github.com/savannahghi/user_feed
+repository: https://github.com/savannahghi/user_feed
+issue_tracker: https://github.com/savannahghi/user_feed/issues
+documentation: https://github.com/savannahghi/user_feed/doc/readme.md
 publish_to: none
 
 environment:
@@ -30,12 +32,8 @@ dependencies:
 
   photo_view: ^0.11.1
   rxdart: ^0.27.1
+  shared_themes: ^0.0.9
   shimmer: ^2.0.0
-
-  sil_themes:
-    git:
-      url: https://sil_dart_utils:xiFnpjLHssG76bpWxUb9@gitlab.slade360emr.com/optimalhealth/dart_utils/sil_themes.git
-      ref: 0.1.00
 
   sil_ui_components:
     git:
@@ -43,7 +41,6 @@ dependencies:
       ref: 0.1.23
 
   visibility_detector: ^0.2.0
-
   youtube_player_flutter: ^8.0.0
 
 dev_dependencies:
@@ -56,11 +53,11 @@ dev_dependencies:
 flutter:
   uses-material-design: true
   assets:
-    - packages/sil_feed/assets/hide.svg
-    - packages/sil_feed/assets/pin.svg
-    - packages/sil_feed/assets/resolve.svg
-    - packages/sil_feed/assets/white_logo.png
-    - packages/sil_feed/assets/white_logo.svg
-    - packages/sil_feed/assets/zero-state.png
-    - packages/sil_feed/assets/swipe.png
-    - packages/sil_feed/assets/cover_action.svg
+    - packages/user_feed/assets/hide.svg
+    - packages/user_feed/assets/pin.svg
+    - packages/user_feed/assets/resolve.svg
+    - packages/user_feed/assets/white_logo.png
+    - packages/user_feed/assets/white_logo.svg
+    - packages/user_feed/assets/zero-state.png
+    - packages/user_feed/assets/swipe.png
+    - packages/user_feed/assets/cover_action.svg

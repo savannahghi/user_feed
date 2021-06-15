@@ -1,8 +1,8 @@
-# Contributing to `sil_feed`
+# Contributing to `user_feed`
 
 First off, thanks for taking the time to contribute!
 
-The following is a set of guidelines for contributing to `sil_feed`, which is hosted in the [Savannah Global Health](https://github.com/savannahghi) Organization on GitHub. These are mostly guidelines, not rules. Use your best judgment, and feel free to propose changes to this document in a pull request.
+The following is a set of guidelines for contributing to `user_feed`, which is hosted in the [Savannah Global Health](https://github.com/savannahghi) Organization on GitHub. These are mostly guidelines, not rules. Use your best judgment, and feel free to propose changes to this document in a pull request.
 
 #### Table Of Contents
 
@@ -47,21 +47,21 @@ We have an official message board (Help/Support center) through which we can int
 
 ### SIL Software and Packages
 
-`sil_feed` is an open source project &mdash; it's one among many other shared libraries that make up the wider ecosystem of software made and open sourced by `Savannah Informatics Limited`.
-When you initially consider contributing to `sil_feed`, you might be unsure about which of those repositories implements the functionality you want to change or report a bug for. This section should help you with that.
+`user_feed` is an open source project &mdash; it's one among many other shared libraries that make up the wider ecosystem of software made and open sourced by `Savannah Informatics Limited`.
+When you initially consider contributing to `user_feed`, you might be unsure about which of those repositories implements the functionality you want to change or report a bug for. This section should help you with that.
 
 Here's a list of the big ones:
 
-- [dart_utils/sil_app_wrapper](https://github.com/) -  A shared library for `BeWell-Consumer` and `BeWell-Professional` Responsible for putting together everything that the app needs in order to run safely. Similar to a pre-flight checklist that brings together app requirements and exposes them to app's element tree.
-- [dart_utils/sil_core_domain_objects](https://github.com/) - A shared library for `BeWell-Consumer` and `BeWell-Professional` Responsible for aggregating core domain objects.
-- [dart_utils/sil_fcm](https://github.com/) - A shared library for `BeWell-Consumer` and `BeWell-Professional` that is responsible for exposing firebase messaging services.
-- [dart_utils/sil_feed](https://github.com/) - A shared library for `BeWell-Consumer` and `BeWell-Professional` that is responsible for rendering and refreshing user-feed and engagement data.
-- [dart_utils/sil_graphql_client](https://github.com/) - A shared library for `BeWell-Consumer` and `BeWell-Professional` that is responsible for exposing graphql_client and helper methods for use in the various apps
-- [dart_utils/sil_logger](https://github.com/) - A shared library for `BeWell-Consumer` and `BeWell-Professional` that is responsible for displaying various logging options used for development and debugging
-- [dart_utils/sil_misc](https://github.com/) -A shared library for `BeWell-Consumer` and `BeWell-Professional` that is a wrapper for various shared helper methods and functions
-- [dart_utils/sil_themes](https://github.com/) -A shared library for `BeWell-Consumer` and `BeWell-Professional` that is responsible for defining and providing theme/style guidelines
-- [dart_utils/sil_ui_components](https://github.com/) - A shared library for `BeWell-Consumer` and `BeWell-Professional` that is responsible for rendering and exposing dumb widgets and ui components 
-- [dart_utils/sil_user_profile](https://github.com/) - `sil_user_profile`is a shared library between [BeWell-Consumer] and [BeWell-Professional] and is responsible for the user profile displayed on both apps.
+- [app_wrapper](https://github.com/savannahghi/app_wrapper) -  A shared library for `BeWell-Consumer` and `BeWell-Professional` Responsible for putting together everything that the app needs in order to run safely. Similar to a pre-flight checklist that brings together app requirements and exposes them to app's element tree.
+- [domain_objects](https://github.com/savannahghi/domain_objects) - A shared library for `BeWell-Consumer` and `BeWell-Professional` Responsible for aggregating core domain objects.
+- [dart_fcm](https://github.com/savannahghi/dart_fcm) - A shared library for `BeWell-Consumer` and `BeWell-Professional` that is responsible for exposing firebase messaging services.
+- [user_feed](https://github.com/savannahghi/user_feed) - A shared library for `BeWell-Consumer` and `BeWell-Professional` that is responsible for rendering and refreshing user-feed and engagement data.
+- [flutter_graphql_client](https://github.com/savannahghi/flutter_graphql_client) - A shared library for `BeWell-Consumer` and `BeWell-Professional` that is responsible for exposing graphql_client and helper methods for use in the various apps
+- [debug_logger](https://github.com/savannahghi/debug_logger) - A shared library that is responsible for displaying various logging options used for development and debugging
+- [misc_utilities](https://github.com/savannahghi/misc_utilities) -A shared library for `BeWell-Consumer` and `BeWell-Professional` that is a wrapper for various shared helper methods and functions
+- [shared_themes](https://github.com/savannahghi/shared_themes) -A shared library for `BeWell-Consumer` and `BeWell-Professional` that is responsible for defining and providing theme/style guidelines
+- [shared_ui_components](https://github.com/savannahghi/shared_ui_components) - A shared library for `BeWell-Consumer` and `BeWell-Professional` that is responsible for rendering and exposing dumb widgets and ui components 
+- [user_profile](https://github.com/savannahghi/user_profile) - `sil_user_profile`is a shared library between [BeWell-Consumer] and [BeWell-Professional] and is responsible for the user profile displayed on both apps.
 
 ### Design Decisions
 
@@ -71,7 +71,7 @@ When we make a significant decision in how we maintain the project and what we c
 
 ### Reporting Bugs
 
-This section guides you through submitting a bug report for `sil_feed`. Following these guidelines helps maintainers and the community understand your report :pencil:, reproduce the behavior :computer:, and find related reports :mag_right:.
+This section guides you through submitting a bug report for `user_feed`. Following these guidelines helps maintainers and the community understand your report :pencil:, reproduce the behavior :computer:, and find related reports :mag_right:.
 
 Before creating bug reports, please check the project's list of open issues/bug reports as you might find out that you don't need to create one. When you are creating a bug report, please [include as many details as possible](#how-do-i-submit-a-good-bug-report). Fill out [the required template](https://github.com/atom/.github/blob/master/.github/ISSUE_TEMPLATE/bug_report.md), the information it asks for helps us resolve issues faster.
 
@@ -150,7 +150,7 @@ Both issue lists are sorted by total number of comments. While not perfect, numb
 
 #### Local development
 
-`sil_feed` and all packages can be developed locally. For instructions on how to do this, (develop, test & deploy) see the project's readme file
+`user_feed` and all packages can be developed locally. For instructions on how to do this, (develop, test & deploy) see the project's readme file
 
 ### Pull Requests
 
