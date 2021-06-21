@@ -7,7 +7,7 @@ import 'package:user_feed/src/domain/value_objects/strings.dart';
 import 'package:user_feed/src/presentation/core/feed.dart';
 
 import 'package:user_feed/src/presentation/widgets/feed_item_cover_action.dart';
-import 'package:sil_ui_components/sil_buttons.dart';
+import 'package:shared_ui_components/buttons.dart';
 
 import '../../../mock_data.dart';
 import '../../../mock_utils.dart';

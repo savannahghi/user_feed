@@ -5,7 +5,7 @@ import 'package:user_feed/src/domain/value_objects/constants.dart';
 import 'package:user_feed/src/domain/value_objects/feed_store.dart';
 import 'package:shared_themes/colors.dart';
 import 'package:shared_themes/spaces.dart';
-import 'package:sil_ui_components/sil_buttons.dart';
+import 'package:shared_ui_components/buttons.dart';
 
 class FeedItemCoverCallToAction extends StatelessWidget {
   const FeedItemCoverCallToAction({Key? key, required this.hasCover})
