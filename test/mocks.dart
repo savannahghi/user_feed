@@ -5,7 +5,7 @@ import 'package:mockito/mockito.dart';
 import 'package:user_feed/src/domain/value_objects/widget_keys.dart';
 import 'package:user_feed/src/presentation/widgets/nudge_carousel.dart';
 
-import 'package:sil_ui_components/sil_small_appbar.dart';
+import 'package:shared_ui_components/small_appbar.dart';
 
 import 'mock_data.dart';
 

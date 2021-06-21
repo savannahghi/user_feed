@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:pdf_flutter/pdf_flutter.dart';
+import 'package:sil_pdf_flutter/sil_pdf_flutter.dart';
 import 'package:user_feed/src/domain/value_objects/enums.dart';
-import 'package:sil_ui_components/sil_small_appbar.dart';
+import 'package:shared_ui_components/small_appbar.dart';
 
 class FeedDocumentViewer extends StatelessWidget {
   const FeedDocumentViewer(
