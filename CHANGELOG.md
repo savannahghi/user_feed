@@ -1,4 +1,4 @@
-### 0.1.27
+### 0.1.27-nullsafety
 
 - feat: add view cover to feed mini card
 - feat: add buy cover and cover call to action

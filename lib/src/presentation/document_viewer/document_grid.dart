@@ -10,7 +10,7 @@ import 'package:user_feed/src/presentation/widgets/feed_zero_state.dart';
 
 import 'package:shared_themes/spaces.dart';
 import 'package:shared_themes/text_themes.dart';
-import 'package:sil_ui_components/sil_small_appbar.dart';
+import 'package:shared_ui_components/small_appbar.dart';
 
 import 'feed_document_viewer.dart';
 
