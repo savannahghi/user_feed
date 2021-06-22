@@ -61,7 +61,6 @@ class FeedItemContentViewState extends State<FeedItemContentView> {
             lineHeight: LineHeight.em(1.5),
             fontWeight: FontWeight.bold,
             color: greyColor,
-            display: Display.LIST_ITEM,
             listStylePosition: ListStylePosition.INSIDE,
           ),
           'a': Style(
