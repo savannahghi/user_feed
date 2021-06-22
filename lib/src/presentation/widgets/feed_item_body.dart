@@ -7,7 +7,6 @@ import 'package:user_feed/src/domain/value_objects/enums.dart';
 import 'package:user_feed/src/domain/value_objects/strings.dart';
 import 'package:user_feed/src/application/helpers/utils.dart';
 import 'package:user_feed/src/domain/value_objects/widget_keys.dart';
-import 'package:user_feed/src/presentation/document_viewer/document_grid.dart';
 import 'package:user_feed/src/presentation/image_viewer/image_grid.dart';
 import 'package:user_feed/src/presentation/video_player/video_player.dart';
 
@@ -74,18 +73,6 @@ class FeedItemBodyState extends State<FeedItemBody> {
 
   Widget feedItemImageGridNavBuilder(BuildContext context) {
     return FeedItemImageGrid(images: images!);
-  }
-
-  void navigateToDocumentsGrid() {
-    Navigator.of(context).push(
-      MaterialPageRoute<FeedItemDocumentGrid>(
-        builder: feedItemDocumentGridNavBuilder,
-      ),
-    );
-  }
-
-  Widget feedItemDocumentGridNavBuilder(BuildContext context) {
-    return FeedItemDocumentGrid(documents: documents!);
   }
 
   @override
@@ -164,68 +151,6 @@ class FeedItemBodyState extends State<FeedItemBody> {
           ),
 
         smallVerticalSizedBox,
-
-        // attachments; grid of thumbnails with footer (document title, subtitle)
-        if (documents!.isNotEmpty)
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 15),
-            child: GestureDetector(
-              key: navigateToDocuments,
-              onTap: navigateToDocumentsGrid,
-              child: Container(
-                decoration: BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.circular(5),
-                    border: Border.all(color: primaryColor, width: 0.5)),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: <Widget>[
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: <Widget>[
-                        // attachment icon container
-                        Container(
-                          decoration: const BoxDecoration(
-                              color: primaryColor,
-                              borderRadius: BorderRadius.only(
-                                  topLeft: Radius.circular(5),
-                                  bottomLeft: Radius.circular(5))),
-                          padding: const EdgeInsets.all(15),
-                          child: const Icon(Icons.attach_file,
-                              color: Colors.white, size: 35),
-                        ),
-                        smallHorizontalSizedBox,
-
-                        // title and subtitle container
-                        Padding(
-                          padding: const EdgeInsets.all(10),
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: <Widget>[
-                              Text('Documents (${documents!.length})',
-                                  style: TextThemes.boldSize15Text()),
-                              verySmallVerticalSizedBox,
-                              Text(
-                                tapToViewString,
-                                style: TextThemes.boldSize14Text(Colors.grey),
-                              ),
-                            ],
-                          ),
-                        ),
-                      ],
-                    ),
-
-                    // view icon
-                    const Padding(
-                      padding: EdgeInsets.only(right: 15.0),
-                      child: Icon(CupertinoIcons.right_chevron,
-                          color: primaryColor),
-                    ),
-                  ],
-                ),
-              ),
-            ),
-          ),
       ],
     );
   }
