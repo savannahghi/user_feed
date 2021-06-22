@@ -1,4 +1,4 @@
-library user_feed;
+library sil_feed;
 
 import 'package:flutter/material.dart';
 
