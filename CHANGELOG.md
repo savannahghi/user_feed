@@ -1,3 +1,11 @@
+### 0.1.28-nullsafety
+
+- chore: update dependencies (shared_themes, shared_ui_components)
+- fix: feed article rendering
+- chore: ui fixes/ improvements
+- feat: add cover call to action
+- feat: add cover to feed mini card
+
 ### 0.1.27-nullsafety
 
 - feat: add view cover to feed mini card

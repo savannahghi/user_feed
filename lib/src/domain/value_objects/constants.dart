@@ -125,7 +125,7 @@ List<String> allProActions = <String>[
 const String defaultInitialFeedVideoUrl = 'mKnlXcS3_Z0';
 //cover call to action
 const String coverCallToActionTitle = 'We\'ve got you covered';
-const String viewCoverCallToActionTitle = 'View my Cover';
+const String viewCoverCallToActionTitle = 'My Cover';
 const String coverCallToActionBody =
     'Protect yourself and your loved ones by buying or adding a cover for swift healthcare access';
 const String viewCoverCallToActionBody =
