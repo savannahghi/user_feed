@@ -9,92 +9,60 @@ import 'package:shared_themes/text_themes.dart';
 import 'package:shared_ui_components/buttons.dart';
 
 class FeedItemCoverCallToAction extends StatelessWidget {
-  const FeedItemCoverCallToAction({Key? key, required this.hasCover})
-      : super(key: key);
-
-  final bool hasCover;
-
   @override
   Widget build(BuildContext context) {
     final Map<String, Function>? coverCallbacks =
         FeedStore().feedContentCallbacks.valueOrNull;
 
     return Container(
-      width: double.infinity,
-      margin: const EdgeInsets.only(bottom: 10),
+      margin: const EdgeInsets.only(bottom: 7),
       decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(8.0),
+        borderRadius: BorderRadius.circular(0),
         color: coverCallToActionColor,
       ),
-      child: Column(
-        mainAxisSize: MainAxisSize.min,
-        children: <Widget>[
-          Container(
-            decoration: const BoxDecoration(
-              borderRadius: BorderRadius.only(
-                topLeft: Radius.circular(8),
-                topRight: Radius.circular(8),
-              ),
+      child: Container(
+        width: double.infinity,
+        decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(0),
+            color: coverCallToActionColor,
+            gradient: LinearGradient(
+                colors: <Color>[
+                  coverCallToActionColor,
+                  white.withOpacity(0.1),
+                  coverCallToActionColor.withOpacity(0.8)
+                ],
+                begin: Alignment.topLeft,
+                end: Alignment.bottomRight,
+                stops: const <double>[0.4, 0.6, 0.7])),
+        padding: const EdgeInsets.all(20),
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: <Widget>[
+            Text(
+              coverCallToActionTitle,
+              style: TextThemes.heavySize20Text(Colors.white),
             ),
-            padding: const EdgeInsets.fromLTRB(20, 20, 20, 0),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: <Widget>[
-                Text(
-                  hasCover
-                      ? viewCoverCallToActionTitle
-                      : coverCallToActionTitle,
-                  style: TextThemes.boldSize20Text(Colors.white),
-                ),
-                smallVerticalSizedBox,
-                Text(
-                  hasCover ? viewCoverCallToActionBody : coverCallToActionBody,
-                  style: TextThemes.normalSize15Text(Colors.white)
-                      .copyWith(height: 1.4),
-                ),
-              ],
+            smallVerticalSizedBox,
+            Text(
+              viewCoverCallToActionBody,
+              style: TextThemes.normalSize15Text(Colors.white)
+                  .copyWith(height: 1.4),
             ),
-          ),
-          mediumVerticalSizedBox,
-          Container(
-            decoration: BoxDecoration(
-              color: Theme.of(context).primaryColor.withOpacity(0.5),
-              borderRadius: const BorderRadius.only(
-                  bottomLeft: Radius.circular(8),
-                  bottomRight: Radius.circular(8)),
-            ),
-            padding: const EdgeInsets.fromLTRB(20, 10, 20, 10),
-            child: Row(
-              children: <Widget>[
-                SILSecondaryButton(
-                  onPressed: () {
-                    final Function? call = hasCover
-                        ? coverCallbacks![kViewCover]
-                        : coverCallbacks![kAddInsurance];
-                    call!();
-                  },
-                  text: hasCover ? viewCover : addInsurance,
-                  borderColor: white,
-                  buttonColor: coverCallToActionColor,
-                  textColor: white,
-                ),
-                mediumHorizontalSizedBox,
-                SILPrimaryButton(
-                  onPressed: () {
-                    final Function? call = coverCallbacks![kBuyInsurance];
-                    call!();
-                  },
-                  text: buyInsurance,
-                  buttonColor: white.withOpacity(0.3),
-                  textColor: white,
-                  customPadding:
-                      const EdgeInsets.symmetric(vertical: 10, horizontal: 14),
-                  customElevation: 0,
-                ),
-              ],
-            ),
-          )
-        ],
+            mediumVerticalSizedBox,
+            SILPrimaryButton(
+              onPressed: () {
+                coverCallbacks![kAddInsurance]!();
+              },
+              text: addInsurance,
+              borderColor: white.withOpacity(0.9),
+              buttonColor: white.withOpacity(0.9),
+              customPadding:
+                  const EdgeInsets.symmetric(horizontal: 30, vertical: 12),
+              textColor: coverCallToActionColor,
+            )
+          ],
+        ),
       ),
     );
   }

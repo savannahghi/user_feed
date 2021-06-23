@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:user_feed/src/domain/entities/action.dart' as feed_action;
 import 'package:user_feed/src/domain/entities/nudge.dart';
-import 'package:user_feed/src/domain/value_objects/colors.dart';
 import 'package:user_feed/src/presentation/widgets/feed_action_buttons.dart';
 
 import 'package:shared_themes/spaces.dart';
@@ -24,49 +23,50 @@ class FeedNudge extends StatelessWidget {
 
     return Stack(
       children: <Widget>[
-        Padding(
-          padding: const EdgeInsets.all(15),
+        Positioned(
+          right: 30,
+          top: 30,
           child: Container(
-            width: double.infinity,
-            decoration: const BoxDecoration(
-              color: nudgeBackgroundColor,
-              borderRadius: BorderRadius.all(Radius.circular(8)),
-            ),
+            width: 150,
+            height: 150,
+            decoration: BoxDecoration(
+                shape: BoxShape.circle,
+                color: Theme.of(context)
+                    .accentColor
+                    .withOpacity(nudge.links!.isEmpty ? 0.2 : 0)),
+            child: nudge.links!.isNotEmpty
+                ? Image.network(nudge.links![0].url!)
+                : null,
           ),
         ),
-        Padding(
-          padding: const EdgeInsets.all(15.0),
-          child: Container(
-            padding: const EdgeInsets.only(left: 15, bottom: 15, right: 15),
-            decoration: const BoxDecoration(
-              borderRadius: BorderRadius.all(Radius.circular(8)),
-            ),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              mainAxisAlignment: MainAxisAlignment.end,
-              children: <Widget>[
-                Text(title, style: TextThemes.boldSize18Text()),
-                smallVerticalSizedBox,
-                Text(text, style: TextThemes.normalSize14Text()),
-                smallVerticalSizedBox,
+        Container(
+          padding: const EdgeInsets.all(20),
+          decoration: const BoxDecoration(
+            borderRadius: BorderRadius.all(Radius.circular(8)),
+          ),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              Text(title, style: TextThemes.boldSize18Text()),
+              smallVerticalSizedBox,
+              Text(text, style: TextThemes.normalSize15Text()),
+              smallVerticalSizedBox,
 
-                // todo(future) - check if nudge actions are null
-                Row(
-                  crossAxisAlignment: CrossAxisAlignment.end,
-                  mainAxisAlignment: MainAxisAlignment.end,
-                  children: <Widget>[
-                    ...nudgeActions
-                        .map(
-                          (feed_action.Action nudgeAction) => FeedActionButton(
-                            key: Key(nudgeAction.id!),
-                            action: nudgeAction,
-                          ),
-                        )
-                        .toList()
-                  ],
-                )
-              ],
-            ),
+              // todo(future) - check if nudge actions are null
+              Row(
+                children: <Widget>[
+                  ...nudgeActions
+                      .map(
+                        (feed_action.Action nudgeAction) => FeedActionButton(
+                          key: Key(nudgeAction.id!),
+                          action: nudgeAction,
+                        ),
+                      )
+                      .toList()
+                ],
+              )
+            ],
           ),
         ),
       ],

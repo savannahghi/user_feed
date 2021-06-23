@@ -58,10 +58,9 @@ class FeedItemComponent extends StatelessWidget {
         );
       },
       child: Container(
-        margin: const EdgeInsets.symmetric(vertical: 8),
+        // margin: const EdgeInsets.symmetric(vertical: 8),
         decoration: BoxDecoration(
           color: Colors.white,
-          borderRadius: const BorderRadius.all(Radius.circular(8)),
           border: Border.all(color: lightGreyColor, width: 0.5),
           boxShadow: <BoxShadow>[
             BoxShadow(

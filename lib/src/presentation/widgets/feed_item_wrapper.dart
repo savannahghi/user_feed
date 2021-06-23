@@ -12,15 +12,12 @@ class FeedItemsWrapper extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 4),
-      child: Column(
-        children: <Widget>[
-          ...feedItems.map(
-            (Item feedItem) => FeedItemComponent(feedItem: feedItem),
-          )
-        ],
-      ),
+    return Column(
+      children: <Widget>[
+        ...feedItems.map(
+          (Item feedItem) => FeedItemComponent(feedItem: feedItem),
+        )
+      ],
     );
   }
 }

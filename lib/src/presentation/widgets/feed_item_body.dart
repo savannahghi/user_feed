@@ -105,7 +105,7 @@ class FeedItemBodyState extends State<FeedItemBody> {
                 widget.summary,
                 overflow: TextOverflow.ellipsis,
                 maxLines: 2,
-                style: TextThemes.normalSize14Text().copyWith(
+                style: TextThemes.normalSize13Text().copyWith(
                   wordSpacing: 0.6,
                   height: 1.5,
                 ),
@@ -229,22 +229,3 @@ class FeedItemBodyState extends State<FeedItemBody> {
     );
   }
 }
-
-// class FeedItemBody extends StatelessWidget {
-//   const FeedItemBody(this.summary,
-//       {Key? key,
-//       required this.links,
-//       required this.text,
-//       required this.itemTextType})
-//       : super(key: key);
-
-//   final List<Link>? links;
-//   final String summary;
-//   final String? text;
-//   final TextType? itemTextType;
-
-//   @override
-//   Widget build(BuildContext context) {
-
-//   }
-// }

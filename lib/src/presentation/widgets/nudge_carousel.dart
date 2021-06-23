@@ -52,48 +52,67 @@ class _NudgeCarouselState extends State<NudgeCarousel> {
               .toList()
           : <Widget>[
               if (isConsumerOrSmallScreen)
-                CarouselSlider(
-                  items: widget.nudges
-                      .map((Nudge nudge) => FeedNudge(nudge: nudge))
-                      .toList(),
-                  options: CarouselOptions(
-                    enableInfiniteScroll: false,
-                    scrollPhysics: const BouncingScrollPhysics(),
-                    viewportFraction: 1,
-                    onPageChanged:
-                        (int index, CarouselPageChangedReason reason) {
-                      setState(() {
-                        currentIndex = index;
-                      });
-                    },
+                Container(
+                  height: 180,
+                  width: double.infinity,
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                    boxShadow: <BoxShadow>[
+                      BoxShadow(
+                        color: Colors.grey.withOpacity(0.5),
+                        blurRadius: 0.5,
+                      ),
+                    ],
+                  ),
+                  child: CarouselSlider(
+                    items: widget.nudges
+                        .map((Nudge nudge) => FeedNudge(nudge: nudge))
+                        .toList(),
+                    options: CarouselOptions(
+                      enableInfiniteScroll: false,
+                      scrollPhysics: const BouncingScrollPhysics(),
+                      viewportFraction: 1,
+                      onPageChanged:
+                          (int index, CarouselPageChangedReason reason) {
+                        setState(() {
+                          currentIndex = index;
+                        });
+                      },
+                    ),
                   ),
                 )
               else
                 Container(),
               // indicator here
-              if (isConsumerOrSmallScreen)
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: widget.nudges.map(
-                    (Nudge nudge) {
-                      // the index of the nudge that is currently in view
-                      final int activeNudgeIndex = widget.nudges.indexOf(nudge);
-                      return Container(
-                        key: Key(activeNudgeIndex.toString()),
-                        width: 8.0,
-                        height: 8.0,
-                        margin: const EdgeInsets.symmetric(
-                            vertical: 10.0, horizontal: 2.0),
-                        decoration: BoxDecoration(
-                          shape: BoxShape.circle,
-                          color: currentIndex == activeNudgeIndex
-                              ? Theme.of(context).accentColor
-                              : Colors.grey.withOpacity(0.5),
-                        ),
-                      );
-                    },
-                  ).toList(),
-                ),
+              if (widget.nudges.length > 1)
+                if (isConsumerOrSmallScreen)
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: widget.nudges.map(
+                      (Nudge nudge) {
+                        // the index of the nudge that is currently in view
+                        final int activeNudgeIndex =
+                            widget.nudges.indexOf(nudge);
+                        return Container(
+                          key: Key(activeNudgeIndex.toString()),
+                          width: 8.0,
+                          height: 8.0,
+                          margin: const EdgeInsets.symmetric(
+                              vertical: 10.0, horizontal: 2.0),
+                          decoration: BoxDecoration(
+                            shape: BoxShape.circle,
+                            color: currentIndex == activeNudgeIndex
+                                ? Theme.of(context).accentColor
+                                : Colors.grey.withOpacity(0.5),
+                          ),
+                        );
+                      },
+                    ).toList(),
+                  ),
+              if (widget.nudges.length == 1)
+                const SizedBox(
+                  height: 4,
+                )
             ],
     );
   }
