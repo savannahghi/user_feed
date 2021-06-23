@@ -11,6 +11,7 @@ const Key senderReplyColumn = Key('sender_column_key');
 const Key remainingPhotosKey = Key('remaining_photos');
 const Key addCommentTextFormKey = Key('add_comment_text_key');
 const Key addCommentIconButtonKey = Key('add_comment_icon_button_key');
+const Key miniCardKey = Key('mini_card');
 
 // pdf view keys
 const Key feedDocumentsListPageKey = Key('feed_document_view_page');

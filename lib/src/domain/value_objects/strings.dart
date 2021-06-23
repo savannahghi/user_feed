@@ -9,6 +9,8 @@ String swipeForMore = 'Swipe for more';
 
 const String tapToViewString = 'Tap to view';
 
+const String miniCardLogo = 'assets/transparent_logo.svg';
+
 // title bar strings
 const String fallbackLogoIconUrl = 'assets/white_logo.png';
 
@@ -38,3 +40,11 @@ const String feedItemBodyState = 'FeedItemBodyState';
 const String feedItemContentViewState = 'FeedItemContentViewState';
 
 const String videoPlayerState = 'VideoPlayerState';
+
+const String memberNumber = 'Member number';
+
+const String nameOfInsured = 'Name of insured';
+
+const String yourVirtualCard = 'Your Insurance Virtual Card';
+
+const String tapToView = 'Tap to view';

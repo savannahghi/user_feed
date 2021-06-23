@@ -155,8 +155,8 @@ class FeedActionButton extends StatelessWidget {
               fullActionName: actionNameWithUnderscore, context: context);
         },
         text: actionName,
-        buttonColor: primaryColor,
-        customPadding: const EdgeInsets.symmetric(vertical: 12, horizontal: 14),
+        buttonColor: primaryColor.withOpacity(0.9),
+        customPadding: const EdgeInsets.symmetric(vertical: 12, horizontal: 30),
         customElevation: 0,
       );
     }

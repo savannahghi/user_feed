@@ -50,6 +50,7 @@ flutter:
     - packages/user_feed/assets/resolve.svg
     - packages/user_feed/assets/white_logo.png
     - packages/user_feed/assets/white_logo.svg
+    - packages/user_feed/transparent_logo.svg
     - packages/user_feed/assets/zero-state.png
     - packages/user_feed/assets/swipe.png
     - packages/user_feed/assets/cover_action.svg
