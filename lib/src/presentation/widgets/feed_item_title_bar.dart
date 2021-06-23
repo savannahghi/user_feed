@@ -36,12 +36,11 @@ class FeedItemTitleBar extends StatelessWidget {
   Widget build(BuildContext context) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
         // icon or avatar
         Container(
-          height: 60,
-          width: 60,
+          height: 45,
+          width: 45,
           decoration: BoxDecoration(
             color: Colors.white,
             border: Border.all(color: Colors.black87),
@@ -61,10 +60,9 @@ class FeedItemTitleBar extends StatelessWidget {
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
-                  smallVerticalSizedBox,
                   // the author
                   Text(author,
-                      style: TextThemes.boldSize16Text(Colors.black87)),
+                      style: TextThemes.boldSize15Text(Colors.black87)),
                   extremelySmallVerticalSizedBox,
 
                   // the date
@@ -73,7 +71,7 @@ class FeedItemTitleBar extends StatelessWidget {
                     child: // a formatted human readable timestamp
                         Text(
                       this.postTimeStampAsMessage(timestamp),
-                      style: TextThemes.normalSize14Text(grey),
+                      style: TextThemes.normalSize12Text(grey),
                     ),
                   ),
                 ],
