@@ -25,9 +25,8 @@ void main() {
       ),
     ));
 
-    expect(find.byType(GlobalActionItemShimmerRow), findsOneWidget);
     expect(find.byType(NudgeShimmer), findsOneWidget);
-    expect(find.byType(FeedItemShimmer), findsOneWidget);
+    expect(find.byType(FeedItemShimmer), findsNWidgets(2));
   });
 
   testWidgets('Should show preloaders for pro', (WidgetTester tester) async {
@@ -49,6 +48,6 @@ void main() {
 
     expect(find.byType(GlobalActionItemShimmerRow), findsNothing);
     expect(find.byType(NudgeShimmer), findsOneWidget);
-    expect(find.byType(FeedItemShimmer), findsOneWidget);
+    expect(find.byType(FeedItemShimmer), findsNWidgets(2));
   });
 }

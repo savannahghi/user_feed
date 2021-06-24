@@ -14,6 +14,14 @@ import '../../../mock_data.dart';
 import '../../../mock_utils.dart';
 import '../../../test_helpers.dart';
 
+class MockCover {
+  MockCover(this.payerName, this.memberNumber, this.memberName);
+
+  final String payerName;
+  final String memberNumber;
+  final String memberName;
+}
+
 void main() {
   group('FeedItemComponent', () {
     testWidgets(
@@ -30,7 +38,9 @@ void main() {
                   flavour: Flavour.CONSUMER,
                   feedContentCallbacks: mockGetFeedActionCallbacks(),
                   isSmallScreen: true,
-                  hasCover: true,
+                  covers: <dynamic>[
+                    MockCover('Swift', '736872783', 'Jane Doe')
+                  ],
                 ),
               );
             });
@@ -54,7 +64,9 @@ void main() {
                   flavour: Flavour.CONSUMER,
                   feedContentCallbacks: mockGetFeedActionCallbacks(),
                   isSmallScreen: true,
-                  hasCover: true,
+                  covers: <dynamic>[
+                    MockCover('Swift', '736872783', 'Jane Doe')
+                  ],
                 ),
               );
             });
@@ -127,7 +139,7 @@ void main() {
                   flavour: Flavour.CONSUMER,
                   feedContentCallbacks: mockGetFeedActionCallbacks(),
                   isSmallScreen: true,
-                  hasCover: false,
+                  covers: const <dynamic>[],
                 ),
               );
             });
@@ -155,7 +167,9 @@ void main() {
                   flavour: Flavour.CONSUMER,
                   feedContentCallbacks: mockGetFeedActionCallbacks(),
                   isSmallScreen: true,
-                  hasCover: true,
+                  covers: <dynamic>[
+                    MockCover('Swift', '736872783', 'Jane Doe')
+                  ],
                 ),
               );
             });
