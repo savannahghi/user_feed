@@ -9,6 +9,9 @@ import 'package:user_feed/src/domain/value_objects/strings.dart';
 import 'package:user_feed/src/domain/value_objects/widget_keys.dart';
 
 class CoverMiniCard extends StatelessWidget {
+  CoverMiniCard({Key? key, required this.cover}) : super(key: key);
+  final dynamic cover;
+
   final Map<String, Function>? coverCallbacks =
       FeedStore().feedContentCallbacks.valueOrNull;
 
@@ -100,7 +103,7 @@ class CoverMiniCard extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: <Widget>[
                         Text(
-                          'Resolution Insurance',
+                          cover.payerName as String,
                           style: TextThemes.boldSize16Text(Colors.white),
                         ),
                         Column(
@@ -112,7 +115,7 @@ class CoverMiniCard extends StatelessWidget {
                                   .copyWith(fontSize: 12),
                             ),
                             Text(
-                              '1863992',
+                              cover.memberNumber as String,
                               style: TextThemes.boldSize14Text(Colors.white),
                             ),
                             mediumVerticalSizedBox,
@@ -122,7 +125,7 @@ class CoverMiniCard extends StatelessWidget {
                                   .copyWith(fontSize: 12),
                             ),
                             Text(
-                              'Vincent Michuki',
+                              cover.memberName as String,
                               style: TextThemes.boldSize14Text(Colors.white),
                             ),
                           ],
