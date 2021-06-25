@@ -9,21 +9,85 @@ class NudgeShimmer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Shimmer.fromColors(
-      baseColor: shimmerBaseColor,
-      highlightColor: shimmerHighlightColor,
-      child: Padding(
-        padding: EdgeInsets.all(padding!),
-        child: Column(
-          children: <Widget>[
-            Container(
-              height: 180,
-              width: MediaQuery.of(context).size.width,
-              decoration: BoxDecoration(
-                  color: primaryColor, borderRadius: BorderRadius.circular(10)),
+    return SizedBox(
+      height: 180,
+      width: MediaQuery.of(context).size.width,
+      child: Stack(
+        children: <Widget>[
+          Shimmer.fromColors(
+            baseColor: shimmerBaseColor,
+            highlightColor: shimmerHighlightColor,
+            child: Column(
+              children: <Widget>[
+                Container(
+                  height: 180,
+                  width: MediaQuery.of(context).size.width,
+                  decoration: const BoxDecoration(
+                    color: primaryColor,
+                  ),
+                ),
+              ],
             ),
-          ],
-        ),
+          ),
+          Positioned(
+            top: 30,
+            left: 20,
+            child: Shimmer.fromColors(
+              baseColor: shimmerBaseColor,
+              highlightColor: shimmerHighlightColor,
+              child: Column(
+                children: <Widget>[
+                  Container(
+                    height: 25,
+                    width: 150,
+                    decoration: const BoxDecoration(
+                      color: primaryColor,
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ),
+          Positioned(
+            top: 65,
+            left: 20,
+            child: Shimmer.fromColors(
+              baseColor: shimmerBaseColor,
+              highlightColor: shimmerHighlightColor,
+              child: Column(
+                children: <Widget>[
+                  Container(
+                    height: 20,
+                    width: MediaQuery.of(context).size.width * 0.75,
+                    decoration: const BoxDecoration(
+                      color: primaryColor,
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ),
+          Positioned(
+            bottom: 40,
+            left: 20,
+            child: Shimmer.fromColors(
+              baseColor: shimmerBaseColor,
+              highlightColor: shimmerHighlightColor,
+              child: Column(
+                children: <Widget>[
+                  Container(
+                    height: 40,
+                    width: MediaQuery.of(context).size.width * 0.4,
+                    decoration: BoxDecoration(
+                      color: primaryColor,
+                      borderRadius: BorderRadius.circular(30),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ),
+        ],
       ),
     );
   }
