@@ -5,7 +5,6 @@ import 'package:shimmer/shimmer.dart';
 import 'package:user_feed/src/domain/value_objects/colors.dart';
 import 'package:user_feed/src/domain/value_objects/enums.dart';
 import 'package:user_feed/src/presentation/preloaders/feed_item_shimmer.dart';
-import 'package:user_feed/src/presentation/preloaders/global_action_item_shimmer.dart';
 import 'package:user_feed/src/presentation/preloaders/nudge_shimmer.dart';
 
 import 'package:shared_themes/spaces.dart';
@@ -29,21 +28,17 @@ class FeedLoadingShimmer extends StatelessWidget {
       highlightColor: shimmerHighlightColor,
       child: Column(
         children: <Widget>[
-          // global actions
-          if (flavor != Flavour.PRO) ...<Widget>[
-            GlobalActionItemShimmerRow(
-                horizontalPadding: globalActionShimmerHorizontalPadding),
-          ],
-
-          mediumVerticalSizedBox,
           // nudges
           NudgeShimmer(
             padding: nudgeShimmerPadding,
           ),
-
-          mediumVerticalSizedBox,
-
+          smallVerticalSizedBox,
           // feed items
+          FeedItemShimmer(
+            horizontalPadding: feedItemShimmerPadding,
+          ),
+          smallVerticalSizedBox,
+// feed items
           FeedItemShimmer(
             horizontalPadding: feedItemShimmerPadding,
           ),
