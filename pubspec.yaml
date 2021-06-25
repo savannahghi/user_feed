@@ -54,3 +54,4 @@ flutter:
     - packages/user_feed/assets/zero-state.png
     - packages/user_feed/assets/swipe.png
     - packages/user_feed/assets/cover_action.svg
+    - lib/assets/cover.png

@@ -7,3 +7,5 @@ const String defaultImgUrl = 'assets/doctor-bag.svg';
 
 const String fallBackBewellLogoUrl =
     'https://assets.healthcloud.co.ke/bewell_logo.png';
+
+const String coverImgpUrl = 'lib/assets/cover.png';
