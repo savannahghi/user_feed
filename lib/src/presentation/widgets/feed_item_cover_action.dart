@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:user_feed/src/domain/value_objects/asset_strings.dart';
 
 import 'package:user_feed/src/domain/value_objects/colors.dart';
@@ -29,15 +27,6 @@ class FeedItemCoverCallToAction extends StatelessWidget {
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(0),
           color: white,
-          // gradient: LinearGradient(
-          //     colors: <Color>[
-          //       coverCallToActionColor,
-          //       white.withOpacity(0.1),
-          //       coverCallToActionColor.withOpacity(0.8)
-          //     ],
-          //     begin: Alignment.topLeft,
-          //     end: Alignment.bottomRight,
-          //     stops: const <double>[0.4, 0.6, 0.7]),
         ),
         padding: const EdgeInsets.all(20),
         child: Stack(
@@ -58,10 +47,6 @@ class FeedItemCoverCallToAction extends StatelessWidget {
                       package: packageName,
                     ),
                   )),
-                  // child: SvgPicture.asset('lib/assets/cover.svg')
-
-                  //child: SvgPicture.asset(coverImgpUrl),
-                  // child: Image.network('https://media.istockphoto.com/photos/nairobi-cityscape-capital-city-of-kenya-picture-id637912692?////k=6&m=637912692&s=612x612&w=0&h=dmUFmQbZfY6HpoZOiGUtMOv6W0COMp_ykIKxZdWhX0g='),
                 ),
               ),
             ),
