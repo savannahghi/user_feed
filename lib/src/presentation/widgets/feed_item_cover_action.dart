@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:user_feed/src/domain/value_objects/asset_strings.dart';
 
 import 'package:user_feed/src/domain/value_objects/colors.dart';
 import 'package:user_feed/src/domain/value_objects/constants.dart';
@@ -7,6 +8,7 @@ import 'package:shared_themes/colors.dart';
 import 'package:shared_themes/spaces.dart';
 import 'package:shared_themes/text_themes.dart';
 import 'package:shared_ui_components/buttons.dart';
+import 'package:user_feed/src/domain/value_objects/strings.dart';
 
 class FeedItemCoverCallToAction extends StatelessWidget {
   @override
@@ -23,44 +25,58 @@ class FeedItemCoverCallToAction extends StatelessWidget {
       child: Container(
         width: double.infinity,
         decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(0),
-            color: coverCallToActionColor,
-            gradient: LinearGradient(
-                colors: <Color>[
-                  coverCallToActionColor,
-                  white.withOpacity(0.1),
-                  coverCallToActionColor.withOpacity(0.8)
-                ],
-                begin: Alignment.topLeft,
-                end: Alignment.bottomRight,
-                stops: const <double>[0.4, 0.6, 0.7])),
+          borderRadius: BorderRadius.circular(0),
+          color: white,
+        ),
         padding: const EdgeInsets.all(20),
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          crossAxisAlignment: CrossAxisAlignment.start,
+        child: Stack(
           children: <Widget>[
-            Text(
-              coverCallToActionTitle,
-              style: TextThemes.heavySize20Text(Colors.white),
+            Positioned(
+              right: -15,
+              bottom: -20,
+              child: Opacity(
+                              opacity: 0.4,
+                              child: Container(
+                  width: 150,
+                  height: 150,
+                  decoration: const BoxDecoration(
+                      image: DecorationImage(
+                        fit: BoxFit.contain,
+                    image: AssetImage(
+                      coverImgpUrl,
+                      package: packageName,
+                    ),
+                  )),
+                ),
+              ),
             ),
-            smallVerticalSizedBox,
-            Text(
-              viewCoverCallToActionBody,
-              style: TextThemes.normalSize15Text(Colors.white)
-                  .copyWith(height: 1.4),
+            Column(
+              mainAxisSize: MainAxisSize.min,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: <Widget>[
+                Text(
+                  coverCallToActionTitle,
+                  style: TextThemes.boldSize18Text(),
+                ),
+                smallVerticalSizedBox,
+                Text(
+                  viewCoverCallToActionBody,
+                  style: TextThemes.normalSize15Text(),
+                ),
+                mediumVerticalSizedBox,
+                SILPrimaryButton(
+                  onPressed: () {
+                    coverCallbacks![kAddInsurance]!();
+                  },
+                  text: addInsurance,
+                  borderColor: white.withOpacity(0.9),
+                  buttonColor: primaryColor.withOpacity(0.9),
+                  customPadding:
+                      const EdgeInsets.symmetric(horizontal: 30, vertical: 12),
+                  textColor: whiteColor,
+                )
+              ],
             ),
-            mediumVerticalSizedBox,
-            SILPrimaryButton(
-              onPressed: () {
-                coverCallbacks![kAddInsurance]!();
-              },
-              text: addInsurance,
-              borderColor: white.withOpacity(0.9),
-              buttonColor: white.withOpacity(0.9),
-              customPadding:
-                  const EdgeInsets.symmetric(horizontal: 30, vertical: 12),
-              textColor: coverCallToActionColor,
-            )
           ],
         ),
       ),
