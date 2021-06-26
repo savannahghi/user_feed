@@ -45,17 +45,19 @@ class FeedItemComponent extends StatelessWidget {
     return InkWell(
       key: feedItemInkWell,
       onTap: () {
-        Navigator.of(context).push(
-          MaterialPageRoute<FeedItemContentView>(
-            builder: (_) => FeedItemContentView(
-              text: text,
-              summary: summary,
-              itemTextType: itemTextType,
-              feedItem: feedItem,
-              videos: videos,
+        if (videos.isEmpty) {
+          Navigator.of(context).push(
+            MaterialPageRoute<FeedItemContentView>(
+              builder: (_) => FeedItemContentView(
+                text: text,
+                summary: summary,
+                itemTextType: itemTextType,
+                feedItem: feedItem,
+                videos: videos,
+              ),
             ),
-          ),
-        );
+          );
+        }
       },
       child: Container(
         // margin: const EdgeInsets.symmetric(vertical: 8),

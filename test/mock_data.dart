@@ -43,6 +43,20 @@ final List<Link> mockMultipleFeedLinks = <Link>[
   mockPdfLink,
 ];
 
+final List<Link> mockMultipleFeedLinks2 = <Link>[
+  mockImageLink,
+  mockImageLink,
+  mockImageLink,
+  mockImageLink,
+  mockImageLink,
+  mockImageLink,
+  mockPdfLink,
+  mockPdfLink,
+  mockPdfLink,
+  mockPdfLink,
+  mockPdfLink,
+];
+
 final Map<String, dynamic> mockNudgeData1 = <String, dynamic>{
   'id': '1608729954',
   'sequenceNumber': 1608729964,
@@ -368,6 +382,10 @@ final Item mockFeedItem = Item.fromJson(
   mockItemData,
 );
 
+final Item mockFeedItem2 = Item.fromJson(
+  mockItemData2,
+);
+
 final Map<String, dynamic> mockItemData = <String, dynamic>{
   'id': '1ns2oCuWbdA67Qv94XNRM3IXejh',
   'sequenceNumber': 1,
@@ -406,6 +424,113 @@ final Map<String, dynamic> mockItemData = <String, dynamic>{
           'https://assets.healthcloud.co.ke/items/videos/thumbs/02_prescription.png',
       'title': 'Prescription delivery'
     },
+    <String, dynamic>{
+      'id': '1ns2oAO0lVcn7gzAqBZrICZCMr2',
+      'url':
+          'https://assets.healthcloud.co.ke/items/images/bewell_banner05.png',
+      'linkType': 'PNG_IMAGE',
+      'title': 'Wellness review',
+      'description': 'You should have a wellness review daily',
+      'thumbnail':
+          'https://assets.healthcloud.co.ke/items/images/thumbs/bewell_banner05.png'
+    },
+    <String, dynamic>{
+      'id': '1ns2o6JDMlUMtTcwPU2MqvAW5VR',
+      'url':
+          'https://assets.healthcloud.co.ke/items/images/bewell_banner06.png',
+      'linkType': 'PNG_IMAGE',
+      'title': 'Wellness review',
+      'description': 'You should have a wellness review daily',
+      'thumbnail':
+          'https://assets.healthcloud.co.ke/items/images/thumbs/bewell_banner06.png'
+    },
+    <String, dynamic>{
+      'id': '1ns2o9GsFxyltGcAQg6mufS1lAD',
+      'url':
+          'https://assets.healthcloud.co.ke/items/documents/bewell_banner_27.pdf',
+      'linkType': 'PDF_DOCUMENT',
+      'title': 'Need to refill your meds?',
+      'description': 'We will deliver',
+      'thumbnail':
+          'https://assets.healthcloud.co.ke/items/documents/thumbs/bewell_banner_27.png'
+    },
+  ],
+  'actions': <dynamic>[
+    <String, dynamic>{
+      'id': '1ns2o6OE33iubBhPjhyQnks4znv',
+      'sequenceNumber': 1,
+      'name': 'RESOLVE_ITEM',
+      'actionType': 'PRIMARY',
+      'handling': 'INLINE',
+      'allowAnonymous': false,
+      'icon': <String, dynamic>{
+        'id': '1ns2oDTr800KQMoAwlyS18DiHnp',
+        'url':
+            'https://assets.healthcloud.co.ke/items/images/thumbs/bewell_banner01.png',
+        'linkType': 'PNG_IMAGE'
+      },
+    },
+    <String, dynamic>{
+      'id': '1ns2oCwJl5zt3SatNL9N4Jw8TDj',
+      'sequenceNumber': 1,
+      'name': 'PIN_ITEM',
+      'actionType': 'PRIMARY',
+      'handling': 'INLINE',
+      'allowAnonymous': true,
+      'icon': <String, dynamic>{
+        'id': '1ns2oDTr800KQMoAwlyS18DiHnp',
+        'url':
+            'https://assets.healthcloud.co.ke/items/images/thumbs/bewell_banner01.png',
+        'linkType': 'PNG_IMAGE'
+      },
+    },
+  ],
+  'conversations': <dynamic>[
+    <String, dynamic>{
+      'id': '1ns2oKfXTX1gMoO4VbJN5X0G6uY',
+      'sequenceNumber': 1,
+      'text':
+          'I\'m the tests service. I\'ll help you deliver quality and affordable diagnostic tests. 👋!',
+      'replyTo': '',
+      'postedByUID': 'hOcaUv8dqqgmWYf9HEhjdudgf0b2',
+      'postedByName': 'Tests Service',
+      'timestamp': '2021-04-11T14:08:10Z'
+    },
+    <String, dynamic>{
+      'id': '1ns2oKcNl9xSKzrJOl1CMhLhp27',
+      'sequenceNumber': 1,
+      'text':
+          'I\'m the coaching service. I\'ll help you deliver your *awesome* coaching services to clients. 👋!',
+      'replyTo': '',
+      'postedByUID': 'hOcaUv8dqqgmWYf9HEhjdudgf0b2',
+      'postedByName': 'Coaching Service',
+      'timestamp': '2021-04-11T14:08:10Z'
+    },
+  ]
+};
+
+final Map<String, dynamic> mockItemData2 = <String, dynamic>{
+  'id': '1ns2oCuWbdA67Qv94XNRM3IXejh',
+  'sequenceNumber': 1,
+  'expiry': '2121-04-18T07:30:50Z',
+  'persistent': true,
+  'status': 'PENDING',
+  'visibility': 'SHOW',
+  'label': 'WELCOME',
+  'name': 'RESOLVE_ITEM',
+  'icon': <String, dynamic>{
+    'id': '1ns2oDTr800KQMoAwlyS18DiHnp',
+    'url': iconUrl,
+    'linkType': 'PNG_IMAGE'
+  },
+  'itemID': itemID,
+  'author': author,
+  'tagline': tagline,
+  'timestamp': timestamp,
+  'summary': 'What is Be.Well?',
+  'text':
+      'Be.Well is a virtual and physical healthcare community. Our goal is to make it easy for you to provide affordable high-quality healthcare - whether online or in person.',
+  'links': <Map<String, dynamic>>[
     <String, dynamic>{
       'id': '1ns2oAO0lVcn7gzAqBZrICZCMr2',
       'url':
