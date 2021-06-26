@@ -55,7 +55,7 @@ void main() {
               _context = context;
               return FeedItemBody(
                 'summary',
-                links: mockMultipleFeedLinks,
+                links: mockMultipleFeedLinks2,
                 text: 'Feed item body',
                 itemTextType: TextType.PLAIN,
               );
