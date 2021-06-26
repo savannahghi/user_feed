@@ -111,14 +111,15 @@ class FeedItemBodyState extends State<FeedItemBody> {
                 ),
               ),
               extremelySmallVerticalSizedBox,
-              Align(
-                alignment: Alignment.topRight,
-                child: Text(
-                  '...see more',
-                  textAlign: TextAlign.left,
-                  style: TextThemes.normalSize12Text(accentColor),
+              if (videos!.isEmpty)
+                Align(
+                  alignment: Alignment.topRight,
+                  child: Text(
+                    '...see more',
+                    textAlign: TextAlign.left,
+                    style: TextThemes.normalSize12Text(accentColor),
+                  ),
                 ),
-              ),
             ],
           ),
         ),
