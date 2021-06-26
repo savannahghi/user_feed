@@ -26,7 +26,7 @@ void main() {
       });
     });
 
-    testWidgets('widgets are rendered correctly without video links',
+    testWidgets('widgets are rendered correctly without video',
         (WidgetTester tester) async {
       await tester.runAsync(() async {
         await tester.pumpWidget(MaterialApp(home: Material(
