@@ -35,13 +35,13 @@ class FeedItemCoverCallToAction extends StatelessWidget {
               right: -15,
               bottom: -20,
               child: Opacity(
-                              opacity: 0.4,
-                              child: Container(
+                opacity: 0.4,
+                child: Container(
                   width: 150,
                   height: 150,
                   decoration: const BoxDecoration(
                       image: DecorationImage(
-                        fit: BoxFit.contain,
+                    fit: BoxFit.contain,
                     image: AssetImage(
                       coverImgpUrl,
                       package: packageName,
