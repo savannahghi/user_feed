@@ -1,3 +1,7 @@
+### 0.1.35-nullsafety
+
+- refactor: retire unused pdf code
+
 ### 0.1.34-nullsafety
 
 - fix: feed video
