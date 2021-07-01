@@ -1,3 +1,26 @@
+### 0.1.34-nullsafety
+
+- fix: feed video
+
+### 0.1.33-nullsafety
+
+- fix: change add cover call to action design
+### 0.1.32-nullsafety
+
+- fix: update shimmer loading
+
+### 0.1.31-nullsafety
+
+- feat: add info to mini card
+
+### 0.1.30-nullsafety
+
+- fix: cover call to action, move add email nudge
+
+### 0.1.29-nullsafety
+
+- Draft: fix: retire pdf releated code (unused) 
+
 ### 0.1.28-nullsafety
 
 - chore: update dependencies (shared_themes, shared_ui_components)
