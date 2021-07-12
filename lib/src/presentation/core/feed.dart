@@ -13,7 +13,7 @@ import 'package:user_feed/src/domain/value_objects/feed_store.dart';
 import 'package:user_feed/src/domain/value_objects/strings.dart';
 import 'package:user_feed/src/domain/value_objects/widget_keys.dart';
 import 'package:user_feed/src/presentation/widgets/feed_cover_mini_card.dart';
-import 'package:user_feed/src/presentation/widgets/feed_item_cover_action.dart';
+
 import 'package:user_feed/src/presentation/widgets/feed_item_wrapper.dart';
 import 'package:user_feed/src/presentation/widgets/nudge_carousel.dart';
 
@@ -123,7 +123,8 @@ class _FeedComponentState extends State<FeedComponent> {
     ) {
       if (flavour == Flavour.CONSUMER) {
         return !widget.covers!.isNotEmpty
-            ? FeedItemCoverCallToAction()
+            ? const SizedBox
+                .shrink() //FeedItemCoverAction extracted to app : CONSUMER
             : CoverMiniCard(
                 cover: widget.covers![0],
               );
