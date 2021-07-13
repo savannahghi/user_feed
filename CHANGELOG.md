@@ -1,3 +1,7 @@
+### 0.1.36-nullsafety
+
+- chore: extract buy cover nudge to consumer
+
 ### 0.1.35-nullsafety
 
 - refactor: retire unused pdf code
@@ -9,6 +13,7 @@
 ### 0.1.33-nullsafety
 
 - fix: change add cover call to action design
+
 ### 0.1.32-nullsafety
 
 - fix: update shimmer loading
@@ -23,7 +28,7 @@
 
 ### 0.1.29-nullsafety
 
-- Draft: fix: retire pdf releated code (unused) 
+- Draft: fix: retire pdf releated code (unused)
 
 ### 0.1.28-nullsafety
 
@@ -37,10 +42,10 @@
 
 - feat: add view cover to feed mini card
 - feat: add buy cover and cover call to action
-- refactor: remove feed_global_action_bar 
+- refactor: remove feed_global_action_bar
 - chore: update packages
 
-### Pre - 0.1.26 
+### Pre - 0.1.26
 
 - Code testing, refactor and upgrading design system for user_feed on both apps
 - Assorted bug fixes and enhancements
