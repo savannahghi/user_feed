@@ -60,7 +60,6 @@ class FeedItemComponent extends StatelessWidget {
         }
       },
       child: Container(
-        // margin: const EdgeInsets.symmetric(vertical: 8),
         decoration: BoxDecoration(
           color: Colors.white,
           border: Border.all(color: lightGreyColor, width: 0.5),
@@ -71,38 +70,32 @@ class FeedItemComponent extends StatelessWidget {
             ),
           ],
         ),
-        child: SizedBox(
-          child: SingleChildScrollView(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: <Widget>[
-                smallVerticalSizedBox,
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: <Widget>[
+            smallVerticalSizedBox,
 
-                /// The title bar of the feed item
-                /// Renders feed item meta-data (author, timestamp, avatar)
-                Padding(
-                  padding:
-                      const EdgeInsets.symmetric(horizontal: 15, vertical: 10),
-                  child: FeedItemTitleBar(
-                    author: author,
-                    timestamp: timestamp,
-                    iconUrl: iconUrl,
-                    itemID: feedItemID,
-                  ),
-                ),
-
-                /// The body of the feed item
-                /// Renders texts, images, and or video
-                FeedItemBody(
-                  summary,
-                  links: links,
-                  text: text,
-                  itemTextType: itemTextType,
-                ),
-                smallVerticalSizedBox,
-              ],
+            /// The title bar of the feed item
+            /// Renders feed item meta-data (author, timestamp, avatar)
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 10),
+              child: FeedItemTitleBar(
+                author: author,
+                timestamp: timestamp,
+                iconUrl: iconUrl,
+                itemID: feedItemID,
+              ),
             ),
-          ),
+
+            /// The body of the feed item
+            /// Renders texts, images, and or video
+            FeedItemBody(summary,
+                links: links,
+                text: text,
+                itemTextType: itemTextType,
+                videos: videos),
+            smallVerticalSizedBox,
+          ],
         ),
       ),
     );

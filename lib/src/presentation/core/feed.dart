@@ -11,10 +11,9 @@ import 'package:user_feed/src/domain/resources/inputs.dart';
 import 'package:user_feed/src/domain/value_objects/enums.dart';
 import 'package:user_feed/src/domain/value_objects/feed_store.dart';
 import 'package:user_feed/src/domain/value_objects/strings.dart';
-import 'package:user_feed/src/domain/value_objects/widget_keys.dart';
 import 'package:user_feed/src/presentation/widgets/feed_cover_mini_card.dart';
+import 'package:user_feed/src/presentation/widgets/feed_item_component.dart';
 
-import 'package:user_feed/src/presentation/widgets/feed_item_wrapper.dart';
 import 'package:user_feed/src/presentation/widgets/nudge_carousel.dart';
 
 import 'package:shared_themes/spaces.dart';
@@ -118,53 +117,40 @@ class _FeedComponentState extends State<FeedComponent> {
     }
 
     // show the call to action widget where the user is prompted to add or buy cover
-    Widget showCallToAction(
-      Flavour flavour,
-    ) {
-      if (flavour == Flavour.CONSUMER) {
-        return !widget.covers!.isNotEmpty
-            ? const SizedBox
-                .shrink() //FeedItemCoverAction extracted to app : CONSUMER
-            : CoverMiniCard(
-                cover: widget.covers![0],
-              );
-      }
-      return const SizedBox();
+    Widget showCallToAction() {
+      return !widget.covers!.isNotEmpty
+          ? const SizedBox
+              .shrink() //FeedItemCoverAction extracted to app : CONSUMER
+          : CoverMiniCard(
+              cover: widget.covers![0],
+            );
     }
 
-    return ListView(
-      shrinkWrap: true,
-      key: feedComponentKey,
-      padding: EdgeInsets.zero,
-      physics: const BouncingScrollPhysics(),
-      children: <Widget>[
-        Container(
-          decoration: BoxDecoration(color: widget.feedbackGroundColor),
-          margin: const EdgeInsets.only(top: 2),
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            children: <Widget>[
-              // profile progress indicator for pro
-              if (!widget.setupComplete)
-                showProfileSetupProgress(widget.flavour,
-                    setupComplete: widget.setupComplete),
-              showCallToAction(widget.flavour),
-              if (feedNudges.isEmpty)
-                mediumVerticalSizedBox
-              else
-                NudgeCarousel(
-                  nudges: feedNudges,
-                  single: false,
-                  unroll: false,
-                  isSmallScreen: widget.isSmallScreen,
-                ),
+    return Container(
+      decoration: BoxDecoration(color: widget.feedbackGroundColor),
+      margin: const EdgeInsets.only(top: 2),
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: <Widget>[
+          // profile progress indicator for pro
+          if (!widget.setupComplete)
+            showProfileSetupProgress(widget.flavour,
+                setupComplete: widget.setupComplete),
+          if (widget.flavour == Flavour.CONSUMER) showCallToAction(),
+          if (feedNudges.isEmpty)
+            mediumVerticalSizedBox
+          else
+            NudgeCarousel(
+              nudges: feedNudges,
+              single: false,
+              unroll: false,
+              isSmallScreen: widget.isSmallScreen,
+            ),
 
-              // feed item wrapper contains a list of all the feed items
-              FeedItemsWrapper(feedItems: feedItems)
-            ],
-          ),
-        ),
-      ],
+          ...feedItems
+              .map((Item feedItem) => FeedItemComponent(feedItem: feedItem))
+        ],
+      ),
     );
   }
 }

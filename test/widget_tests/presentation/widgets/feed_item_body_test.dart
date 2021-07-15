@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:user_feed/src/application/helpers/utils.dart';
 import 'package:user_feed/src/domain/value_objects/enums.dart';
 import 'package:user_feed/src/domain/value_objects/widget_keys.dart';
 import 'package:user_feed/src/presentation/image_viewer/image_grid.dart';
@@ -28,6 +29,8 @@ void main() {
           links: mockMultipleFeedLinks,
           text: feedItemBody,
           itemTextType: TextType.PLAIN,
+          videos: processFeedMedia(
+              links: mockMultipleFeedLinks, linkType: LinkType.YOUTUBE_VIDEO),
         ),
       );
 
@@ -56,6 +59,9 @@ void main() {
                 links: mockMultipleFeedLinks2,
                 text: 'Feed item body',
                 itemTextType: TextType.PLAIN,
+                videos: processFeedMedia(
+                    links: mockMultipleFeedLinks2,
+                    linkType: LinkType.YOUTUBE_VIDEO),
               );
             },
           ),
