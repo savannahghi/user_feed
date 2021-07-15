@@ -48,7 +48,8 @@ class FeedNudge extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
-              Text(title, style: TextThemes.boldSize18Text()),
+              Text(title,
+                  style: TextThemes.boldSize16Text().copyWith(fontSize: 17)),
               smallVerticalSizedBox,
               Text(text, style: TextThemes.normalSize15Text()),
               smallVerticalSizedBox,
