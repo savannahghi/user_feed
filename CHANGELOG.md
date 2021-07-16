@@ -1,6 +1,10 @@
+### 0.1.37-nullsafety
+
+chore: performance improvements
+
 ### 0.1.36-nullsafety
 
-- refactor: improve feed performance
+- chore: extract buy cover nudge to consumer
 
 ### 0.1.35-nullsafety
 
