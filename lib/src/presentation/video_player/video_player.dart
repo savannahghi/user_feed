@@ -81,9 +81,7 @@ class VideoPlayerState extends State<VideoPlayer> {
   }
 
   void onReadyCallback() {
-    setState(() {
-      isPlayerReady = true;
-    });
+    isPlayerReady = true;
   }
 
   void onEndedCallback(YoutubeMetaData data) {

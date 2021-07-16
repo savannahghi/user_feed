@@ -8,6 +8,5 @@ export 'src/presentation/widgets/feed_item_body.dart';
 export 'src/presentation/widgets/feed_item_comment_card.dart';
 export 'src/presentation/widgets/feed_item_component.dart';
 export 'src/presentation/widgets/feed_item_title_bar.dart';
-export 'src/presentation/widgets/feed_item_wrapper.dart';
 export 'src/presentation/widgets/feed_nudge.dart';
 export 'src/presentation/widgets/nudge_carousel.dart';
