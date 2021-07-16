@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail_image_network/mocktail_image_network.dart';
 import 'package:user_feed/src/domain/resources/inputs.dart';
@@ -29,14 +30,18 @@ void main() {
             await mockNetworkImages(() async {
               await buildTestWidget(
                 tester: tester,
-                child: FeedComponent(
-                  userFeed: FeedResponsePayload.fromJson(
-                      mockFeedResponsePayload(feedNudges)),
-                  flavour: Flavour.CONSUMER,
-                  feedContentCallbacks: mockGetFeedActionCallbacks(),
-                  isSmallScreen: true,
-                  covers: <dynamic>[
-                    MockCover('Swift', '736872783', 'Jane Doe')
+                child: ListView(
+                  children: <Widget>[
+                    FeedComponent(
+                      userFeed: FeedResponsePayload.fromJson(
+                          mockFeedResponsePayload(feedNudges)),
+                      flavour: Flavour.CONSUMER,
+                      feedContentCallbacks: mockGetFeedActionCallbacks(),
+                      isSmallScreen: true,
+                      covers: <dynamic>[
+                        MockCover('Swift', '736872783', 'Jane Doe')
+                      ],
+                    ),
                   ],
                 ),
               );
@@ -54,15 +59,19 @@ void main() {
             await mockNetworkImages(() async {
               await buildTestWidget(
                 tester: tester,
-                child: FeedComponent(
-                  userFeed: FeedResponsePayload.fromJson(
-                      mockFeedResponsePayload(
-                          <Map<String, dynamic>>[feedNudges[0]])),
-                  flavour: Flavour.CONSUMER,
-                  feedContentCallbacks: mockGetFeedActionCallbacks(),
-                  isSmallScreen: true,
-                  covers: <dynamic>[
-                    MockCover('Swift', '736872783', 'Jane Doe')
+                child: ListView(
+                  children: <Widget>[
+                    FeedComponent(
+                      userFeed: FeedResponsePayload.fromJson(
+                          mockFeedResponsePayload(
+                              <Map<String, dynamic>>[feedNudges[0]])),
+                      flavour: Flavour.CONSUMER,
+                      feedContentCallbacks: mockGetFeedActionCallbacks(),
+                      isSmallScreen: true,
+                      covers: <dynamic>[
+                        MockCover('Swift', '736872783', 'Jane Doe')
+                      ],
+                    ),
                   ],
                 ),
               );
@@ -81,12 +90,16 @@ void main() {
               await buildTestWidget(
                 tester: tester,
                 flavour: Flavour.PRO,
-                child: FeedComponent(
-                  userFeed: FeedResponsePayload.fromJson(
-                      mockFeedResponsePayload(feedNudges)),
-                  flavour: Flavour.PRO,
-                  feedContentCallbacks: mockGetFeedActionCallbacks(),
-                  isSmallScreen: true,
+                child: ListView(
+                  children: <Widget>[
+                    FeedComponent(
+                      userFeed: FeedResponsePayload.fromJson(
+                          mockFeedResponsePayload(feedNudges)),
+                      flavour: Flavour.PRO,
+                      feedContentCallbacks: mockGetFeedActionCallbacks(),
+                      isSmallScreen: true,
+                    )
+                  ],
                 ),
               );
             });
@@ -130,14 +143,18 @@ void main() {
             await mockNetworkImages(() async {
               await buildTestWidget(
                 tester: tester,
-                child: FeedComponent(
-                  userFeed: FeedResponsePayload.fromJson(
-                      mockFeedResponsePayload(<Map<String, dynamic>>[])),
-                  flavour: Flavour.CONSUMER,
-                  feedContentCallbacks: mockGetFeedActionCallbacks(),
-                  isSmallScreen: true,
-                  covers: <dynamic>[
-                    MockCover('Swift', '736872783', 'Jane Doe')
+                child: ListView(
+                  children: <Widget>[
+                    FeedComponent(
+                      userFeed: FeedResponsePayload.fromJson(
+                          mockFeedResponsePayload(<Map<String, dynamic>>[])),
+                      flavour: Flavour.CONSUMER,
+                      feedContentCallbacks: mockGetFeedActionCallbacks(),
+                      isSmallScreen: true,
+                      covers: <dynamic>[
+                        MockCover('Swift', '736872783', 'Jane Doe')
+                      ],
+                    ),
                   ],
                 ),
               );

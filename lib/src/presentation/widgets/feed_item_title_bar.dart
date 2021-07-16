@@ -28,7 +28,7 @@ class FeedItemTitleBar extends StatelessWidget {
   final String timestamp;
 
   String postTimeStampAsMessage(String? timestamp) {
-    if (timestamp == null) return 'Just now';
+    if (timestamp == null) return '';
     return timestamp;
   }
 
