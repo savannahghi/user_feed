@@ -1,3 +1,7 @@
+### 0.1.36-nullsafety
+
+- refactor: improve feed performance
+
 ### 0.1.35-nullsafety
 
 - refactor: retire unused pdf code

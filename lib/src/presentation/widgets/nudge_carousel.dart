@@ -37,11 +37,11 @@ class _NudgeCarouselState extends State<NudgeCarousel> {
     final Flavour _flavour = FeedStore().flavour.valueOrNull!;
 
     /// if this carousel is being called independently
-    final bool singleUnroll = widget.single == true && widget.unroll == true;
+    final bool singleUnroll = widget.single && widget.unroll;
 
     /// this nudge carousel that this feed is being rendered alongside the feed
     final bool isConsumerOrSmallScreen =
-        widget.isSmallScreen == true || _flavour == Flavour.CONSUMER;
+        widget.isSmallScreen || _flavour == Flavour.CONSUMER;
 
     return Column(
       children: singleUnroll

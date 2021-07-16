@@ -14,17 +14,20 @@ import 'package:shared_themes/spaces.dart';
 import 'package:shared_themes/text_themes.dart';
 
 class FeedItemBody extends StatefulWidget {
-  const FeedItemBody(this.summary,
-      {Key? key,
-      required this.links,
-      required this.text,
-      required this.itemTextType})
-      : super(key: key);
+  const FeedItemBody(
+    this.summary, {
+    Key? key,
+    required this.links,
+    required this.text,
+    required this.itemTextType,
+    required this.videos,
+  }) : super(key: key);
 
   final List<Link>? links;
   final String summary;
   final String? text;
   final TextType? itemTextType;
+  final List<Link>? videos;
 
   @override
   FeedItemBodyState createState() => FeedItemBodyState();
@@ -35,8 +38,6 @@ class FeedItemBodyState extends State<FeedItemBody> {
 
   List<Link>? documents;
 
-  List<Link>? videos;
-
   int? remainingImageLength;
 
   @override
@@ -46,12 +47,8 @@ class FeedItemBodyState extends State<FeedItemBody> {
         processFeedMedia(links: widget.links, linkType: LinkType.PNG_IMAGE);
 
     // extract documents
-    documents =
-        processFeedMedia(links: widget.links, linkType: LinkType.PDF_DOCUMENT);
-
-    // extract videos
-    videos =
-        processFeedMedia(links: widget.links, linkType: LinkType.YOUTUBE_VIDEO);
+    // documents =
+    //     processFeedMedia(links: widget.links, linkType: LinkType.PDF_DOCUMENT);
 
     remainingImageLength = images!.length - 1;
 
@@ -98,7 +95,7 @@ class FeedItemBodyState extends State<FeedItemBody> {
                 ),
               ),
               extremelySmallVerticalSizedBox,
-              if (videos!.isEmpty)
+              if (widget.videos!.isEmpty)
                 Align(
                   alignment: Alignment.topRight,
                   child: Text(
@@ -112,10 +109,11 @@ class FeedItemBodyState extends State<FeedItemBody> {
         ),
         smallVerticalSizedBox,
         // feed item videos are displayed here
-        if (videos!.isNotEmpty)
+        if (widget.videos!.isNotEmpty)
           Padding(
             padding: const EdgeInsets.only(top: 5),
-            child: SizedBox(height: 200, child: VideoPlayer(videos: videos!)),
+            child: SizedBox(
+                height: 200, child: VideoPlayer(videos: widget.videos!)),
           ),
 
         // checks that there are actually images
