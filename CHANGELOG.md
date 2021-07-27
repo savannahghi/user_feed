@@ -1,3 +1,8 @@
+### 0.1.38-nullsafety
+
+- chore: update dependencies (shared_themes, shared_ui_components)
+- doc: project documentation fixes
+
 ### 0.1.37-nullsafety
 
 chore: performance improvements
