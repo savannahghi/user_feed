@@ -112,7 +112,7 @@ packages:
       name: camera
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "0.8.1+5"
+    version: "0.8.1+7"
   camera_platform_interface:
     dependency: transitive
     description:
@@ -252,7 +252,7 @@ packages:
       name: domain_objects
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "0.0.26-nullsafety"
+    version: "0.0.27-nullsafety"
   dotted_border:
     dependency: transitive
     description:
@@ -785,7 +785,7 @@ packages:
       name: shared_ui_components
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "0.1.33-nullsafety"
+    version: "0.1.34-nullsafety"
   shelf:
     dependency: transitive
     description:
