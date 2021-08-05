@@ -1,3 +1,7 @@
+### 0.1.39-nullsafety
+
+- chore: update dependency (shared_ui_components)
+
 ### 0.1.38-nullsafety
 
 - chore: update dependencies (shared_themes, shared_ui_components)
