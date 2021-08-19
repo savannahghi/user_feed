@@ -12,6 +12,7 @@ import 'package:user_feed/src/presentation/video_player/video_player.dart';
 
 import 'package:shared_themes/spaces.dart';
 import 'package:shared_themes/text_themes.dart';
+import 'package:video_player/video_player.dart';
 
 class FeedItemBody extends StatefulWidget {
   const FeedItemBody(
@@ -113,7 +114,7 @@ class FeedItemBodyState extends State<FeedItemBody> {
           Padding(
             padding: const EdgeInsets.only(top: 5),
             child: SizedBox(
-                height: 200, child: VideoPlayer(videos: widget.videos!)),
+                height: 200, child: ChewieListItem(videoPlayerController: VideoPlayerController.network('https://eugenedevv.github.io/portfolio/img/healthcare_simplified.mp4'), looping: true,)),
           ),
 
         // checks that there are actually images

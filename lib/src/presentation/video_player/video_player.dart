@@ -1,3 +1,4 @@
+import 'package:chewie/chewie.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:user_feed/src/application/helpers/utils.dart';
@@ -6,6 +7,7 @@ import 'package:user_feed/src/domain/value_objects/constants.dart';
 import 'package:user_feed/src/domain/value_objects/strings.dart';
 import 'package:user_feed/src/domain/value_objects/widget_keys.dart';
 import 'package:shared_themes/spaces.dart';
+import 'package:video_player/video_player.dart';
 import 'package:visibility_detector/visibility_detector.dart';
 import 'package:youtube_player_flutter/youtube_player_flutter.dart';
 
@@ -247,5 +249,52 @@ class _VideoControllersState extends State<VideoControllers> {
         ),
       ],
     );
+  }
+}
+class ChewieListItem extends StatefulWidget {
+  final VideoPlayerController videoPlayerController;
+  final bool looping;
+
+  const ChewieListItem(
+      {required this.videoPlayerController, this.looping = false});
+
+  @override
+  _ChewieListItemState createState() => _ChewieListItemState();
+}
+
+class _ChewieListItemState extends State<ChewieListItem> {
+  late ChewieController _chewieController;
+
+  @override
+  void initState() {
+    super.initState();
+    _chewieController = ChewieController(
+      videoPlayerController: widget.videoPlayerController,
+      autoInitialize: true,
+      aspectRatio: 16 / 9,
+      looping: widget.looping,
+      errorBuilder: (context, errorMessage) {
+        return Center(
+          child: Text(
+            errorMessage,
+            style: TextStyle(color: Colors.amber),
+          ),
+        );
+      },
+    );
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Chewie(
+      controller: _chewieController,
+    );
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+    widget.videoPlayerController.dispose();
+    _chewieController.dispose();
   }
 }

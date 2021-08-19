@@ -149,12 +149,12 @@ packages:
     source: hosted
     version: "2.0.1"
   chewie:
-    dependency: transitive
+    dependency: "direct main"
     description:
       name: chewie
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "1.0.0"
+    version: "1.2.2"
   chewie_audio:
     dependency: transitive
     description:
@@ -1009,12 +1009,12 @@ packages:
     source: hosted
     version: "2.1.0"
   video_player:
-    dependency: transitive
+    dependency: "direct main"
     description:
       name: video_player
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "2.1.6"
+    version: "2.1.14"
   video_player_platform_interface:
     dependency: transitive
     description:
@@ -1049,7 +1049,7 @@ packages:
       name: wakelock
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "0.4.0"
+    version: "0.5.3+3"
   wakelock_macos:
     dependency: transitive
     description:
@@ -1071,6 +1071,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "0.2.0+1"
+  wakelock_windows:
+    dependency: transitive
+    description:
+      name: wakelock_windows
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.1.0+1"
   watcher:
     dependency: transitive
     description:
