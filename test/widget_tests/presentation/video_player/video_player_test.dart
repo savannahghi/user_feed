@@ -73,7 +73,7 @@ void main() {
       // await tester.pumpAndSettle();
       // verify UI renders correctly
       expect(find.byType(VideoControllers), findsOneWidget);
-      await tester.pump(const Duration());
+      await tester.pump(Duration.zero);
       expect(find.byType(Row), findsOneWidget);
       expect(find.byType(IconButton), findsWidgets);
 

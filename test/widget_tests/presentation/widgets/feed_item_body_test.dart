@@ -55,7 +55,7 @@ void main() {
             builder: (BuildContext context) {
               _context = context;
               return FeedItemBody(
-                'summary',
+                '---------------- This is a summary',
                 links: mockMultipleFeedLinks2,
                 text: 'Feed item body',
                 itemTextType: TextType.PLAIN,

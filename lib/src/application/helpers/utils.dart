@@ -136,6 +136,12 @@ String? removeHyphens(String sentence) {
       sentence.toString().replaceAll('-', ' ').toLowerCase());
 }
 
+String? removeHyphensSummary(String sentence) {
+  final String? formarttedString = toBeginningOfSentenceCase(
+      sentence.toString().replaceAll('-', '').toLowerCase());
+  return toBeginningOfSentenceCase(formarttedString!.trim());
+}
+
 /// returns an icon based on the [actionName]
 ///
 /// this method returns links to **SVG pictures only**

@@ -44,7 +44,7 @@ void main() {
               return FeedItemContentView(
                 feedItem: mockFeedItem,
                 itemTextType: TextType.PLAIN,
-                summary: summary,
+                summary: '---------------This is a summary',
                 text: feedItemBody,
                 videos: emptyMockFeedLinks,
               );
