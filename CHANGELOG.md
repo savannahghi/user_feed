@@ -1,3 +1,7 @@
+### 0.1.40-nullsafety
+
+- fix: remove hyphens from summary
+
 ### 0.1.39-nullsafety
 
 - chore: update dependency (shared_ui_components)

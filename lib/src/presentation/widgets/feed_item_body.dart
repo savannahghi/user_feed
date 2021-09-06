@@ -74,6 +74,9 @@ class FeedItemBodyState extends State<FeedItemBody> {
 
   @override
   Widget build(BuildContext context) {
+    final String summary = (widget.summary.contains('-') == true)
+        ? removeHyphensSummary(widget.summary)!
+        : widget.summary;
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
@@ -86,8 +89,9 @@ class FeedItemBodyState extends State<FeedItemBody> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
               Text(
-                widget.summary,
+                summary,
                 overflow: TextOverflow.ellipsis,
+                textAlign: TextAlign.start,
                 maxLines: 2,
                 style: TextThemes.normalSize13Text().copyWith(
                   wordSpacing: 0.6,
