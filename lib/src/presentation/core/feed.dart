@@ -21,17 +21,17 @@ import 'package:shared_themes/spaces.dart';
 import 'package:shared_themes/text_themes.dart';
 
 class FeedComponent extends StatefulWidget {
-  const FeedComponent(
-      {Key? key,
-      required this.userFeed,
-      required this.flavour,
-      required this.isSmallScreen,
-      required this.feedContentCallbacks,
-      this.profileProgress,
-      this.setupComplete = false,
-      this.covers,
-      this.feedbackGroundColor})
-      : super(key: key);
+  const FeedComponent({
+    Key? key,
+    required this.userFeed,
+    required this.flavour,
+    required this.isSmallScreen,
+    required this.feedContentCallbacks,
+    this.profileProgress,
+    this.setupComplete = false,
+    this.covers,
+    this.feedbackGroundColor,
+  }) : super(key: key);
 
   /// the feed
   final FeedResponsePayload userFeed;
@@ -119,12 +119,13 @@ class _FeedComponentState extends State<FeedComponent> {
 
     // show the call to action widget where the user is prompted to add or buy cover
     Widget showCallToAction() {
-      return !widget.covers!.isNotEmpty
-          ? const SizedBox
-              .shrink() //FeedItemCoverAction extracted to app : CONSUMER
-          : CoverMiniCard(
-              cover: widget.covers![0],
-            );
+      if (widget.covers != null && widget.covers!.isNotEmpty) {
+        return CoverMiniCard(
+          cover: widget.covers![0],
+        );
+      }
+
+      return const SizedBox.shrink();
     }
 
     return ListView(

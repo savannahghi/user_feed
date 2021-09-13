@@ -1,3 +1,7 @@
+### 0.1.41-nullsafety
+
+- fix: null pointer error when loading covers
+
 ### 0.1.40-nullsafety
 
 - fix: remove hyphens from summary
