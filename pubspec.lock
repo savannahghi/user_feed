@@ -252,7 +252,7 @@ packages:
       name: domain_objects
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "0.0.27-nullsafety"
+    version: "0.0.29-nullsafety"
   dotted_border:
     dependency: transitive
     description:
@@ -575,7 +575,7 @@ packages:
       name: misc_utilities
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "0.1.26-nullsafety"
+    version: "0.1.29-nullsafety"
   mockito:
     dependency: "direct dev"
     description:
@@ -785,7 +785,7 @@ packages:
       name: shared_ui_components
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "0.1.37-nullsafety"
+    version: "0.1.38-nullsafety"
   shelf:
     dependency: transitive
     description:
