@@ -16,7 +16,6 @@ import 'package:user_feed/src/domain/entities/item.dart';
 import 'package:user_feed/src/domain/entities/link.dart';
 import 'package:user_feed/src/domain/value_objects/colors.dart';
 import 'package:user_feed/src/domain/value_objects/strings.dart';
-import 'package:user_feed/src/presentation/video_player/video_player.dart';
 import 'package:user_feed/src/presentation/widgets/feed_item_title_bar.dart';
 import 'package:user_feed/user_feed.dart';
 
@@ -144,7 +143,7 @@ class FeedItemContentViewState extends State<FeedItemContentView> {
                         padding: const EdgeInsets.only(top: 5),
                         child: SizedBox(
                           height: 200,
-                          child: VideoPlayer(videos: widget.videos),
+                          child: Text(widget.videos!.first!.url!),
                         ),
                       ),
                     if (widget.featureImage != '')

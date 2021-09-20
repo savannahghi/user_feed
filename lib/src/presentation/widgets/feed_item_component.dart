@@ -38,8 +38,8 @@ class FeedItemComponent extends StatelessWidget {
     final List<Link?>? links = feedItem.links;
 
     // extract videos
-    final List<Link?> videos =
-        processFeedMedia(links: links, linkType: LinkType.YOUTUBE_VIDEO);
+    final List<Link?>? videos =
+        processFeedMedia(links: links, linkType: LinkType.MP4);
 
     // the long text
     final String? text = feedItem.text;
@@ -49,7 +49,7 @@ class FeedItemComponent extends StatelessWidget {
     return InkWell(
       key: feedItemInkWell,
       onTap: () {
-        if (videos.isEmpty) {
+        if (videos == null || videos.isEmpty) {
           Navigator.of(context).push(
             MaterialPageRoute<FeedItemContentView>(
               builder: (_) => FeedItemContentView(

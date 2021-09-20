@@ -132,3 +132,5 @@ const String viewCoverCallToActionBody =
 const String buyInsurance = 'Buy Cover';
 const String addInsurance = 'Add Cover';
 const String viewCover = 'View Cover';
+const String defaultInitialFeedMp4Video =
+    'https://a.bewell.co.ke/videos/healthcare_simplified.mp4';

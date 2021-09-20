@@ -124,29 +124,29 @@ void main() {
     });
 
     test('should process feed media', () {
-      final List<Link?> images =
+      final List<Link?>? images =
           processFeedMedia(links: mockFeedLinks, linkType: LinkType.PNG_IMAGE);
       expect(images, isA<List<Link>>());
-      expect(images.isEmpty, false);
-      expect(images.length, 1);
+      expect(images?.isEmpty, false);
+      expect(images?.length, 1);
 
-      final List<Link?> videos = processFeedMedia(
-          links: mockFeedLinks, linkType: LinkType.YOUTUBE_VIDEO);
+      final List<Link?>? videos =
+          processFeedMedia(links: mockFeedLinks, linkType: LinkType.MP4);
       expect(videos, isA<List<Link>>());
-      expect(videos.isEmpty, false);
-      expect(videos.length, 1);
+      expect(videos?.isEmpty, false);
+      expect(videos?.length, 1);
 
-      final List<Link?> documents = processFeedMedia(
+      final List<Link?>? documents = processFeedMedia(
           links: mockFeedLinks, linkType: LinkType.PDF_DOCUMENT);
       expect(documents, isA<List<Link>>());
-      expect(documents.isEmpty, false);
-      expect(documents.length, 1);
+      expect(documents?.isEmpty, false);
+      expect(documents?.length, 1);
 
-      final List<Link?> links =
+      final List<Link?>? links =
           processFeedMedia(links: null, linkType: LinkType.PDF_DOCUMENT);
       expect(links, isA<List<Link>>());
-      expect(links.isEmpty, true);
-      expect(links.length, 0);
+      expect(links?.isEmpty, true);
+      expect(links?.length, 0);
     });
 
     test('should return router page ', () {

@@ -37,7 +37,7 @@ extension ActionTypeEx on ActionType {
 
 /// [LinkType]
 
-enum LinkType { YOUTUBE_VIDEO, PNG_IMAGE, PDF_DOCUMENT, SVG_IMAGE, UNKNOWN }
+enum LinkType { MP4, PNG_IMAGE, PDF_DOCUMENT, SVG_IMAGE, UNKNOWN }
 
 /// [LinkTypeEx] extends [LinkType] enum to get the values as
 /// strings

@@ -13,7 +13,7 @@ import 'package:user_feed/src/application/helpers/utils.dart';
 import 'package:user_feed/src/domain/value_objects/enums.dart';
 import 'package:user_feed/src/domain/value_objects/widget_keys.dart';
 import 'package:user_feed/src/presentation/image_viewer/image_grid.dart';
-import 'package:user_feed/src/presentation/video_player/video_player.dart';
+import 'package:user_feed/src/presentation/video_player/custom_video_player.dart';
 import 'package:user_feed/src/presentation/widgets/feed_item_body.dart';
 import '../../../mock_data.dart';
 import '../../../test_helpers.dart';
@@ -35,13 +35,13 @@ void main() {
           text: feedItemBody,
           itemTextType: TextType.PLAIN,
           videos: processFeedMedia(
-              links: mockMultipleFeedLinks, linkType: LinkType.YOUTUBE_VIDEO),
+              links: mockMultipleFeedLinks, linkType: LinkType.MP4),
         ),
       );
 
       await tester.pump(VisibilityDetectorController.instance.updateInterval);
 
-      expect(find.byType(VideoPlayer), findsOneWidget);
+      expect(find.byType(CustomVideoPlayer), findsOneWidget);
       expect(find.byType(Stack), findsWidgets);
       expect(find.byType(Positioned), findsWidgets);
       expect(find.byType(Container), findsWidgets);
@@ -65,8 +65,7 @@ void main() {
                 text: 'Feed item body',
                 itemTextType: TextType.PLAIN,
                 videos: processFeedMedia(
-                    links: mockMultipleFeedLinks2,
-                    linkType: LinkType.YOUTUBE_VIDEO),
+                    links: mockMultipleFeedLinks2, linkType: LinkType.MP4),
               );
             },
           ),

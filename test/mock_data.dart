@@ -20,17 +20,17 @@ final Nudge mockNudge1 = Nudge.fromJson(mockNudgeData1);
 final Nudge mockNudge2 = Nudge.fromJson(mockNudgeData2);
 
 final List<Link> mockFeedLinks = <Link>[
-  mockYoutubeVideoLink,
+  mockMP4VideoLink,
   mockImageLink,
   mockPdfLink
 ];
 
 final List<Link> emptyMockFeedLinks = <Link>[];
 
-final List<Link> notEmptyMockFeedLinks = <Link>[mockYoutubeVideoLink];
+final List<Link> notEmptyMockFeedLinks = <Link>[mockMP4VideoLink];
 
 final List<Link> mockMultipleFeedLinks = <Link>[
-  mockYoutubeVideoLink,
+  mockMP4VideoLink,
   mockImageLink,
   mockImageLink,
   mockImageLink,
@@ -253,11 +253,11 @@ final List<Action> mockFeedItemHideActions = <Action>[
   )
 ];
 
-final Link mockYoutubeVideoLink = Link.fromJson(
+final Link mockMP4VideoLink = Link.fromJson(
   <String, String>{
     'id': '1lmN7huRFi1PTCNIejxPQXy7KkC',
-    'url': 'https://www.youtube.com/watch?v=gcv2Z2AdpjM',
-    'linkType': 'YOUTUBE_VIDEO',
+    'url': 'https://a.bewell.co.ke/videos/what_you_can_do.mp4',
+    'linkType': 'MP4',
     'title': 'Be.Well lead',
     'description': 'Introducing Be.Well by Slade 360',
     'thumbnail':

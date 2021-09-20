@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 // Package imports:
 import 'package:shared_themes/spaces.dart';
 import 'package:shared_themes/text_themes.dart';
+import 'package:user_feed/src/application/helpers/chewie_utils.dart';
 
 // Project imports:
 import 'package:user_feed/src/application/helpers/utils.dart';
@@ -14,7 +15,7 @@ import 'package:user_feed/src/domain/value_objects/enums.dart';
 import 'package:user_feed/src/domain/value_objects/strings.dart';
 import 'package:user_feed/src/domain/value_objects/widget_keys.dart';
 import 'package:user_feed/src/presentation/image_viewer/image_grid.dart';
-import 'package:user_feed/src/presentation/video_player/video_player.dart';
+import 'package:user_feed/src/presentation/video_player/custom_video_player.dart';
 
 class FeedItemBody extends StatefulWidget {
   const FeedItemBody(
@@ -26,10 +27,10 @@ class FeedItemBody extends StatefulWidget {
     required this.videos,
   }) : super(key: key);
 
+  final TextType? itemTextType;
   final List<Link?>? links;
   final String summary;
   final String? text;
-  final TextType? itemTextType;
   final List<Link?>? videos;
 
   @override
@@ -37,10 +38,8 @@ class FeedItemBody extends StatefulWidget {
 }
 
 class FeedItemBodyState extends State<FeedItemBody> {
-  List<Link?>? images;
-
   List<Link?>? documents;
-
+  List<Link?>? images;
   int? remainingImageLength;
 
   @override
@@ -80,6 +79,8 @@ class FeedItemBodyState extends State<FeedItemBody> {
     final String summary = (widget.summary.contains('-') == true)
         ? removeHyphensSummary(widget.summary)!
         : widget.summary;
+    final ChewieUtils chewieUtils = ChewieUtils();
+    
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
@@ -120,7 +121,14 @@ class FeedItemBodyState extends State<FeedItemBody> {
           Padding(
             padding: const EdgeInsets.only(top: 5),
             child: SizedBox(
-                height: 200, child: VideoPlayer(videos: widget.videos)),
+              height: 200,
+              child: CustomVideoPlayer(
+                videos: widget.videos,
+                chewieController: chewieUtils.chewieController(
+                  videos: widget.videos,
+                ),
+              ),
+            ),
           ),
 
         // checks that there are actually images

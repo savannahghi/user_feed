@@ -164,7 +164,7 @@ String getFeedItemActionIconUrl(String actionName) {
 }
 
 /// processes media from the feed [links]
-List<Link?> processFeedMedia(
+List<Link?>? processFeedMedia(
     {required List<Link?>? links, required LinkType linkType}) {
   if (links == null) return <Link>[];
   switch (linkType) {
@@ -176,9 +176,9 @@ List<Link?> processFeedMedia(
       return links
           .where((Link? link) => link?.linkType == LinkType.PDF_DOCUMENT)
           .toList();
-    case LinkType.YOUTUBE_VIDEO:
+    case LinkType.MP4:
       return links
-          .where((Link? link) => link?.linkType == LinkType.YOUTUBE_VIDEO)
+          .where((Link? link) => link?.linkType == LinkType.MP4)
           .toList();
     default:
       return links;

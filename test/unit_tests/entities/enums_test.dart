@@ -13,7 +13,7 @@ void main() {
         expect(Handling.INLINE.name, 'INLINE');
         expect(ActionType.PRIMARY.name, 'PRIMARY');
         expect(ActionType.SECONDARY.name, 'SECONDARY');
-        expect(LinkType.YOUTUBE_VIDEO.name, 'YOUTUBE_VIDEO');
+        expect(LinkType.MP4.name, 'MP4');
         expect(Channel.SMS.name, 'SMS');
         expect(Flavour.PRO.name, 'PRO');
         expect(Visibility.SHOW.name, 'SHOW');

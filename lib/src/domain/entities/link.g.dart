@@ -65,7 +65,7 @@ K? _$enumDecodeNullable<K, V>(
 }
 
 const _$LinkTypeEnumMap = {
-  LinkType.YOUTUBE_VIDEO: 'YOUTUBE_VIDEO',
+  LinkType.MP4: 'MP4',
   LinkType.PNG_IMAGE: 'PNG_IMAGE',
   LinkType.PDF_DOCUMENT: 'PDF_DOCUMENT',
   LinkType.SVG_IMAGE: 'SVG_IMAGE',
