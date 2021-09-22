@@ -28,16 +28,18 @@ _$_Item _$_$_ItemFromJson(Map<String, dynamic> json) {
     text: json['text'] as String?,
     textType: _$enumDecodeNullable(_$TextTypeEnumMap, json['textType']),
     links: (json['links'] as List<dynamic>?)
-        ?.map((e) => Link.fromJson(e as Map<String, dynamic>))
+        ?.map(
+            (e) => e == null ? null : Link.fromJson(e as Map<String, dynamic>))
         .toList(),
     conversations: (json['conversations'] as List<dynamic>?)
-        ?.map((e) => Message.fromJson(e as Map<String, dynamic>))
+        ?.map((e) =>
+            e == null ? null : Message.fromJson(e as Map<String, dynamic>))
         .toList(),
     groups:
-        (json['groups'] as List<dynamic>?)?.map((e) => e as String).toList(),
-    users: (json['users'] as List<dynamic>?)?.map((e) => e as String).toList(),
+        (json['groups'] as List<dynamic>?)?.map((e) => e as String?).toList(),
+    users: (json['users'] as List<dynamic>?)?.map((e) => e as String?).toList(),
     notificationChannels: (json['notificationChannels'] as List<dynamic>?)
-        ?.map((e) => _$enumDecode(_$ChannelEnumMap, e))
+        ?.map((e) => _$enumDecodeNullable(_$ChannelEnumMap, e))
         .toList(),
   );
 }
@@ -58,8 +60,8 @@ Map<String, dynamic> _$_$_ItemToJson(_$_Item instance) => <String, dynamic>{
       'actions': instance.actions?.map((e) => e.toJson()).toList(),
       'text': instance.text,
       'textType': _$TextTypeEnumMap[instance.textType],
-      'links': instance.links?.map((e) => e.toJson()).toList(),
-      'conversations': instance.conversations?.map((e) => e.toJson()).toList(),
+      'links': instance.links?.map((e) => e?.toJson()).toList(),
+      'conversations': instance.conversations?.map((e) => e?.toJson()).toList(),
       'groups': instance.groups,
       'users': instance.users,
       'notificationChannels': instance.notificationChannels

@@ -201,9 +201,8 @@ class __$MessageCopyWithImpl<$Res> extends _$MessageCopyWithImpl<$Res>
   }
 }
 
-@JsonSerializable()
-
 /// @nodoc
+@JsonSerializable()
 class _$_Message implements _Message {
   _$_Message(
       {@JsonKey(name: 'id') this.id,

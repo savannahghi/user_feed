@@ -118,9 +118,8 @@ class __$VideoCopyWithImpl<$Res> extends _$VideoCopyWithImpl<$Res>
   }
 }
 
-@JsonSerializable()
-
 /// @nodoc
+@JsonSerializable()
 class _$_Video implements _Video {
   _$_Video({@JsonKey(name: 'id') this.id, @JsonKey(name: 'url') this.url});
 

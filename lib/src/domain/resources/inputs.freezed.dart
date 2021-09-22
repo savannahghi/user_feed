@@ -122,9 +122,8 @@ class __$FeedResponsePayloadCopyWithImpl<$Res>
   }
 }
 
-@JsonSerializable()
-
 /// @nodoc
+@JsonSerializable()
 class _$_FeedResponsePayload implements _FeedResponsePayload {
   _$_FeedResponsePayload({@JsonKey(name: 'data') required this.data});
 
@@ -288,9 +287,8 @@ class __$GetFeedDataCopyWithImpl<$Res> extends _$GetFeedDataCopyWithImpl<$Res>
   }
 }
 
-@JsonSerializable()
-
 /// @nodoc
+@JsonSerializable()
 class _$_GetFeedData implements _GetFeedData {
   _$_GetFeedData({@JsonKey(name: 'getFeed') required this.getFeed});
 

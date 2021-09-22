@@ -1,3 +1,7 @@
+### 0.1.42-nullsafety
+
+- chore: perform checks on nullable fields
+
 ### 0.1.41-nullsafety
 
 - fix: null pointer error when loading covers
@@ -34,6 +38,7 @@ chore: performance improvements
 ### 0.1.33-nullsafety
 
 - fix: change add cover call to action design
+
 ### 0.1.32-nullsafety
 
 - fix: update shimmer loading
@@ -48,7 +53,7 @@ chore: performance improvements
 
 ### 0.1.29-nullsafety
 
-- Draft: fix: retire pdf releated code (unused) 
+- Draft: fix: retire pdf releated code (unused)
 
 ### 0.1.28-nullsafety
 
@@ -62,10 +67,10 @@ chore: performance improvements
 
 - feat: add view cover to feed mini card
 - feat: add buy cover and cover call to action
-- refactor: remove feed_global_action_bar 
+- refactor: remove feed_global_action_bar
 - chore: update packages
 
-### Pre - 0.1.26 
+### Pre - 0.1.26
 
 - Code testing, refactor and upgrading design system for user_feed on both apps
 - Assorted bug fixes and enhancements

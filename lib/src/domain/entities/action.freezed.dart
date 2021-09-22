@@ -238,9 +238,8 @@ class __$ActionCopyWithImpl<$Res> extends _$ActionCopyWithImpl<$Res>
   }
 }
 
-@JsonSerializable()
-
 /// @nodoc
+@JsonSerializable()
 class _$_Action implements _Action {
   _$_Action(
       {@JsonKey(name: 'id')

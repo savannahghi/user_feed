@@ -102,9 +102,8 @@ class __$PayloadCopyWithImpl<$Res> extends _$PayloadCopyWithImpl<$Res>
   }
 }
 
-@JsonSerializable()
-
 /// @nodoc
+@JsonSerializable()
 class _$_Payload implements _Payload {
   _$_Payload({@JsonKey(name: 'pattern') this.pattern});
 

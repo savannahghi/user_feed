@@ -121,9 +121,8 @@ class __$ImageCopyWithImpl<$Res> extends _$ImageCopyWithImpl<$Res>
   }
 }
 
-@JsonSerializable()
-
 /// @nodoc
+@JsonSerializable()
 class _$_Image implements _Image {
   _$_Image(
       {@JsonKey(name: 'id') this.id, @JsonKey(name: 'base64') this.base64});

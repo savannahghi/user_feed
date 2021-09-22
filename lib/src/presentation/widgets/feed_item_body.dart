@@ -23,20 +23,20 @@ class FeedItemBody extends StatefulWidget {
     required this.videos,
   }) : super(key: key);
 
-  final List<Link>? links;
+  final List<Link?>? links;
   final String summary;
   final String? text;
   final TextType? itemTextType;
-  final List<Link>? videos;
+  final List<Link?>? videos;
 
   @override
   FeedItemBodyState createState() => FeedItemBodyState();
 }
 
 class FeedItemBodyState extends State<FeedItemBody> {
-  List<Link>? images;
+  List<Link?>? images;
 
-  List<Link>? documents;
+  List<Link?>? documents;
 
   int? remainingImageLength;
 
@@ -69,7 +69,7 @@ class FeedItemBodyState extends State<FeedItemBody> {
   }
 
   Widget feedItemImageGridNavBuilder(BuildContext context) {
-    return FeedItemImageGrid(images: images!);
+    return FeedItemImageGrid(images: images);
   }
 
   @override
@@ -113,19 +113,19 @@ class FeedItemBodyState extends State<FeedItemBody> {
         ),
         smallVerticalSizedBox,
         // feed item videos are displayed here
-        if (widget.videos!.isNotEmpty)
+        if (widget.videos != null && widget.videos!.isNotEmpty)
           Padding(
             padding: const EdgeInsets.only(top: 5),
             child: SizedBox(
-                height: 200, child: VideoPlayer(videos: widget.videos!)),
+                height: 200, child: VideoPlayer(videos: widget.videos)),
           ),
 
         // checks that there are actually images
-        if (images!.isNotEmpty)
+        if (images != null && images!.isNotEmpty)
           Stack(
             children: <Widget>[
               // use the first image as a cover
-              Image.network(images!.first.url!),
+              Image.network(images!.first!.url!),
 
               // an indicator to show the number of images remaining in the gallery
               if (remainingImageLength != 0 && remainingImageLength! > 1)

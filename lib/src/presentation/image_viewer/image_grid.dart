@@ -12,7 +12,7 @@ import 'image_viewer.dart';
 class FeedItemImageGrid extends StatelessWidget {
   const FeedItemImageGrid({Key? key, required this.images}) : super(key: key);
 
-  final List<Link> images;
+  final List<Link?>? images;
 
   @override
   Widget build(BuildContext context) {
@@ -26,7 +26,7 @@ class FeedItemImageGrid extends StatelessWidget {
             shrinkWrap: true,
             physics: const BouncingScrollPhysics(),
             children: <Widget>[
-              if (images.isEmpty)
+              if (images == null || images!.isEmpty)
                 Container()
               else
                 Container(
@@ -37,18 +37,18 @@ class FeedItemImageGrid extends StatelessWidget {
                     crossAxisCount: 4,
                     mainAxisSpacing: 5.0,
                     crossAxisSpacing: 5.0,
-                    itemCount: images.length,
+                    itemCount: images!.length,
                     staggeredTileBuilder: (int index) =>
                         StaggeredTile.count(2, index.isEven ? 2 : 1),
                     itemBuilder: (BuildContext context, int index) {
-                      final String imageUrl = images[index].url!;
+                      final String imageUrl = images![index]!.url!;
                       return GestureDetector(
-                        key: Key(images[index].url!),
+                        key: Key(images![index]!.url!),
                         onTap: () {
                           Navigator.of(context).push(
                             MaterialPageRoute<FeedImageViewer>(
                               builder: (_) => FeedImageViewer(
-                                imageUrl: images[index].url,
+                                imageUrl: images![index]!.url,
                               ),
                             ),
                           );

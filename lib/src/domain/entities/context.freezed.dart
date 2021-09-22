@@ -184,9 +184,8 @@ class __$ContextCopyWithImpl<$Res> extends _$ContextCopyWithImpl<$Res>
   }
 }
 
-@JsonSerializable()
-
 /// @nodoc
+@JsonSerializable()
 class _$_Context implements _Context {
   _$_Context(
       {@JsonKey(name: 'userID') this.userID,
