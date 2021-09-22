@@ -183,9 +183,8 @@ class __$EventCopyWithImpl<$Res> extends _$EventCopyWithImpl<$Res>
   }
 }
 
-@JsonSerializable()
-
 /// @nodoc
+@JsonSerializable()
 class _$_Event implements _Event {
   _$_Event(
       {@JsonKey(name: 'id') this.id,

@@ -203,9 +203,8 @@ class __$LinkCopyWithImpl<$Res> extends _$LinkCopyWithImpl<$Res>
   }
 }
 
-@JsonSerializable()
-
 /// @nodoc
+@JsonSerializable()
 class _$_Link implements _Link {
   _$_Link(
       {@JsonKey(name: 'id')

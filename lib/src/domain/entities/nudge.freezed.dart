@@ -317,9 +317,8 @@ class __$NudgeCopyWithImpl<$Res> extends _$NudgeCopyWithImpl<$Res>
   }
 }
 
-@JsonSerializable()
-
 /// @nodoc
+@JsonSerializable()
 class _$_Nudge implements _Nudge {
   _$_Nudge(
       {@JsonKey(name: 'id')

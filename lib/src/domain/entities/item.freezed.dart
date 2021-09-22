@@ -52,15 +52,15 @@ class _$ItemTearOff {
       @JsonKey(name: 'textType')
           TextType? textType,
       @JsonKey(name: 'links')
-          List<Link>? links,
+          List<Link?>? links,
       @JsonKey(name: 'conversations')
-          List<Message>? conversations,
+          List<Message?>? conversations,
       @JsonKey(name: 'groups')
-          List<String>? groups,
+          List<String?>? groups,
       @JsonKey(name: 'users')
-          List<String>? users,
+          List<String?>? users,
       @JsonKey(name: 'notificationChannels')
-          List<Channel>? notificationChannels}) {
+          List<Channel?>? notificationChannels}) {
     return _Item(
       id: id,
       sequenceNumber: sequenceNumber,
@@ -126,15 +126,16 @@ mixin _$Item {
   @JsonKey(name: 'textType')
   TextType? get textType => throw _privateConstructorUsedError;
   @JsonKey(name: 'links')
-  List<Link>? get links => throw _privateConstructorUsedError;
+  List<Link?>? get links => throw _privateConstructorUsedError;
   @JsonKey(name: 'conversations')
-  List<Message>? get conversations => throw _privateConstructorUsedError;
+  List<Message?>? get conversations => throw _privateConstructorUsedError;
   @JsonKey(name: 'groups')
-  List<String>? get groups => throw _privateConstructorUsedError;
+  List<String?>? get groups => throw _privateConstructorUsedError;
   @JsonKey(name: 'users')
-  List<String>? get users => throw _privateConstructorUsedError;
+  List<String?>? get users => throw _privateConstructorUsedError;
   @JsonKey(name: 'notificationChannels')
-  List<Channel>? get notificationChannels => throw _privateConstructorUsedError;
+  List<Channel?>? get notificationChannels =>
+      throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -177,15 +178,15 @@ abstract class $ItemCopyWith<$Res> {
       @JsonKey(name: 'textType')
           TextType? textType,
       @JsonKey(name: 'links')
-          List<Link>? links,
+          List<Link?>? links,
       @JsonKey(name: 'conversations')
-          List<Message>? conversations,
+          List<Message?>? conversations,
       @JsonKey(name: 'groups')
-          List<String>? groups,
+          List<String?>? groups,
       @JsonKey(name: 'users')
-          List<String>? users,
+          List<String?>? users,
       @JsonKey(name: 'notificationChannels')
-          List<Channel>? notificationChannels});
+          List<Channel?>? notificationChannels});
 
   $LinkCopyWith<$Res>? get icon;
 }
@@ -285,23 +286,23 @@ class _$ItemCopyWithImpl<$Res> implements $ItemCopyWith<$Res> {
       links: links == freezed
           ? _value.links
           : links // ignore: cast_nullable_to_non_nullable
-              as List<Link>?,
+              as List<Link?>?,
       conversations: conversations == freezed
           ? _value.conversations
           : conversations // ignore: cast_nullable_to_non_nullable
-              as List<Message>?,
+              as List<Message?>?,
       groups: groups == freezed
           ? _value.groups
           : groups // ignore: cast_nullable_to_non_nullable
-              as List<String>?,
+              as List<String?>?,
       users: users == freezed
           ? _value.users
           : users // ignore: cast_nullable_to_non_nullable
-              as List<String>?,
+              as List<String?>?,
       notificationChannels: notificationChannels == freezed
           ? _value.notificationChannels
           : notificationChannels // ignore: cast_nullable_to_non_nullable
-              as List<Channel>?,
+              as List<Channel?>?,
     ));
   }
 
@@ -354,15 +355,15 @@ abstract class _$ItemCopyWith<$Res> implements $ItemCopyWith<$Res> {
       @JsonKey(name: 'textType')
           TextType? textType,
       @JsonKey(name: 'links')
-          List<Link>? links,
+          List<Link?>? links,
       @JsonKey(name: 'conversations')
-          List<Message>? conversations,
+          List<Message?>? conversations,
       @JsonKey(name: 'groups')
-          List<String>? groups,
+          List<String?>? groups,
       @JsonKey(name: 'users')
-          List<String>? users,
+          List<String?>? users,
       @JsonKey(name: 'notificationChannels')
-          List<Channel>? notificationChannels});
+          List<Channel?>? notificationChannels});
 
   @override
   $LinkCopyWith<$Res>? get icon;
@@ -464,30 +465,29 @@ class __$ItemCopyWithImpl<$Res> extends _$ItemCopyWithImpl<$Res>
       links: links == freezed
           ? _value.links
           : links // ignore: cast_nullable_to_non_nullable
-              as List<Link>?,
+              as List<Link?>?,
       conversations: conversations == freezed
           ? _value.conversations
           : conversations // ignore: cast_nullable_to_non_nullable
-              as List<Message>?,
+              as List<Message?>?,
       groups: groups == freezed
           ? _value.groups
           : groups // ignore: cast_nullable_to_non_nullable
-              as List<String>?,
+              as List<String?>?,
       users: users == freezed
           ? _value.users
           : users // ignore: cast_nullable_to_non_nullable
-              as List<String>?,
+              as List<String?>?,
       notificationChannels: notificationChannels == freezed
           ? _value.notificationChannels
           : notificationChannels // ignore: cast_nullable_to_non_nullable
-              as List<Channel>?,
+              as List<Channel?>?,
     ));
   }
 }
 
-@JsonSerializable()
-
 /// @nodoc
+@JsonSerializable()
 class _$_Item implements _Item {
   _$_Item(
       {@JsonKey(name: 'id') this.id,
@@ -561,19 +561,19 @@ class _$_Item implements _Item {
   final TextType? textType;
   @override
   @JsonKey(name: 'links')
-  final List<Link>? links;
+  final List<Link?>? links;
   @override
   @JsonKey(name: 'conversations')
-  final List<Message>? conversations;
+  final List<Message?>? conversations;
   @override
   @JsonKey(name: 'groups')
-  final List<String>? groups;
+  final List<String?>? groups;
   @override
   @JsonKey(name: 'users')
-  final List<String>? users;
+  final List<String?>? users;
   @override
   @JsonKey(name: 'notificationChannels')
-  final List<Channel>? notificationChannels;
+  final List<Channel?>? notificationChannels;
 
   @override
   String toString() {
@@ -704,15 +704,15 @@ abstract class _Item implements Item {
       @JsonKey(name: 'textType')
           TextType? textType,
       @JsonKey(name: 'links')
-          List<Link>? links,
+          List<Link?>? links,
       @JsonKey(name: 'conversations')
-          List<Message>? conversations,
+          List<Message?>? conversations,
       @JsonKey(name: 'groups')
-          List<String>? groups,
+          List<String?>? groups,
       @JsonKey(name: 'users')
-          List<String>? users,
+          List<String?>? users,
       @JsonKey(name: 'notificationChannels')
-          List<Channel>? notificationChannels}) = _$_Item;
+          List<Channel?>? notificationChannels}) = _$_Item;
 
   factory _Item.fromJson(Map<String, dynamic> json) = _$_Item.fromJson;
 
@@ -763,19 +763,20 @@ abstract class _Item implements Item {
   TextType? get textType => throw _privateConstructorUsedError;
   @override
   @JsonKey(name: 'links')
-  List<Link>? get links => throw _privateConstructorUsedError;
+  List<Link?>? get links => throw _privateConstructorUsedError;
   @override
   @JsonKey(name: 'conversations')
-  List<Message>? get conversations => throw _privateConstructorUsedError;
+  List<Message?>? get conversations => throw _privateConstructorUsedError;
   @override
   @JsonKey(name: 'groups')
-  List<String>? get groups => throw _privateConstructorUsedError;
+  List<String?>? get groups => throw _privateConstructorUsedError;
   @override
   @JsonKey(name: 'users')
-  List<String>? get users => throw _privateConstructorUsedError;
+  List<String?>? get users => throw _privateConstructorUsedError;
   @override
   @JsonKey(name: 'notificationChannels')
-  List<Channel>? get notificationChannels => throw _privateConstructorUsedError;
+  List<Channel?>? get notificationChannels =>
+      throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
   _$ItemCopyWith<_Item> get copyWith => throw _privateConstructorUsedError;

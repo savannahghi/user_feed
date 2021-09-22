@@ -31,10 +31,10 @@ class FeedItemComponent extends StatelessWidget {
     /// for the [FeedItemBody]
     ///
     /// - links contain a mixture of docs, images and videos
-    final List<Link>? links = feedItem.links;
+    final List<Link?>? links = feedItem.links;
 
     // extract videos
-    final List<Link> videos =
+    final List<Link?> videos =
         processFeedMedia(links: links, linkType: LinkType.YOUTUBE_VIDEO);
 
     // the long text

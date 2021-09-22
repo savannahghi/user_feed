@@ -25,11 +25,11 @@ class Item with _$Item {
     @JsonKey(name: 'actions') List<Action>? actions,
     @JsonKey(name: 'text') String? text,
     @JsonKey(name: 'textType') TextType? textType,
-    @JsonKey(name: 'links') List<Link>? links,
-    @JsonKey(name: 'conversations') List<Message>? conversations,
-    @JsonKey(name: 'groups') List<String>? groups,
-    @JsonKey(name: 'users') List<String>? users,
-    @JsonKey(name: 'notificationChannels') List<Channel>? notificationChannels,
+    @JsonKey(name: 'links') List<Link?>? links,
+    @JsonKey(name: 'conversations') List<Message?>? conversations,
+    @JsonKey(name: 'groups') List<String?>? groups,
+    @JsonKey(name: 'users') List<String?>? users,
+    @JsonKey(name: 'notificationChannels') List<Channel?>? notificationChannels,
   }) = _Item;
 
   factory Item.fromJson(Map<String, dynamic> json) => _$ItemFromJson(json);

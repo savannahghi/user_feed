@@ -30,8 +30,8 @@ class FeedItemContentView extends StatefulWidget {
   final String summary;
   final String? text;
   final TextType? itemTextType;
-  final List<Link>? links;
-  final List<Link> videos;
+  final List<Link?>? links;
+  final List<Link?>? videos;
 
   @override
   FeedItemContentViewState createState() => FeedItemContentViewState();
@@ -132,7 +132,7 @@ class FeedItemContentViewState extends State<FeedItemContentView> {
                       itemID: feedItemID,
                     ),
                     mediumVerticalSizedBox,
-                    if (widget.videos.isNotEmpty)
+                    if (widget.videos != null && widget.videos!.isNotEmpty)
                       Padding(
                         padding: const EdgeInsets.only(top: 5),
                         child: SizedBox(

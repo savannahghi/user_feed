@@ -16,7 +16,7 @@ class VideoPlayer extends StatefulWidget {
   const VideoPlayer({Key? key, required this.videos, this.videoController})
       : super(key: key);
 
-  final List<Link> videos;
+  final List<Link?>? videos;
   final YoutubePlayerController? videoController;
 
   @override
@@ -31,13 +31,13 @@ class VideoPlayerState extends State<VideoPlayer> {
   final List<String?> videoIds = <String>[];
 
   void getVideoID() {
-    if (widget.videos.isEmpty) {
+    if (widget.videos == null || widget.videos!.isEmpty) {
       return this.videoIds.add(defaultInitialFeedVideoUrl);
     }
 
-    widget.videos
-        .map((Link video) =>
-            this.videoIds.add(YoutubePlayer.convertUrlToId(video.url!)))
+    widget.videos!
+        .map((Link? video) =>
+            this.videoIds.add(YoutubePlayer.convertUrlToId(video!.url!)))
         .toList();
   }
 
@@ -99,7 +99,7 @@ class VideoPlayerState extends State<VideoPlayer> {
 
   @override
   Widget build(BuildContext context) {
-    if (widget.videos.isEmpty) {
+    if (widget.videos == null || widget.videos!.isEmpty) {
       return const SizedBox();
     } else {
       return VisibilityDetector(

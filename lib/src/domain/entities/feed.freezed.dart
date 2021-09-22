@@ -243,9 +243,8 @@ class __$FeedCopyWithImpl<$Res> extends _$FeedCopyWithImpl<$Res>
   }
 }
 
-@JsonSerializable()
-
 /// @nodoc
+@JsonSerializable()
 class _$_Feed implements _Feed {
   _$_Feed(
       {@JsonKey(name: 'id') this.id,

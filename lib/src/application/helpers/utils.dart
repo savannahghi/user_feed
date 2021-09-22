@@ -159,21 +159,21 @@ String getFeedItemActionIconUrl(String actionName) {
 }
 
 /// processes media from the feed [links]
-List<Link> processFeedMedia(
-    {required List<Link>? links, required LinkType linkType}) {
+List<Link?> processFeedMedia(
+    {required List<Link?>? links, required LinkType linkType}) {
   if (links == null) return <Link>[];
   switch (linkType) {
     case LinkType.PNG_IMAGE:
       return links
-          .where((Link link) => link.linkType == LinkType.PNG_IMAGE)
+          .where((Link? link) => link?.linkType == LinkType.PNG_IMAGE)
           .toList();
     case LinkType.PDF_DOCUMENT:
       return links
-          .where((Link link) => link.linkType == LinkType.PDF_DOCUMENT)
+          .where((Link? link) => link?.linkType == LinkType.PDF_DOCUMENT)
           .toList();
     case LinkType.YOUTUBE_VIDEO:
       return links
-          .where((Link link) => link.linkType == LinkType.YOUTUBE_VIDEO)
+          .where((Link? link) => link?.linkType == LinkType.YOUTUBE_VIDEO)
           .toList();
     default:
       return links;
