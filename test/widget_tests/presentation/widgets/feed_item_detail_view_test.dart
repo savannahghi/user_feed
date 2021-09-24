@@ -47,6 +47,7 @@ void main() {
                 summary: '---------------This is a summary',
                 text: feedItemBody,
                 videos: emptyMockFeedLinks,
+                featureImage: '',
               );
             }),
           ),
@@ -67,6 +68,7 @@ void main() {
                 summary: summary,
                 text: '<a href="https://github.com">Github</a>',
                 videos: emptyMockFeedLinks,
+                featureImage: 'https://github.com',
               );
             }),
           ),
@@ -86,6 +88,7 @@ void main() {
                 summary: summary,
                 text: '<a href="https://github.com">Github</a>',
                 videos: notEmptyMockFeedLinks,
+                featureImage: '',
               );
             }),
           ),

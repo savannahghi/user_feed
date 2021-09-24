@@ -1,3 +1,6 @@
+### 0.1.43-nullsafety
+
+- feat: add feature image
 ### 0.1.42-nullsafety
 
 - chore: perform checks on nullable fields

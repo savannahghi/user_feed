@@ -8,6 +8,7 @@ part of 'item.dart';
 
 _$_Item _$_$_ItemFromJson(Map<String, dynamic> json) {
   return _$_Item(
+    featureImage: json['featureImage'] as String?,
     id: json['id'] as String?,
     sequenceNumber: json['sequenceNumber'] as int?,
     persistent: json['persistent'] as bool?,
@@ -45,6 +46,7 @@ _$_Item _$_$_ItemFromJson(Map<String, dynamic> json) {
 }
 
 Map<String, dynamic> _$_$_ItemToJson(_$_Item instance) => <String, dynamic>{
+      'featureImage': instance.featureImage,
       'id': instance.id,
       'sequenceNumber': instance.sequenceNumber,
       'persistent': instance.persistent,

@@ -387,6 +387,8 @@ final Item mockFeedItem2 = Item.fromJson(
 );
 
 final Map<String, dynamic> mockItemData = <String, dynamic>{
+  'featureImage':
+      'https://assets.healthcloud.co.ke/items/videos/thumbs/01_lead.png',
   'id': '1ns2oCuWbdA67Qv94XNRM3IXejh',
   'sequenceNumber': 1,
   'expiry': '2121-04-18T07:30:50Z',
