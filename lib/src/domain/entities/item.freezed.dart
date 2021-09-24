@@ -21,7 +21,9 @@ class _$ItemTearOff {
   const _$ItemTearOff();
 
   _Item call(
-      {@JsonKey(name: 'id')
+      {@JsonKey(name: 'featureImage')
+          String? featureImage,
+      @JsonKey(name: 'id')
           String? id,
       @JsonKey(name: 'sequenceNumber')
           int? sequenceNumber,
@@ -62,6 +64,7 @@ class _$ItemTearOff {
       @JsonKey(name: 'notificationChannels')
           List<Channel?>? notificationChannels}) {
     return _Item(
+      featureImage: featureImage,
       id: id,
       sequenceNumber: sequenceNumber,
       persistent: persistent,
@@ -95,6 +98,8 @@ const $Item = _$ItemTearOff();
 
 /// @nodoc
 mixin _$Item {
+  @JsonKey(name: 'featureImage')
+  String? get featureImage => throw _privateConstructorUsedError;
   @JsonKey(name: 'id')
   String? get id => throw _privateConstructorUsedError;
   @JsonKey(name: 'sequenceNumber')
@@ -147,7 +152,9 @@ abstract class $ItemCopyWith<$Res> {
   factory $ItemCopyWith(Item value, $Res Function(Item) then) =
       _$ItemCopyWithImpl<$Res>;
   $Res call(
-      {@JsonKey(name: 'id')
+      {@JsonKey(name: 'featureImage')
+          String? featureImage,
+      @JsonKey(name: 'id')
           String? id,
       @JsonKey(name: 'sequenceNumber')
           int? sequenceNumber,
@@ -201,6 +208,7 @@ class _$ItemCopyWithImpl<$Res> implements $ItemCopyWith<$Res> {
 
   @override
   $Res call({
+    Object? featureImage = freezed,
     Object? id = freezed,
     Object? sequenceNumber = freezed,
     Object? persistent = freezed,
@@ -223,6 +231,10 @@ class _$ItemCopyWithImpl<$Res> implements $ItemCopyWith<$Res> {
     Object? notificationChannels = freezed,
   }) {
     return _then(_value.copyWith(
+      featureImage: featureImage == freezed
+          ? _value.featureImage
+          : featureImage // ignore: cast_nullable_to_non_nullable
+              as String?,
       id: id == freezed
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -324,7 +336,9 @@ abstract class _$ItemCopyWith<$Res> implements $ItemCopyWith<$Res> {
       __$ItemCopyWithImpl<$Res>;
   @override
   $Res call(
-      {@JsonKey(name: 'id')
+      {@JsonKey(name: 'featureImage')
+          String? featureImage,
+      @JsonKey(name: 'id')
           String? id,
       @JsonKey(name: 'sequenceNumber')
           int? sequenceNumber,
@@ -380,6 +394,7 @@ class __$ItemCopyWithImpl<$Res> extends _$ItemCopyWithImpl<$Res>
 
   @override
   $Res call({
+    Object? featureImage = freezed,
     Object? id = freezed,
     Object? sequenceNumber = freezed,
     Object? persistent = freezed,
@@ -402,6 +417,10 @@ class __$ItemCopyWithImpl<$Res> extends _$ItemCopyWithImpl<$Res>
     Object? notificationChannels = freezed,
   }) {
     return _then(_Item(
+      featureImage: featureImage == freezed
+          ? _value.featureImage
+          : featureImage // ignore: cast_nullable_to_non_nullable
+              as String?,
       id: id == freezed
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -490,7 +509,8 @@ class __$ItemCopyWithImpl<$Res> extends _$ItemCopyWithImpl<$Res>
 @JsonSerializable()
 class _$_Item implements _Item {
   _$_Item(
-      {@JsonKey(name: 'id') this.id,
+      {@JsonKey(name: 'featureImage') this.featureImage,
+      @JsonKey(name: 'id') this.id,
       @JsonKey(name: 'sequenceNumber') this.sequenceNumber,
       @JsonKey(name: 'persistent') this.persistent,
       @JsonKey(name: 'icon') this.icon,
@@ -514,6 +534,9 @@ class _$_Item implements _Item {
   factory _$_Item.fromJson(Map<String, dynamic> json) =>
       _$_$_ItemFromJson(json);
 
+  @override
+  @JsonKey(name: 'featureImage')
+  final String? featureImage;
   @override
   @JsonKey(name: 'id')
   final String? id;
@@ -577,13 +600,16 @@ class _$_Item implements _Item {
 
   @override
   String toString() {
-    return 'Item(id: $id, sequenceNumber: $sequenceNumber, persistent: $persistent, icon: $icon, author: $author, tagline: $tagline, timestamp: $timestamp, expiry: $expiry, label: $label, summary: $summary, visibility: $visibility, status: $status, actions: $actions, text: $text, textType: $textType, links: $links, conversations: $conversations, groups: $groups, users: $users, notificationChannels: $notificationChannels)';
+    return 'Item(featureImage: $featureImage, id: $id, sequenceNumber: $sequenceNumber, persistent: $persistent, icon: $icon, author: $author, tagline: $tagline, timestamp: $timestamp, expiry: $expiry, label: $label, summary: $summary, visibility: $visibility, status: $status, actions: $actions, text: $text, textType: $textType, links: $links, conversations: $conversations, groups: $groups, users: $users, notificationChannels: $notificationChannels)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other is _Item &&
+            (identical(other.featureImage, featureImage) ||
+                const DeepCollectionEquality()
+                    .equals(other.featureImage, featureImage)) &&
             (identical(other.id, id) ||
                 const DeepCollectionEquality().equals(other.id, id)) &&
             (identical(other.sequenceNumber, sequenceNumber) ||
@@ -639,6 +665,7 @@ class _$_Item implements _Item {
   @override
   int get hashCode =>
       runtimeType.hashCode ^
+      const DeepCollectionEquality().hash(featureImage) ^
       const DeepCollectionEquality().hash(id) ^
       const DeepCollectionEquality().hash(sequenceNumber) ^
       const DeepCollectionEquality().hash(persistent) ^
@@ -673,7 +700,9 @@ class _$_Item implements _Item {
 
 abstract class _Item implements Item {
   factory _Item(
-      {@JsonKey(name: 'id')
+      {@JsonKey(name: 'featureImage')
+          String? featureImage,
+      @JsonKey(name: 'id')
           String? id,
       @JsonKey(name: 'sequenceNumber')
           int? sequenceNumber,
@@ -716,6 +745,9 @@ abstract class _Item implements Item {
 
   factory _Item.fromJson(Map<String, dynamic> json) = _$_Item.fromJson;
 
+  @override
+  @JsonKey(name: 'featureImage')
+  String? get featureImage => throw _privateConstructorUsedError;
   @override
   @JsonKey(name: 'id')
   String? get id => throw _privateConstructorUsedError;

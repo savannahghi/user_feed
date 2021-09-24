@@ -26,6 +26,7 @@ class FeedItemComponent extends StatelessWidget {
     final String author = feedItem.author!;
     final String summary = feedItem.summary!;
     final String iconUrl = feedItem.icon!.url!;
+    final String featureImage = feedItem.featureImage ?? '';
     final String timestamp = getHumanReadableTimestamp(feedItem.timestamp!);
 
     /// for the [FeedItemBody]
@@ -54,6 +55,7 @@ class FeedItemComponent extends StatelessWidget {
                 itemTextType: itemTextType,
                 feedItem: feedItem,
                 videos: videos,
+                featureImage: featureImage,
               ),
             ),
           );

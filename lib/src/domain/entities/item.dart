@@ -10,6 +10,7 @@ part 'item.g.dart';
 @freezed
 class Item with _$Item {
   factory Item({
+    @JsonKey(name: 'featureImage') String? featureImage,
     @JsonKey(name: 'id') String? id,
     @JsonKey(name: 'sequenceNumber') int? sequenceNumber,
     @JsonKey(name: 'persistent') bool? persistent,
