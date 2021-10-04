@@ -1,17 +1,15 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:shared_themes/spaces.dart';
+import 'package:shared_themes/text_themes.dart';
+import 'package:user_feed/src/application/helpers/utils.dart';
 import 'package:user_feed/src/domain/entities/link.dart';
-
 import 'package:user_feed/src/domain/value_objects/colors.dart';
 import 'package:user_feed/src/domain/value_objects/enums.dart';
 import 'package:user_feed/src/domain/value_objects/strings.dart';
-import 'package:user_feed/src/application/helpers/utils.dart';
 import 'package:user_feed/src/domain/value_objects/widget_keys.dart';
 import 'package:user_feed/src/presentation/image_viewer/image_grid.dart';
 import 'package:user_feed/src/presentation/video_player/video_player.dart';
-
-import 'package:shared_themes/spaces.dart';
-import 'package:shared_themes/text_themes.dart';
 
 class FeedItemBody extends StatefulWidget {
   const FeedItemBody(

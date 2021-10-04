@@ -5,10 +5,10 @@ import 'package:mocktail_image_network/mocktail_image_network.dart';
 import 'package:photo_view/photo_view.dart';
 import 'package:user_feed/src/domain/entities/link.dart';
 import 'package:user_feed/src/domain/value_objects/constants.dart';
+import 'package:user_feed/src/domain/value_objects/widget_keys.dart';
 import 'package:user_feed/src/presentation/image_viewer/image_grid.dart';
 import 'package:user_feed/src/presentation/image_viewer/image_viewer.dart';
 import 'package:user_feed/src/presentation/router/router_generator.dart';
-import 'package:user_feed/src/domain/value_objects/widget_keys.dart';
 
 import '../../../mock_data.dart';
 import '../../../mocks.dart';
@@ -21,7 +21,7 @@ void main() {
         (WidgetTester tester) async {
       await mockNetworkImages(() async {
         await tester.pumpWidget(MaterialApp(
-          onGenerateRoute: RouteGenerator.generateRoute,
+          onGenerateRoute: generateRoute,
           navigatorObservers: <NavigatorObserver>[mockObserver],
           home: Scaffold(
             body: FeedItemImageGrid(
@@ -55,7 +55,7 @@ void main() {
     testWidgets('should render empty container when there are no images',
         (WidgetTester tester) async {
       await tester.pumpWidget(MaterialApp(
-        onGenerateRoute: RouteGenerator.generateRoute,
+        onGenerateRoute: generateRoute,
         navigatorObservers: <NavigatorObserver>[mockObserver],
         home: const Scaffold(
           body: FeedItemImageGrid(images: <Link>[]),

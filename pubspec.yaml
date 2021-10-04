@@ -1,6 +1,6 @@
 name: user_feed
 description: A package for viewing a user's feed
-version: 0.1.43-nullsafety
+version: 0.1.44-nullsafety
 homepage: https://github.com/savannahghi/user_feed
 repository: https://github.com/savannahghi/user_feed
 issue_tracker: https://github.com/savannahghi/user_feed/issues
@@ -24,7 +24,7 @@ dependencies:
   json_annotation: ^4.0.1
   json_serializable: ^4.1.3
   mocktail_image_network: ^0.1.0 # for mocking
-  photo_view: ^0.11.1
+  photo_view: ^0.12.0
   rxdart: ^0.27.1
   shared_themes: ^0.1.0 # internal (formerly sil_themes)
   shared_ui_components: ^0.1.38-nullsafety # internal (formerly sil_ui_components)

@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:shared_themes/colors.dart';
 import 'package:user_feed/src/domain/value_objects/asset_strings.dart';
 import 'package:user_feed/src/domain/value_objects/strings.dart';
-
-import 'package:shared_themes/colors.dart';
 
 class FeedZeroState extends StatelessWidget {
   const FeedZeroState({Key? key, required this.subtitle}) : super(key: key);

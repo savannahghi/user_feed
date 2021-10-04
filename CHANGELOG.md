@@ -1,3 +1,6 @@
+### 0.1.44-nullsafety
+
+- chore: update package
 ### 0.1.43-nullsafety
 
 - feat: add feature image

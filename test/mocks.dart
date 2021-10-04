@@ -2,10 +2,9 @@ import 'dart:io' as io;
 
 import 'package:flutter/material.dart';
 import 'package:mockito/mockito.dart';
+import 'package:shared_ui_components/small_appbar.dart';
 import 'package:user_feed/src/domain/value_objects/widget_keys.dart';
 import 'package:user_feed/src/presentation/widgets/nudge_carousel.dart';
-
-import 'package:shared_ui_components/small_appbar.dart';
 
 import 'mock_data.dart';
 
@@ -15,39 +14,38 @@ class MockRoutes {
 }
 
 /// These mocks are used to test the back button of SIL small app bar
-class MockRouteGenerator {
-  /// gets the current route based on the [RouteSettings]
-  static Route<dynamic> generateRoute(RouteSettings settings) {
-    switch (settings.name) {
 
-      // the root route config
-      case MockRoutes.route1:
-        return MaterialPageRoute<MaterialApp>(
-          builder: (_) => const MaterialApp(
-            home: Scaffold(
-              appBar: SILSmallAppBar(title: MockRoutes.route1),
-            ),
+/// gets the current route based on the [RouteSettings]
+Route<dynamic> mockGenerateRoute(RouteSettings settings) {
+  switch (settings.name) {
+
+    // the root route config
+    case MockRoutes.route1:
+      return MaterialPageRoute<MaterialApp>(
+        builder: (_) => const MaterialApp(
+          home: Scaffold(
+            appBar: SILSmallAppBar(title: MockRoutes.route1),
           ),
-        );
+        ),
+      );
 
-      case MockRoutes.nudgeCarousel:
-        return MaterialPageRoute<Widget>(
-          builder: (_) => NudgeCarousel(
-            key: nudgeCarouselKey,
-            isSmallScreen: false,
-            nudges: mockFeedNudges,
-            single: false,
-            unroll: false,
-          ),
-        );
-    }
-
-    return MaterialPageRoute<MaterialApp>(
-      builder: (_) => const MaterialApp(
-        home: Scaffold(appBar: SILSmallAppBar(title: 'Default route')),
-      ),
-    );
+    case MockRoutes.nudgeCarousel:
+      return MaterialPageRoute<Widget>(
+        builder: (_) => NudgeCarousel(
+          key: nudgeCarouselKey,
+          isSmallScreen: false,
+          nudges: mockFeedNudges,
+          single: false,
+          unroll: false,
+        ),
+      );
   }
+
+  return MaterialPageRoute<MaterialApp>(
+    builder: (_) => const MaterialApp(
+      home: Scaffold(appBar: SILSmallAppBar(title: 'Default route')),
+    ),
+  );
 }
 
 class MockNavigatorObserver extends Mock implements NavigatorObserver {}

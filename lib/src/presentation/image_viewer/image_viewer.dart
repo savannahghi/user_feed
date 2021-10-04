@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
-
 import 'package:photo_view/photo_view.dart';
-import 'package:user_feed/src/domain/value_objects/constants.dart';
 import 'package:shared_ui_components/small_appbar.dart';
+import 'package:user_feed/src/domain/value_objects/constants.dart';
 
 class FeedImageViewer extends StatelessWidget {
   const FeedImageViewer({Key? key, this.imageUrl}) : super(key: key);
