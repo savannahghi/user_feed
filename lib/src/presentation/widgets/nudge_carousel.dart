@@ -1,6 +1,7 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:user_feed/src/domain/entities/nudge.dart';
+import 'package:user_feed/src/domain/value_objects/colors.dart';
 import 'package:user_feed/src/domain/value_objects/enums.dart';
 import 'package:user_feed/src/domain/value_objects/feed_store.dart';
 import 'package:user_feed/src/presentation/widgets/feed_nudge.dart';
@@ -102,7 +103,7 @@ class _NudgeCarouselState extends State<NudgeCarousel> {
                           decoration: BoxDecoration(
                             shape: BoxShape.circle,
                             color: currentIndex == activeNudgeIndex
-                                ? Theme.of(context).accentColor
+                                ? accentColor
                                 : Colors.grey.withOpacity(0.5),
                           ),
                         );

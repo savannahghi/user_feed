@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
+
 import 'package:intl/intl.dart';
 
-import 'package:user_feed/user_feed.dart';
 import 'package:user_feed/src/domain/entities/link.dart';
 import 'package:user_feed/src/domain/value_objects/asset_strings.dart';
+import 'package:user_feed/src/domain/value_objects/colors.dart';
 import 'package:user_feed/src/domain/value_objects/constants.dart';
 import 'package:user_feed/src/domain/value_objects/enums.dart';
 import 'package:user_feed/src/domain/value_objects/feed_store.dart';
+import 'package:user_feed/user_feed.dart';
 
 /// returns a human readable format of the date string
 /// passed to it
@@ -185,7 +187,7 @@ LinearGradient getFeedGlobalActionGradient(BuildContext context) =>
       begin: Alignment.topCenter,
       end: Alignment.bottomCenter,
       colors: <Color>[
-        Theme.of(context).accentColor,
+        accentColor,
         Theme.of(context).primaryColor.withOpacity(0.5),
       ],
       stops: const <double>[0.4, 1],

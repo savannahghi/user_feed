@@ -1,10 +1,10 @@
 import 'package:flutter/widgets.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:intl/intl.dart';
+import 'package:user_feed/src/application/helpers/utils.dart';
 import 'package:user_feed/src/domain/entities/link.dart';
 import 'package:user_feed/src/domain/value_objects/asset_strings.dart';
 import 'package:user_feed/src/domain/value_objects/constants.dart';
-import 'package:user_feed/src/application/helpers/utils.dart';
 import 'package:user_feed/src/domain/value_objects/enums.dart';
 import 'package:user_feed/src/presentation/router/router_generator.dart';
 import 'package:user_feed/src/presentation/router/routes.dart';
@@ -146,10 +146,9 @@ void main() {
     });
 
     test('should return router page ', () {
-      final Route<dynamic> page1 = RouteGenerator.generateRoute(
-          const RouteSettings(name: Routes.feedDocumentViewer));
-      final Route<dynamic> page2 =
-          RouteGenerator.generateRoute(const RouteSettings());
+      final Route<dynamic> page1 =
+          generateRoute(const RouteSettings(name: Routes.feedDocumentViewer));
+      final Route<dynamic> page2 = generateRoute(const RouteSettings());
       expect(page1, isNotNull);
       expect(page2, isNotNull);
     });

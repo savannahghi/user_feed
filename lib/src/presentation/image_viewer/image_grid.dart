@@ -1,11 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
+import 'package:shared_ui_components/small_appbar.dart';
 import 'package:user_feed/src/domain/entities/link.dart';
 import 'package:user_feed/src/domain/value_objects/strings.dart';
 import 'package:user_feed/src/domain/value_objects/widget_keys.dart';
-import 'package:shared_ui_components/small_appbar.dart';
 
 import 'image_viewer.dart';
 

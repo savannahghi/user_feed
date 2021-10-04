@@ -1,24 +1,20 @@
 library sil_feed;
 
 import 'package:flutter/material.dart';
-
+import 'package:shared_themes/spaces.dart';
+import 'package:shared_themes/text_themes.dart';
 import 'package:user_feed/src/application/helpers/utils.dart';
 import 'package:user_feed/src/domain/entities/feed.dart';
 import 'package:user_feed/src/domain/entities/item.dart';
 import 'package:user_feed/src/domain/entities/nudge.dart';
 import 'package:user_feed/src/domain/resources/inputs.dart';
-
 import 'package:user_feed/src/domain/value_objects/enums.dart';
 import 'package:user_feed/src/domain/value_objects/feed_store.dart';
 import 'package:user_feed/src/domain/value_objects/strings.dart';
 import 'package:user_feed/src/domain/value_objects/widget_keys.dart';
 import 'package:user_feed/src/presentation/widgets/feed_cover_mini_card.dart';
 import 'package:user_feed/src/presentation/widgets/feed_item_component.dart';
-
 import 'package:user_feed/src/presentation/widgets/nudge_carousel.dart';
-
-import 'package:shared_themes/spaces.dart';
-import 'package:shared_themes/text_themes.dart';
 
 class FeedComponent extends StatefulWidget {
   const FeedComponent({

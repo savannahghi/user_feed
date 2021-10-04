@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:user_feed/user_feed.dart';
 import 'package:user_feed/src/application/helpers/utils.dart';
+import 'package:user_feed/user_feed.dart';
 
 import '../../../test_helpers.dart';
 
