@@ -1,5 +1,10 @@
+// Flutter imports:
 import 'package:flutter/material.dart';
+
+// Package imports:
 import 'package:shimmer/shimmer.dart';
+
+// Project imports:
 import 'package:user_feed/src/domain/value_objects/colors.dart';
 
 class NudgeShimmer extends StatelessWidget {

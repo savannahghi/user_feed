@@ -1,5 +1,10 @@
-import 'package:carousel_slider/carousel_slider.dart';
+// Flutter imports:
 import 'package:flutter/material.dart';
+
+// Package imports:
+import 'package:carousel_slider/carousel_slider.dart';
+
+// Project imports:
 import 'package:user_feed/src/domain/entities/nudge.dart';
 import 'package:user_feed/src/domain/value_objects/colors.dart';
 import 'package:user_feed/src/domain/value_objects/enums.dart';

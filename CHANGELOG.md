@@ -1,9 +1,15 @@
+### 0.1.45-nullsafety
+
+- chore: update flutter SDK version
+
 ### 0.1.44-nullsafety
 
 - chore: update package
+
 ### 0.1.43-nullsafety
 
 - feat: add feature image
+
 ### 0.1.42-nullsafety
 
 - chore: perform checks on nullable fields

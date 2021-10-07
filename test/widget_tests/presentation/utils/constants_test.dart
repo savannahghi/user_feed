@@ -1,4 +1,7 @@
+// Package imports:
 import 'package:flutter_test/flutter_test.dart';
+
+// Project imports:
 import 'package:user_feed/src/domain/value_objects/constants.dart';
 
 void main() {

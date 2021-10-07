@@ -1,7 +1,8 @@
+// Package imports:
 import 'package:flutter_test/flutter_test.dart';
 
+// Project imports:
 import 'package:user_feed/src/domain/resources/inputs.dart';
-
 import '../../mock_data.dart';
 
 void main() {

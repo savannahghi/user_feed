@@ -485,6 +485,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "2.3.0"
+  import_sorter:
+    dependency: "direct dev"
+    description:
+      name: import_sorter
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "4.6.0"
   intl:
     dependency: "direct main"
     description:
@@ -694,7 +701,7 @@ packages:
       name: photo_view
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "0.12.0"
+    version: "0.13.0"
   pin_code_text_field:
     dependency: transitive
     description:
@@ -945,6 +952,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.0.0"
+  tint:
+    dependency: transitive
+    description:
+      name: tint
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "2.0.0"
   tuple:
     dependency: transitive
     description:

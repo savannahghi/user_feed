@@ -1,13 +1,18 @@
+// Dart imports:
 import 'dart:io';
 
+// Flutter imports:
 import 'package:flutter/material.dart';
+
+// Package imports:
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail_image_network/mocktail_image_network.dart';
+import 'package:youtube_player_flutter/youtube_player_flutter.dart';
+
+// Project imports:
 import 'package:user_feed/src/domain/entities/link.dart';
 import 'package:user_feed/src/domain/value_objects/widget_keys.dart';
 import 'package:user_feed/src/presentation/video_player/video_player.dart';
-import 'package:youtube_player_flutter/youtube_player_flutter.dart';
-
 import '../../../mock_data.dart';
 import '../../../test_helpers.dart';
 

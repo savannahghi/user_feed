@@ -1,4 +1,7 @@
+// Package imports:
 import 'package:rxdart/rxdart.dart';
+
+// Project imports:
 import 'package:user_feed/user_feed.dart';
 
 class FeedStore {

@@ -1,15 +1,20 @@
+// Dart imports:
 import 'dart:io';
 
+// Flutter imports:
 import 'package:flutter/material.dart';
+
+// Package imports:
 import 'package:flutter_test/flutter_test.dart';
+import 'package:visibility_detector/visibility_detector.dart';
+
+// Project imports:
 import 'package:user_feed/src/application/helpers/utils.dart';
 import 'package:user_feed/src/domain/value_objects/enums.dart';
 import 'package:user_feed/src/domain/value_objects/widget_keys.dart';
 import 'package:user_feed/src/presentation/image_viewer/image_grid.dart';
 import 'package:user_feed/src/presentation/video_player/video_player.dart';
 import 'package:user_feed/src/presentation/widgets/feed_item_body.dart';
-import 'package:visibility_detector/visibility_detector.dart';
-
 import '../../../mock_data.dart';
 import '../../../test_helpers.dart';
 

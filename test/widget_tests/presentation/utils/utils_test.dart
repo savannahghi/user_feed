@@ -1,8 +1,12 @@
+// Flutter imports:
 import 'package:flutter/material.dart';
+
+// Package imports:
 import 'package:flutter_test/flutter_test.dart';
+
+// Project imports:
 import 'package:user_feed/src/application/helpers/utils.dart';
 import 'package:user_feed/user_feed.dart';
-
 import '../../../test_helpers.dart';
 
 void main() {

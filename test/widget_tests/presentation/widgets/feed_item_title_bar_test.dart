@@ -1,8 +1,12 @@
+// Flutter imports:
 import 'package:flutter/material.dart';
+
+// Package imports:
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail_image_network/mocktail_image_network.dart';
-import 'package:user_feed/src/presentation/widgets/feed_item_title_bar.dart';
 
+// Project imports:
+import 'package:user_feed/src/presentation/widgets/feed_item_title_bar.dart';
 import '../../../mock_data.dart';
 
 void main() {
