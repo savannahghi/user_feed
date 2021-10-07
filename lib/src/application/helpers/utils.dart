@@ -1,7 +1,10 @@
+// Flutter imports:
 import 'package:flutter/material.dart';
 
+// Package imports:
 import 'package:intl/intl.dart';
 
+// Project imports:
 import 'package:user_feed/src/domain/entities/link.dart';
 import 'package:user_feed/src/domain/value_objects/asset_strings.dart';
 import 'package:user_feed/src/domain/value_objects/colors.dart';

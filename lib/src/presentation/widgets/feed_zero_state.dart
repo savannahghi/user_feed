@@ -1,5 +1,10 @@
+// Flutter imports:
 import 'package:flutter/material.dart';
+
+// Package imports:
 import 'package:shared_themes/colors.dart';
+
+// Project imports:
 import 'package:user_feed/src/domain/value_objects/asset_strings.dart';
 import 'package:user_feed/src/domain/value_objects/strings.dart';
 

@@ -1,13 +1,17 @@
+// Flutter imports:
 import 'package:flutter/material.dart';
+
+// Package imports:
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail_image_network/mocktail_image_network.dart';
+
+// Project imports:
 import 'package:user_feed/src/domain/resources/inputs.dart';
 import 'package:user_feed/src/domain/value_objects/enums.dart';
 import 'package:user_feed/src/domain/value_objects/strings.dart';
 import 'package:user_feed/src/domain/value_objects/widget_keys.dart';
 import 'package:user_feed/src/presentation/core/feed.dart';
 import 'package:user_feed/src/presentation/widgets/feed_cover_mini_card.dart';
-
 import '../../../mock_data.dart';
 import '../../../mock_utils.dart';
 import '../../../test_helpers.dart';

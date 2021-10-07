@@ -1,6 +1,10 @@
+// Dart imports:
 import 'dart:io';
 
+// Flutter imports:
 import 'package:flutter/material.dart';
+
+// Package imports:
 import 'package:flutter_html/flutter_html.dart';
 import 'package:flutter_html/html_parser.dart';
 import 'package:flutter_html/image_render.dart';
@@ -8,9 +12,10 @@ import 'package:flutter_html/style.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:html/dom.dart' as dom;
 import 'package:html/parser.dart' as htmlparser;
+
+// Project imports:
 import 'package:user_feed/src/presentation/widgets/feed_item_detail_view.dart';
 import 'package:user_feed/user_feed.dart';
-
 import '../../../mock_data.dart';
 import '../../../mocks.dart';
 

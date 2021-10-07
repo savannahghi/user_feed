@@ -1,6 +1,11 @@
+// Flutter imports:
 import 'package:flutter/material.dart';
+
+// Package imports:
 import 'package:photo_view/photo_view.dart';
 import 'package:shared_ui_components/small_appbar.dart';
+
+// Project imports:
 import 'package:user_feed/src/domain/value_objects/constants.dart';
 
 class FeedImageViewer extends StatelessWidget {

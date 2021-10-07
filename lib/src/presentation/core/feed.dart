@@ -1,8 +1,13 @@
 library sil_feed;
 
+// Flutter imports:
 import 'package:flutter/material.dart';
+
+// Package imports:
 import 'package:shared_themes/spaces.dart';
 import 'package:shared_themes/text_themes.dart';
+
+// Project imports:
 import 'package:user_feed/src/application/helpers/utils.dart';
 import 'package:user_feed/src/domain/entities/feed.dart';
 import 'package:user_feed/src/domain/entities/item.dart';

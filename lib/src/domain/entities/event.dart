@@ -1,4 +1,7 @@
+// Package imports:
 import 'package:freezed_annotation/freezed_annotation.dart';
+
+// Project imports:
 import 'package:user_feed/src/domain/entities/context.dart';
 import 'package:user_feed/src/domain/entities/payload.dart';
 

@@ -9,12 +9,10 @@ analyzer:
     missing_required_param: error
     missing_return: error
   exclude:
-    - 'lib/generated_plugin_*.dart'
-    - 'bin/cache/**'
-    - 'lib/**/*.g.dart'
-    - 'lib/**/*.freezed.dart'     
-
-    
+    - "lib/generated_plugin_*.dart"
+    - "bin/cache/**"
+    - "lib/**/*.g.dart"
+    - "lib/**/*.freezed.dart"
 
 linter:
   rules:
@@ -51,4 +49,4 @@ linter:
     prefer_constructors_over_static_methods: true
     file_names: false
     constant_identifier_names: false
-
+    directives_ordering: false

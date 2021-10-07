@@ -1,6 +1,11 @@
+// Flutter imports:
 import 'package:flutter/material.dart';
+
+// Package imports:
 import 'package:shared_themes/spaces.dart';
 import 'package:shimmer/shimmer.dart';
+
+// Project imports:
 import 'package:user_feed/src/domain/value_objects/colors.dart';
 import 'package:user_feed/src/domain/value_objects/enums.dart';
 import 'package:user_feed/src/presentation/preloaders/feed_item_shimmer.dart';

@@ -1,7 +1,12 @@
+// Flutter imports:
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+
+// Package imports:
 import 'package:shared_themes/spaces.dart';
 import 'package:shared_themes/text_themes.dart';
+
+// Project imports:
 import 'package:user_feed/src/application/helpers/utils.dart';
 import 'package:user_feed/src/domain/entities/link.dart';
 import 'package:user_feed/src/domain/value_objects/colors.dart';

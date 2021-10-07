@@ -1,8 +1,10 @@
+// Package imports:
 import 'package:flutter_test/flutter_test.dart';
+
+// Project imports:
 import 'package:user_feed/src/domain/entities/feed.dart';
 import 'package:user_feed/src/domain/entities/item.dart';
 import 'package:user_feed/user_feed.dart';
-
 import '../../mock_data.dart';
 
 void main() {

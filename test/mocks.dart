@@ -1,11 +1,16 @@
+// Dart imports:
 import 'dart:io' as io;
 
+// Flutter imports:
 import 'package:flutter/material.dart';
+
+// Package imports:
 import 'package:mockito/mockito.dart';
 import 'package:shared_ui_components/small_appbar.dart';
+
+// Project imports:
 import 'package:user_feed/src/domain/value_objects/widget_keys.dart';
 import 'package:user_feed/src/presentation/widgets/nudge_carousel.dart';
-
 import 'mock_data.dart';
 
 class MockRoutes {

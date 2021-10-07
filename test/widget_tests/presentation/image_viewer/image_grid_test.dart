@@ -1,15 +1,19 @@
+// Flutter imports:
 import 'package:flutter/material.dart';
+
+// Package imports:
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail_image_network/mocktail_image_network.dart';
 import 'package:photo_view/photo_view.dart';
+
+// Project imports:
 import 'package:user_feed/src/domain/entities/link.dart';
 import 'package:user_feed/src/domain/value_objects/constants.dart';
 import 'package:user_feed/src/domain/value_objects/widget_keys.dart';
 import 'package:user_feed/src/presentation/image_viewer/image_grid.dart';
 import 'package:user_feed/src/presentation/image_viewer/image_viewer.dart';
 import 'package:user_feed/src/presentation/router/router_generator.dart';
-
 import '../../../mock_data.dart';
 import '../../../mocks.dart';
 
