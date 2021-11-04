@@ -1,3 +1,7 @@
+### 0.1.46-nullsafety
+
+- chore: remove covers mini card
+
 ### 0.1.45-nullsafety
 
 - chore: update flutter SDK version
