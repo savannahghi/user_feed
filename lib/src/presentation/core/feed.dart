@@ -17,7 +17,6 @@ import 'package:user_feed/src/domain/value_objects/enums.dart';
 import 'package:user_feed/src/domain/value_objects/feed_store.dart';
 import 'package:user_feed/src/domain/value_objects/strings.dart';
 import 'package:user_feed/src/domain/value_objects/widget_keys.dart';
-import 'package:user_feed/src/presentation/widgets/feed_cover_mini_card.dart';
 import 'package:user_feed/src/presentation/widgets/feed_item_component.dart';
 import 'package:user_feed/src/presentation/widgets/nudge_carousel.dart';
 
@@ -118,17 +117,6 @@ class _FeedComponentState extends State<FeedComponent> {
       return const SizedBox();
     }
 
-    // show the call to action widget where the user is prompted to add or buy cover
-    Widget showCallToAction() {
-      if (widget.covers != null && widget.covers!.isNotEmpty) {
-        return CoverMiniCard(
-          cover: widget.covers![0],
-        );
-      }
-
-      return const SizedBox.shrink();
-    }
-
     return ListView(
       shrinkWrap: true,
       key: feedComponentKey,
@@ -145,7 +133,6 @@ class _FeedComponentState extends State<FeedComponent> {
               if (!widget.setupComplete)
                 showProfileSetupProgress(widget.flavour,
                     setupComplete: widget.setupComplete),
-              if (widget.flavour == Flavour.CONSUMER) showCallToAction(),
               if (feedNudges.isEmpty)
                 mediumVerticalSizedBox
               else

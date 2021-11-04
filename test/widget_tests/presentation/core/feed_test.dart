@@ -9,9 +9,7 @@ import 'package:mocktail_image_network/mocktail_image_network.dart';
 import 'package:user_feed/src/domain/resources/inputs.dart';
 import 'package:user_feed/src/domain/value_objects/enums.dart';
 import 'package:user_feed/src/domain/value_objects/strings.dart';
-import 'package:user_feed/src/domain/value_objects/widget_keys.dart';
 import 'package:user_feed/src/presentation/core/feed.dart';
-import 'package:user_feed/src/presentation/widgets/feed_cover_mini_card.dart';
 import '../../../mock_data.dart';
 import '../../../mock_utils.dart';
 import '../../../test_helpers.dart';
@@ -134,41 +132,6 @@ void main() {
             });
 
             expect(find.text(completeProfileTitle), findsOneWidget);
-          },
-        );
-      },
-    );
-
-    testWidgets(
-      'should render mini card correctly',
-      (WidgetTester tester) async {
-        await tester.runAsync(
-          () async {
-            await mockNetworkImages(() async {
-              await buildTestWidget(
-                tester: tester,
-                child: ListView(
-                  children: <Widget>[
-                    FeedComponent(
-                      userFeed: FeedResponsePayload.fromJson(
-                          mockFeedResponsePayload(<Map<String, dynamic>>[])),
-                      flavour: Flavour.CONSUMER,
-                      feedContentCallbacks: mockGetFeedActionCallbacks(),
-                      isSmallScreen: true,
-                      covers: <dynamic>[
-                        MockCover('Swift', '736872783', 'Jane Doe')
-                      ],
-                    ),
-                  ],
-                ),
-              );
-            });
-
-            expect(find.byType(CoverMiniCard), findsOneWidget);
-
-            expect(find.text(yourVirtualCard), findsOneWidget);
-            expect(find.byKey(miniCardKey), findsOneWidget);
-            await tester.tap(find.byKey(miniCardKey));
           },
         );
       },
