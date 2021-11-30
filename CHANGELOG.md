@@ -1,3 +1,7 @@
+### 0.1.47-nullsafety
+
+- chore: upgrade packages
+
 ### 0.1.46-nullsafety
 
 - chore: remove covers mini card
