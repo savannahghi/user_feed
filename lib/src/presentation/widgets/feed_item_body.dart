@@ -7,7 +7,6 @@ import 'package:user_feed/src/domain/value_objects/enums.dart';
 import 'package:user_feed/src/domain/value_objects/strings.dart';
 import 'package:user_feed/src/application/helpers/utils.dart';
 import 'package:user_feed/src/domain/value_objects/widget_keys.dart';
-import 'package:user_feed/src/presentation/document_viewer/document_grid.dart';
 import 'package:user_feed/src/presentation/image_viewer/image_grid.dart';
 import 'package:user_feed/src/presentation/video_player/video_player.dart';
 
@@ -76,17 +75,7 @@ class FeedItemBodyState extends State<FeedItemBody> {
     return FeedItemImageGrid(images: images!);
   }
 
-  void navigateToDocumentsGrid() {
-    Navigator.of(context).push(
-      MaterialPageRoute<FeedItemDocumentGrid>(
-        builder: feedItemDocumentGridNavBuilder,
-      ),
-    );
-  }
-
-  Widget feedItemDocumentGridNavBuilder(BuildContext context) {
-    return FeedItemDocumentGrid(documents: documents!);
-  }
+  void navigateToDocumentsGrid() {}
 
   @override
   Widget build(BuildContext context) {

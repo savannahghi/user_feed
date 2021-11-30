@@ -1,15 +1,16 @@
 import 'dart:io';
 
+import 'package:csslib/parser.dart' as cssparser;
 import 'package:flutter/material.dart';
 import 'package:flutter_html/flutter_html.dart';
 import 'package:flutter_html/html_parser.dart';
-import 'package:html/parser.dart' as htmlparser;
 import 'package:flutter_html/image_render.dart';
 import 'package:flutter_html/style.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:user_feed/user_feed.dart';
-import 'package:user_feed/src/presentation/widgets/feed_item_detail_view.dart';
 import 'package:html/dom.dart' as dom;
+import 'package:html/parser.dart' as htmlparser;
+import 'package:user_feed/src/presentation/widgets/feed_item_detail_view.dart';
+import 'package:user_feed/user_feed.dart';
 
 import '../../../mock_data.dart';
 import '../../../mocks.dart';
@@ -133,6 +134,10 @@ void main() {
               return Text(exception);
             },
             tagsList: const <String>[],
+            onAnchorTap: (String? url, RenderContext context,
+                Map<String, String> attributes, dom.Element? element) {},
+            onCssParseError: (String css, List<cssparser.Message> errors) {},
+            selectable: true,
           ),
         );
 

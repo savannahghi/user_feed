@@ -1,3 +1,7 @@
+### 0.1.29-nullsafety
+
+- chore: updgrade packages
+
 ### 0.1.28-nullsafety
 
 - chore: update dependencies (shared_themes, shared_ui_components)
