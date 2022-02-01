@@ -141,6 +141,9 @@ void main() {
               return Text(exception);
             },
             tagsList: const <String>[],
+            selectable: true,
+            onCssParseError: (String css, List<dynamic> errors) {},
+            onAnchorTap: null,
           ),
         );
 

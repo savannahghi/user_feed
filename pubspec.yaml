@@ -1,33 +1,33 @@
 name: user_feed
 description: A package for viewing a user's feed
-version: 0.1.47-nullsafety
+version: 0.1.48-nullsafety
 homepage: https://github.com/savannahghi/user_feed
 repository: https://github.com/savannahghi/user_feed
 issue_tracker: https://github.com/savannahghi/user_feed/issues
 documentation: https://github.com/savannahghi/user_feed/doc/readme.md
 
 environment:
-  sdk: ">=2.12.0 <3.0.0"
+  sdk: ">=2.14.0 <3.0.0"
   flutter: ">=2.0.0"
 
 dependencies:
   carousel_slider: ^4.0.0-nullsafety.0
   flutter:
     sdk: flutter
-  flutter_html: 2.0.0
+  flutter_html: ^2.2.1
   flutter_staggered_grid_view: ^0.4.0
   flutter_svg: ^0.22.0
   freezed: ^0.14.2
-  freezed_annotation: ^0.14.2
+  freezed_annotation: ^1.1.0
   html: ^0.15.0
   intl: ^0.17.0
-  json_annotation: ^4.0.1
-  json_serializable: ^4.1.3
+  json_annotation: ^4.4.0
+  json_serializable: ^6.1.4
   mocktail_image_network: ^0.1.0 # for mocking
   photo_view: ^0.13.0
   rxdart: ^0.27.1
   shared_themes: ^0.1.0 # internal (formerly sil_themes)
-  shared_ui_components: ^0.1.44-nullsafety # internal (formerly sil_ui_components)
+  shared_ui_components: ^0.1.47-nullsafety # internal (formerly sil_ui_components)
   shimmer: ^2.0.0
   url_launcher: ^6.0.6
   visibility_detector: ^0.2.0
