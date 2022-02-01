@@ -1,3 +1,7 @@
+### 0.1.48-nullsafety
+
+- chore: upgrade to flutter 2.5.3
+
 ### 0.1.47-nullsafety
 
 - chore: upgrade packages
