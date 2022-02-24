@@ -7,7 +7,6 @@ import 'package:flutter/material.dart';
 // Package imports:
 import 'package:flutter_html/flutter_html.dart';
 import 'package:flutter_html/html_parser.dart';
-import 'package:flutter_html/image_render.dart';
 import 'package:flutter_html/style.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:html/dom.dart' as dom;
@@ -122,24 +121,14 @@ void main() {
             node: dom.Element.html(htmlData),
           ),
           parser: HtmlParser(
-            customRender: const <String, CustomRender>{
-              'test': customRender,
-            },
+            customRenders: const <bool Function(RenderContext), CustomRender>{},
             htmlData: document,
-            navigationDelegateForIframe: null,
-            imageRenders: const <ImageSourceMatcher, ImageRender>{
-              imageSourceMatcher: imageHtmlRender
-            },
             onImageError: (Object exception, StackTrace? stackTrace) {},
             onImageTap: null,
             onLinkTap: null,
             style: <String, Style>{'test': Style()},
             shrinkWrap: false,
             key: null,
-            onMathError:
-                (String parsedTex, String exception, String exceptionWithType) {
-              return Text(exception);
-            },
             tagsList: const <String>[],
             selectable: true,
             onCssParseError: (String css, List<dynamic> errors) {},
