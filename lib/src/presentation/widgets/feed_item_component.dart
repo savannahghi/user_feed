@@ -1,7 +1,5 @@
 // Flutter imports:
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
 
 // Package imports:
 import 'package:shared_themes/spaces.dart';
@@ -12,9 +10,7 @@ import 'package:user_feed/src/domain/entities/item.dart';
 import 'package:user_feed/src/domain/entities/link.dart';
 import 'package:user_feed/src/domain/value_objects/colors.dart';
 import 'package:user_feed/src/domain/value_objects/widget_keys.dart';
-import 'package:user_feed/src/presentation/widgets/feed_item_body.dart';
 import 'package:user_feed/src/presentation/widgets/feed_item_detail_view.dart';
-import 'package:user_feed/src/presentation/widgets/feed_item_title_bar.dart';
 import 'package:user_feed/user_feed.dart';
 
 class FeedItemComponent extends StatelessWidget {

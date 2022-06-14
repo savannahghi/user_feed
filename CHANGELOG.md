@@ -1,3 +1,6 @@
+### 0.1.50-nullsafety
+
+- chore: upgrade mock image package
 ### 0.1.49-nullsafety
 
 - chore: upgrade packages

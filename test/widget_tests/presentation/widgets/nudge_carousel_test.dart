@@ -10,7 +10,6 @@ import 'package:mocktail_image_network/mocktail_image_network.dart';
 import 'package:user_feed/src/domain/entities/nudge.dart';
 import 'package:user_feed/src/domain/value_objects/feed_store.dart';
 import 'package:user_feed/src/domain/value_objects/widget_keys.dart';
-import 'package:user_feed/src/presentation/widgets/nudge_carousel.dart';
 import 'package:user_feed/user_feed.dart';
 import '../../../mock_data.dart';
 import '../../../mocks.dart';
