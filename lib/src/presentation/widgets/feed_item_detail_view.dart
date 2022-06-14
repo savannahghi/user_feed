@@ -3,8 +3,6 @@ import 'package:flutter/material.dart';
 
 // Package imports:
 import 'package:flutter_html/flutter_html.dart';
-import 'package:flutter_html/html_parser.dart';
-import 'package:flutter_html/style.dart';
 import 'package:html/dom.dart' as dom;
 import 'package:shared_themes/spaces.dart';
 import 'package:shared_themes/text_themes.dart';
@@ -17,7 +15,6 @@ import 'package:user_feed/src/domain/entities/link.dart';
 import 'package:user_feed/src/domain/value_objects/colors.dart';
 import 'package:user_feed/src/domain/value_objects/strings.dart';
 import 'package:user_feed/src/presentation/video_player/video_player.dart';
-import 'package:user_feed/src/presentation/widgets/feed_item_title_bar.dart';
 import 'package:user_feed/user_feed.dart';
 
 class FeedItemContentView extends StatefulWidget {

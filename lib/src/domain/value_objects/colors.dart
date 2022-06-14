@@ -1,6 +1,5 @@
 // Flutter imports:
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
 
 const Color primaryColor = Color(0xFF603A8B);
 const Color primaryDark = Color(0xFF7949AF);

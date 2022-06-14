@@ -6,8 +6,6 @@ import 'package:flutter/material.dart';
 
 // Package imports:
 import 'package:flutter_html/flutter_html.dart';
-import 'package:flutter_html/html_parser.dart';
-import 'package:flutter_html/style.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:html/dom.dart' as dom;
 import 'package:html/parser.dart' as htmlparser;
@@ -27,7 +25,9 @@ Widget? imageHtmlRender(
   RenderContext context,
   Map<String, String> attributes,
   dom.Element? element,
-) {}
+) {
+  return null;
+}
 
 bool imageSourceMatcher(
   Map<String, String> attributes,
@@ -131,7 +131,9 @@ void main() {
             key: null,
             tagsList: const <String>[],
             selectable: true,
-            onCssParseError: (String css, List<dynamic> errors) {},
+            onCssParseError: (String css, List<dynamic> errors) {
+              return null;
+            },
             onAnchorTap: null,
           ),
         );

@@ -8,8 +8,6 @@ import 'package:intl/intl.dart';
 import 'package:user_feed/src/domain/entities/link.dart';
 import 'package:user_feed/src/domain/value_objects/asset_strings.dart';
 import 'package:user_feed/src/domain/value_objects/colors.dart';
-import 'package:user_feed/src/domain/value_objects/constants.dart';
-import 'package:user_feed/src/domain/value_objects/enums.dart';
 import 'package:user_feed/src/domain/value_objects/feed_store.dart';
 import 'package:user_feed/user_feed.dart';
 
