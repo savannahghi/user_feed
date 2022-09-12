@@ -44,7 +44,8 @@ class FeedItemContentView extends StatefulWidget {
 class FeedItemContentViewState extends State<FeedItemContentView> {
   void onBodyLinkOrImageTapCallback(String? url, RenderContext context,
       Map<String, String> attributes, dom.Element? element) {
-    launch(url!);
+    final Uri _url = Uri.parse(url!);
+    launchUrl(_url);
   }
 
   Widget bodyContent() {
