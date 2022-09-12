@@ -20,7 +20,7 @@ class _FeedComponentWrapperState extends State<FeedComponentWrapper> {
     _feedStreamController = StreamController<Object>.broadcast();
     _feedStream = _feedStreamController.stream;
 
-    WidgetsBinding.instance?.addPostFrameCallback((Duration timeStamp) {
+    WidgetsBinding.instance.addPostFrameCallback((Duration timeStamp) {
       /// Call your function to fetch user's feed
       // fetchUserFeed();
     });
