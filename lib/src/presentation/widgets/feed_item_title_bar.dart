@@ -19,12 +19,12 @@ import 'package:user_feed/src/application/helpers/utils.dart';
 /// - an optional label
 class FeedItemTitleBar extends StatelessWidget {
   const FeedItemTitleBar({
-    Key? key,
+    super.key,
     required this.author,
     required this.timestamp,
     required this.iconUrl,
     required this.itemID,
-  }) : super(key: key);
+  });
 
   final String author;
   final String iconUrl;

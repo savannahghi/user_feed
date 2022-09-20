@@ -135,7 +135,7 @@ class FeedNoBorderButton extends StatelessWidget {
 /// [FeedActionButton] is a component which when passed in one action,
 /// returns a button with the contents in the actions
 class FeedActionButton extends StatelessWidget {
-  const FeedActionButton({Key? key, required this.action}) : super(key: key);
+  const FeedActionButton({super.key, required this.action});
 
   /// the name of the action
   final feed_action.Action action;

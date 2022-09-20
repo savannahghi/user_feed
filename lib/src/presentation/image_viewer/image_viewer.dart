@@ -9,7 +9,7 @@ import 'package:shared_ui_components/small_appbar.dart';
 import 'package:user_feed/src/domain/value_objects/constants.dart';
 
 class FeedImageViewer extends StatelessWidget {
-  const FeedImageViewer({Key? key, this.imageUrl}) : super(key: key);
+  const FeedImageViewer({super.key, this.imageUrl});
 
   final String? imageUrl;
 

@@ -8,6 +8,11 @@ analyzer:
     sdk_version_async_exported_from_core: ignore
     missing_required_param: error
     missing_return: error
+    avoid_dynamic_calls: ignore
+    require_trailing_commas: ignore
+    no_leading_underscores_for_local_identifiers: ignore
+    noop_primitive_operations: ignore
+    depend_on_referenced_packages: ignore
   exclude:
     - "lib/generated_plugin_*.dart"
     - "bin/cache/**"

@@ -18,12 +18,12 @@ import 'package:user_feed/src/presentation/video_player/video_player.dart';
 class FeedItemBody extends StatefulWidget {
   const FeedItemBody(
     this.summary, {
-    Key? key,
+    super.key,
     required this.links,
     required this.text,
     required this.itemTextType,
     required this.videos,
-  }) : super(key: key);
+  });
 
   final List<Link?>? links;
   final String summary;

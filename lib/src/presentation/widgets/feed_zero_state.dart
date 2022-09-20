@@ -9,7 +9,7 @@ import 'package:user_feed/src/domain/value_objects/asset_strings.dart';
 import 'package:user_feed/src/domain/value_objects/strings.dart';
 
 class FeedZeroState extends StatelessWidget {
-  const FeedZeroState({Key? key, required this.subtitle}) : super(key: key);
+  const FeedZeroState({super.key, required this.subtitle});
 
   final String subtitle;
 
