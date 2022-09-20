@@ -21,7 +21,7 @@ void main() {
         tester: tester,
         child: Builder(
           builder: (BuildContext context) {
-            return Container(
+            return DecoratedBox(
               decoration:
                   BoxDecoration(gradient: getFeedGlobalActionGradient(context)),
               child: GestureDetector(

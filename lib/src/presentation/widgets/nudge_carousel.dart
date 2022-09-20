@@ -15,12 +15,12 @@ import 'package:user_feed/src/presentation/widgets/feed_nudge.dart';
 /// displays them in the form of cards
 class NudgeCarousel extends StatefulWidget {
   const NudgeCarousel({
-    Key? key,
+    super.key,
     required this.nudges,
     required this.unroll,
     required this.single,
     required this.isSmallScreen,
-  }) : super(key: key);
+  });
 
   final bool isSmallScreen;
   final List<Nudge> nudges;

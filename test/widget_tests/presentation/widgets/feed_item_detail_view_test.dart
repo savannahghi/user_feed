@@ -8,7 +8,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_html/flutter_html.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:html/dom.dart' as dom;
-import 'package:html/parser.dart' as htmlparser;
 
 // Project imports:
 import 'package:user_feed/src/presentation/widgets/feed_item_detail_view.dart';
@@ -111,7 +110,6 @@ void main() {
         expect(_state, isNotNull);
         const String htmlData = '''<div><h1>Demo Page</h1></div>''';
 
-        final dom.Document document = htmlparser.parse(htmlData);
         final RenderContext renderContext = RenderContext(
           buildContext: MockBuildContext(),
           style: Style(),
@@ -122,7 +120,7 @@ void main() {
           ),
           parser: HtmlParser(
             customRenders: const <bool Function(RenderContext), CustomRender>{},
-            htmlData: document,
+            htmlData: dom.Element.html(htmlData),
             onImageError: (Object exception, StackTrace? stackTrace) {},
             onImageTap: null,
             onLinkTap: null,

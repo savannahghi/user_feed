@@ -55,10 +55,10 @@ class GlobalActionItemShimmerRow extends StatelessWidget {
 
 class GlobalActionItemShimmer extends StatelessWidget {
   const GlobalActionItemShimmer({
-    Key? key,
+    super.key,
     required this.width,
     required this.height,
-  }) : super(key: key);
+  });
 
   final double width;
   final double height;

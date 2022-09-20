@@ -22,7 +22,7 @@ import 'package:user_feed/src/presentation/widgets/nudge_carousel.dart';
 
 class FeedComponent extends StatefulWidget {
   const FeedComponent({
-    Key? key,
+    super.key,
     required this.userFeed,
     required this.flavour,
     required this.isSmallScreen,
@@ -31,7 +31,7 @@ class FeedComponent extends StatefulWidget {
     this.setupComplete = false,
     this.covers,
     this.feedbackGroundColor,
-  }) : super(key: key);
+  });
 
   /// the feed
   final FeedResponsePayload userFeed;

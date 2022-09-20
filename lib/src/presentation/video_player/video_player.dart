@@ -17,8 +17,7 @@ import 'package:user_feed/src/domain/value_objects/widget_keys.dart';
 /// Creates and embedded video of a mini youtube player
 /// Constrain it using a container in a page the player does not span the whole screen
 class VideoPlayer extends StatefulWidget {
-  const VideoPlayer({Key? key, required this.videos, this.videoController})
-      : super(key: key);
+  const VideoPlayer({super.key, required this.videos, this.videoController});
 
   final List<Link?>? videos;
   final YoutubePlayerController? videoController;
@@ -176,11 +175,11 @@ class VideoPlayerState extends State<VideoPlayer> {
 
 class VideoControllers extends StatefulWidget {
   const VideoControllers({
-    Key? key,
+    super.key,
     required this.videoController,
     required this.isPlayerReady,
     required this.videoIds,
-  }) : super(key: key);
+  });
   final YoutubePlayerController videoController;
 
   final bool isPlayerReady;

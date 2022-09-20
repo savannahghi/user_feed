@@ -60,7 +60,7 @@ class FeedItemComponent extends StatelessWidget {
           );
         }
       },
-      child: Container(
+      child: DecoratedBox(
         decoration: BoxDecoration(
           color: Colors.white,
           border: Border.all(color: lightGreyColor, width: 0.5),

@@ -19,15 +19,14 @@ import 'package:user_feed/user_feed.dart';
 
 class FeedItemContentView extends StatefulWidget {
   const FeedItemContentView(
-      {Key? key,
+      {super.key,
       required this.feedItem,
       required this.text,
       required this.itemTextType,
       required this.summary,
       required this.videos,
       this.featureImage,
-      this.links})
-      : super(key: key);
+      this.links});
   final Item feedItem;
 
   final String summary;

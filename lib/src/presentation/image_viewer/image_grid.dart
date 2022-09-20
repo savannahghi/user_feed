@@ -9,10 +9,10 @@ import 'package:shared_ui_components/small_appbar.dart';
 import 'package:user_feed/src/domain/entities/link.dart';
 import 'package:user_feed/src/domain/value_objects/strings.dart';
 import 'package:user_feed/src/domain/value_objects/widget_keys.dart';
-import 'image_viewer.dart';
+import 'package:user_feed/src/presentation/image_viewer/image_viewer.dart';
 
 class FeedItemImageGrid extends StatelessWidget {
-  const FeedItemImageGrid({Key? key, required this.images}) : super(key: key);
+  const FeedItemImageGrid({super.key, required this.images});
 
   final List<Link?>? images;
 
