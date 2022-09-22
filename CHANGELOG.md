@@ -1,6 +1,11 @@
+### 0.2.1-nullsafety
+
+- chore: remove youtube player
+
 ### 0.2.0-nullsafety
 
 - chore: upgrade to flutter 3.0.5
+
 ### 0.1.51-nullsafety
 
 - chore: upgrade package

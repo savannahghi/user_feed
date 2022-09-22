@@ -13,7 +13,6 @@ import 'package:user_feed/src/domain/value_objects/enums.dart';
 import 'package:user_feed/src/domain/value_objects/strings.dart';
 import 'package:user_feed/src/domain/value_objects/widget_keys.dart';
 import 'package:user_feed/src/presentation/image_viewer/image_grid.dart';
-import 'package:user_feed/src/presentation/video_player/video_player.dart';
 
 class FeedItemBody extends StatefulWidget {
   const FeedItemBody(
@@ -116,11 +115,7 @@ class FeedItemBodyState extends State<FeedItemBody> {
         smallVerticalSizedBox,
         // feed item videos are displayed here
         if (widget.videos != null && widget.videos!.isNotEmpty)
-          Padding(
-            padding: const EdgeInsets.only(top: 5),
-            child: SizedBox(
-                height: 200, child: VideoPlayer(videos: widget.videos)),
-          ),
+          const SizedBox(),
 
         // checks that there are actually images
         if (images != null && images!.isNotEmpty)

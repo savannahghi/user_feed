@@ -14,7 +14,6 @@ import 'package:user_feed/src/domain/entities/item.dart';
 import 'package:user_feed/src/domain/entities/link.dart';
 import 'package:user_feed/src/domain/value_objects/colors.dart';
 import 'package:user_feed/src/domain/value_objects/strings.dart';
-import 'package:user_feed/src/presentation/video_player/video_player.dart';
 import 'package:user_feed/user_feed.dart';
 
 class FeedItemContentView extends StatefulWidget {
@@ -137,13 +136,7 @@ class FeedItemContentViewState extends State<FeedItemContentView> {
                     ),
                     mediumVerticalSizedBox,
                     if (widget.videos != null && widget.videos!.isNotEmpty)
-                      Padding(
-                        padding: const EdgeInsets.only(top: 5),
-                        child: SizedBox(
-                          height: 200,
-                          child: VideoPlayer(videos: widget.videos),
-                        ),
-                      ),
+                      const SizedBox(),
                     if (widget.featureImage != '')
                       ClipRRect(
                         borderRadius:
