@@ -1,6 +1,6 @@
 name: user_feed
 description: A package for viewing a user's feed
-version: 0.2.1-nullsafety
+version: 0.2.2-nullsafety
 homepage: https://github.com/savannahghi/user_feed
 repository: https://github.com/savannahghi/user_feed
 issue_tracker: https://github.com/savannahghi/user_feed/issues

@@ -1,3 +1,7 @@
+### 0.2.2-nullsafety
+
+- feat: setup automated deployment to pub.dev
+
 ### 0.2.1-nullsafety
 
 - chore: remove youtube player
@@ -13,6 +17,7 @@
 ### 0.1.50-nullsafety
 
 - chore: upgrade mock image package
+
 ### 0.1.49-nullsafety
 
 - chore: upgrade packages
