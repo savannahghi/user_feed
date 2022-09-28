@@ -1,3 +1,7 @@
+### 0.2.3
+
+- chore: update package version tag
+
 ### 0.2.2-nullsafety
 
 - feat: setup automated deployment to pub.dev
