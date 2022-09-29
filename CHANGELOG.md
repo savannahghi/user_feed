@@ -1,3 +1,7 @@
+### 0.2.4
+
+- chore: upgrade shared_ui_components package
+
 ### 0.2.3
 
 - chore: update package version tag
